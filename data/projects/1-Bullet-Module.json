@@ -1,0 +1,450 @@
+{
+  "schemaVersion": 2,
+  "id": "1-Bullet-Module",
+  "doc": "기술문서.md",
+  "title": "총기 모듈 프레임워크 (Bullet Module Framework)",
+  "tagline": "탄환에 효과 부품(모듈)을 끼워 총기를 조립하는 Unity 2D 프레임워크",
+  "cover": "이미지/1-5_loop_workshop.png",
+  "team": { "type": "solo", "size": "1인", "role": "" },
+  "meta": [
+    { "label": "기간", "value": "2주 (2026.06.24 ~ 2026.07.08)" },
+    { "label": "인원", "value": "개인 프로젝트" },
+    { "label": "환경", "value": "Unity 6 (6000.3.15f1), URP 2D, C#" }
+  ],
+  "tags": ["Unity 6", "C#", "URP 2D", "인터페이스 기반 모듈", "ScriptableObject", "오브젝트 풀링", "Physics2D.Raycast"],
+  "links": {
+    "github": "https://github.com/parksooha102-ai/3rd-2D-Project-parksooha102-ai",
+    "video": "",
+    "extra": []
+  },
+  "intent": {
+    "text": "효과마다 전용 탄환 클래스를 만드는 방식으로는 63가지(2⁶−1) 조합을 감당할 수 없어, 공통 몸통(`Bullet`) 하나에 같은 규격의 모듈을 조합해 총기를 만드는 구조로 설계했다.",
+    "verbatim": false
+  },
+  "highlights": [
+    {
+      "title": "모듈 규격 — 인터페이스",
+      "what": "탄환 효과를 같은 규격(`IBulletModule`)을 따르는 독립된 부품(모듈)으로 분리한다.",
+      "how": "`Bullet`은 모듈 목록만 가지고 차례로 호출하고, 각 모듈은 인터페이스의 훅(`OnUpdate`·`OnHitEnemy`·`CanSurviveEnemy` 등)만 구현한다. 쓰지 않는 훅은 빈 구현으로 둔다.",
+      "why": "추상 클래스는 모든 모듈이 불필요한 공통 상태까지 상속한다. 모듈에게 정해 줄 것은 \"무엇을 할 수 있는가\"이므로 상속(is-a) 대신 계약(can-do)인 인터페이스를 택했다.",
+      "section": "4.1 인터페이스 vs 추상 클래스",
+      "image": null
+    },
+    {
+      "title": "생존 판정 — OR 방식",
+      "what": "모듈마다 생존 판정이 다를 때 탄환이 살아남을지 정한다.",
+      "how": "모듈 중 하나라도 `CanSurviveEnemy()`/`CanSurviveWall()`이 true를 반환하면 탄환은 소멸하지 않고 비행을 계속한다.",
+      "why": "AND 방식은 모듈을 더 달수록 약해지는 디너지(역시너지)가 생겨 \"조합할수록 강해져야 한다\"는 목표와 충돌한다. OR 방식은 관통 + 폭발처럼 조합만으로 '관통 유탄'을 만든다.",
+      "section": "4.2 생존 판정 — OR vs AND",
+      "image": { "src": "이미지/4-2_penetrate_explosion.png", "w": 1920, "h": 1080, "caption": "관통 + 폭발 = 관통 유탄: 탄이 허수아비 셋을 꿰뚫으며 맞을 때마다 폭발한다" }
+    },
+    {
+      "title": "추적 모듈 — `HomingModule`",
+      "what": "비행 중 가장 가까운 적 쪽으로 탄환의 진행 방향을 돌린다.",
+      "how": "물리 프레임마다 반경 안의 적을 적 태그·거리·시야각·벽 가림 네 조건으로 걸러 가장 가까운 대상을 고르고, `RotateTowards`로 진행 방향(`transform.up`)을 서서히 돌린다.",
+      "why": "위치가 아니라 방향만 바꾸므로 추적 모듈은 이동 방식을 몰라도 되고, 반사 모듈이 방향을 꺾은 뒤에도 그 방향에서 이어서 추적할 수 있다.",
+      "section": "3.5 추적 — `HomingModule`",
+      "image": null
+    },
+    {
+      "title": "자식 탄환 상태 계승 — `Clone()`",
+      "what": "분열로 생긴 자식 탄환에 부모 모듈의 진행 상태(세대 수 등)를 넘긴다.",
+      "how": "각 모듈이 `Clone()`으로 진행 상태까지 복사한 새 인스턴스를 만들고, `BulletFactory.CreateFromParent`가 부모 모듈을 복제해 자식 탄환을 만든다.",
+      "why": "팩토리가 세대 수를 넣어 주는 방식은 \"프레임워크는 구체 모듈을 모른다\"는 원칙을 어기고, 계승할 상태를 가진 모듈이 생길 때마다 팩토리를 고쳐야 해 \"기존 코드 수정 0줄\"과 충돌한다(사후 검토로 얻은 결론).",
+      "section": "4.5 자식 탄환의 상태 계승 — `Clone()` (사후 검토)",
+      "image": { "src": "이미지/4-5_penetrate_split.png", "w": 1920, "h": 1080, "caption": "관통 + 분열: 허수아비를 뚫고 나간 탄이 분열해 자식 탄환(흰 삼각형)이 퍼진다. 자식 탄환의 모듈은 부모 모듈의 Clone()으로 만들어진다" }
+    }
+  ],
+  "troubleshooting": [
+    {
+      "title": "관통 + 분열 조합의 순서 의존성",
+      "problem": "관통 + 분열 조합에서 `SplitModule`이 목록 뒤에 있으면 적 하나에 관통력이 두 번 차감되었다.",
+      "cause": "분열 모듈만 자신이 분열시킨 대상(`excludedTarget`)을 알고 관통 모듈은 모른다. `Bullet.ProcessHit()`은 탄환이 비활성화되면 모듈 호출을 멈추므로, 분열 모듈이 `Kill()`을 부르는 시점에 따라 관통 모듈의 실행 여부가 달라진다.",
+      "solution": "자식 탄환의 `hitSet`에 부모가 맞힌 적을 미리 넣는 방법은 분열을 일으킨 적이 데미지를 받지 못해 되돌렸고, 기한 때문에 `SplitModule`을 항상 목록 맨 앞에 넣어 순서를 고정하는 우회책을 택했다.",
+      "result": "분열 → 관통 순서로 고정되어 적 하나에 관통력이 1회만 차감된다(의도대로).",
+      "lesson": "모듈 간 결합도를 낮추고 순서에 의존하지 않는 구조를 목표로 했지만, 대상을 기억해야 하는 모듈 앞에서는 구조적 한계가 있었다. 근본 해결 방향은 2단계 처리와 계보 단위 기록(`HitContext`)이다(5.4).",
+      "section": "5.2-4. 관통 + 분열 조합의 순서 의존성"
+    },
+    {
+      "title": "관통 탄환이 한 대상에 연속으로 꽂히는 문제",
+      "problem": "관통 3회짜리 탄환이 적 하나에 세 번 꽂히고 사라져, 사실상 3연타 탄환이 되었다.",
+      "cause": "탄환이 적의 몸을 통과하는 데 여러 물리 프레임이 걸려, 다음 프레임 레이캐스트가 같은 적을 다시 맞히며 데미지와 관통 횟수 차감이 반복되었다.",
+      "solution": "`Bullet`에 현재 통과 중인 적을 기억하는 `hitSet`(`HashSet<Collider2D>`)을 두어, 이미 등록된 적이면 모듈 호출과 데미지를 건너뛰고 적을 완전히 빠져나온 프레임에 비운다. 벽은 등록하지 않는다.",
+      "result": "",
+      "lesson": "",
+      "section": "5.2-2. 관통 탄환이 한 대상에 연속으로 꽂히는 문제"
+    },
+    {
+      "title": "관통 탄환이 적 앞에서 멈추는 문제",
+      "problem": "관통 횟수가 남아 있는데도 탄환이 충돌한 자리에 그대로 멈췄다.",
+      "cause": "초기 `MoveBullet()`은 충돌을 감지하면 `ProcessHit(hit)`을 호출하고 곧바로 반환해, \"충돌 시 실행할 효과\"와 \"충돌 후 생존 여부\"가 나뉘어 있지 않았다.",
+      "solution": "효과 실행(`OnHit...`)과 생존 판정(`CanSurvive...`)을 별개 메서드로 분리하는 구조로 리팩터링했다.",
+      "result": "",
+      "lesson": "",
+      "section": "5.2-1. 관통 탄환이 적 앞에서 멈추는 문제"
+    }
+  ],
+  "screenshots": [
+    { "src": "이미지/3-3_penetrate.png", "w": 1440, "h": 648, "caption": "관통 단독: 탄 하나가 오른쪽부터 허수아비를 차례로 뚫고 지나가며 각각 피해 1을 준다" },
+    { "src": "이미지/4-2_penetrate_explosion.png", "w": 1920, "h": 1080, "caption": "관통 + 폭발 = 관통 유탄: 탄이 허수아비 셋을 꿰뚫으며 맞을 때마다 폭발한다" },
+    { "src": "이미지/4-5_penetrate_split.png", "w": 1920, "h": 1080, "caption": "관통 + 분열: 허수아비를 뚫고 나간 탄이 분열해 자식 탄환(흰 삼각형)이 퍼진다" },
+    { "src": "이미지/5-1_all_six.png", "w": 1920, "h": 1080, "caption": "63번째 조합 — 6종 전부 장착: 전용 클래스 없이 여섯 모듈이 한 탄환에서 함께 동작한다" },
+    { "src": "이미지/1-5_loop_lab.png", "w": 1920, "h": 1080, "caption": "실험실: 왼쪽 메뉴에서 허수아비·벽을 골라 배치한다" }
+  ],
+  "retro": {
+    "section": "5. 결과 및 배운 점",
+    "achieved": [
+      "6종 모듈의 조합 63가지를 모두 조립해 동작 확인. 관통 유탄처럼 전용 코드 없이 조합 규칙만으로 새 총기가 나옴",
+      "새 모듈 추가 시 기존 코드 수정 0줄, 작성 파일은 모듈과 데이터 두 개 (예외는 `is SplitModule` 분기 1곳)",
+      "모듈 간 순서 독립을 분열 모듈을 제외하고 달성 (분열 모듈은 목록 맨 앞 강제 삽입으로 우회)"
+    ],
+    "regrets": [
+      "`Bullet.ApplyDamageTo()`가 이 프로젝트의 전투 클래스(`CombatSystem`·`HurtBox`·`CombatEvent`)를 이름으로 직접 부른다",
+      "모듈 데이터의 공통 부모 `ModuleInfo`에 워크숍 UI 전용 메서드(`GetEditableFields()`·`SetFieldValue()`)가 들어 있다",
+      "분열 모듈을 목록 맨 앞에 강제 삽입해 순서 의존성을 우회하고 있다",
+      "풀링 전후 가비지 수치와 전수 테스트 체크리스트를 남기지 않아 효과를 수치로 증명하지 못했다"
+    ],
+    "plans": [
+      "프레임워크는 `IHitReceiver` 같은 연결 규격만 정의하고, 각 프로젝트가 이를 구현해 자기 전투 매니저에 연결한다",
+      "UI 쪽에 모듈 데이터를 편집 필드로 바꾸는 어댑터를 두고, `ModuleInfo`에는 수치와 `CreateModule()`만 남긴다",
+      "충돌 처리를 2단계(먼저 묻고 한 번에 실행)로 바꾸고 피격 기록을 계보 단위(`HitContext`)로 통합한다",
+      "성능 개선 전후의 프로파일러 수치를 캡처하고, 테스트 체크리스트를 코드와 함께 저장소에서 버전 관리한다"
+    ]
+  },
+  "deck": {
+    "chapters": [
+      { "key": "overview", "title": "개요", "sectionPath": ["1. 개요"] },
+      { "key": "structure", "title": "시스템 구조", "sectionPath": ["2. 시스템 구조"] },
+      { "key": "features", "title": "핵심 기능", "sectionPath": ["3. 핵심 기능"] },
+      { "key": "choices", "title": "고민과 선택", "sectionPath": ["4. 고민과 선택"] },
+      { "key": "results", "title": "결과 및 배운 점", "sectionPath": ["5. 결과 및 배운 점"] }
+    ],
+    "slides": [
+      {
+        "key": "why",
+        "chapter": "overview",
+        "layout": "overview",
+        "tab": "개요",
+        "title": { "text": "1.2 왜 (Why)", "verbatim": true },
+        "lead": { "text": "출발점은 워프레임(Warframe)의 모딩 시스템이다.", "verbatim": true },
+        "sectionPath": ["1. 개요", "1.2 왜 (Why)"],
+        "points": [
+          { "label": "문제", "text": "효과가 6종이면 가능한 조합은 63가지(2⁶−1) 이고, 효과가 하나 추가될 때마다 약 두 배로 늘어난다.", "verbatim": true },
+          { "label": "해결", "text": "탄환은 공통 몸통(`Bullet`) 하나로 두고, 효과는 같은 규격(인터페이스)을 따르는 독립된 부품(모듈) 으로 분리했다.", "verbatim": true },
+          { "label": "결과", "text": "조합이 아무리 늘어도 작성할 코드는 모듈 개수만큼만 늘어난다.", "verbatim": true }
+        ],
+        "visuals": []
+      },
+      {
+        "key": "core-loop",
+        "chapter": "overview",
+        "layout": "visual",
+        "tab": "흐름",
+        "title": { "text": "1.5 핵심 루프와 조작법", "verbatim": true },
+        "lead": { "text": "플레이어(=테스터)는 아래 흐름을 반복하며 모듈 조합을 실험한다.", "verbatim": true },
+        "sectionPath": ["1. 개요", "1.5 핵심 루프와 조작법"],
+        "points": [],
+        "visuals": [
+          { "kind": "mermaid", "n": 1, "fp": "flowchart LR" },
+          { "kind": "table", "n": 1, "fp": "워크숍 — 모듈 장착·수치 확인|실험실 — 허수아비·벽 배치" }
+        ]
+      },
+      {
+        "key": "components",
+        "chapter": "structure",
+        "layout": "full",
+        "tab": "구조",
+        "title": { "text": "2.1 구성요소", "verbatim": true },
+        "lead": null,
+        "sectionPath": ["2. 시스템 구조", "2.1 구성요소"],
+        "points": [],
+        "visuals": [
+          { "kind": "table", "n": 1, "fp": "구성요소|역할" }
+        ]
+      },
+      {
+        "key": "boundary",
+        "chapter": "structure",
+        "layout": "visual",
+        "tab": "구조",
+        "title": { "text": "2.4 모듈 장착 경로 — 프레임워크의 경계", "verbatim": true },
+        "lead": { "text": "외부에서 `Bullet.AddModule()`만 호출하면 어떤 방식으로든 붙일 수 있다.", "verbatim": true },
+        "sectionPath": ["2. 시스템 구조", "2.4 모듈 장착 경로 — 프레임워크의 경계"],
+        "points": [
+          { "label": "", "text": "이 프로젝트는 모듈 조합을 빠르게 바꿔 가며 검증하려고 워크숍 UI를 진입로로 썼다.", "verbatim": true },
+          { "label": "", "text": "탄환과 모듈의 코드는 그대로다.", "verbatim": true }
+        ],
+        "visuals": [
+          { "kind": "mermaid", "n": 1, "fp": "flowchart LR" }
+        ]
+      },
+      {
+        "key": "lifecycle",
+        "chapter": "structure",
+        "layout": "visual",
+        "tab": "흐름",
+        "title": { "text": "2.5 모듈의 생명주기 — 새로 시작할 것인가, 이어받을 것인가", "verbatim": true },
+        "lead": { "text": "탄환이 만들어지는 경로는 두 가지이고, 경로마다 진행 상태를 다루는 방식이 다르다.", "verbatim": true },
+        "sectionPath": ["2. 시스템 구조", "2.5 모듈의 생명주기 — 새로 시작할 것인가, 이어받을 것인가"],
+        "points": [
+          { "label": "ResetState()", "text": "진행 상태를 초기값으로 채운다.", "verbatim": true },
+          { "label": "Clone()", "text": "부모 모듈의 진행 상태까지 복사한 새 인스턴스를 만든다(프로토타입 방식).", "verbatim": true },
+          { "label": "이유", "text": "자식 탄환은 자신이 몇 세대인지 알아야 분열을 멈출 수 있는데, 자식에게도 새 모듈을 만들어 붙이자 세대 수가 0으로 초기화되어 무한 분열이 일어났다.", "verbatim": true }
+        ],
+        "visuals": [
+          { "kind": "mermaid", "n": 1, "fp": "flowchart LR" }
+        ]
+      },
+      {
+        "key": "class-diagram",
+        "chapter": "structure",
+        "layout": "full",
+        "tab": "구조",
+        "title": { "text": "2.6 클래스 다이어그램", "verbatim": true },
+        "lead": { "text": "다이어그램에는 대표 모듈 4종만 그렸다.", "verbatim": true },
+        "sectionPath": ["2. 시스템 구조", "2.6 클래스 다이어그램"],
+        "points": [],
+        "visuals": [
+          { "kind": "mermaid", "n": 1, "fp": "classDiagram" }
+        ]
+      },
+      {
+        "key": "sequence",
+        "chapter": "structure",
+        "layout": "full",
+        "tab": "흐름",
+        "title": { "text": "2.7 시퀀스 다이어그램", "verbatim": true },
+        "lead": null,
+        "sectionPath": ["2. 시스템 구조", "2.7 시퀀스 다이어그램"],
+        "points": [],
+        "visuals": [
+          { "kind": "mermaid", "n": 1, "fp": "sequenceDiagram" }
+        ]
+      },
+      {
+        "key": "assemble",
+        "chapter": "features",
+        "layout": "code",
+        "tab": "구현",
+        "title": { "text": "3.1 사용법 — 총기 조립하기", "verbatim": true },
+        "lead": { "text": "프레임워크를 쓰는 쪽이 할 일은 세 가지다. 풀에서 탄환을 꺼내고, 모듈을 붙이고, 발사한다.", "verbatim": true },
+        "sectionPath": ["3. 핵심 기능", "3.1 사용법 — 총기 조립하기"],
+        "points": [
+          { "label": "", "text": "이 프로젝트에서는 이 과정을 `BulletFactory.Create()`가 대신한다.", "verbatim": true },
+          { "label": "", "text": "플레이어 코드는 `BulletFactory.Create(pool, 위치, 방향)` 한 줄만 호출한다.", "verbatim": true }
+        ],
+        "visuals": [
+          { "kind": "code", "n": 1, "fp": "// 예시: '추적 + 폭발' 조합으로 추적 로켓을 조립하는 경우" }
+        ]
+      },
+      {
+        "key": "extend",
+        "chapter": "features",
+        "layout": "full",
+        "tab": "구현",
+        "title": { "text": "3.2 확장법 — 새 모듈 추가하기", "verbatim": true },
+        "lead": { "text": "새 효과를 추가할 때 작성하는 파일은 두 개이고, 기존 코드는 고치지 않는다.", "verbatim": true },
+        "sectionPath": ["3. 핵심 기능", "3.2 확장법 — 새 모듈 추가하기"],
+        "points": [
+          { "label": "유일한 예외", "text": "`Bullet.AddModule()`에는 `if (module is SplitModule)` 분기가 하나 있다.", "verbatim": true }
+        ],
+        "visuals": [
+          { "kind": "table", "n": 1, "fp": "단계|작업|내용" }
+        ]
+      },
+      {
+        "key": "penetrate",
+        "chapter": "features",
+        "layout": "code",
+        "tab": "구현",
+        "title": { "text": "3.3 관통 — `PenetrateModule`", "verbatim": true },
+        "lead": { "text": "관통은 \"몇 번 뚫고 지나갈 수 있는가\"만 정하면 되는 효과다.", "verbatim": true },
+        "sectionPath": ["3. 핵심 기능", "3.3 관통 — `PenetrateModule`"],
+        "points": [
+          { "label": "동작", "text": "새로운 적과 충돌할 때마다 남은 관통 횟수를 확인해, 남아 있으면 1 차감하고 생존을, 없으면 소멸을 허용한다.", "verbatim": true }
+        ],
+        "visuals": [
+          { "kind": "code", "n": 1, "fp": "public bool CanSurviveEnemy(RaycastHit2D hit)" },
+          { "kind": "image", "src": "이미지/3-3_penetrate.png", "w": 1440, "h": 648, "caption": { "text": "관통 단독: 탄 하나가 오른쪽부터 허수아비를 차례로 뚫고 지나가며 각각 피해 1을 준다", "verbatim": true } }
+        ]
+      },
+      {
+        "key": "split",
+        "chapter": "features",
+        "layout": "code",
+        "tab": "구현",
+        "title": { "text": "3.4 분열 — `SplitModule`", "verbatim": true },
+        "lead": { "text": "적중하면 원본 탄환을 소멸시키고 자식 탄환 여러 발을 만든다.", "verbatim": true },
+        "sectionPath": ["3. 핵심 기능", "3.4 분열 — `SplitModule`"],
+        "points": [
+          { "label": "동작", "text": "이때 \"이 대상에는 이미 분열했다\"는 사실을 `excludedTarget`에 기록한다.", "verbatim": true },
+          { "label": "", "text": "기록하지 않으면 자식 탄환이 같은 대상과 다시 부딪힐 때마다 무한히 재분열한다.", "verbatim": true },
+          { "label": "관통과의 구조적 차이", "text": "관통은 대상을 구분할 필요가 없지만, 분열은 반드시 구분해야 한다.", "verbatim": true }
+        ],
+        "visuals": [
+          { "kind": "code", "n": 1, "fp": "private void ProcessSplit(RaycastHit2D hit)" }
+        ]
+      },
+      {
+        "key": "homing",
+        "chapter": "features",
+        "layout": "code",
+        "tab": "구현",
+        "title": { "text": "3.5 추적 — `HomingModule`", "verbatim": true },
+        "lead": { "text": "반경 안의 적을 네 가지 조건(적 태그·거리·시야각·벽)으로 걸러 가장 가까운 대상 쪽으로 진행 방향을 돌린다.", "verbatim": false },
+        "sectionPath": ["3. 핵심 기능", "3.5 추적 — `HomingModule`"],
+        "points": [
+          { "label": "설계 의도", "text": "위치가 아니라 방향만 바꾼다.", "verbatim": true },
+          { "label": "", "text": "즉시 꺾지 않고 서서히 돈다 (`RotateTowards`).", "verbatim": true },
+          { "label": "", "text": "시야각과 벽 검사로 대상을 제한한다.", "verbatim": true }
+        ],
+        "visuals": [
+          { "kind": "code", "n": 1, "lines": [3, 20], "fp": "public void OnUpdate() => UpdateTracking(); // 충돌 훅은 모두 빈 구현" }
+        ]
+      },
+      {
+        "key": "interface",
+        "chapter": "choices",
+        "layout": "full",
+        "tab": "선택",
+        "title": { "text": "4.1 인터페이스 vs 추상 클래스", "verbatim": true },
+        "lead": { "text": "모듈의 공통 규격을 무엇으로 정할 것인가?", "verbatim": true },
+        "sectionPath": ["4. 고민과 선택", "4.1 인터페이스 vs 추상 클래스"],
+        "points": [
+          { "label": "결정", "text": "그래서 상속(is-a) 대신 계약(can-do)인 인터페이스를 택했다.", "verbatim": true }
+        ],
+        "visuals": [
+          { "kind": "table", "n": 1, "fp": "|[A] 추상 클래스|[B] 인터페이스 (채택)" }
+        ]
+      },
+      {
+        "key": "survive",
+        "chapter": "choices",
+        "layout": "visual",
+        "tab": "선택",
+        "title": { "text": "4.2 생존 판정 — OR vs AND", "verbatim": true },
+        "lead": { "text": "모듈마다 생존 판정이 다를 때, 탄환은 언제 살아남는가?", "verbatim": true },
+        "sectionPath": ["4. 고민과 선택", "4.2 생존 판정 — OR vs AND"],
+        "points": [
+          { "label": "결정", "text": "하나라도 생존을 주장하면 살아남는 OR 방식을 택했다.", "verbatim": true },
+          { "label": "결과", "text": "두 모듈 어디에도 \"관통 유탄\" 코드는 없다.", "verbatim": true }
+        ],
+        "visuals": [
+          { "kind": "table", "n": 1, "fp": "|[A] AND (모든 모듈이 true여야 생존)|[B] OR (하나라도 true면 생존, 채택)" },
+          { "kind": "image", "src": "이미지/4-2_penetrate_explosion.png", "w": 1920, "h": 1080, "caption": { "text": "관통 + 폭발 = 관통 유탄: 탄이 허수아비 셋을 꿰뚫으며 맞을 때마다 폭발한다", "verbatim": true } }
+        ]
+      },
+      {
+        "key": "pooling",
+        "chapter": "choices",
+        "layout": "full",
+        "tab": "선택",
+        "title": { "text": "4.4 탄환·이펙트 생성 — `Instantiate/Destroy` vs 오브젝트 풀링", "verbatim": true },
+        "lead": { "text": "조합에 따라 급격히 늘어나는 탄환과 이펙트를 어떻게 만들고 없앨 것인가?", "verbatim": true },
+        "sectionPath": ["4. 고민과 선택", "4.4 탄환·이펙트 생성 — `Instantiate/Destroy` vs 오브젝트 풀링"],
+        "points": [
+          { "label": "결정", "text": "실제로 `Instantiate/Destroy` 방식에서 연사와 분열을 함께 쓰자 GC 스파이크가 눈에 띄게 발생했다.", "verbatim": true },
+          { "label": "", "text": "그래서 탄환(`BulletPool`)과 폭발 이펙트(`ExplosionPool`) 모두 제네릭 풀(`ComponentPool<T>`)로 재사용하도록 바꿨다.", "verbatim": true }
+        ],
+        "visuals": [
+          { "kind": "table", "n": 1, "fp": "|[A] Instantiate / Destroy|[B] 오브젝트 풀링 (채택)" }
+        ]
+      },
+      {
+        "key": "clone",
+        "chapter": "choices",
+        "layout": "visual",
+        "tab": "선택",
+        "title": { "text": "4.5 자식 탄환의 상태 계승 — `Clone()` (사후 검토)", "verbatim": true },
+        "lead": { "text": "분열로 생긴 자식 탄환에게 부모 모듈의 진행 상태를 어떻게 넘길 것인가?", "verbatim": true },
+        "sectionPath": ["4. 고민과 선택", "4.5 자식 탄환의 상태 계승 — `Clone()` (사후 검토)"],
+        "points": [
+          { "label": "결정", "text": "결과적으로 `Clone()`은 이 프레임워크의 원칙에 맞는 선택이었다.", "verbatim": true },
+          { "label": "", "text": "다만 이 결론은 사후에 얻은 것이다.", "verbatim": true }
+        ],
+        "visuals": [
+          { "kind": "table", "n": 1, "fp": "|[A] Clone() — 모듈이 자신을 복제 (채택)|[B] 데이터로 새로 생성 + 상태를 외부에서 전달" },
+          { "kind": "image", "src": "이미지/4-5_penetrate_split.png", "w": 1920, "h": 1080, "caption": { "text": "관통 + 분열: 허수아비를 뚫고 나간 탄이 분열해 자식 탄환(흰 삼각형)이 퍼진다. 자식 탄환의 모듈은 부모 모듈의 Clone()으로 만들어진다", "verbatim": true } }
+        ]
+      },
+      {
+        "key": "result",
+        "chapter": "results",
+        "layout": "visual",
+        "tab": "결과",
+        "title": { "text": "5.1 결과", "verbatim": true },
+        "lead": { "text": "6종 모듈(추적·반사·분열·관통·폭발·부메랑)의 가능한 모든 조합을 직접 조립해 검증했다.", "verbatim": true },
+        "sectionPath": ["5. 결과 및 배운 점", "5.1 결과"],
+        "points": [
+          { "label": "", "text": "순서 독립성은 조합의 자유를 위한 원칙인 동시에, 테스트를 현실적인 규모로 묶어 두는 장치였다.", "verbatim": true }
+        ],
+        "visuals": [
+          { "kind": "table", "n": 1, "fp": "목표 (1장)|결과" },
+          { "kind": "image", "src": "이미지/5-1_all_six.png", "w": 1920, "h": 1080, "caption": { "text": "63번째 조합 — 6종 전부 장착: 전용 클래스 없이 여섯 모듈이 한 탄환에서 함께 동작한다", "verbatim": true } }
+        ]
+      },
+      {
+        "key": "ts-stop",
+        "chapter": "results",
+        "layout": "problem",
+        "tab": "문제 해결",
+        "title": { "text": "5.2-1. 관통 탄환이 적 앞에서 멈추는 문제", "verbatim": true },
+        "lead": null,
+        "sectionPath": ["5. 결과 및 배운 점", "5.2 트러블슈팅", "5.2-1. 관통 탄환이 적 앞에서 멈추는 문제"],
+        "points": [
+          { "label": "문제", "text": "관통 횟수가 남아 있는데도 탄환이 충돌한 자리에 그대로 멈췄다.", "verbatim": true },
+          { "label": "원인", "text": "초기 `MoveBullet()`은 충돌을 감지하면 `ProcessHit(hit)`을 호출하고 곧바로 반환했다.", "verbatim": true },
+          { "label": "해결", "text": "효과 실행(`OnHit...`)과 생존 판정(`CanSurvive...`)을 별개 메서드로 분리하는 현재 구조로 리팩터링했다.", "verbatim": true }
+        ],
+        "visuals": [
+          { "kind": "code", "n": 1, "fp": "if (hit.collider != null && hit.collider.gameObject.CompareT" }
+        ]
+      },
+      {
+        "key": "ts-multi-hit",
+        "chapter": "results",
+        "layout": "problem",
+        "tab": "문제 해결",
+        "title": { "text": "5.2-2. 관통 탄환이 한 대상에 연속으로 꽂히는 문제", "verbatim": true },
+        "lead": null,
+        "sectionPath": ["5. 결과 및 배운 점", "5.2 트러블슈팅", "5.2-2. 관통 탄환이 한 대상에 연속으로 꽂히는 문제"],
+        "points": [
+          { "label": "문제", "text": "관통 3회짜리 탄환이 적 하나에 '따다닥' 세 번 꽂히고 사라졌다.", "verbatim": true },
+          { "label": "원인", "text": "살아남은 탄환의 다음 프레임 레이캐스트가 아직 몸 안에 있는 같은 적을 다시 맞혔고, 그때마다 데미지와 관통 횟수 차감이 반복되었다.", "verbatim": true },
+          { "label": "해결", "text": "`Bullet`에 현재 통과 중인 적을 기억하는 `hitSet`(`HashSet<Collider2D>`) 을 두었다.", "verbatim": true }
+        ],
+        "visuals": []
+      },
+      {
+        "key": "ts-order",
+        "chapter": "results",
+        "layout": "problem",
+        "tab": "문제 해결",
+        "title": { "text": "5.2-4. 관통 + 분열 조합의 순서 의존성", "verbatim": true },
+        "lead": null,
+        "sectionPath": ["5. 결과 및 배운 점", "5.2 트러블슈팅", "5.2-4. 관통 + 분열 조합의 순서 의존성"],
+        "points": [
+          { "label": "문제", "text": "관통 + 분열 조합에서 `SplitModule`이 목록 뒤에 있으면 적 하나에 관통력이 두 번 차감되었다.", "verbatim": true },
+          { "label": "원인", "text": "분열 모듈만 자신이 분열시킨 대상을 알고, 나머지 모듈은 그 사실을 모른다.", "verbatim": true },
+          { "label": "해결", "text": "`SplitModule`을 항상 목록 맨 앞에 넣어 위 표의 두 번째 행으로 순서를 고정하는 우회책을 택했다.", "verbatim": true }
+        ],
+        "visuals": [
+          { "kind": "table", "n": 1, "fp": "장착 순서|부모 탄환|자식 탄환 (같은 적과 재충돌)|관통력 차감" }
+        ]
+      },
+      {
+        "key": "to-be",
+        "chapter": "results",
+        "layout": "full",
+        "tab": "결과",
+        "title": { "text": "5.4 향후 계획 (To-Be) — 순서 의존성의 근본 해결", "verbatim": true },
+        "lead": { "text": "분열 모듈만 자신이 분열시킨 대상을 알고 나머지 모듈은 모르기 때문에, 자식 탄환이 같은 대상에 한 번 더 반응한다.", "verbatim": true },
+        "sectionPath": ["5. 결과 및 배운 점", "5.4 향후 계획 (To-Be) — 순서 의존성의 근본 해결"],
+        "points": [],
+        "visuals": [
+          { "kind": "table", "n": 1, "fp": "|As-Is (현재)|To-Be (개선안)" }
+        ]
+      }
+    ]
+  }
+}

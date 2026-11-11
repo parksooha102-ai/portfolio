@@ -1,0 +1,253 @@
+{
+  "schemaVersion": 2,
+  "id": "4-MiniGolf",
+  "doc": "기술문서_초안_레벨디자인.md",
+  "title": "미니골프 레벨 디자인",
+  "tagline": "설명 없이 코스만으로 장애물을 가르치는 12홀 미니골프",
+  "cover": null,
+  "team": { "type": "solo", "size": "", "role": "레벨 디자인 — 장애물 배치·순서·난이도 (조작·물리는 수업에서 함께 만든 기반 사용)" },
+  "meta": [
+    { "label": "장르", "value": "미니골프 (2개 월드 × 6홀)" },
+    { "label": "환경", "value": "Unity 6 (6000.3.15f1), URP, C#" }
+  ],
+  "tags": ["Unity 6", "URP", "C#", "레벨 디자인", "프리팹 조립", "키네마틱 Rigidbody"],
+  "links": { "github": "", "video": "", "extra": [] },
+  "intent": { "text": "튜토리얼 텍스트 없이 플레이어가 홀을 지나며 규칙을 스스로 익히게 하고 싶어서", "verbatim": true },
+  "highlights": [
+    {
+      "title": "한 홀에 새 요소 하나 — 월드 1·2 코스 구조",
+      "what": "월드 1(평면)은 장애물을 하나씩 가르치고, 월드 2(높이)는 배운 장애물을 타점 조절과 결합해 다시 등장시킨다.",
+      "how": "월드 1은 한 홀에 새 장애물을 하나만 넣고 마지막 1-6에서 부스트 패드·셔틀 벽·풍차를 물과 함께 조합한다. 월드 2는 2-1부터 타점(피치) 조절 없이는 넘어갈 수 없게 만들었다.",
+      "why": "플레이어가 실패했을 때 원인이 무엇인지 헷갈리지 않게 하기 위해서다.",
+      "section": "2.2 월드 1과 월드 2의 역할",
+      "image": null
+    },
+    {
+      "title": "해저드 벌칙: 직전 샷 위치로 복귀",
+      "what": "공이 물에 빠지면 출발점이 아니라 마지막으로 친 위치로 되돌린다.",
+      "how": "플레이어가 직접 친 샷만 복귀 지점으로 기록하고, 부스트 패드가 밀어낸 것은 기록하지 않는다(`isPassive`).",
+      "why": "출발점 복귀는 긴 종합 홀(1-6, 2-6)에서 끝부분 실수 한 번에 처음부터 다시라 벌칙이 지나치게 크다. 직전 위치 복귀는 질러가기를 '시도해 볼 만한 위험'으로 만든다.",
+      "section": "4.2 해저드 벌칙: 출발점이 아니라 직전 샷 위치로",
+      "image": null
+    },
+    {
+      "title": "홀을 데이터로 분리 — 코드 없이 홀 추가",
+      "what": "각 홀은 `GolfStage` 프리팹 하나이며 Par, 출발점, 홀컵만 가진다.",
+      "how": "진행·타수·스코어 판정(버디, 보기 등)은 `GolfStageManager` 한 곳에서 처리하고, 홀은 프리팹을 조립하고 Par를 입력해 목록에 넣는다.",
+      "why": "12홀을 만드는 동안 진행 코드는 수정하지 않았다. 반복해서 고치고 테스트하는 레벨 디자인에서는 이 점이 작업 속도에 직접 영향을 준다.",
+      "section": "4.3 홀을 데이터로 분리 — 코드 없이 홀을 추가",
+      "image": null
+    },
+    {
+      "title": "움직이는 장애물과 공의 충돌",
+      "what": "셔틀 벽을 키네마틱 `Rigidbody.MovePosition`으로 움직인다.",
+      "how": "`Transform`을 직접 옮기지 않고 키네마틱 `Rigidbody.MovePosition`으로 움직인다.",
+      "why": "Transform을 직접 옮기면 물리 엔진이 벽의 속도를 몰라 공이 벽을 뚫거나 이상하게 튕길 수 있다. 타이밍을 묻는 장애물이 불공정하게 느껴지지 않으려면 충돌 결과를 플레이어가 예측할 수 있어야 한다.",
+      "section": "4.4 움직이는 장애물과 공의 충돌",
+      "image": null
+    }
+  ],
+  "troubleshooting": [
+    {
+      "title": "설계자 테스트가 만든 Par 6 (1-2)",
+      "problem": "1-2는 쿠션 벽이 처음 나오는 홀인데 Par가 6으로 월드 1에서 가장 높다. 의도한 난이도가 아니라 테스트 방식의 문제였다.",
+      "cause": "Par를 정할 때 플레이어의 역량을 너무 낮게 잡았다. 직접 테스트하며 코스가 꺾이는 지점마다 공을 멈추고 다음 샷을 쳐, 벽에 튕겨 한 번에 모퉁이를 돌게 하려고 넣은 쿠션 벽을 활용하지 않았다.",
+      "solution": "",
+      "result": "",
+      "lesson": "Par는 설계자 테스트가 아니라 처음 보는 사람의 플레이 기록으로 정해야 한다.",
+      "section": "4.1 설계자 테스트가 만든 Par 6 (1-2)"
+    }
+  ],
+  "screenshots": [],
+  "retro": {
+    "achieved": [],
+    "regrets": [],
+    "plans": [],
+    "section": "5. 결과 및 배운 점"
+  },
+  "deck": {
+    "chapters": [
+      { "key": "overview", "title": "개요", "sectionPath": ["1. 개요"] },
+      { "key": "course", "title": "코스 구조", "sectionPath": ["2. 코스 구조"] },
+      { "key": "obstacles", "title": "장애물 설계", "sectionPath": ["3. 장애물 설계"] },
+      { "key": "choices", "title": "고민과 선택", "sectionPath": ["4. 고민과 선택"] },
+      { "key": "result", "title": "결과 및 배운 점", "sectionPath": ["5. 결과 및 배운 점"] }
+    ],
+    "slides": [
+      {
+        "key": "what",
+        "chapter": "overview",
+        "layout": "overview",
+        "tab": "개요",
+        "title": { "text": "1.1 무엇을 (What)", "verbatim": true },
+        "lead": { "text": "이 문서는 미니골프 12홀의 레벨 디자인을 다룬다.", "verbatim": true },
+        "sectionPath": ["1. 개요", "1.1 무엇을 (What)"],
+        "points": [
+          { "label": "", "text": "이 프로젝트에서 내가 집중한 것은 어떤 장애물을, 어떤 순서로, 어떤 난이도로 배치하는가다.", "verbatim": true },
+          { "label": "", "text": "공을 치는 조작과 물리는 수업에서 함께 만든 기반을 사용했고", "verbatim": true },
+          { "label": "문서 범위", "text": "코드 구현보다 배치 의도와 그 근거가 중심이다.", "verbatim": true }
+        ],
+        "visuals": []
+      },
+      {
+        "key": "controls",
+        "chapter": "overview",
+        "layout": "overview",
+        "tab": "개요",
+        "title": { "text": "1.3 조작법", "verbatim": true },
+        "lead": { "text": "타점 조절은 월드 2의 핵심 조작이다.", "verbatim": true },
+        "sectionPath": ["1. 개요", "1.3 조작법"],
+        "points": [],
+        "visuals": [
+          { "kind": "table", "n": 1, "fp": "입력|동작" }
+        ]
+      },
+      {
+        "key": "layout",
+        "chapter": "course",
+        "layout": "full",
+        "tab": "구조",
+        "title": { "text": "2.1 전체 배치표", "verbatim": true },
+        "lead": null,
+        "sectionPath": ["2. 코스 구조", "2.1 전체 배치표"],
+        "points": [],
+        "visuals": [
+          { "kind": "table", "n": 1, "fp": "홀|새로 등장하는 요소|함께 쓰인 요소|Par" }
+        ]
+      },
+      {
+        "key": "worlds",
+        "chapter": "course",
+        "layout": "visual",
+        "tab": "흐름",
+        "title": { "text": "2.2 월드 1과 월드 2의 역할", "verbatim": true },
+        "lead": null,
+        "sectionPath": ["2. 코스 구조", "2.2 월드 1과 월드 2의 역할"],
+        "points": [
+          { "label": "월드 1 — 평면", "text": "한 홀에 새 장애물을 하나만 넣는다. 플레이어가 실패했을 때 원인이 무엇인지 헷갈리지 않게 하기 위해서다.", "verbatim": true },
+          { "label": "월드 2 — 높이", "text": "2-1부터 타점(피치) 조절 없이는 넘어갈 수 없게 만들었다.", "verbatim": true },
+          { "label": "", "text": "이후 홀은 월드 1의 장애물을 높이 차이와 결합해 다시 등장시킨다.", "verbatim": true }
+        ],
+        "visuals": [
+          { "kind": "mermaid", "n": 1, "fp": "flowchart LR", "sectionPath": ["2. 코스 구조", "2.1 전체 배치표"] }
+        ]
+      },
+      {
+        "key": "curve",
+        "chapter": "course",
+        "layout": "full",
+        "tab": "구조",
+        "title": { "text": "2.3 난이도 곡선", "verbatim": true },
+        "lead": { "text": "두 월드 모두 새 규칙이 나오는 첫 홀은 Par를 넉넉히, 중간 홀은 짧게, 종합 홀은 길게 잡았다.", "verbatim": true },
+        "sectionPath": ["2. 코스 구조", "2.3 난이도 곡선"],
+        "points": [],
+        "visuals": [
+          { "kind": "table", "n": 1, "fp": "월드 1|1-1|1-2|1-3|1-4|1-5|1-6" }
+        ]
+      },
+      {
+        "key": "obstacles",
+        "chapter": "obstacles",
+        "layout": "full",
+        "tab": "구조",
+        "title": { "text": "3. 장애물 설계", "verbatim": true },
+        "lead": { "text": "각 장애물이 플레이어에게 어떤 판단을 요구하는가를 기준으로 정리했다.", "verbatim": true },
+        "sectionPath": ["3. 장애물 설계"],
+        "points": [],
+        "visuals": [
+          { "kind": "table", "n": 1, "fp": "장애물|플레이어에게 묻는 질문|조정한 값|첫 등장 → 재등장" }
+        ]
+      },
+      {
+        "key": "par6",
+        "chapter": "choices",
+        "layout": "problem",
+        "tab": "문제 해결",
+        "title": { "text": "4.1 설계자 테스트가 만든 Par 6 (1-2)", "verbatim": true },
+        "lead": { "text": "의도한 난이도가 아니라 테스트 방식의 문제였다.", "verbatim": true },
+        "sectionPath": ["4. 고민과 선택", "4.1 설계자 테스트가 만든 Par 6 (1-2)"],
+        "points": [
+          { "label": "문제", "text": "1-2는 쿠션 벽이 처음 나오는 홀인데 Par가 6으로 월드 1에서 가장 높다.", "verbatim": true },
+          { "label": "원인", "text": "직접 테스트하면서 코스가 꺾이는 지점마다 공을 멈추고 다음 샷을 쳤다.", "verbatim": true },
+          { "label": "원인", "text": "쿠션 벽은 원래 벽에 튕겨 한 번에 모퉁이를 돌게 하려고 넣은 장애물이었다.", "verbatim": true },
+          { "label": "배운 점", "text": "Par는 설계자 테스트가 아니라 처음 보는 사람의 플레이 기록으로 정해야 한다.", "verbatim": true }
+        ],
+        "visuals": []
+      },
+      {
+        "key": "hazard",
+        "chapter": "choices",
+        "layout": "full",
+        "tab": "선택",
+        "title": { "text": "4.2 해저드 벌칙: 출발점이 아니라 직전 샷 위치로", "verbatim": true },
+        "lead": { "text": "공이 물에 빠졌을 때 어디로 되돌릴 것인가?", "verbatim": true },
+        "sectionPath": ["4. 고민과 선택", "4.2 해저드 벌칙: 출발점이 아니라 직전 샷 위치로"],
+        "points": [],
+        "visuals": [
+          { "kind": "table", "n": 1, "fp": "|[A] 출발점으로 복귀|[B] 직전 샷 위치로 복귀 (채택)" }
+        ]
+      },
+      {
+        "key": "hazard-code",
+        "chapter": "choices",
+        "layout": "code",
+        "tab": "구현",
+        "title": { "text": "4.2 해저드 벌칙: 출발점이 아니라 직전 샷 위치로", "verbatim": true },
+        "lead": { "text": "물에 빠졌을 때 공을 출발점이 아니라 마지막으로 친 위치로 되돌린다.", "verbatim": true },
+        "sectionPath": ["4. 고민과 선택", "4.2 해저드 벌칙: 출발점이 아니라 직전 샷 위치로"],
+        "points": [
+          { "label": "구현", "text": "부스트 패드가 공을 밀어낸 것은 '친 위치'로 기록하지 않는다(isPassive).", "verbatim": true },
+          { "label": "결과", "text": "패드 위에서 빠져도 플레이어가 마지막으로 직접 친 곳으로 돌아간다.", "verbatim": true }
+        ],
+        "visuals": [
+          { "kind": "code", "n": 1, "fp": "// GolfBall.cs — 플레이어가 직접 친 샷만 복귀 지점으로 기록" }
+        ]
+      },
+      {
+        "key": "stage-data",
+        "chapter": "choices",
+        "layout": "visual",
+        "tab": "구조",
+        "title": { "text": "4.3 홀을 데이터로 분리 — 코드 없이 홀을 추가", "verbatim": true },
+        "lead": { "text": "각 홀은 GolfStage 프리팹 하나이며 Par, 출발점, 홀컵만 가진다.", "verbatim": true },
+        "sectionPath": ["4. 고민과 선택", "4.3 홀을 데이터로 분리 — 코드 없이 홀을 추가"],
+        "points": [
+          { "label": "구조", "text": "진행·타수·스코어 판정(버디, 보기 등)은 GolfStageManager 한 곳에서 처리한다.", "verbatim": true },
+          { "label": "결과", "text": "12홀을 만드는 동안 진행 코드는 수정하지 않았다.", "verbatim": true },
+          { "label": "이유", "text": "반복해서 고치고 테스트하는 레벨 디자인에서는 이 점이 작업 속도에 직접 영향을 준다.", "verbatim": true }
+        ],
+        "visuals": [
+          { "kind": "mermaid", "n": 1, "fp": "flowchart LR" }
+        ]
+      },
+      {
+        "key": "shuttle",
+        "chapter": "choices",
+        "layout": "overview",
+        "tab": "선택",
+        "title": { "text": "4.4 움직이는 장애물과 공의 충돌", "verbatim": true },
+        "lead": { "text": "셔틀 벽은 Transform을 직접 옮기지 않고 키네마틱 Rigidbody.MovePosition으로 움직인다.", "verbatim": true },
+        "sectionPath": ["4. 고민과 선택", "4.4 움직이는 장애물과 공의 충돌"],
+        "points": [
+          { "label": "이유", "text": "Transform을 직접 옮기면 물리 엔진이 벽의 속도를 모르기 때문에, 벽이 공을 밀어낼 때 공이 벽을 뚫거나 이상하게 튕길 수 있다.", "verbatim": true },
+          { "label": "이유", "text": "타이밍을 묻는 장애물이 불공정하게 느껴지지 않으려면 충돌 결과를 플레이어가 예측할 수 있어야 한다.", "verbatim": true }
+        ],
+        "visuals": []
+      },
+      {
+        "key": "lessons",
+        "chapter": "result",
+        "layout": "overview",
+        "tab": "결과",
+        "title": { "text": "5.3 배운 점", "verbatim": true },
+        "lead": null,
+        "sectionPath": ["5. 결과 및 배운 점", "5.3 배운 점"],
+        "points": [
+          { "label": "설계자 테스트의 한계", "text": "정답을 아는 사람은 정답대로만 친다. Par와 난이도는 처음 보는 사람의 플레이로 정해야 한다.", "verbatim": true },
+          { "label": "한 홀에 하나만 새로", "text": "새 요소를 하나씩만 추가하면 플레이어가 실패 원인을 알 수 있고, 설계자도 플레이테스트에서 무엇이 문제인지 구분할 수 있다.", "verbatim": true }
+        ],
+        "visuals": []
+      }
+    ]
+  }
+}
