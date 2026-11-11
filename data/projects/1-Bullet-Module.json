@@ -1,5 +1,6 @@
 {
   "schemaVersion": 2,
+  "generatedAt": "2026-11-12",
   "id": "1-Bullet-Module",
   "doc": "기술문서.md",
   "title": "총기 모듈 프레임워크 (Bullet Module Framework)",
@@ -27,7 +28,7 @@
       "what": "탄환 효과를 같은 규격(`IBulletModule`)을 따르는 독립된 부품(모듈)으로 분리한다.",
       "how": "`Bullet`은 모듈 목록만 가지고 차례로 호출하고, 각 모듈은 인터페이스의 훅(`OnUpdate`·`OnHitEnemy`·`CanSurviveEnemy` 등)만 구현한다. 쓰지 않는 훅은 빈 구현으로 둔다.",
       "why": "추상 클래스는 모든 모듈이 불필요한 공통 상태까지 상속한다. 모듈에게 정해 줄 것은 \"무엇을 할 수 있는가\"이므로 상속(is-a) 대신 계약(can-do)인 인터페이스를 택했다.",
-      "section": "4.1 인터페이스 vs 추상 클래스",
+      "section": "4.1 모듈 규격 — 인터페이스 vs 추상 클래스",
       "image": null
     },
     {
@@ -70,7 +71,7 @@
       "problem": "관통 3회짜리 탄환이 적 하나에 세 번 꽂히고 사라져, 사실상 3연타 탄환이 되었다.",
       "cause": "탄환이 적의 몸을 통과하는 데 여러 물리 프레임이 걸려, 다음 프레임 레이캐스트가 같은 적을 다시 맞히며 데미지와 관통 횟수 차감이 반복되었다.",
       "solution": "`Bullet`에 현재 통과 중인 적을 기억하는 `hitSet`(`HashSet<Collider2D>`)을 두어, 이미 등록된 적이면 모듈 호출과 데미지를 건너뛰고 적을 완전히 빠져나온 프레임에 비운다. 벽은 등록하지 않는다.",
-      "result": "",
+      "result": "관통 3회 탄환이 적 3명을 꿰뚫고 4번째 적까지, 모두 4명을 맞힌다.",
       "lesson": "",
       "section": "5.2-2. 관통 탄환이 한 대상에 연속으로 꽂히는 문제"
     },
@@ -79,7 +80,7 @@
       "problem": "관통 횟수가 남아 있는데도 탄환이 충돌한 자리에 그대로 멈췄다.",
       "cause": "초기 `MoveBullet()`은 충돌을 감지하면 `ProcessHit(hit)`을 호출하고 곧바로 반환해, \"충돌 시 실행할 효과\"와 \"충돌 후 생존 여부\"가 나뉘어 있지 않았다.",
       "solution": "효과 실행(`OnHit...`)과 생존 판정(`CanSurvive...`)을 별개 메서드로 분리하는 구조로 리팩터링했다.",
-      "result": "",
+      "result": "관통 횟수가 남은 탄환은 적을 뚫고 계속 날아갔다. 다만 같은 적에 연속으로 꽂히는 새 문제가 드러났다(5.2-2).",
       "lesson": "",
       "section": "5.2-1. 관통 탄환이 적 앞에서 멈추는 문제"
     }
@@ -307,9 +308,9 @@
         "chapter": "choices",
         "layout": "full",
         "tab": "선택",
-        "title": { "text": "4.1 인터페이스 vs 추상 클래스", "verbatim": true },
+        "title": { "text": "4.1 모듈 규격 — 인터페이스 vs 추상 클래스", "verbatim": true },
         "lead": { "text": "모듈의 공통 규격을 무엇으로 정할 것인가?", "verbatim": true },
-        "sectionPath": ["4. 고민과 선택", "4.1 인터페이스 vs 추상 클래스"],
+        "sectionPath": ["4. 고민과 선택", "4.1 모듈 규격 — 인터페이스 vs 추상 클래스"],
         "points": [
           { "label": "결정", "text": "그래서 상속(is-a) 대신 계약(can-do)인 인터페이스를 택했다.", "verbatim": true }
         ],
@@ -394,7 +395,8 @@
         "points": [
           { "label": "문제", "text": "관통 횟수가 남아 있는데도 탄환이 충돌한 자리에 그대로 멈췄다.", "verbatim": true },
           { "label": "원인", "text": "초기 `MoveBullet()`은 충돌을 감지하면 `ProcessHit(hit)`을 호출하고 곧바로 반환했다.", "verbatim": true },
-          { "label": "해결", "text": "효과 실행(`OnHit...`)과 생존 판정(`CanSurvive...`)을 별개 메서드로 분리하는 현재 구조로 리팩터링했다.", "verbatim": true }
+          { "label": "해결", "text": "효과 실행(`OnHit...`)과 생존 판정(`CanSurvive...`)을 별개 메서드로 분리하는 현재 구조로 리팩터링했다.", "verbatim": true },
+          { "label": "결과", "text": "관통 횟수가 남은 탄환은 적을 뚫고 계속 날아갔다.", "verbatim": true }
         ],
         "visuals": [
           { "kind": "code", "n": 1, "fp": "if (hit.collider != null && hit.collider.gameObject.CompareT" }
@@ -411,7 +413,8 @@
         "points": [
           { "label": "문제", "text": "관통 3회짜리 탄환이 적 하나에 '따다닥' 세 번 꽂히고 사라졌다.", "verbatim": true },
           { "label": "원인", "text": "살아남은 탄환의 다음 프레임 레이캐스트가 아직 몸 안에 있는 같은 적을 다시 맞혔고, 그때마다 데미지와 관통 횟수 차감이 반복되었다.", "verbatim": true },
-          { "label": "해결", "text": "`Bullet`에 현재 통과 중인 적을 기억하는 `hitSet`(`HashSet<Collider2D>`) 을 두었다.", "verbatim": true }
+          { "label": "해결", "text": "`Bullet`에 현재 통과 중인 적을 기억하는 `hitSet`(`HashSet<Collider2D>`) 을 두었다.", "verbatim": true },
+          { "label": "결과", "text": "관통 3회 탄환이 적 3명을 꿰뚫고 4번째 적까지, 모두 4명을 맞힌다.", "verbatim": true }
         ],
         "visuals": []
       },
