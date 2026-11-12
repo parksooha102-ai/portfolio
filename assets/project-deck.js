@@ -122,6 +122,19 @@
     }
     mmdHost.replaceChildren();
   }
+  // 그림 표(한 줄, 칸마다 그림 하나뿐인 표 — 원문에서 스크린샷을 나란히 놓는 데 씀)는 글 표처럼 120px로 줄이지 않고
+  //   그림 하나하나로 풀어 장면에 넣음(크기·배치는 그림과 같은 규칙). 머리 칸 글자 = 그 그림 설명(원문 그대로, 없으면 그림 alt)
+  function galleryToImages(v) {
+    if (v.ref.kind !== 'table' || v.status !== 'ok' || !v.el) return [v];
+    const rows = [...v.el.querySelectorAll('tbody tr')], cells = rows.flatMap((r) => [...r.children]);
+    if (rows.length !== 1 || cells.length < 2 || cells.length > 3 || !cells.every((c) => c.querySelectorAll('img').length === 1 && !c.textContent.trim())) return [v];
+    const head = [...(v.el.querySelector('thead tr')?.children || [])];
+    return cells.map((c, n) => {
+      const img = c.querySelector('img');
+      const text = head[n]?.textContent.trim() || img.getAttribute('alt') || '';
+      return { ref: { kind: 'image', caption: text ? { text, verbatim: true } : null, fromTable: true }, status: 'ok', el: img, src: img.getAttribute('src'), d: v.imgDims?.[n] };
+    });
+  }
   async function resolveVisuals(model, P, p) {
     const mm = [];
     for (const c of model) for (const sl of c.slides) {
@@ -134,7 +147,7 @@
         // 표 안 그림: 불러오기 전 높이로 재면 나중에 표가 커져 조용히 잘림 → 크기를 먼저 받아 두고 복제본에 width·height를 적음(vboxHtml)
         if (ref.kind === 'table' && r.el) return { ref, ...r, imgDims: await Promise.all([...r.el.querySelectorAll('img')].map((i) => PF.imageSize(i.getAttribute('src')))) };
         return { ref, ...r };
-      }))).map((v) => (sl.edited ? { ...v, edited: true } : v));             // 장면 고치기로 고친 장면: 원문 문제 띠 문구가 다름
+      }))).flatMap(galleryToImages).map((v) => (sl.edited ? { ...v, edited: true } : v));             // 장면 고치기로 고친 장면: 원문 문제 띠 문구가 다름
     }
     await renderMermaid(mm);
     // 결과 절 장면: 원문이 가리키는 다른 절("(4.2)"처럼)의 첫 그림을 미리 찾아 둠 — 결과 숫자 틀에서 그림이 한 장뿐일 때 옆에 붙임
@@ -175,7 +188,7 @@
     const k = v.ref.kind;
     if (k === 'image') {
       const alt = v.ref.caption?.text || v.el?.getAttribute('alt') || '';
-      return `<figure class="vbox" data-kind="image"${v.d ? ` data-w="${v.d.w}" data-h="${v.d.h}"` : ''}><div class="vmedia">${PF.imgTag(v.src, alt, v.d)}</div>${cap(inline(alt))}</figure>`;
+      return `<figure class="vbox" data-kind="image"${v.ref.fromTable ? ' data-gal="1"' : ''}${v.d ? ` data-w="${v.d.w}" data-h="${v.d.h}"` : ''}><div class="vmedia">${PF.imgTag(v.src, alt, v.d)}</div>${cap(inline(alt))}</figure>`;
     }
     if (k === 'mermaid') {
       const r = svgCache.get(v.el) || {};
@@ -224,6 +237,11 @@
     if (sl.layout === 'problem') {
       if (variant.stack || !points.length) return `<div class="dk dk-stack${tight}">${vis(vs)}${points.length ? flowHtml(points, 'row') : ''}</div>`;
       return `<div class="dk dk-side flip${tight}" style="--vw:${variant.vw}fr">${vis(vs)}${flowHtml(points, 'col')}</div>`;
+    }
+    // 그림 표에서 풀어 낸 그림 줄 + 다른 시각 자료(다이어그램 등): 위에 다른 자료, 아래에 그림들을 나란히(그림 줄은 늘 가로)
+    const gal = vs.filter((h) => h.includes('data-gal="1"')), rest = vs.filter((h) => !h.includes('data-gal="1"'));
+    if (gal.length >= 2 && rest.length && !variant.stack) {
+      return `<div class="dk dk-two${tight}"><div class="vis">${rest.join('')}</div><div class="vis" data-arr="row">${gal.join('')}</div>${ncards(points, { row: true, num: sl.layout !== 'full' })}</div>`;
     }
     // 요점이 없으면(나눈 장면 등) 옆 칸이 비지 않게 시각 자료를 가로 전체로
     if (sl.layout === 'full' || variant.stack || !points.length) return `<div class="dk dk-stack${tight}">${vis(vs)}${ncards(points, { row: true, num: sl.layout !== 'full' })}</div>`;

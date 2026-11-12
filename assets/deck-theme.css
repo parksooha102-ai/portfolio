@@ -228,6 +228,9 @@ table.kv td.role { color: var(--accent-ink); font-weight: 800; }
 .dk-stack { grid-template-rows: auto auto; gap: 20px; }
 .pf-sizing .dk-stack { grid-template-rows: minmax(0, 1fr) auto; }
 .dk-text { align-content: center; }
+/* 다른 시각 자료(위) + 그림 표에서 풀어 낸 그림 줄(아래). 재는 동안만 두 줄이 남은 높이를 나눔(.dk-stack과 같은 방식) */
+.dk-two { grid-template-rows: auto auto auto; gap: 18px; }
+.pf-sizing .dk-two { grid-template-rows: minmax(0, 1fr) minmax(0, 1.15fr) auto; }
 .vis { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; min-width: 0; min-height: 0; }
 .vis[data-arr="row"] { flex-direction: row; align-items: flex-start; }
 .vbox { margin: 0; display: flex; flex-direction: column; gap: 6px; flex: none; max-width: 100%; min-width: 0; }
