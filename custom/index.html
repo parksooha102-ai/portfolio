@@ -181,7 +181,7 @@
         h('div', { className: 'min-w-0' },
           h('p', { className: 'eyebrow' }, pad(i + 1) + ' · ' + (p.team && p.team.type === 'team' ? s('name.team') : s('name.solo'))),
           h('h3', { className: 'ink font-bold text-[24px] md:text-[28px] leading-snug mt-2', style: { wordBreak: 'keep-all' } }, p.title)),
-        h('button', { type: 'button', onClick: props.onClose, className: 'btn btn-line shrink-0 !h-9 !px-3 text-[14px]', 'aria-label': '접기' }, '접기 ✕')),
+        h('button', { type: 'button', onClick: props.onClose, className: 'btn btn-line shrink-0 !h-9 !w-9 !p-0 justify-center text-[16px]', 'aria-label': '접기', title: '접기' }, '✕')),
       h('div', { className: 'grid md:grid-cols-12 gap-8 md:gap-10 px-6 md:px-8 py-6 md:py-8' },
         // 왼쪽: 프로젝트 소개
         h('div', { className: 'md:col-span-5 min-w-0' },

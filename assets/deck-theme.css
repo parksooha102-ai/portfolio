@@ -247,6 +247,85 @@ table.md-table th { background: var(--th); color: var(--ink); box-shadow: inset 
 table.md-table td { padding: 7px 11px; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--ink); overflow-wrap: anywhere; }
 table.md-table tbody tr:nth-child(even) td { background: var(--zebra); }
 table.md-table code { font-size: max(.86em, 12px); }   /* 머리 칸(13px) 안 코드도 코드 하한 12px 아래로 내려가지 않게 */
+/* ── 결정 틀(l-decision): 선택지 카드(모두 같은 모양) → 결정 띠(확정 강조는 여기서만) → 결과 띠. 그림자·그러데이션·반투명 겹침 없음(PPTX) ── */
+.dc { display: flex; flex-direction: column; gap: 14px; width: 100%; height: 100%; min-height: 0; }
+.dc-opts { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: 16px; flex: 0 1 auto; min-height: 0; }
+.dc-opt { background: var(--card); border: 1px solid var(--line); border-radius: calc(var(--radius) * .7); padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.dc-tag { font-family: var(--display); font-size: 13px; font-weight: 800; letter-spacing: .08em; line-height: 18px; color: var(--accent-ink); }
+.dc-name { font-size: 20px; font-weight: 800; line-height: 1.35; letter-spacing: -.01em; color: var(--ink); }
+.dc-rows { display: grid; gap: 8px; font-size: 15px; line-height: 1.55; }
+.dc-rows > div { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 12px; }
+.dc-rows.stack > div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+.dc-rows dt { font-weight: 700; color: var(--muted); }
+.dc-rows dd { color: var(--ink); }
+.dc-dec { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 18px; align-items: start; padding: 16px 22px;
+          background: var(--accent-soft); border: 1.5px solid var(--accent-fill); border-radius: calc(var(--radius) * .7); flex: none; }
+.dc-stamp { font-size: 15px; padding: 8px 16px; }
+.dc-dec-b { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.dc-pick { font-size: 22px; font-weight: 800; line-height: 1.35; color: var(--ink); }
+.dc-pick-tag { font-family: var(--display); font-size: 14px; font-weight: 800; color: var(--accent-ink); margin-right: 10px; letter-spacing: .06em; }
+.dc-say { font-size: 17px; font-weight: 700; line-height: 1.5; color: var(--ink); }
+.dc-why, .dc-r { font-size: 16px; line-height: 1.55; color: var(--ink); }
+.dc-k { display: inline-block; font-size: 13px; font-weight: 800; color: var(--accent-ink); margin-right: 10px; letter-spacing: .02em; }
+.dc-res { display: flex; gap: 20px; align-items: stretch; padding: 14px 22px; background: var(--card); border: 1px solid var(--line); border-radius: calc(var(--radius) * .7); flex: 0 1 auto; min-height: 0; }
+.dc-res-t { display: flex; flex-direction: column; gap: 6px; flex: 1 1 0; min-width: 0; justify-content: center; }
+.dc-res .vis { flex: 0 0 34%; min-height: 0; max-height: 200px; display: flex; }
+.dc-res .vis .vbox { width: 100%; }
+/* ── 결과 숫자 틀(l-result): 숫자 카드 4·4·4 + 아래 그림 띠 12 ── */
+/* 카드 줄은 제 높이 그대로, 그림 칸은 재는 동안(.pf-sizing)만 남은 높이 전체 — 잰 뒤에는 그 크기 그대로(.dk-stack과 같은 방식) */
+.rs { display: grid; grid-template-rows: auto auto; gap: 16px; width: 100%; min-height: 0; }
+.pf-sizing .rs { grid-template-rows: auto minmax(0, 1fr); }
+.rs.nopic, .pf-sizing .rs.nopic { grid-template-rows: auto; }
+.rs-stats { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: 16px; }
+.rs-card { display: flex; flex-direction: column; gap: 8px; padding: 18px 22px; background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--accent-fill); border-radius: calc(var(--radius) * .7); min-width: 0; }
+.rs-lb { font-size: 14px; font-weight: 700; line-height: 1.4; color: var(--muted); }
+.rs-big { font-size: 34px; font-weight: 800; line-height: 1.15; letter-spacing: -.02em; color: var(--accent-ink); font-variant-numeric: lining-nums; }
+.rs-big strong, .rs-big b { font-weight: inherit; }
+.rs-t { font-size: 15px; line-height: 1.55; color: var(--ink); }
+.rs-t strong, .rs-t b { color: var(--ink); }
+.rs-vis { min-height: 0; }
+.rs-vis .vbox { max-width: 100%; }
+.rs.tight { gap: 12px; }
+.rs.tight .rs-card { padding: 12px 16px; gap: 6px; }
+.rs.tight .rs-big { font-size: 28px; }
+.rs.tight .rs-t { font-size: 14px; }
+/* ── 팀 역할 틀(l-team): 팀원 줄 7(본인 줄 강조) : 내 담당 5 ── */
+.tm { display: grid; grid-template-columns: 7fr 5fr; gap: 28px; width: 100%; height: 100%; align-items: center; }
+.tm-l, .tm-r { min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+.tm-h { font-size: 14px; font-weight: 800; color: var(--muted); letter-spacing: .02em; }
+.tm-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.tm-row { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 14px; align-items: start; padding: 14px 18px; background: var(--card); border: 1px solid var(--line); border-radius: calc(var(--radius) * .7); }
+.tm-row.me { background: var(--accent-soft); border: 1.5px solid var(--accent-fill); }
+.tm-n { font-family: var(--display); font-size: 15px; font-weight: 800; line-height: 26px; color: var(--muted); font-variant-numeric: lining-nums tabular-nums; }
+.tm-row.me .tm-n { color: var(--accent-ink); }
+.tm-b { min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.tm-name { font-size: 18px; font-weight: 800; line-height: 26px; color: var(--ink); display: flex; align-items: center; gap: 10px; }
+.tm-me { display: inline-block; font-size: 12px; font-weight: 800; line-height: 1; padding: 5px 9px; border-radius: var(--pill); background: var(--accent-fill); color: #fff; }
+.tm-part { font-size: 15px; line-height: 1.55; color: var(--ink); }
+.tm-see { font-weight: 700; color: var(--accent-ink); }
+.tm-r { padding: 20px 24px; background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--accent-fill); border-radius: calc(var(--radius) * .7); }
+.tm-mine { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.tm-mine li { position: relative; padding-left: 18px; font-size: 17px; line-height: 1.5; color: var(--ink); }
+.tm-mine li::before { content: ''; position: absolute; left: 0; top: .62em; width: 7px; height: 7px; border-radius: 2px; background: var(--accent-fill); }
+.tm.tight { gap: 20px; }
+.tm.tight .tm-row { padding: 10px 14px; }
+.tm.tight .tm-part { font-size: 14px; }
+.tm.tight .tm-mine li { font-size: 15px; }
+/* 그림 오른쪽 변형: 왼쪽(선택지·결정·결과) 7 : 오른쪽 그림 5, 그림은 본문 높이 전체 */
+.dc.side { flex-direction: row; gap: 24px; align-items: stretch; }
+.dc.side .dc-main { flex: 7 1 0; min-width: 0; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+.dc.side .dc-pic { flex: 5 1 0; min-width: 0; min-height: 0; display: flex; align-items: center; }   /* 그림은 제 비율 그대로, 오른쪽 단 가운데 */
+.dc.side .dc-pic .vbox { width: 100%; }
+.dc.side.tight .dc-main { gap: 10px; }
+.dc.tight { gap: 10px; }
+.dc.tight .dc-opt { padding: 12px 16px; gap: 6px; }
+.dc.tight .dc-name { font-size: 18px; }
+.dc.tight .dc-rows { font-size: 14px; gap: 5px; }
+.dc.tight .dc-dec { padding: 12px 18px; }
+.dc.tight .dc-pick { font-size: 19px; }
+.dc.tight .dc-say { font-size: 16px; }
+.dc.tight .dc-why, .dc.tight .dc-r { font-size: 15px; }
+.dc.tight .dc-res { padding: 10px 18px; }
 table.md-table img { max-height: 120px; max-width: 100%; height: auto; border-radius: calc(var(--radius) * .45); }   /* 표 안 그림 모서리도 테마(--t-radius)를 따름 — 각진 테마(0px)면 네모 그대로 */   /* width·height 속성(렌더러가 미리 잰 크기)으로 불러오기 전에도 자리를 잡음 */
 .vbox[data-kind] > .pf-vband { min-width: 0; }                         /* 그림 상자 안 띠는 상자 폭에 맞춰 꺾임(높이는 fitVisuals가 다시 잼) */
 .cards { display: grid; gap: 12px; align-content: center; min-width: 0; }

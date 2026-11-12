@@ -137,6 +137,24 @@
       }))).map((v) => (sl.edited ? { ...v, edited: true } : v));             // 장면 고치기로 고친 장면: 원문 문제 띠 문구가 다름
     }
     await renderMermaid(mm);
+    // 결과 절 장면: 원문이 가리키는 다른 절("(4.2)"처럼)의 첫 그림을 미리 찾아 둠 — 결과 숫자 틀에서 그림이 한 장뿐일 때 옆에 붙임
+    for (const c of model) for (const sl of c.slides) {
+      const path = sl.sectionPath || [];
+      if (!path.length || !/결과/.test(path[path.length - 1])) continue;
+      const hs = PF.md.findSection(P, path);
+      if (hs.length !== 1) continue;
+      const text = sectionEls(hs[0]).map((el) => el.textContent).join('\n');
+      const refs = [...new Set([...text.matchAll(/\((\d+\.\d+)(?:-\d+)?\)/g)].map((m) => m[1]))];
+      sl._refPics = [];
+      for (const r of refs) {
+        const h = P.headings.filter((x) => x.level >= 3 && new RegExp(`^${r.replace('.', '\\.')}(\\s|$)`).test(x.text));
+        if (h.length !== 1) continue;
+        const el = PF.md.index(P).get(h[0])?.image[0];
+        if (!el) continue;
+        const src = el.getAttribute('src');
+        sl._refPics.push({ ref: { kind: 'image', from: r }, status: 'ok', el, src, d: await PF.imageSize(src) });
+      }
+    }
   }
 
   // ── 시각 자료 HTML(.vbox). 코드는 줄 범위를 잘라 조각마다 강조 ──
@@ -212,6 +230,143 @@
     return `<div class="dk dk-side${tight}" style="--vw:${variant.vw}fr">${vis(vs)}${ncards(points, { num: true })}</div>`;
   }
 
+  // ── 결정 틀(l-decision, 리디자인 인수인계서 「결정 틀 규칙」) ──
+  //   원문의 비교 표(머리 칸이 [A]·[B]·[A'] …로 시작하는 표)를 선택지 카드로 그대로 옮깁니다. 새 문장 없음.
+  //   ① 선택지 카드: 모두 같은 모양(고르지 않은 안을 긋거나 흐리게 하지 않음) — 머리 칸 = 이름, 첫 열 = 항목, 칸 = 내용(원문 그대로)
+  //   ② 결정 띠: "채택"이 붙은 머리 칸의 안 + 요점 '결정'·'이유'(원문 그대로). 확정 강조는 여기서만
+  //   ③ 결과 띠: 그 밖의 요점(결과·감수한 대가 등) + 표 말고 다른 그림(있을 때). 둘 다 없으면 띠를 그리지 않음
+  //   표가 바뀜·못 찾음이거나, 틀이 안 들어가면 원래 틀(full·visual)로 그립니다.
+  const DC_TAG = /^\s*\[([A-Z]'?)\]\s*/;
+  const DC_PICK = /\s*\(채택\)|,\s*채택(?=\s*\))/;
+  function decisionOf(sl, vis) {
+    if (!['full', 'visual', 'decision'].includes(sl.layout || 'visual')) return null;
+    const v = vis.find((x) => x.ref.kind === 'table' && x.status === 'ok' && x.el);
+    if (!v) return null;
+    const head = [...(v.el.querySelector('thead tr') || v.el.querySelector('tr') || { children: [] }).children];
+    const cols = head.slice(1).map((th) => th.textContent.trim());
+    if (cols.length < 2 || cols.length > 3 || !cols.every((c) => DC_TAG.test(c))) return null;
+    const rows = [...v.el.querySelectorAll('tbody tr')].map((tr) => [...tr.children]);
+    const opts = cols.map((c, i) => {
+      const th = head[i + 1].cloneNode(true);
+      // 머리 칸의 [A] 표시와 "채택" 표시만 걷어 냄(나머지 글자·서식은 원문 그대로)
+      th.innerHTML = th.innerHTML.replace(/^\s*\[([A-Z]'?)\]\s*/, '').replace(DC_PICK, '');
+      return { tag: DC_TAG.exec(c)[1], name: th.innerHTML.trim(), chosen: /채택/.test(c),
+        rows: rows.map((r) => ({ label: r[0]?.innerHTML.trim() || '', html: r[i + 1]?.innerHTML.trim() || '' })).filter((r) => r.html) };
+    });
+    const pts = sl.points || [];
+    const pick = (lb) => pts.filter((p) => p.label === lb);
+    return { v, opts, chosen: opts.find((o) => o.chosen) || null, dec: pick('결정'), why: pick('이유'),
+      rest: pts.filter((p) => p.label !== '결정' && p.label !== '이유' && txt(p)), others: vis.filter((x) => x !== v && (x.ref.kind === 'image' || x.ref.kind === 'mermaid')) };
+  }
+  function decisionHtml(d, variant) {
+    const tight = variant.tight ? ' tight' : '';
+    const short = d.opts.every((o) => o.rows.every((r) => r.label.replace(/<[^>]+>/g, '').length <= 6));
+    const opt = (o) => `<div class="dc-opt"><p class="dc-tag">${esc(PF.t('deck.option', { x: o.tag }))}</p><h3 class="dc-name">${o.name}</h3>
+      ${o.rows.length ? `<dl class="dc-rows${short ? '' : ' stack'}">${o.rows.map((r) => `<div><dt>${r.label}</dt><dd>${r.html}</dd></div>`).join('')}</dl>` : ''}</div>`;
+    const decLine = d.dec.map((p) => `<p class="dc-say">${inline(txt(p))}</p>`).join('');
+    const whyLine = d.why.map((p) => `<p class="dc-why"><span class="dc-k">${esc(PF.label('이유'))}</span>${inline(txt(p))}</p>`).join('');
+    const dec = d.chosen || decLine ? `<div class="dc-dec"><span class="labelchip accent dc-stamp">${esc(PF.label('결정'))}</span><div class="dc-dec-b">
+      ${d.chosen ? `<p class="dc-pick"><span class="dc-pick-tag">${esc(PF.t('deck.option', { x: d.chosen.tag }))}</span>${d.chosen.name}</p>` : ''}${decLine}${whyLine}</div></div>` : '';
+    const restHtml = d.rest.map((p) => `<p class="dc-r">${p.label ? `<span class="dc-k">${esc(PF.label(p.label))}</span>` : ''}${inline(txt(p))}</p>`).join('');
+    const opts = `<div class="dc-opts" style="--n:${d.opts.length}">${d.opts.map(opt).join('')}</div>`;
+    // 그림이 있으면 먼저 오른쪽 한 단(위아래 전체)에 몰아 둠 — 왼쪽은 선택지 → 결정 → 결과 글. 안 들어가면 아래 띠 안 그림으로
+    if (variant.side && d.others.length) {
+      const res = restHtml ? `<div class="dc-res"><div class="dc-res-t">${restHtml}</div></div>` : '';
+      return `<div class="dk dc side${tight}"><div class="dc-main">${opts}${dec}${res}</div><div class="vis dc-pic">${vboxHtml(d.others[0])}</div></div>`;
+    }
+    const pic = d.others.length ? `<div class="vis">${vboxHtml(d.others[0])}</div>` : '';
+    const res = restHtml || pic ? `<div class="dc-res${pic ? ' has-pic' : ''}">${restHtml ? `<div class="dc-res-t">${restHtml}</div>` : ''}${pic}</div>` : '';
+    return `<div class="dk dc${tight}">${opts}${dec}${res}</div>`;
+  }
+
+  // ── 팀 역할 틀(l-team, 인수인계서 틀 3) ──
+  //   원문 팀 표(첫 열에 "(본인)"이 있는 2열 표)를 왼쪽 팀원 줄(본인 줄 강조) : 오른쪽 내 담당으로. 새 문장 없음.
+  //   내 담당 = 본인 줄의 담당 칸을 괄호 밖 쉼표에서 나눈 조각(원문 글자 그대로, 끝의 " 등"만 뗌). 왼쪽 본인 줄은 오른쪽을 가리키기만 함(같은 글 두 번 X)
+  const ME = /\s*\(\s*본인\s*\)\s*/;
+  function splitTop(html) {
+    const out = []; let depth = 0, cur = '', tag = false;
+    for (const ch of html) {
+      if (ch === '<') tag = true; else if (ch === '>') tag = false;
+      if (!tag) { if (ch === '(' || ch === '（') depth++; else if (ch === ')' || ch === '）') depth = Math.max(0, depth - 1); }
+      if (!tag && !depth && ch === ',') { out.push(cur); cur = ''; continue; }
+      cur += ch;
+    }
+    out.push(cur);
+    return out.map((s) => s.trim().replace(/\s*등\s*$/, '')).filter((s) => s.replace(/<[^>]+>/g, '').trim());
+  }
+  function teamOf(sl, vis) {
+    if (!['full', 'visual', 'overview', 'team'].includes(sl.layout || 'visual')) return null;
+    if (vis.length !== 1) return null;
+    const v = vis[0];
+    if (v.ref.kind !== 'table' || v.status !== 'ok' || !v.el) return null;
+    const rows = [...v.el.querySelectorAll('tbody tr')].map((tr) => [...tr.children]);
+    if (rows.length < 2 || rows.length > 6 || rows.some((r) => r.length !== 2)) return null;
+    const meAt = rows.findIndex((r) => ME.test(r[0].textContent));
+    if (meAt < 0) return null;
+    const head = [...(v.el.querySelector('thead tr')?.children || [])].map((th) => th.innerHTML.trim());
+    return { v, head, meAt, people: rows.map((r, i) => ({ name: r[0].innerHTML.replace(ME, ' ').replace(/<(strong|b)>\s*<\/\1>/g, '').trim(), part: r[1].innerHTML.trim(), me: i === meAt })),
+      mine: splitTop(rows[meAt][1].innerHTML) };
+  }
+  function teamHtml(t, variant) {
+    const tight = variant.tight ? ' tight' : '';
+    const row = (p, i) => `<li class="tm-row${p.me ? ' me' : ''}"><span class="tm-n">${String(i + 1).padStart(2, '0')}</span><div class="tm-b"><p class="tm-name">${p.name}${p.me ? `<span class="tm-me">${esc(PF.t('deck.me'))}</span>` : ''}</p>
+      ${p.me ? `<p class="tm-part tm-see">${esc(PF.t('deck.my-part'))} →</p>` : `<p class="tm-part">${p.part}</p>`}</div></li>`;
+    return `<div class="dk tm${tight}"><div class="tm-l">${t.head[0] ? `<p class="tm-h">${t.head[0]} · ${t.people.length}</p>` : ''}<ol class="tm-list">${t.people.map(row).join('')}</ol></div>
+      <div class="tm-r"><p class="tm-h">${esc(PF.t('deck.my-part'))}</p><ul class="tm-mine">${t.mine.map((m) => `<li>${m}</li>`).join('')}</ul></div></div>`;
+  }
+
+  // ── 결과 숫자 틀(l-result, 인수인계서 틀 8) ──
+  //   "결과" 절(제목에 결과가 든 절)의 원문 목록 항목·결과 표 줄 가운데, 작성자가 **굵게** 쓴 숫자가 있는 것을 숫자 카드로(최대 3장).
+  //   큰 숫자 = 그 항목의 굵은 글자(숫자가 든 것) 그대로, 아래 = 항목 원문 그대로. 결과 표면 첫 칸(목표)을 카드 위 작은 글자로.
+  //   카드에 쓴 표는 아래에 다시 그리지 않고, 장면의 다른 시각 자료(그림·다른 표) 하나를 아래 띠로. 카드가 2장 미만이면 원래 틀
+  let curP = null;
+  function sectionEls(h) {
+    const out = [];
+    for (let el = h.el.nextElementSibling; el && !/^H[1-6]$/.test(el.tagName); el = el.nextElementSibling) out.push(el);
+    return out;
+  }
+  const hasNum = (el) => [...el.querySelectorAll('strong, b')].filter((s) => /\d/.test(s.textContent));
+  function resultOf(sl, vis) {
+    if (!curP || !['full', 'visual', 'overview', 'result'].includes(sl.layout || 'visual')) return null;
+    const path = sl.sectionPath || [];
+    if (!path.length || !/결과/.test(path[path.length - 1])) return null;
+    const hs = PF.md.findSection(curP, path);
+    if (hs.length !== 1 || hs[0].level < 3) return null;
+    const stats = [], usedTables = new Set();
+    for (const el of sectionEls(hs[0])) {
+      if (el.tagName === 'UL' || el.tagName === 'OL') {
+        for (const li of el.children) {
+          const nums = hasNum(li); if (!nums.length) continue;
+          const c = li.cloneNode(true); c.querySelectorAll('ul, ol').forEach((x) => x.remove());
+          stats.push({ big: nums.map((s) => s.innerHTML.trim()).join(' · '), html: c.innerHTML.trim(), label: '' });
+        }
+      } else if (el.tagName === 'TABLE') {
+        const head = [...(el.querySelector('thead tr')?.children || [])].map((th) => th.textContent.trim());
+        if (head.length < 2 || !/결과/.test(head[head.length - 1])) continue;
+        usedTables.add(el);
+        for (const tr of el.querySelectorAll('tbody tr')) {
+          const cells = [...tr.children], last = cells[cells.length - 1];
+          const nums = hasNum(last); if (!nums.length) continue;
+          stats.push({ big: nums.map((s) => s.innerHTML.trim()).join(' · '), html: last.innerHTML.trim(), label: cells[0].innerHTML.trim() });
+        }
+      }
+    }
+    if (stats.length < 2) return null;
+    const rest = vis.filter((v) => !(v.ref.kind === 'table' && usedTables.has(v.el)) && (v.status === 'ok' || v.status === 'changed'));
+    const pics = rest.slice(0, 1);
+    // 그림이 한 장(이미지)뿐이면, 결과 문장이 가리키는 절의 첫 그림을 옆에 하나 더(같은 그림은 빼고)
+    if (pics.length === 1 && pics[0].ref.kind === 'image') {
+      const extra = (sl._refPics || []).find((x) => x.src !== pics[0].src);
+      if (extra) pics.push(extra);
+    }
+    return { stats: stats.slice(0, 3), pics, more: stats.length > 3 };
+  }
+  function resultHtml(r, variant) {
+    const tight = variant.tight ? ' tight' : '';
+    const card = (s) => `<div class="rs-card">${s.label ? `<p class="rs-lb">${s.label}</p>` : ''}<p class="rs-big">${s.big}</p><p class="rs-t">${s.html}</p></div>`;
+    return `<div class="dk rs${tight}${r.pics.length ? '' : ' nopic'}"><div class="rs-stats" style="--n:${r.stats.length}">${r.stats.map(card).join('')}</div>${r.pics.length ? `<div class="vis rs-vis${r.pics.length > 1 ? ' two' : ''}">${r.pics.map((v) => vboxHtml(v)).join('')}</div>` : ''}</div>`;
+  }
+
   // 장면 하나(나뉠 수 있음): 코드 줄 범위 20줄 단위, 표는 넘치면 행을 반으로
   //   코드 블록마다 자기 줄 범위(ref.lines, 없으면 전체)를 따로 나눕니다 — 한 장면에 코드가 둘이어도 서로의 범위로 잘리지 않게
   function slideScenes(sl, sid, meta) {
@@ -257,15 +412,42 @@
     const vs = vis.map((v) => vboxHtml(v, v.ref.kind === 'code' ? codeChunk(v) : v.ref.kind === 'table' && tsplit && tsplit.v === v ? tsplit.rows : null));
     const V = sl.layout === 'full' || sl.layout === 'screens' ? [{}, { tight: true }]
       : [{ vw: 1.4 }, { vw: 1.7 }, { vw: 1.15 }, { vw: 1.4, tight: true }, { stack: true }, { stack: true, tight: true }];
-    const build = (v) => {
+    const build = (v, html = null, layout = null) => {
       const s = PF.scene({ id: sid, tpl: 'D', eyebrow: meta.chapter, rlabel: meta.rlabel, title: txt(sl.title) || meta.chapter, sub: part, lead: part && part !== `1/${part.split('/')[1]}` ? '' : txt(sl.lead), foot: meta.foot, sec: meta.chapter, group: meta.chapter, stitle: txt(sl.title) });
-      s.classList.add(`l-${sl.layout || 'visual'}`);
+      s.classList.add(`l-${layout || sl.layout || 'visual'}`);
       if (meta.err) s.dataset.pfErr = meta.err;
       if (sl.edited) s.dataset.pfEdited = '1';                       // 장면 고치기로 고친 장면(미리보기 개요에 ✎)
-      PF.body(s).innerHTML = `<div class="pf-fill">${bodyHtml(sl, vs, v)}</div>`;
+      PF.body(s).innerHTML = `<div class="pf-fill">${html ? html() : bodyHtml(sl, vs, v)}</div>`;
       if (meta.auto) s.querySelector('.pf-foot > span').insertAdjacentHTML('beforeend', '<span class="pf-autoband" data-pf-ui="note">예전 데이터로 자동 구성 — /portfolio-build를 다시 실행하면 발표 덱이 됩니다</span>');
       return PF.fitVisuals(s);
     };
+    // 결정 틀: 비교 표가 있으면 먼저 시도(안 들어가면 아래 원래 틀로)
+    const dc = !tsplit && !depth && !part ? decisionOf(sl, vis) : null;
+    if (dc) {
+      for (const v of [...(dc.others.length ? [{ side: true }, { side: true, tight: true }] : []), {}, { tight: true }]) {
+        const s = build(v, () => decisionHtml(dc, v), 'decision');
+        if (PF.fitsM(s)) { info.decisions = (info.decisions || 0) + 1; return [s]; }
+      }
+      PF.note(sid, 'decision-fallback', 1, '결정 틀에 다 들어가지 않아 원래 틀로 그림');
+    }
+    // 팀 역할 틀: 원문 팀 표(본인 줄이 있는 2열 표) 하나뿐인 장면
+    const tm = !dc && !tsplit && !depth && !part ? teamOf(sl, vis) : null;
+    if (tm) {
+      for (const v of [{}, { tight: true }]) {
+        const s = build(v, () => teamHtml(tm, v), 'team');
+        if (PF.fitsM(s)) return [s];
+      }
+      PF.note(sid, 'team-fallback', 1, '팀 역할 틀에 다 들어가지 않아 원래 틀로 그림');
+    }
+    // 결과 숫자 틀: 결과 절의 굵은 숫자 항목이 2개 이상
+    const rs = !dc && !tm && !tsplit && !depth && !part ? resultOf(sl, vis) : null;
+    if (rs) {
+      for (const v of [{}, { tight: true }]) {
+        const s = build(v, () => resultHtml(rs, v), 'result');
+        if (PF.fitsM(s)) { if (rs.more) PF.note(sid, 'result-more', 1, '굵은 숫자 항목이 3개를 넘어 앞의 3개만 카드로'); return [s]; }
+      }
+      PF.note(sid, 'result-fallback', 1, '결과 숫자 틀에 다 들어가지 않아 원래 틀로 그림');
+    }
     // 들어가는 변형 중 시각 자료가 가장 크게 보이는 것(같으면 앞의 것). 가로로 긴 다이어그램은 위아래 배치가, 세로로 긴 것은 옆 배치가 이김
     let best = null;
     for (const v of V) { const s = build(v); if (!PF.fitsM(s)) continue; const sc = PF.visScore(s); if (!best || sc > best.sc + 0.05) best = { s, sc }; }
@@ -294,6 +476,7 @@
     document.title = `${p.title} · ${PF.t('name.deck')}${name ? ' · ' + name : ''}`;
     info.fonts = await PF.loadFonts();
     mark('fonts');
+    curP = P;                                                          // 결과 숫자 틀이 원문 결과 절을 읽음
     const model = modelOf(p, P);
     await resolveVisuals(model, P, p);
     mark('visuals');
