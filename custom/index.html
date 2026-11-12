@@ -43,7 +43,12 @@
   .btn-line:hover { border-color: var(--ink); }
   .card { display: block; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--surface); transition: border-color .15s, transform .15s; }
   .card:hover { border-color: var(--accent); transform: translateY(-2px); }
-  .card:hover .more { color: var(--accent); }
+  .card:hover .more, .card.is-open .more { color: var(--accent); }
+  .card { cursor: pointer; font: inherit; color: inherit; padding: 0; }
+  .card.is-open { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+  .detail { scroll-margin-top: 72px; animation: pf-open .22s ease-out; }
+  @keyframes pf-open { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .detail { animation: none; } .card { transition: none; } }
   .card:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   .media { aspect-ratio: 16 / 9; width: 100%; object-fit: cover; display: block; background: var(--tint); }
   .chip { display: inline-flex; align-items: center; height: 22px; padding: 0 7px; border-radius: min(var(--pill), 5px); font-family: var(--display), 'Pretendard', sans-serif; font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; border: 1px solid var(--line-2); color: var(--muted); background: var(--surface); }
@@ -65,7 +70,8 @@
     'name.portfolio': '포트폴리오', 'name.deck': '발표 덱', 'name.doc': '상세 기술문서',
     'name.team': '팀 프로젝트', 'name.solo': '개인 프로젝트',
     'page.intro': '자기소개', 'page.stack': '기술 스택', 'page.stack-note': '근거 프로젝트와 함께',
-    'page.nav-intro': '소개', 'page.nav-stack': '{page.stack}', 'page.nav-projects': '프로젝트', 'page.nav-contact': '연락처'
+    'page.nav-intro': '소개', 'page.nav-stack': '{page.stack}', 'page.nav-projects': '프로젝트', 'page.nav-contact': '연락처',
+    'name.role': '내 역할', 'name.intent': '개발 의도', 'name.video': '시연 영상', 'page.features': '기능 소개'
   };
   async function loadStrings() {
     const table = Object.assign({}, FALLBACK);
@@ -94,6 +100,10 @@
   const pad = function (n) { return String(n).padStart(2, '0'); };
   const img = function (id, src) { return '../src/' + encodeURIComponent(id) + '/' + String(src).split('/').map(encodeURIComponent).join('/'); };
   const deckUrl = function (id) { return '../project.html?p=' + encodeURIComponent(id); };
+  const docUrl = function (id) { return '../doc.html?p=' + encodeURIComponent(id); };
+  const isUrl = function (u) { return /^https?:\/\//.test(String(u || '')); };
+  // 펼친 프로젝트는 주소 끝 #p-<폴더 이름>으로 남김(새로고침·링크 공유해도 그 프로젝트가 펼쳐진 채로)
+  const openFromHash = function () { const m = location.hash.match(/^#p-(.+)$/); return m ? decodeURIComponent(m[1]) : null; };
   function rich(text) { // `코드`만 <code>로
     return String(text).split(/(`[^`]+`)/).map(function (part, i) {
       return part[0] === '`' && part.length > 1 ? h('code', { key: i }, part.slice(1, -1)) : part;
@@ -127,7 +137,7 @@
           h('div', { className: 'mt-8 flex flex-wrap gap-3' },
             pr.email ? h('a', { className: 'btn btn-solid', href: 'mailto:' + pr.email }, '이메일') : null,
             pr.github ? h('a', { className: 'btn btn-line', href: pr.github, target: '_blank', rel: 'noopener' }, 'GitHub') : null)),
-        feature ? h('a', { href: deckUrl(feature.id), className: 'md:col-span-5 block', title: feature.title },
+        feature ? h('a', { href: '#p-' + encodeURIComponent(feature.id), className: 'md:col-span-5 block', title: feature.title },
           h('img', { className: 'media r-big border rule', src: img(feature.id, feature.cover), alt: feature.title, loading: 'eager' })) : null));
   }
 
@@ -136,7 +146,9 @@
     // 기간 끝의 "(3인 팀)" 같은 괄호는 앞 라벨(팀 프로젝트 · 3인)과 겹쳐서 뺍니다
     const period = metaOf(p, '기간').replace(/\s*\(\s*\d+인 팀\s*\)/, '').replace(/,\s*\d+인 팀/, '');
     const kind = p.team && p.team.type === 'team' ? s('name.team') + (p.team.size ? ' · ' + p.team.size : '') : s('name.solo');
-    return h('a', { href: deckUrl(p.id), className: 'card h-full flex flex-col' },
+    const open = props.open;
+    return h('button', { type: 'button', onClick: props.onToggle, 'aria-expanded': open, 'aria-controls': 'detail-' + p.id,
+        className: 'card h-full flex flex-col text-left w-full' + (open ? ' is-open' : '') },
       p.cover
         ? h('img', { className: 'media border-b rule', src: img(p.id, p.cover), alt: p.title, loading: 'lazy' })
         : h('div', { className: 'media border-b rule flex flex-col justify-end p-6' },
@@ -147,16 +159,106 @@
           h('span', { className: 'chip' }, pad(i + 1)), h('span', null, kind), period ? h('span', null, '· ' + period) : null),
         h('h3', { className: 'ink font-bold text-[21px] leading-snug mt-3', style: { wordBreak: 'keep-all' } }, p.title),
         p.tagline ? h('p', { className: 'mt-2 text-[15px] leading-relaxed', style: { wordBreak: 'keep-all' } }, p.tagline) : null,
-        h('p', { className: 'more mt-auto pt-5 text-[14px] font-semibold ink' }, s('name.deck') + ' →')));
+        h('p', { className: 'more mt-auto pt-5 text-[14px] font-semibold ink' }, open ? '접기 ↑' : '자세히 보기 ↓')));
+  }
+
+  // 펼친 상세: 포트폴리오 문서의 [프로젝트 소개]와 [기능 소개] 두 절을 한 판에
+  function Detail(props) {
+    const p = props.p, i = props.i, s = props.s;
+    const meta = (p.meta || []).slice();
+    if (p.team && p.team.role) meta.push({ label: s('name.role'), value: p.team.role, wide: true });
+    const hl = (p.highlights || []).slice(0, 4);
+    const links = [
+      { href: deckUrl(p.id), label: s('name.deck'), solid: true },
+      { href: docUrl(p.id), label: s('name.doc') },
+      isUrl(p.links && p.links.github) ? { href: p.links.github, label: 'GitHub', ext: true } : null,
+      isUrl(p.links && p.links.video) ? { href: p.links.video, label: s('name.video'), ext: true } : null
+    ].concat(((p.links && p.links.extra) || []).filter(function (l) { return isUrl(l.url); }).map(function (l) { return { href: l.url, label: l.label, ext: true }; }))
+      .filter(Boolean);
+    const cap = function (c) { return typeof c === 'string' ? c : (c && c.text) || ''; };
+    return h('div', { id: 'detail-' + p.id, className: 'detail surface border rule r-big ' + (props.cls || ''), role: 'region', 'aria-label': p.title },
+      h('div', { className: 'flex items-start justify-between gap-4 px-6 md:px-8 pt-6 md:pt-8' },
+        h('div', { className: 'min-w-0' },
+          h('p', { className: 'eyebrow' }, pad(i + 1) + ' · ' + (p.team && p.team.type === 'team' ? s('name.team') : s('name.solo'))),
+          h('h3', { className: 'ink font-bold text-[24px] md:text-[28px] leading-snug mt-2', style: { wordBreak: 'keep-all' } }, p.title)),
+        h('button', { type: 'button', onClick: props.onClose, className: 'btn btn-line shrink-0 !h-9 !px-3 text-[14px]', 'aria-label': '접기' }, '접기 ✕')),
+      h('div', { className: 'grid md:grid-cols-12 gap-8 md:gap-10 px-6 md:px-8 py-6 md:py-8' },
+        // 왼쪽: 프로젝트 소개
+        h('div', { className: 'md:col-span-5 min-w-0' },
+          h('p', { className: 'eyebrow mb-4' }, 'Overview'),
+          meta.length ? h('dl', { className: 'grid grid-cols-[72px_minmax(0,1fr)] gap-x-4 gap-y-2.5 text-[14px] leading-relaxed' },
+            meta.map(function (m, k) {
+              return h(F, { key: k }, h('dt', { className: 'muted font-semibold' }, m.label),
+                h('dd', { className: 'm-0', style: { wordBreak: 'keep-all' } }, rich(m.value)));
+            })) : null,
+          p.intent && p.intent.text ? h('div', { className: 'mt-6 pl-4 border-l-2', style: { borderColor: 'var(--accent)' } },
+            h('p', { className: 'text-[13px] font-semibold muted mb-1' }, s('name.intent')),
+            h('p', { className: 'ink text-[15px] leading-relaxed', style: { wordBreak: 'keep-all' } }, rich(p.intent.text))) : null,
+          (p.tags || []).length ? h('div', { className: 'mt-6 flex flex-wrap gap-1.5' },
+            p.tags.map(function (t) { return h('span', { key: t, className: 'chip' }, t); })) : null),
+        // 오른쪽: 기능 소개
+        hl.length ? h('div', { className: 'md:col-span-7 min-w-0' },
+          h('p', { className: 'eyebrow mb-4' }, 'Features'),
+          h('ol', { className: 'space-y-6' }, hl.map(function (f, k) {
+            const im = f.image && f.image.src ? f.image : null;
+            return h('li', { key: k, className: 'pt-6 border-t rule first:pt-0 first:border-t-0' },
+              h('div', { className: 'flex gap-3' },
+                h('span', { className: 'chip shrink-0 mt-[3px]' }, pad(k + 1)),
+                h('div', { className: 'min-w-0' },
+                  h('h4', { className: 'ink font-semibold text-[17px] leading-snug', style: { wordBreak: 'keep-all' } }, rich(f.title)),
+                  f.what ? h('p', { className: 'mt-1.5 text-[15px] leading-relaxed', style: { wordBreak: 'keep-all' } }, rich(f.what)) : null,
+                  im ? h('figure', { className: 'mt-3' },
+                    h('img', { className: 'w-full border rule', style: { borderRadius: 'calc(var(--radius) * .6)', maxHeight: '260px', objectFit: 'contain', background: 'var(--bg)' },
+                      src: img(p.id, im.src), alt: cap(im.caption) || f.title, loading: 'lazy', width: im.w || undefined, height: im.h || undefined }),
+                    cap(im.caption) ? h('figcaption', { className: 'mt-1.5 text-[13px] muted leading-relaxed' }, rich(cap(im.caption))) : null) : null)));
+          }))) : null),
+      h('div', { className: 'flex flex-wrap gap-3 px-6 md:px-8 pb-6 md:pb-8' },
+        links.map(function (l) {
+          return h('a', { key: l.href, className: 'btn ' + (l.solid ? 'btn-solid' : 'btn-line'), href: l.href,
+            target: l.ext ? '_blank' : undefined, rel: l.ext ? 'noopener' : undefined }, l.label + (l.ext ? ' ↗' : ' →'));
+        })));
   }
 
   function Projects(props) {
+    const s = props.s, list = props.projects;
+    const [openId, setOpenId] = React.useState(openFromHash);
+    React.useEffect(function () {
+      const onHash = function () { setOpenId(openFromHash()); };
+      window.addEventListener('hashchange', onHash);
+      return function () { window.removeEventListener('hashchange', onHash); };
+    }, []);
+    // 펼치면 상세 판이 보이게 스크롤(넓은 화면은 그 줄 아래, 좁은 화면은 그 카드 아래 판)
+    React.useEffect(function () {
+      if (!openId) return;
+      const t = setTimeout(function () {
+        const el = [].slice.call(document.querySelectorAll('[id="detail-' + openId + '"]')).find(function (e) { return e.offsetParent; });
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 30);
+      return function () { clearTimeout(t); };
+    }, [openId]);
+    const setOpen = function (id) {
+      setOpenId(id);
+      const url = location.pathname + location.search + (id ? '#p-' + encodeURIComponent(id) : '#projects');
+      history.replaceState(null, '', url);
+    };
+    const items = [];
+    list.forEach(function (p, i) {
+      const open = openId === p.id;
+      items.push(h(Card, { key: p.id, p: p, i: i, s: s, open: open, onToggle: function () { setOpen(open ? null : p.id); } }));
+      // 좁은 화면(한 열): 그 카드 바로 아래
+      if (open) items.push(h(Detail, { key: 'm-' + p.id, p: p, i: i, s: s, cls: 'md:hidden', onClose: function () { setOpen(null); } }));
+      // 넓은 화면(두 열): 그 카드가 있는 줄 아래, 두 칸 전체
+      if (i % 2 === 1 || i === list.length - 1) {
+        const row = list.slice(i - (i % 2), i + 1);
+        const hit = row.find(function (x) { return x.id === openId; });
+        if (hit) items.push(h(Detail, { key: 'd-' + hit.id, p: hit, i: list.indexOf(hit), s: s, cls: 'hidden md:block md:col-span-2', onClose: function () { setOpen(null); } }));
+      }
+    });
     return h('section', { id: 'projects', className: 'wrap py-16 md:py-24', style: { scrollMarginTop: '56px' } },
       h('div', { className: 'flex items-end justify-between mb-8' },
-        h('h2', { className: 'ink font-bold text-[28px]' }, props.s('page.nav-projects')),
-        h('span', { className: 'text-[14px] muted num' }, pad(props.projects.length))),
-      h('div', { className: 'grid md:grid-cols-2 gap-6' },
-        props.projects.map(function (p, i) { return h(Card, { key: p.id, p: p, i: i, s: props.s }); })));
+        h('h2', { className: 'ink font-bold text-[28px]' }, s('page.nav-projects')),
+        h('span', { className: 'text-[14px] muted num' }, pad(list.length))),
+      h('div', { className: 'grid md:grid-cols-2 gap-6' }, items));
   }
 
   function Stack(props) {
