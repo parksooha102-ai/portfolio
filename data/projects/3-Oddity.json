@@ -4,12 +4,12 @@
   "id": "3-Oddity",
   "doc": "기술문서_초안_증강칩시스템.md",
   "title": "Oddity",
-  "tagline": "4인 팀 보스 러시 하이퍼 TPS에서 맡은 증강칩 시스템과 초능력 스킬 18종",
+  "tagline": "4인 팀 보스 러시 하이퍼 TPS에서 맡은 증강칩 시스템과 초능력 스킬 18종의 공통 구조",
   "cover": null,
   "team": {
     "type": "team",
     "size": "4인",
-    "role": "증강칩 시스템(획득·장착 그리드·UI), 초능력 스킬 18종, 스킬 슬롯·HUD, 패시브 트리거"
+    "role": "증강칩 시스템(획득·장착 그리드·UI), 초능력 스킬 공통 구조(`SuperpowerSkill`·`SkillFactory`·`SkillChip.tsv`)와 18종 중 16종 구현, 스킬 슬롯·HUD, 패시브 트리거"
   },
   "meta": [
     { "label": "장르", "value": "하이퍼 TPS · 보스 러시 — 다양한 초능력으로 보스를 연달아 공략" },
