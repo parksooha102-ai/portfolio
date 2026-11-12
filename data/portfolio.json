@@ -42,6 +42,12 @@
         { "text": "`Items.tsv` 한 줄이 상점 카드가 되는 데이터 주도 상점", "project": "2-FolkSack" },
         { "text": "`StatChip.tsv`·`SkillChip.tsv`로 칩 28종 운영, 로드 시 Fail-fast 검증", "project": "3-Oddity" }
       ]
+    },
+    {
+      "name": "AI 활용 (Claude Code)",
+      "evidence": [
+        { "text": "코드 작성은 AI에 맡기되, 산출물을 그대로 쓰지 않고 검토해 오류와 책임이 꼬이는 설계를 지적하고 바로잡음", "project": "3-Oddity" }
+      ]
     }
   ],
   "projects": ["1-Bullet-Module", "2-FolkSack", "3-Oddity", "4-MiniGolf"]

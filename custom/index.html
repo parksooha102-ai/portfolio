@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>포트폴리오</title>
+<!--
+  /portfolio-custom 결과 — 메인 허브 (redesign-handoff.md "메인 허브 명세")
+  내용은 모두 ../data/portfolio.json · ../data/projects/*.json에서 읽습니다. /portfolio-build만 다시 하면 이 페이지도 최신이 됩니다.
+  UI 문구는 ../theme/strings.tsv(내 문구 > 기본 문구)를 따릅니다.
+  제출 PDF는 그대로 ../index.html(포트폴리오 문서)에서 인쇄합니다.
+-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<!-- 테마: 세 페이지와 같은 ../theme/theme.css의 손잡이(--t-*)를 읽습니다. 비어 있으면 아래 기본값 -->
+<link rel="stylesheet" href="../theme/theme.css">
+<style>
+  :root {
+    --accent: var(--t-accent, #2F6FEB); --ink: var(--t-ink, #111418); --body: var(--t-body, #3A414B); --muted: var(--t-muted, #6B7380);
+    --line: var(--t-line, #E3E6EA); --line-2: var(--t-line-2, #C9CED6); --bg: var(--t-bg, #FFFFFF); --surface: var(--t-surface, #FFFFFF); --tint: var(--t-bg, #F5F7FA);
+    --radius: var(--t-radius, 12px); --pill: var(--t-pill, 8px); --display: var(--t-display, 'Pretendard');
+    color-scheme: var(--t-scheme, light);
+  }
+  .surface { background: var(--surface); }
+  .r-big { border-radius: var(--radius); }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--body); font-family: 'Pretendard', system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+  @media (min-width: 760px) { .wrap { padding: 0 32px; } }
+  .ink { color: var(--ink); }
+  .muted { color: var(--muted); }
+  .accent { color: var(--accent); }
+  .rule { border-color: var(--line); }
+  .tint { background: var(--tint); }
+  .eyebrow { font-family: var(--display), 'Pretendard', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+  code { font-family: 'D2Coding', ui-monospace, Consolas, monospace; font-size: .9em; background: var(--bg); border: 1px solid var(--line); border-radius: min(var(--pill), 4px); padding: 0 .3em; word-break: break-all; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 18px; border-radius: var(--pill); font-weight: 600; font-size: 15px; transition: background .15s, color .15s, border-color .15s; }
+  .btn-solid { background: var(--accent); color: #fff; }
+  .btn-solid:hover { filter: brightness(.92); }
+  .btn-line { border: 1px solid var(--line-2); color: var(--ink); background: var(--surface); }
+  .btn-line:hover { border-color: var(--ink); }
+  .card { display: block; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--surface); transition: border-color .15s, transform .15s; }
+  .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .card:hover .more { color: var(--accent); }
+  .card:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .media { aspect-ratio: 16 / 9; width: 100%; object-fit: cover; display: block; background: var(--tint); }
+  .chip { display: inline-flex; align-items: center; height: 22px; padding: 0 7px; border-radius: min(var(--pill), 5px); font-family: var(--display), 'Pretendard', sans-serif; font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; border: 1px solid var(--line-2); color: var(--muted); background: var(--surface); }
+  a.chip:hover { border-color: var(--accent); color: var(--accent); }
+  .num { font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+  .nav a:hover { color: var(--ink); }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+(function () {
+  'use strict';
+  const h = React.createElement;
+  const F = React.Fragment;
+
+  // ── UI 문구: ../theme/strings.tsv (내 문구가 있으면 그것, 없으면 기본 문구) ──
+  const FALLBACK = {
+    'name.portfolio': '포트폴리오', 'name.deck': '발표 덱', 'name.doc': '상세 기술문서',
+    'name.team': '팀 프로젝트', 'name.solo': '개인 프로젝트',
+    'page.intro': '자기소개', 'page.stack': '기술 스택', 'page.stack-note': '근거 프로젝트와 함께',
+    'page.nav-intro': '소개', 'page.nav-stack': '{page.stack}', 'page.nav-projects': '프로젝트', 'page.nav-contact': '연락처'
+  };
+  async function loadStrings() {
+    const table = Object.assign({}, FALLBACK);
+    try {
+      const res = await fetch('../theme/strings.tsv', { cache: 'no-cache' });
+      if (res.ok) {
+        const text = (await res.text()).replace(/^﻿/, '');
+        text.split(/\r?\n/).forEach(function (line, i) {
+          if (i === 0 || !line || line[0] === '#') return;
+          const c = line.split('\t');
+          if (c.length < 3) return;
+          const mine = (c[3] || '').trim();
+          table[c[0].trim()] = mine || c[2];
+        });
+      }
+    } catch (e) { /* 표를 못 읽으면 기본 문구 */ }
+    const resolve = function (key, depth) {
+      const v = table[key] == null ? '' : String(table[key]);
+      if (depth > 5) return v;
+      return v.replace(/\{([a-z0-9-]+\.[a-z0-9.-]+)\}/gi, function (m, ref) { return table[ref] != null ? resolve(ref, depth + 1) : m; });
+    };
+    return function (key) { return resolve(key, 0); };
+  }
+
+  // ── 도움 함수 ──
+  const pad = function (n) { return String(n).padStart(2, '0'); };
+  const img = function (id, src) { return '../src/' + encodeURIComponent(id) + '/' + String(src).split('/').map(encodeURIComponent).join('/'); };
+  const deckUrl = function (id) { return '../project.html?p=' + encodeURIComponent(id); };
+  function rich(text) { // `코드`만 <code>로
+    return String(text).split(/(`[^`]+`)/).map(function (part, i) {
+      return part[0] === '`' && part.length > 1 ? h('code', { key: i }, part.slice(1, -1)) : part;
+    });
+  }
+  function metaOf(p, label) { const m = (p.meta || []).find(function (x) { return x.label === label; }); return m ? m.value : ''; }
+
+  // ── 절 ──
+  function Nav(props) {
+    const s = props.s, pr = props.profile;
+    return h('header', { className: 'sticky top-0 z-20 border-b rule', style: { background: 'color-mix(in srgb, var(--surface) 92%, transparent)', backdropFilter: 'blur(8px)' } },
+      h('div', { className: 'wrap flex items-center justify-between h-14 gap-4' },
+        h('a', { href: '#top', className: 'ink font-bold text-[15px] whitespace-nowrap' }, pr.name),
+        h('nav', { className: 'nav flex gap-4 sm:gap-6 text-[14px] muted overflow-x-auto' },
+          h('a', { href: '#projects', className: 'whitespace-nowrap' }, s('page.nav-projects')),
+          h('a', { href: '#stack', className: 'whitespace-nowrap' }, s('page.nav-stack')),
+          h('a', { href: '#contact', className: 'whitespace-nowrap' }, s('page.nav-contact')))));
+  }
+
+  function Hero(props) {
+    const pr = props.profile, feature = props.feature;
+    return h('section', { id: 'top', className: 'wrap pt-14 pb-16 md:pt-24 md:pb-24' },
+      h('div', { className: 'grid md:grid-cols-12 gap-10 md:gap-12 items-center' },
+        h('div', { className: 'md:col-span-7' },
+          pr.nameEn ? h('p', { className: 'eyebrow mb-4' }, pr.nameEn) : null,
+          h('h1', { className: 'ink font-extrabold text-[40px] md:text-[56px] leading-[1.1] tracking-tight' }, pr.name),
+          pr.headline ? h('p', { className: 'ink text-[22px] md:text-[28px] font-semibold leading-snug mt-4', style: { wordBreak: 'keep-all' } },
+            pr.headline) : null,
+          pr.intro ? h('div', { className: 'mt-6 space-y-1.5 text-[16px] md:text-[17px] leading-relaxed', style: { wordBreak: 'keep-all' } },
+            pr.intro.split('\n').filter(Boolean).map(function (l, i) { return h('p', { key: i }, l); })) : null,
+          h('div', { className: 'mt-8 flex flex-wrap gap-3' },
+            pr.email ? h('a', { className: 'btn btn-solid', href: 'mailto:' + pr.email }, '이메일') : null,
+            pr.github ? h('a', { className: 'btn btn-line', href: pr.github, target: '_blank', rel: 'noopener' }, 'GitHub') : null)),
+        feature ? h('a', { href: deckUrl(feature.id), className: 'md:col-span-5 block', title: feature.title },
+          h('img', { className: 'media r-big border rule', src: img(feature.id, feature.cover), alt: feature.title, loading: 'eager' })) : null));
+  }
+
+  function Card(props) {
+    const p = props.p, i = props.i, s = props.s;
+    // 기간 끝의 "(3인 팀)" 같은 괄호는 앞 라벨(팀 프로젝트 · 3인)과 겹쳐서 뺍니다
+    const period = metaOf(p, '기간').replace(/\s*\(\s*\d+인 팀\s*\)/, '').replace(/,\s*\d+인 팀/, '');
+    const kind = p.team && p.team.type === 'team' ? s('name.team') + (p.team.size ? ' · ' + p.team.size : '') : s('name.solo');
+    return h('a', { href: deckUrl(p.id), className: 'card h-full flex flex-col' },
+      p.cover
+        ? h('img', { className: 'media border-b rule', src: img(p.id, p.cover), alt: p.title, loading: 'lazy' })
+        : h('div', { className: 'media border-b rule flex flex-col justify-end p-6' },
+            h('span', { className: 'num font-extrabold text-[56px] leading-none', style: { color: 'var(--line-2)', fontFamily: 'var(--display), Pretendard, sans-serif' } }, pad(i + 1)),
+            h('div', { className: 'mt-3 flex flex-wrap gap-1.5' }, (p.tags || []).slice(0, 4).map(function (t) { return h('span', { key: t, className: 'chip' }, t); }))),
+      h('div', { className: 'p-6 flex flex-col flex-1' },
+        h('div', { className: 'flex flex-wrap items-center gap-x-2 gap-y-1 text-[13px] muted' },
+          h('span', { className: 'chip' }, pad(i + 1)), h('span', null, kind), period ? h('span', null, '· ' + period) : null),
+        h('h3', { className: 'ink font-bold text-[21px] leading-snug mt-3', style: { wordBreak: 'keep-all' } }, p.title),
+        p.tagline ? h('p', { className: 'mt-2 text-[15px] leading-relaxed', style: { wordBreak: 'keep-all' } }, p.tagline) : null,
+        h('p', { className: 'more mt-auto pt-5 text-[14px] font-semibold ink' }, s('name.deck') + ' →')));
+  }
+
+  function Projects(props) {
+    return h('section', { id: 'projects', className: 'wrap py-16 md:py-24', style: { scrollMarginTop: '56px' } },
+      h('div', { className: 'flex items-end justify-between mb-8' },
+        h('h2', { className: 'ink font-bold text-[28px]' }, props.s('page.nav-projects')),
+        h('span', { className: 'text-[14px] muted num' }, pad(props.projects.length))),
+      h('div', { className: 'grid md:grid-cols-2 gap-6' },
+        props.projects.map(function (p, i) { return h(Card, { key: p.id, p: p, i: i, s: props.s }); })));
+  }
+
+  function Stack(props) {
+    // 근거 줄 앞에는 번호 대신 프로젝트 이름(괄호 속 영문 제목은 뺌)
+    const idx = {}; props.projects.forEach(function (p) { idx[p.id] = { short: String(p.title).replace(/\s*\([^)]*\)\s*$/, ''), title: p.title }; });
+    if (!props.skills.length) return null;
+    return h('section', { id: 'stack', className: 'border-t rule', style: { scrollMarginTop: '56px' } },
+      h('div', { className: 'wrap py-16 md:py-24' },
+        h('h2', { className: 'ink font-bold text-[28px] mb-8' }, props.s('page.stack')),
+        h('div', null, props.skills.map(function (sk) {
+          return h('div', { key: sk.name, className: 'grid md:grid-cols-12 gap-3 md:gap-8 py-6 border-t rule' },
+            h('h3', { className: 'md:col-span-4 ink font-semibold text-[18px]' }, sk.name),
+            h('ul', { className: 'md:col-span-8 space-y-2.5' }, (sk.evidence || []).map(function (ev, k) {
+              const ref = idx[ev.project];
+              return h('li', { key: k, className: 'flex flex-col sm:flex-row sm:gap-4 text-[15px] leading-relaxed' },
+                ref ? h('a', { className: 'shrink-0 sm:w-40 text-[13px] font-semibold muted hover:text-[color:var(--accent)] pt-[1px]', href: deckUrl(ev.project), title: ref.title }, ref.short) : null,
+                h('span', { style: { wordBreak: 'keep-all' } }, rich(ev.text)));
+            })));
+        }))));
+  }
+
+  function Contact(props) {
+    const pr = props.profile;
+    if (!pr.email && !pr.github) return null;
+    return h('section', { id: 'contact', className: 'border-t rule surface', style: { scrollMarginTop: '56px' } },
+      h('div', { className: 'wrap py-16 md:py-20 flex flex-col md:flex-row md:items-center md:justify-between gap-6' },
+        h('h2', { className: 'ink font-bold text-[28px]' }, props.s('page.nav-contact')),
+        h('div', { className: 'flex flex-col sm:flex-row gap-3 min-w-0' },
+          pr.email ? h('a', { className: 'btn btn-solid justify-center', href: 'mailto:' + pr.email }, pr.email) : null,
+          pr.github ? h('a', { className: 'btn btn-line justify-center', href: pr.github, target: '_blank', rel: 'noopener' }, 'GitHub') : null)),
+      h('div', { className: 'wrap pb-10 text-[13px] muted flex flex-wrap gap-x-4 gap-y-1' },
+        h('span', null, '© ' + pr.name),
+        h('a', { href: '../index.html', className: 'underline underline-offset-2' }, '인쇄용 ' + props.s('name.portfolio'))));
+  }
+
+  function App(props) {
+    const d = props.data, s = props.s;
+    const feature = d.projects.find(function (p) { return p.cover; });
+    return h(F, null,
+      h(Nav, { s: s, profile: d.profile }),
+      h('main', null,
+        h(Hero, { profile: d.profile, feature: feature }),
+        h(Projects, { projects: d.projects, s: s }),
+        h(Stack, { skills: d.skills || [], projects: d.projects, s: s }),
+        h(Contact, { profile: d.profile, s: s })));
+  }
+
+  function fail(msg) {
+    document.getElementById('root').innerHTML = '<div class="wrap py-24"><p class="ink font-bold text-xl">페이지를 그리지 못했습니다</p><p class="muted mt-2">' + msg +
+      '</p><p class="muted mt-2">로컬 서버(예: <code>python -m http.server 4600</code>)로 열었는지, <code>/portfolio-build</code>를 했는지 확인하세요.</p></div>';
+  }
+
+  (async function main() {
+    try {
+      const [s, base] = await Promise.all([loadStrings(), fetch('../data/portfolio.json', { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error('data/portfolio.json ' + r.status); return r.json(); })]);
+      const projects = await Promise.all((base.projects || []).map(function (id) {
+        return fetch('../data/projects/' + encodeURIComponent(id) + '.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
+      }));
+      const data = Object.assign({}, base, { projects: projects.filter(Boolean) });
+      const accent = data.settings && data.settings.accent;
+      // 테마(theme.css)에 강조색이 없을 때만 profile.md 강조색
+      const themed = getComputedStyle(document.documentElement).getPropertyValue('--t-accent').trim();
+      if (!themed && accent && /^#[0-9a-f]{3,8}$/i.test(accent)) document.documentElement.style.setProperty('--accent', accent);
+      document.title = (data.profile.name ? data.profile.name + ' · ' : '') + s('name.portfolio');
+      ReactDOM.createRoot(document.getElementById('root')).render(h(App, { data: data, s: s }));
+    } catch (e) { fail(String(e && e.message || e)); }
+  })();
+})();
+</script>
+</body>
+</html>
