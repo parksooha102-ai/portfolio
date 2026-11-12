@@ -111,7 +111,7 @@
   async function renderMermaid(els) {
     if (!els.length) return;
     if (!window.mermaid) { els.forEach((el) => svgCache.set(el, { error: 'Mermaid를 불러오지 못했습니다' })); return; }
-    mermaid.initialize({ startOnLoad: false, theme: 'default', securityLevel: 'loose', fontFamily: 'Pretendard, sans-serif', suppressErrorRendering: true });
+    mermaid.initialize({ startOnLoad: false, ...PF.mermaidTheme(), securityLevel: 'loose', fontFamily: 'Pretendard, sans-serif', suppressErrorRendering: true });
     if (!mmdHost) { mmdHost = document.createElement('div'); mmdHost.setAttribute('aria-hidden', 'true'); Object.assign(mmdHost.style, { position: 'absolute', left: '-20000px', top: '0', width: '1280px', visibility: 'hidden' }); document.body.appendChild(mmdHost); }
     let n = 0;
     for (const el of els) {
@@ -478,6 +478,24 @@
     mark('fonts');
     curP = P;                                                          // 결과 숫자 틀이 원문 결과 절을 읽음
     const model = modelOf(p, P);
+    // 덱 통일(인수인계서 규칙 1·11):
+    //   ② "배운 점" 절 장면은 따로 두지 않고 결과와 회고 장면으로 — 회고에는 네 문서 모두 있는 머리 요약 "배운 점:" 줄(원문 그대로)을 넣음
+    //   ③ "부록" 장(장면 한두 개)은 장 표지를 따로 두지 않고 바로 앞 장 끝에 붙임
+    const lessonsHidden = [];
+    const hasRetro = ['achieved', 'regrets', 'plans'].some((k) => (p.retro?.[k] || []).length);   // 받아 줄 회고 장면이 있을 때만 모음(없으면 그 장면이 결과 장의 내용)
+    if (hasRetro) model.forEach((c) => { c.slides = c.slides.filter((sl) => { const hit = /배운 점\s*$/.test(PF.normTitle(txt(sl.title))); if (hit) lessonsHidden.push(sl.key); return !hit; }); });
+    for (let i = model.length - 1; i > 0; i--) {
+      if (/^부록/.test(PF.normTitle(model[i].title || '')) && model[i].slides.length <= 2) { model[i - 1].slides.push(...model[i].slides); model.splice(i, 1); }
+    }
+    for (let i = model.length - 1; i >= 0; i--) if (!model[i].slides.length) model.splice(i, 1);
+    if (lessonsHidden.length) PF.note('retro', 'lessons-merged', lessonsHidden.length, `배운 점 장면(${lessonsHidden.join(', ')})은 따로 두지 않음 — 결과와 회고 장면 + 맺음 장면의 배운 점 한 줄로`);
+    const lesson = (() => {                                            // 머리 요약(문서 첫 인용 블록)의 "배운 점:" 줄
+      const bq = P.frag.querySelector('blockquote');
+      const li = bq && [...bq.querySelectorAll('li')].find((x) => /^\s*배운 점\s*:/.test(x.textContent));
+      if (!li) return '';
+      const c = li.cloneNode(true); c.querySelector('strong, b')?.remove();
+      return c.innerHTML.replace(/^\s*:?\s*/, '').trim();
+    })();
     await resolveVisuals(model, P, p);
     mark('visuals');
     const auto = info.mode === 'auto';
@@ -500,12 +518,17 @@
       const ckey = PF.keyOk(c.key) ? c.key : `c${ci + 1}`;
       let chId = `ch-${ckey}`; if (used.has(chId)) chId = `ch-c${ci + 1}`; used.add(chId);
       const slides = [];
+      // 쪽 표시(인수인계서 규칙 5): 같은 절(같은 제목)이 여러 장이면 그 절 안 순번 "2/3", 한 장뿐이면 번호 없이 탭만
+      const secKey = (sl) => PF.normTitle(txt(sl.title)) || sl.key;
+      const secN = new Map(); c.slides.forEach((sl) => secN.set(secKey(sl), (secN.get(secKey(sl)) || 0) + 1));
+      const secI = new Map();
       c.slides.forEach((sl, si) => {
         let sid = PF.keyOk(sl.key) ? `d-${sl.key}` : `d${ci + 1}-${si + 1}`, err = '';
         if (!PF.keyOk(sl.key)) err = `key-invalid: "${sl.key || ''}"`;
         if (used.has(sid)) { err = `key-invalid: "${sl.key}" 중복`; sid = `d${ci + 1}-${si + 1}`; }
         used.add(sid);
-        const rl = [PF.tab(sl.tab), `${si + 1}/${c.slides.length}`].filter(Boolean).join(' · ');
+        const k = secKey(sl), kn = secN.get(k), ki = (secI.get(k) || 0) + 1; secI.set(k, ki);
+        const rl = [PF.tab(sl.tab), kn > 1 ? `${ki}/${kn}` : ''].filter(Boolean).join(' · ');
         const scenes = slideScenes(sl, sid, { chapter: c.title || '', rlabel: rl, foot, auto, err });
         scenes.forEach((s) => used.add(s.id));
         slides.push({ sl, scenes });
@@ -515,7 +538,7 @@
       tocItems.push({ c, chId, n: slides.reduce((a, x) => a + x.scenes.length, 0) });
     });
     const retro = buildRetro(p.retro || {}, p, foot, auto);
-    const end = endScene(p, foot, ext, auto);
+    const end = endScene(p, foot, ext, auto, lesson);
     const toc = tocScene(p, foot, tocItems, retro, auto);
     const all = [cover, toc, ...chapterScenes, ...retro, end];
     PF.noteFill(all, { fill: !auto });                                  // 예전 데이터 자동 구성은 채움률 참고를 내지 않음(다시 빌드 안내 1건만)
@@ -610,12 +633,13 @@
   }
 
   // 맺음: 상세 기술문서(전문) · 바깥 링크 · 포트폴리오. 덱 → 상세 문서 링크는 표지와 여기에만(G1)
-  function endScene(p, foot, ext, auto) {
+  //   배운 점(인수인계서 틀 11): 문서 머리 요약의 "배운 점:" 한 줄을 제목·한 줄 소개 아래에 — 네 덱이 같은 자리에서 끝남
+  function endScene(p, foot, ext, auto, lesson = '') {
     const card = (k, label, href, kind, visible, primary) => `<div class="lcard${primary ? ' primary' : ''}">${link({ href, kind, label: `<span class="lc-k">${esc(k)}</span><span class="lc-t">${esc(label)}</span><span class="url">${esc(visible)}</span>` })}</div>`;
     const make = () => {
       const s = PF.scene({ id: 'end', tpl: 'EN', kind: 'bare', foot, sec: PF.t('deck.more'), stitle: PF.t('deck.end-title') });
       PF.body(s).innerHTML = `<div class="toprow"><span class="pf-eyebrow">${esc(PF.t('en.more'))}</span><span class="rl">${esc(PF.teamLabel(p.team))}</span></div>
-        <div class="en-mid"><div><h2 class="en-t">${esc(p.title)}</h2>${p.tagline ? `<p class="tagline">${inline(p.tagline)}</p>` : ''}${DOT}</div>
+        <div class="en-mid"><div><h2 class="en-t">${esc(p.title)}</h2>${p.tagline ? `<p class="tagline">${inline(p.tagline)}</p>` : ''}${DOT}${lesson ? `<div class="rt-lesson en-lesson"><span class="labelchip accent">${esc(PF.label('배운 점'))}</span><p>${lesson}</p></div>` : ''}</div>
         <div class="en-links">${card(PF.t('en.techdoc'), PF.t('deck.end-doc'), PF.docUrl(p.id), 'page', PF.visibleUrl(PF.docUrl(p.id)), true)}
           ${ext.map((l) => card(PF.extEn(l), l.label, l.url, 'external', shortUrl(l.url))).join('')}
           ${card(PF.t('en.portfolio'), PF.t('ui.back'), 'index.html', 'page', PF.visibleUrl(''))}</div></div>`;

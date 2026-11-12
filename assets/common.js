@@ -149,6 +149,26 @@ const PF = (() => {
     return t;
   }
 
+  // ── 다이어그램(Mermaid) 색: 기본 연보라 대신 지금 강조색에서 만든 옅은 칸·진한 테두리(발표 덱·상세 문서 공용) ──
+  //   판은 늘 밝으므로 글자는 진한 회색 그대로(다이어그램 글자 #333 대비 기준). 문서의 %%{init}%%가 있으면 그쪽이 이김(Mermaid 규칙)
+  function cssColor(v) {
+    const el = document.createElement('i'); el.style.color = v; el.style.display = 'none'; document.body.appendChild(el);
+    const c = getComputedStyle(el).color; el.remove();
+    const m = /rgba?\(([\d.]+),\s*([\d.]+),\s*([\d.]+)/.exec(c);
+    return m ? '#' + [m[1], m[2], m[3]].map((x) => Math.round(+x).toString(16).padStart(2, '0')).join('') : '';
+  }
+  function mermaidTheme() {
+    const a = cssColor('var(--accent, #2F6FEB)') || '#2F6FEB';
+    const tint = (pct) => cssColor(`color-mix(in srgb, ${a} ${pct}%, #ffffff)`) || '#EEF2FB';
+    const deep = cssColor(`color-mix(in srgb, ${a} 70%, #1a1f2b)`) || a;
+    return { theme: 'base', themeVariables: {
+      fontFamily: 'Pretendard, sans-serif', primaryColor: tint(10), primaryBorderColor: a, primaryTextColor: '#1F2430',
+      secondaryColor: tint(5), secondaryBorderColor: deep, secondaryTextColor: '#1F2430', tertiaryColor: '#ffffff', tertiaryBorderColor: tint(45),
+      lineColor: deep, textColor: '#2B3240', mainBkg: tint(10), nodeBorder: a, clusterBkg: tint(4), clusterBorder: tint(45), edgeLabelBackground: '#ffffff',
+      actorBkg: tint(10), actorBorder: a, actorTextColor: '#1F2430', signalColor: deep, signalTextColor: '#1F2430', labelBoxBkgColor: tint(10), labelBoxBorderColor: a,
+      noteBkgColor: '#FFF8E1', noteBorderColor: '#E0C26A', noteTextColor: '#3A3220', classText: '#1F2430', activationBkgColor: tint(18), activationBorderColor: a } };
+  }
+
   // ── 안내 문구(옛 렌더러와 같은 글) ──
   const FILE_HELP = `<p>이 페이지는 <code>data/</code>와 기술 문서를 불러와 그리기 때문에, 파일을 더블클릭해서는 열리지 않습니다.</p>
       <ol>
@@ -176,6 +196,6 @@ const PF = (() => {
   const { t, tab, label, load: loadStrings, report: stringsReport } = PFStr;
 
   return { esc, inline, isUrl, shortUrl, loadJSON, loadText, encodePath, srcPath, projectUrl, docUrl, siteBase, visibleUrl, metaValue, teamLabel,
-           slugger, normTitle, resolveHeading, keyOk, deckSceneFor, headingsOf, ICON, NEWTAB, link, markNewTab, themeTokens, applyTheme, contrast, hexRgb,
+           slugger, normTitle, resolveHeading, keyOk, deckSceneFor, headingsOf, ICON, NEWTAB, link, markNewTab, themeTokens, applyTheme, mermaidTheme, contrast, hexRgb,
            FILE_HELP, noDataHtml, isFile, notice, guardFileProtocol, noData, t, tab, label, loadStrings, stringsReport };
 })();

@@ -271,13 +271,19 @@ table.md-table code { font-size: max(.86em, 12px); }   /* 머리 칸(13px) 안 �
 .dc-res-t { display: flex; flex-direction: column; gap: 6px; flex: 1 1 0; min-width: 0; justify-content: center; }
 .dc-res .vis { flex: 0 0 34%; min-height: 0; max-height: 200px; display: flex; }
 .dc-res .vis .vbox { width: 100%; }
+/* ── 맺음 장면의 "배운 점" 한 줄(문서 머리 요약의 배운 점 그대로) — 네 덱 같은 자리 ── */
+.rt-lesson { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 16px; align-items: center; padding: 14px 20px; margin-top: 24px;
+             background: var(--accent-soft); border: 1.5px solid var(--accent-fill); border-radius: calc(var(--radius) * .7); }
+.rt-lesson p { font-size: 18px; font-weight: 700; line-height: 1.5; color: var(--ink); }
+.rt-lesson .labelchip { padding: 6px 12px; font-size: 14px; }
 /* ── 결과 숫자 틀(l-result): 숫자 카드 4·4·4 + 아래 그림 띠 12 ── */
 /* 카드 줄은 제 높이 그대로, 그림 칸은 재는 동안(.pf-sizing)만 남은 높이 전체 — 잰 뒤에는 그 크기 그대로(.dk-stack과 같은 방식) */
 .rs { display: grid; grid-template-rows: auto auto; gap: 16px; width: 100%; min-height: 0; }
 .pf-sizing .rs { grid-template-rows: auto minmax(0, 1fr); }
 .rs.nopic, .pf-sizing .rs.nopic { grid-template-rows: auto; }
 .rs-stats { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: 16px; }
-.rs-card { display: flex; flex-direction: column; gap: 8px; padding: 18px 22px; background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--accent-fill); border-radius: calc(var(--radius) * .7); min-width: 0; }
+/* 카드 모양은 덱 전체 공통(.ncard·.fstep과 같은 판: 카드 색 · 얇은 선 · 모서리 .7) — 강조색은 큰 숫자 글자에만 */
+.rs-card { display: flex; flex-direction: column; gap: 8px; padding: 18px 22px; background: var(--card); border: 1px solid var(--line); border-radius: calc(var(--radius) * .7); min-width: 0; }
 .rs-lb { font-size: 14px; font-weight: 700; line-height: 1.4; color: var(--muted); }
 .rs-big { font-size: 34px; font-weight: 800; line-height: 1.15; letter-spacing: -.02em; color: var(--accent-ink); font-variant-numeric: lining-nums; }
 .rs-big strong, .rs-big b { font-weight: inherit; }
@@ -303,7 +309,7 @@ table.md-table code { font-size: max(.86em, 12px); }   /* 머리 칸(13px) 안 �
 .tm-me { display: inline-block; font-size: 12px; font-weight: 800; line-height: 1; padding: 5px 9px; border-radius: var(--pill); background: var(--accent-fill); color: #fff; }
 .tm-part { font-size: 15px; line-height: 1.55; color: var(--ink); }
 .tm-see { font-weight: 700; color: var(--accent-ink); }
-.tm-r { padding: 20px 24px; background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--accent-fill); border-radius: calc(var(--radius) * .7); }
+.tm-r { padding: 20px 24px; background: var(--card); border: 1px solid var(--line); border-radius: calc(var(--radius) * .7); }   /* 덱 공통 카드 판 */
 .tm-mine { list-style: none; display: flex; flex-direction: column; gap: 12px; }
 .tm-mine li { position: relative; padding-left: 18px; font-size: 17px; line-height: 1.5; color: var(--ink); }
 .tm-mine li::before { content: ''; position: absolute; left: 0; top: .62em; width: 7px; height: 7px; border-radius: 2px; background: var(--accent-fill); }
@@ -311,10 +317,10 @@ table.md-table code { font-size: max(.86em, 12px); }   /* 머리 칸(13px) 안 �
 .tm.tight .tm-row { padding: 10px 14px; }
 .tm.tight .tm-part { font-size: 14px; }
 .tm.tight .tm-mine li { font-size: 15px; }
-/* 그림 오른쪽 변형: 왼쪽(선택지·결정·결과) 7 : 오른쪽 그림 5, 그림은 본문 높이 전체 */
+/* 그림 오른쪽 변형: 왼쪽(선택지·결정·결과) : 오른쪽 그림 = 1 : 1(--pic로 조절). 가로로 넓은 그림이 5/12 칸에서 낮아져 장면 위아래가 비던 것을 막음 */
 .dc.side { flex-direction: row; gap: 24px; align-items: stretch; }
-.dc.side .dc-main { flex: 7 1 0; min-width: 0; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
-.dc.side .dc-pic { flex: 5 1 0; min-width: 0; min-height: 0; display: flex; align-items: center; }   /* 그림은 제 비율 그대로, 오른쪽 단 가운데 */
+.dc.side .dc-main { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+.dc.side .dc-pic { flex: var(--pic, 1) 1 0; min-width: 0; min-height: 0; display: flex; align-items: center; }   /* 그림은 제 비율 그대로, 오른쪽 단 가운데 */
 .dc.side .dc-pic .vbox { width: 100%; }
 .dc.side.tight .dc-main { gap: 10px; }
 .dc.tight { gap: 10px; }
