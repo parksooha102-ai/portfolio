@@ -1,0 +1,487 @@
+{
+ "version": 2,
+ "media": {
+  "mOdd1": {
+   "name": "ODDITY 2026-11-17 16-44-56.mp4",
+   "duration": 524.732867,
+   "width": 1920,
+   "height": 1080
+  }
+ },
+ "mediaOrder": [
+  "mOdd1"
+ ],
+ "segments": [
+  {
+   "src": "mOdd1",
+   "in": 0,
+   "out": 524.73,
+   "join": null
+  }
+ ],
+ "labels": [
+  {
+   "id": "l0",
+   "start": 0,
+   "end": 2,
+   "text": "00 인트로 영상",
+   "color": "amber",
+   "note": "우주 배경 시네마틱"
+  },
+  {
+   "id": "l1",
+   "start": 2,
+   "end": 11.5,
+   "text": "00 타이틀: 새 게임 시작",
+   "color": "amber",
+   "note": "5~8초 ODDITY 타이틀 메뉴, 7초 새 게임 확인창"
+  },
+  {
+   "id": "l2",
+   "start": 11.5,
+   "end": 24,
+   "text": "01 로비: 이동 · 조작 가이드",
+   "color": "blue",
+   "note": "17~19초 조작 가이드 팝업(WASD·Shift 달리기·Space 구르기·좌클릭 기본 공격/물체 던지기·우클릭 물체 들기·1~5 스킬)"
+  },
+  {
+   "id": "l3",
+   "start": 24,
+   "end": 28,
+   "text": "01 로비: 임무 목록",
+   "color": "blue",
+   "note": "카르카로사우루스·페르데로스·옴니노이드 3종, 보상 칩 등급 표시"
+  },
+  {
+   "id": "l4",
+   "start": 28,
+   "end": 36,
+   "text": "01 로비: 임무 이동 창 (진행 중 임무 없음)",
+   "color": "blue",
+   "note": "31~32초 \"NPC를 통해 임무를 먼저 수락하세요\""
+  },
+  {
+   "id": "l5",
+   "start": 36,
+   "end": 39.5,
+   "text": "02 증강칩 패널: 빈 상태",
+   "color": "purple",
+   "note": "칩 지급 전 — 6×6 그리드·보유 칩 목록 비어 있음"
+  },
+  {
+   "id": "l6",
+   "start": 39.5,
+   "end": 68,
+   "text": "03 훈련 구역: 기본 염동력 (칩 없음)",
+   "color": "green",
+   "note": "물체 들기·던지기, 허수아비 공격. 스킬 슬롯 5칸 비어 있음"
+  },
+  {
+   "id": "l7",
+   "start": 68,
+   "end": 79,
+   "text": "03 로비로 이동",
+   "color": "blue",
+   "note": ""
+  },
+  {
+   "id": "l8",
+   "start": 79,
+   "end": 107,
+   "text": "04 증강칩 패널: 보유 칩 · 분류 필터",
+   "color": "purple",
+   "note": "칩이 이미 지급된 상태(지급 장면 없음). 83~87 공격만(빨강), 91 유틸만(노랑), 95~103 전체"
+  },
+  {
+   "id": "l9",
+   "start": 107,
+   "end": 117,
+   "text": "04 장착: 염동 투사 → 염동 충격파",
+   "color": "purple",
+   "note": "111초 염동 투사가 1번, 117초 충격파가 2번 슬롯으로 — 가장 앞 빈 슬롯"
+  },
+  {
+   "id": "l10",
+   "start": 117,
+   "end": 122,
+   "text": "04 스킬 슬롯 순서 바꾸기 (드래그)",
+   "color": "purple",
+   "note": "119초 충격파를 1번으로 끌어 교체 → 1 충격파 · 2 투사"
+  },
+  {
+   "id": "l11",
+   "start": 122,
+   "end": 147,
+   "text": "04 장착: 아드레날린 과분비 · 보호막 · 회복",
+   "color": "purple",
+   "note": "127초 아드레날린(3번), 135초 보호막(4번), 143초 회복(5번)"
+  },
+  {
+   "id": "l12",
+   "start": 147,
+   "end": 167,
+   "text": "04 칩 교체: 보호막 해제 → 회복 · 조건 반사",
+   "color": "purple",
+   "note": "151초 4·5번 비움, 159초 회복(4번), 167초 조건 반사(5번)"
+  },
+  {
+   "id": "l13",
+   "start": 167,
+   "end": 187,
+   "text": "04 능력치 칩 배치 (그리드 빈칸 채우기)",
+   "color": "purple",
+   "note": "공격력·체력 등 능력치 칩을 그리드 가장자리에 배치. 최종 슬롯: 충격파·투사·아드레날린·회복·조건 반사"
+  },
+  {
+   "id": "l14",
+   "start": 187,
+   "end": 219,
+   "text": "05 훈련 구역: 장착 스킬 시험",
+   "color": "green",
+   "note": "192.5 충격파, 199.5 투사(아드레날린 슬롯 번쩍임), 203.5 슬롯1 쿨타임이 남은 채 즉시 완료(쿨타임 당김), 206 충격파 재사용, 217.5 슬롯1 번쩍임"
+  },
+  {
+   "id": "l15",
+   "start": 219,
+   "end": 222,
+   "text": "06 로비: 임무 수락 — 카르카로사우루스",
+   "color": "blue",
+   "note": ""
+  },
+  {
+   "id": "l16",
+   "start": 222,
+   "end": 227,
+   "text": "06 포털 · 임무 이동 확인",
+   "color": "blue",
+   "note": "224~225초 보스 정보 확인창"
+  },
+  {
+   "id": "l17",
+   "start": 227,
+   "end": 229.5,
+   "text": "06 로딩",
+   "color": "amber",
+   "note": ""
+  },
+  {
+   "id": "l18",
+   "start": 229.5,
+   "end": 231.5,
+   "text": "07 보스1 등장: 카르카로사우루스",
+   "color": "red",
+   "note": "이름 카드"
+  },
+  {
+   "id": "l19",
+   "start": 231.5,
+   "end": 262,
+   "text": "07 보스1 전투 (1)",
+   "color": "red",
+   "note": "234 투사, 244 충격파(보라 화면 연출), 246 회피(하얀 허물로 보임), 250 조건 반사 자동 회피 발동, 258 회복"
+  },
+  {
+   "id": "l20",
+   "start": 262,
+   "end": 300,
+   "text": "07 보스1 전투 (2)",
+   "color": "red",
+   "note": "265 충격파, 266~276 피격(붉은 화면), 279 투사, 278~282 물체 들기·던지기, 294 회복"
+  },
+  {
+   "id": "l21",
+   "start": 300,
+   "end": 329.5,
+   "text": "07 보스1 전투 (3) → 처치",
+   "color": "red",
+   "note": "302 조건 반사 2회째, 309 투사, 314 충격파, 320 회복, 323 슬롯1 번쩍임(쿨타임 당김), 323~324 섬광, 327~329 보스 소멸"
+  },
+  {
+   "id": "l22",
+   "start": 329.5,
+   "end": 340.5,
+   "text": "08 임무 완료: 증강칩 6개 획득",
+   "color": "green",
+   "note": "보상 칩 6개 카드(아드레날린·공격력·체력 등)"
+  },
+  {
+   "id": "l23",
+   "start": 340.5,
+   "end": 348,
+   "text": "09 로비 복귀",
+   "color": "blue",
+   "note": ""
+  },
+  {
+   "id": "l24",
+   "start": 348,
+   "end": 358,
+   "text": "10 증강칩 패널 2: 스킬 칩 전부 해제",
+   "color": "purple",
+   "note": "356초 슬롯 5칸 모두 비움"
+  },
+  {
+   "id": "l25",
+   "start": 358,
+   "end": 370,
+   "text": "10 같은 칩 2장 장착: 아드레날린 과분비 ×2",
+   "color": "purple",
+   "note": "362초 5번, 368초 4번 — 보상으로 얻은 두 번째 장. 두 장의 모양이 다름(가로 블록형 / 세로 막대형) → 문서 1.4 근거. 369초 보호막 툴팁이 잠깐 보임"
+  },
+  {
+   "id": "l26",
+   "start": 370,
+   "end": 388,
+   "text": "10 장착: 염동 폭풍 · 정당한 보복 · 크기 조절",
+   "color": "purple",
+   "note": "374 폭풍(1번), 380 정당한 보복(2번), 386 크기 조절(2번)·보복(3번). 최종: 폭풍·크기 조절·보복·아드레날린·아드레날린"
+  },
+  {
+   "id": "l27",
+   "start": 388,
+   "end": 393,
+   "text": "11 로비: 임무 수락 — 페르데로스",
+   "color": "blue",
+   "note": ""
+  },
+  {
+   "id": "l28",
+   "start": 393,
+   "end": 396.5,
+   "text": "11 로딩",
+   "color": "amber",
+   "note": ""
+  },
+  {
+   "id": "l29",
+   "start": 396.5,
+   "end": 399.5,
+   "text": "12 보스2 등장: 페르데로스",
+   "color": "red",
+   "note": "이름 카드"
+  },
+  {
+   "id": "l30",
+   "start": 399.5,
+   "end": 450,
+   "text": "12 보스2 전투 (1)",
+   "color": "red",
+   "note": "염동 폭풍 반복(400·412·424초 부근), 슬롯4·5 아드레날린 2장이 같은 시점에 반응·번쩍임, 430초 크기 조절(큰 바위)"
+  },
+  {
+   "id": "l31",
+   "start": 450,
+   "end": 511,
+   "text": "12 보스2 전투 (2) → 플레이어 사망",
+   "color": "red",
+   "note": "462·478·486·498초 크기 조절, 폭풍 소용돌이 474·484초, 510~511초 사망"
+  },
+  {
+   "id": "l32",
+   "start": 511,
+   "end": 520,
+   "text": "13 임무 실패",
+   "color": "amber",
+   "note": "검은 화면 \"임무 실패\""
+  },
+  {
+   "id": "l33",
+   "start": 520,
+   "end": 524.73,
+   "text": "14 로비 복귀 (끝)",
+   "color": "blue",
+   "note": ""
+  }
+ ],
+ "subtitles": [],
+ "zooms": [],
+ "overlays": [],
+ "styles": {
+  "기본": {
+   "font": "Pretendard",
+   "weight": 600,
+   "size": 4.5,
+   "color": "#ffffff",
+   "outline": 0.35,
+   "outlineColor": "#000000",
+   "bg": false,
+   "bgColor": "#000000",
+   "bgOpacity": 0.6,
+   "pos": "bottom"
+  },
+  "강조": {
+   "font": "Pretendard",
+   "weight": 800,
+   "size": 5,
+   "color": "#ffe14d",
+   "outline": 0.4,
+   "outlineColor": "#1a1a1a",
+   "bg": false,
+   "bgColor": "#000000",
+   "bgOpacity": 0.6,
+   "pos": "bottom"
+  },
+  "설명 박스": {
+   "font": "Pretendard",
+   "weight": 500,
+   "size": 3.6,
+   "color": "#ffffff",
+   "outline": 0,
+   "outlineColor": "#000000",
+   "bg": true,
+   "bgColor": "#101820",
+   "bgOpacity": 0.8,
+   "pos": "top"
+  }
+ },
+ "templates": {
+  "lower-third": {
+   "name": "하단 제목 바",
+   "params": {
+    "title": "설정 열기",
+    "subtitle": "환경설정 > 일반"
+   },
+   "duration": 3,
+   "animation": {
+    "in": "slide",
+    "out": "fade",
+    "dur": 0.35
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.04,
+     "y": 0.74,
+     "w": 0.36,
+     "h": 0.14,
+     "fill": "#13233F",
+     "opacity": 0.92,
+     "radius": 0.012
+    },
+    {
+     "type": "rect",
+     "x": 0.04,
+     "y": 0.74,
+     "w": 0.007,
+     "h": 0.14,
+     "fill": "#5B9BFF"
+    },
+    {
+     "type": "text",
+     "x": 0.065,
+     "y": 0.785,
+     "text": "{{title}}",
+     "size": 0.042,
+     "weight": 700,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.065,
+     "y": 0.84,
+     "text": "{{subtitle}}",
+     "size": 0.028,
+     "weight": 400,
+     "color": "#B9C7DD"
+    }
+   ]
+  },
+  "step-badge": {
+   "name": "단계 배지",
+   "params": {
+    "step": "1",
+    "label": "프로젝트 만들기"
+   },
+   "duration": 2.5,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.3
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.03,
+     "y": 0.05,
+     "w": 0.05,
+     "h": 0.089,
+     "fill": "#5B9BFF",
+     "radius": 0.02
+    },
+    {
+     "type": "text",
+     "x": 0.055,
+     "y": 0.0945,
+     "text": "{{step}}",
+     "size": 0.05,
+     "weight": 800,
+     "color": "#0B1A33",
+     "align": "center"
+    },
+    {
+     "type": "rect",
+     "x": 0.085,
+     "y": 0.058,
+     "w": 0.27,
+     "h": 0.073,
+     "fill": "#000000",
+     "opacity": 0.68,
+     "radius": 0.012
+    },
+    {
+     "type": "text",
+     "x": 0.1,
+     "y": 0.0945,
+     "text": "{{label}}",
+     "size": 0.034,
+     "weight": 600,
+     "color": "#FFFFFF"
+    }
+   ]
+  },
+  "callout": {
+   "name": "콜아웃 박스",
+   "params": {
+    "text": "여기를 클릭하세요"
+   },
+   "duration": 3,
+   "animation": {
+    "in": "rise",
+    "out": "fade",
+    "dur": 0.3
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.6,
+     "y": 0.12,
+     "w": 0.32,
+     "h": 0.09,
+     "fill": "#FFD24D",
+     "radius": 0.012
+    },
+    {
+     "type": "text",
+     "x": 0.76,
+     "y": 0.165,
+     "text": "{{text}}",
+     "size": 0.034,
+     "weight": 700,
+     "color": "#1A1A1A",
+     "align": "center"
+    }
+   ]
+  }
+ },
+ "settings": {
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "defaultJoin": {
+   "type": "cut",
+   "dur": 0,
+   "handle": "both",
+   "ease": "smooth"
+  }
+ }
+}

@@ -1,0 +1,1510 @@
+{
+ "version": 2,
+ "media": {
+  "mov": {
+   "name": "화면 기록 2026-09-18 오전 11.57.12.mov",
+   "duration": 504.891667,
+   "width": 3600,
+   "height": 2260
+  },
+  "v2": {
+   "name": "녹화_2026_09_18_11_57_18_605.mp4",
+   "duration": 484.879093,
+   "width": 1920,
+   "height": 1080
+  },
+  "v5": {
+   "name": "녹화_2026_09_18_12_08_12_336.mp4",
+   "duration": 7.105306,
+   "width": 1920,
+   "height": 1080
+  },
+  "m7gmepv": {
+   "name": "녹화_2026_09_18_12_05_57_50.mp4",
+   "duration": 113.733333,
+   "width": 1920,
+   "height": 1080
+  }
+ },
+ "mediaOrder": [
+  "mov",
+  "v2",
+  "v5",
+  "m7gmepv"
+ ],
+ "segments": [
+  {
+   "src": "mov",
+   "in": 438,
+   "out": 445,
+   "join": null
+  },
+  {
+   "src": "mov",
+   "in": 427,
+   "out": 435,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "m7gmepv",
+   "in": 29,
+   "out": 31.9,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mov",
+   "in": 313.8,
+   "out": 315.8,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mov",
+   "in": 315.8,
+   "out": 321.8,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  }
+ ],
+ "labels": [
+  {
+   "id": "l9",
+   "start": 0,
+   "end": 25.9,
+   "text": "3.5 TSV 한 줄이 상점 카드가 되기까지",
+   "color": "blue",
+   "note": "세로 쇼츠"
+  }
+ ],
+ "subtitles": [],
+ "zooms": [
+  {
+   "id": "z0",
+   "start": 0,
+   "end": 7,
+   "cx": 0.5,
+   "cy": 0.5,
+   "scale": 3.2,
+   "ramp": 0,
+   "ease": "linear"
+  },
+  {
+   "id": "z1",
+   "start": 7,
+   "end": 15,
+   "cx": 0.45,
+   "cy": 0.5,
+   "scale": 3.2,
+   "ramp": 0,
+   "ease": "linear"
+  },
+  {
+   "id": "z3",
+   "start": 15,
+   "end": 17.9,
+   "cx": 0.45,
+   "cy": 0.5,
+   "scale": 3.2,
+   "ramp": 0,
+   "ease": "linear"
+  },
+  {
+   "id": "z5",
+   "start": 17.9,
+   "end": 19.9,
+   "cx": 0.45,
+   "cy": 0.5,
+   "scale": 3.2,
+   "ramp": 0,
+   "ease": "linear"
+  },
+  {
+   "id": "z6",
+   "start": 19.9,
+   "end": 25.9,
+   "cx": 0.53,
+   "cy": 0.5,
+   "scale": 3.2,
+   "ramp": 0,
+   "ease": "linear",
+   "curve": "linear",
+   "keys": [
+    {
+     "t": 19.9,
+     "cx": 0.53,
+     "cy": 0.5
+    },
+    {
+     "t": 21.7,
+     "cx": 0.53,
+     "cy": 0.5
+    },
+    {
+     "t": 22.5,
+     "cx": 0.5,
+     "cy": 0.5,
+     "c": "ease"
+    },
+    {
+     "t": 24.8,
+     "cx": 0.5,
+     "cy": 0.5
+    }
+   ]
+  }
+ ],
+ "overlays": [
+  {
+   "id": "o2",
+   "template": "vcap2",
+   "start": 7.1,
+   "end": 14.9,
+   "params": {
+    "t": "【카드 5장 = TSV 5행】",
+    "b0": "이름·가격·순서가 표 그대로 · 카드는 행 템플릿",
+    "b1": "하나를 복제한 것"
+   }
+  },
+  {
+   "id": "o4",
+   "template": "vcap2",
+   "start": 15.1,
+   "end": 19.8,
+   "params": {
+    "t": "【곡괭이 3등급】",
+    "b0": "같은 프리팹에 TSV 값(가격·굴착력·썸네일)만",
+    "b1": "다르다 → 새 등급은 TSV 한 줄"
+   }
+  },
+  {
+   "id": "o7",
+   "template": "vcap2",
+   "start": 20,
+   "end": 25.8,
+   "params": {
+    "t": "【구매 → 사용】",
+    "b0": "포션 2개 구매(20골드 × 2, 91 → 51)",
+    "b1": "→ 바로 마시면 회복 연출이 나온다"
+   }
+  },
+  {
+   "id": "ovf",
+   "template": "vflow",
+   "start": 0,
+   "end": 7,
+   "params": {
+    "title": "TSV 한 줄 = 상점 카드 한 장",
+    "s1": "상점 목록을 적은 코드는 없다.",
+    "s2": "데이터에서 화면까지 이렇게 흐른다",
+    "n1": "새 아이템 = TSV 한 줄 + 리소스",
+    "n2": "→ 상점에 바로 나타난다",
+    "b0": "Items.tsv",
+    "x0": "한 줄 = 아이템 하나 · 이름·가격·타입·키",
+    "b1": "ItemTable",
+    "x1": "키 → 실제 리소스 · 프리팹·스프라이트 로드",
+    "b2": "ItemDef",
+    "x2": "아이템 정의 · 가격·타입·쿨타임",
+    "b3": "ShopService",
+    "x3": "가격 > 0, 환전·골드 제외 · 타입으로 탭 분류",
+    "b4": "ShopView",
+    "x4": "행 템플릿 복제 · → 상점 카드"
+   }
+  },
+  {
+   "id": "ovt1",
+   "template": "vtsv",
+   "start": 7,
+   "end": 15,
+   "params": {
+    "title": "Items.tsv",
+    "sub": "ItemType = Usable 인 행 → \"아이템\" 탭",
+    "r0c0": "ID",
+    "r0c1": "Name",
+    "r0c2": "Price",
+    "r0c3": "Type",
+    "r0c4": "PrefabKey",
+    "r1c0": "50",
+    "r1c1": "다이너마이트",
+    "r1c2": "15",
+    "r1c3": "Usable",
+    "r1c4": "Items/Usable/Dynamite",
+    "r2c0": "51",
+    "r2c1": "포션",
+    "r2c2": "20",
+    "r2c3": "Usable",
+    "r2c4": "Items/Usable/Potion",
+    "r3c0": "52",
+    "r3c1": "탐지기",
+    "r3c2": "30",
+    "r3c3": "Usable",
+    "r3c4": "Items/Usable/Detector",
+    "r4c0": "53",
+    "r4c1": "지뢰",
+    "r4c2": "25",
+    "r4c3": "Usable",
+    "r4c4": "Items/Usable/Mine",
+    "r5c0": "54",
+    "r5c1": "횃불",
+    "r5c2": "5",
+    "r5c3": "Usable",
+    "r5c4": "Items/Usable/Torch"
+   }
+  },
+  {
+   "id": "ovt2",
+   "template": "vtsv",
+   "start": 15,
+   "end": 19.9,
+   "params": {
+    "title": "Items.tsv",
+    "sub": "ItemType = Pickaxe 인 행 → \"곡괭이\" 탭 · 프리팹은 모두 같다",
+    "r0c0": "ID",
+    "r0c1": "Name",
+    "r0c2": "Price",
+    "r0c3": "DigPower",
+    "r0c4": "PrefabKey",
+    "r1c0": "1",
+    "r1c1": "청동 채굴 키트",
+    "r1c2": "150",
+    "r1c3": "2",
+    "r1c4": "Items/Pickaxe/Pickaxe",
+    "r2c0": "2",
+    "r2c1": "은 채굴 키트",
+    "r2c2": "400",
+    "r2c3": "4",
+    "r2c4": "Items/Pickaxe/Pickaxe",
+    "r3c0": "3",
+    "r3c1": "금 채굴 키트",
+    "r3c2": "750",
+    "r3c3": "8",
+    "r3c4": "Items/Pickaxe/Pickaxe",
+    "r4c0": "",
+    "r4c1": "",
+    "r4c2": "",
+    "r4c3": "",
+    "r4c4": "",
+    "r5c0": "",
+    "r5c1": "",
+    "r5c2": "",
+    "r5c3": "",
+    "r5c4": ""
+   }
+  },
+  {
+   "id": "o8",
+   "template": "vhead",
+   "start": 0,
+   "end": 25.9,
+   "params": {
+    "l1": "FOLK SACK · 기술문서",
+    "l2": "3.5 TSV 한 줄이 상점 카드가 되기까지"
+   }
+  }
+ ],
+ "styles": {
+  "기본": {
+   "font": "Pretendard",
+   "weight": 600,
+   "size": 4.5,
+   "color": "#ffffff",
+   "outline": 0.35,
+   "outlineColor": "#000000",
+   "bg": false,
+   "bgColor": "#000000",
+   "bgOpacity": 0.6,
+   "pos": "bottom"
+  },
+  "강조": {
+   "font": "Pretendard",
+   "weight": 800,
+   "size": 5,
+   "color": "#ffe14d",
+   "outline": 0.4,
+   "outlineColor": "#1a1a1a",
+   "bg": false,
+   "bgColor": "#000000",
+   "bgOpacity": 0.6,
+   "pos": "bottom"
+  },
+  "설명 박스": {
+   "font": "Pretendard",
+   "weight": 500,
+   "size": 3.6,
+   "color": "#ffffff",
+   "outline": 0,
+   "outlineColor": "#000000",
+   "bg": true,
+   "bgColor": "#101820",
+   "bgOpacity": 0.8,
+   "pos": "top"
+  },
+  "제목": {
+   "font": "Pretendard",
+   "weight": 800,
+   "size": 5,
+   "color": "#ffe14d",
+   "outline": 0.4,
+   "outlineColor": "#1a1a1a",
+   "bg": false,
+   "bgColor": "#000000",
+   "bgOpacity": 0.6,
+   "pos": "top"
+  },
+  "설명": {
+   "font": "Pretendard",
+   "weight": 600,
+   "size": 4.2,
+   "color": "#ffffff",
+   "outline": 0,
+   "outlineColor": "#000000",
+   "bg": true,
+   "bgColor": "#0E1420",
+   "bgOpacity": 0.75,
+   "pos": "bottom"
+  }
+ },
+ "templates": {
+  "lower-third": {
+   "name": "하단 제목 바",
+   "params": {
+    "title": "설정 열기",
+    "subtitle": "환경설정 > 일반"
+   },
+   "duration": 3,
+   "animation": {
+    "in": "slide",
+    "out": "fade",
+    "dur": 0.35
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.04,
+     "y": 0.74,
+     "w": 0.36,
+     "h": 0.14,
+     "fill": "#13233F",
+     "opacity": 0.92,
+     "radius": 0.012
+    },
+    {
+     "type": "rect",
+     "x": 0.04,
+     "y": 0.74,
+     "w": 0.007,
+     "h": 0.14,
+     "fill": "#5B9BFF"
+    },
+    {
+     "type": "text",
+     "x": 0.065,
+     "y": 0.785,
+     "text": "{{title}}",
+     "size": 0.042,
+     "weight": 700,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.065,
+     "y": 0.84,
+     "text": "{{subtitle}}",
+     "size": 0.028,
+     "weight": 400,
+     "color": "#B9C7DD"
+    }
+   ]
+  },
+  "step-badge": {
+   "name": "단계 배지",
+   "params": {
+    "step": "1",
+    "label": "프로젝트 만들기"
+   },
+   "duration": 2.5,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.3
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.03,
+     "y": 0.05,
+     "w": 0.05,
+     "h": 0.089,
+     "fill": "#5B9BFF",
+     "radius": 0.02
+    },
+    {
+     "type": "text",
+     "x": 0.055,
+     "y": 0.0945,
+     "text": "{{step}}",
+     "size": 0.05,
+     "weight": 800,
+     "color": "#0B1A33",
+     "align": "center"
+    },
+    {
+     "type": "rect",
+     "x": 0.085,
+     "y": 0.058,
+     "w": 0.27,
+     "h": 0.073,
+     "fill": "#000000",
+     "opacity": 0.68,
+     "radius": 0.012
+    },
+    {
+     "type": "text",
+     "x": 0.1,
+     "y": 0.0945,
+     "text": "{{label}}",
+     "size": 0.034,
+     "weight": 600,
+     "color": "#FFFFFF"
+    }
+   ]
+  },
+  "callout": {
+   "name": "콜아웃 박스",
+   "params": {
+    "text": "여기를 클릭하세요"
+   },
+   "duration": 3,
+   "animation": {
+    "in": "rise",
+    "out": "fade",
+    "dur": 0.3
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.6,
+     "y": 0.12,
+     "w": 0.32,
+     "h": 0.09,
+     "fill": "#FFD24D",
+     "radius": 0.012
+    },
+    {
+     "type": "text",
+     "x": 0.76,
+     "y": 0.165,
+     "text": "{{text}}",
+     "size": 0.034,
+     "weight": 700,
+     "color": "#1A1A1A",
+     "align": "center"
+    }
+   ]
+  },
+  "vhead": {
+   "name": "세로 헤더",
+   "params": {
+    "l1": "",
+    "l2": ""
+   },
+   "duration": 3,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.3
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.05,
+     "y": 0.07,
+     "w": 0.74,
+     "h": 0.072,
+     "fill": "#000000",
+     "opacity": 0.62,
+     "radius": 0.006
+    },
+    {
+     "type": "rect",
+     "x": 0.05,
+     "y": 0.07,
+     "w": 0.011,
+     "h": 0.072,
+     "fill": "#FFD24D"
+    },
+    {
+     "type": "text",
+     "x": 0.078,
+     "y": 0.0885,
+     "text": "{{l1}}",
+     "size": 0.0155,
+     "weight": 600,
+     "color": "#B9C7DD"
+    },
+    {
+     "type": "text",
+     "x": 0.078,
+     "y": 0.1205,
+     "text": "{{l2}}",
+     "size": 0.024,
+     "weight": 800,
+     "color": "#FFFFFF"
+    }
+   ]
+  },
+  "vcap0": {
+   "name": "세로 자막 0줄",
+   "params": {
+    "t": ""
+   },
+   "duration": 3,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.15
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.05,
+     "y": 0.723,
+     "w": 0.86,
+     "h": 0.067,
+     "fill": "#0E1420",
+     "opacity": 0.82,
+     "radius": 0.008
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.7565,
+     "text": "{{t}}",
+     "size": 0.028,
+     "weight": 800,
+     "color": "#FFE14D",
+     "align": "center"
+    }
+   ]
+  },
+  "vcap1": {
+   "name": "세로 자막 1줄",
+   "params": {
+    "t": ""
+   },
+   "duration": 3,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.15
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.05,
+     "y": 0.692,
+     "w": 0.86,
+     "h": 0.098,
+     "fill": "#0E1420",
+     "opacity": 0.82,
+     "radius": 0.008
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.7255,
+     "text": "{{t}}",
+     "size": 0.028,
+     "weight": 800,
+     "color": "#FFE14D",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.7595,
+     "text": "{{b0}}",
+     "size": 0.024,
+     "weight": 600,
+     "color": "#FFFFFF",
+     "align": "center"
+    }
+   ]
+  },
+  "vcap2": {
+   "name": "세로 자막 2줄",
+   "params": {
+    "t": ""
+   },
+   "duration": 3,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.15
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.05,
+     "y": 0.661,
+     "w": 0.86,
+     "h": 0.129,
+     "fill": "#0E1420",
+     "opacity": 0.82,
+     "radius": 0.008
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.6945,
+     "text": "{{t}}",
+     "size": 0.028,
+     "weight": 800,
+     "color": "#FFE14D",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.7285,
+     "text": "{{b0}}",
+     "size": 0.024,
+     "weight": 600,
+     "color": "#FFFFFF",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.7595,
+     "text": "{{b1}}",
+     "size": 0.024,
+     "weight": 600,
+     "color": "#FFFFFF",
+     "align": "center"
+    }
+   ]
+  },
+  "vcap3": {
+   "name": "세로 자막 3줄",
+   "params": {
+    "t": ""
+   },
+   "duration": 3,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.15
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.05,
+     "y": 0.63,
+     "w": 0.86,
+     "h": 0.16,
+     "fill": "#0E1420",
+     "opacity": 0.82,
+     "radius": 0.008
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.6635,
+     "text": "{{t}}",
+     "size": 0.028,
+     "weight": 800,
+     "color": "#FFE14D",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.6975,
+     "text": "{{b0}}",
+     "size": 0.024,
+     "weight": 600,
+     "color": "#FFFFFF",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.7285,
+     "text": "{{b1}}",
+     "size": 0.024,
+     "weight": 600,
+     "color": "#FFFFFF",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.7595,
+     "text": "{{b2}}",
+     "size": 0.024,
+     "weight": 600,
+     "color": "#FFFFFF",
+     "align": "center"
+    }
+   ]
+  },
+  "vcap4": {
+   "name": "세로 자막 4줄",
+   "params": {
+    "t": ""
+   },
+   "duration": 3,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.15
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.05,
+     "y": 0.599,
+     "w": 0.86,
+     "h": 0.191,
+     "fill": "#0E1420",
+     "opacity": 0.82,
+     "radius": 0.008
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.6325,
+     "text": "{{t}}",
+     "size": 0.028,
+     "weight": 800,
+     "color": "#FFE14D",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.6665,
+     "text": "{{b0}}",
+     "size": 0.024,
+     "weight": 600,
+     "color": "#FFFFFF",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.6975,
+     "text": "{{b1}}",
+     "size": 0.024,
+     "weight": 600,
+     "color": "#FFFFFF",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.7285,
+     "text": "{{b2}}",
+     "size": 0.024,
+     "weight": 600,
+     "color": "#FFFFFF",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.7595,
+     "text": "{{b3}}",
+     "size": 0.024,
+     "weight": 600,
+     "color": "#FFFFFF",
+     "align": "center"
+    }
+   ]
+  },
+  "vcard": {
+   "name": "세로 엔딩 카드",
+   "params": {},
+   "duration": 4,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.4
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0,
+     "y": 0,
+     "w": 1,
+     "h": 1,
+     "fill": "#0E1420",
+     "opacity": 0.97
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.43,
+     "text": "{{l1}}",
+     "size": 0.04,
+     "weight": 800,
+     "color": "#FFFFFF",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.485,
+     "text": "{{l2}}",
+     "size": 0.021,
+     "weight": 500,
+     "color": "#D5DEEA",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.515,
+     "text": "{{l3}}",
+     "size": 0.021,
+     "weight": 500,
+     "color": "#D5DEEA",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.565,
+     "text": "{{l4}}",
+     "size": 0.016,
+     "weight": 500,
+     "color": "#8FA0B8",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.587,
+     "text": "{{l5}}",
+     "size": 0.016,
+     "weight": 500,
+     "color": "#8FA0B8",
+     "align": "center"
+    }
+   ]
+  },
+  "vflow": {
+   "name": "세로 흐름 카드",
+   "params": {},
+   "duration": 7,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.3
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0,
+     "y": 0,
+     "w": 1,
+     "h": 1,
+     "fill": "#0E1420",
+     "opacity": 0.97
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.19,
+     "text": "{{title}}",
+     "size": 0.03,
+     "weight": 800,
+     "color": "#FFFFFF",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.225,
+     "text": "{{s1}}",
+     "size": 0.017,
+     "weight": 500,
+     "color": "#B9C7DD",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.248,
+     "text": "{{s2}}",
+     "size": 0.017,
+     "weight": 500,
+     "color": "#B9C7DD",
+     "align": "center"
+    },
+    {
+     "type": "rect",
+     "x": 0.12,
+     "y": 0.285,
+     "w": 0.76,
+     "h": 0.072,
+     "fill": "#16233A",
+     "opacity": 1,
+     "radius": 0.008,
+     "stroke": "#FFE14D",
+     "strokeWidth": 0.002
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.309,
+     "text": "{{b0}}",
+     "size": 0.022,
+     "weight": 800,
+     "color": "#FFE14D",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.33699999999999997,
+     "text": "{{x0}}",
+     "size": 0.0155,
+     "weight": 500,
+     "color": "#FFFFFF",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.3685,
+     "text": "↓",
+     "size": 0.018,
+     "weight": 800,
+     "color": "#8FA0B8",
+     "align": "center"
+    },
+    {
+     "type": "rect",
+     "x": 0.12,
+     "y": 0.38,
+     "w": 0.76,
+     "h": 0.072,
+     "fill": "#16233A",
+     "opacity": 1,
+     "radius": 0.008,
+     "stroke": "#3B5378",
+     "strokeWidth": 0.002
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.404,
+     "text": "{{b1}}",
+     "size": 0.022,
+     "weight": 800,
+     "color": "#FFE14D",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.432,
+     "text": "{{x1}}",
+     "size": 0.0155,
+     "weight": 500,
+     "color": "#FFFFFF",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.4635,
+     "text": "↓",
+     "size": 0.018,
+     "weight": 800,
+     "color": "#8FA0B8",
+     "align": "center"
+    },
+    {
+     "type": "rect",
+     "x": 0.12,
+     "y": 0.475,
+     "w": 0.76,
+     "h": 0.072,
+     "fill": "#16233A",
+     "opacity": 1,
+     "radius": 0.008,
+     "stroke": "#3B5378",
+     "strokeWidth": 0.002
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.499,
+     "text": "{{b2}}",
+     "size": 0.022,
+     "weight": 800,
+     "color": "#FFE14D",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.527,
+     "text": "{{x2}}",
+     "size": 0.0155,
+     "weight": 500,
+     "color": "#FFFFFF",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.5585,
+     "text": "↓",
+     "size": 0.018,
+     "weight": 800,
+     "color": "#8FA0B8",
+     "align": "center"
+    },
+    {
+     "type": "rect",
+     "x": 0.12,
+     "y": 0.5700000000000001,
+     "w": 0.76,
+     "h": 0.072,
+     "fill": "#16233A",
+     "opacity": 1,
+     "radius": 0.008,
+     "stroke": "#3B5378",
+     "strokeWidth": 0.002
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.5940000000000001,
+     "text": "{{b3}}",
+     "size": 0.022,
+     "weight": 800,
+     "color": "#FFE14D",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.6220000000000001,
+     "text": "{{x3}}",
+     "size": 0.0155,
+     "weight": 500,
+     "color": "#FFFFFF",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.6535000000000001,
+     "text": "↓",
+     "size": 0.018,
+     "weight": 800,
+     "color": "#8FA0B8",
+     "align": "center"
+    },
+    {
+     "type": "rect",
+     "x": 0.12,
+     "y": 0.665,
+     "w": 0.76,
+     "h": 0.072,
+     "fill": "#16233A",
+     "opacity": 1,
+     "radius": 0.008,
+     "stroke": "#FFE14D",
+     "strokeWidth": 0.002
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.6890000000000001,
+     "text": "{{b4}}",
+     "size": 0.022,
+     "weight": 800,
+     "color": "#FFE14D",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.7170000000000001,
+     "text": "{{x4}}",
+     "size": 0.0155,
+     "weight": 500,
+     "color": "#FFFFFF",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.77,
+     "text": "{{n1}}",
+     "size": 0.021,
+     "weight": 800,
+     "color": "#FFE14D",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.8,
+     "text": "{{n2}}",
+     "size": 0.021,
+     "weight": 800,
+     "color": "#FFE14D",
+     "align": "center"
+    }
+   ]
+  },
+  "vtsv": {
+   "name": "세로 TSV 패널",
+   "params": {},
+   "duration": 8,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.25
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.04,
+     "y": 0.148,
+     "w": 0.92,
+     "h": 0.14,
+     "fill": "#0E1420",
+     "opacity": 0.9,
+     "radius": 0.008,
+     "stroke": "#FFE14D",
+     "strokeWidth": 0.0015
+    },
+    {
+     "type": "text",
+     "x": 0.075,
+     "y": 0.165,
+     "text": "{{title}}",
+     "size": 0.018,
+     "weight": 800,
+     "color": "#FFE14D"
+    },
+    {
+     "type": "text",
+     "x": 0.27,
+     "y": 0.166,
+     "text": "{{sub}}",
+     "size": 0.0118,
+     "weight": 500,
+     "color": "#B9C7DD"
+    },
+    {
+     "type": "text",
+     "x": 0.075,
+     "y": 0.187,
+     "text": "{{r0c0}}",
+     "size": 0.0112,
+     "weight": 700,
+     "color": "#8FA0B8"
+    },
+    {
+     "type": "text",
+     "x": 0.135,
+     "y": 0.187,
+     "text": "{{r0c1}}",
+     "size": 0.0112,
+     "weight": 700,
+     "color": "#8FA0B8"
+    },
+    {
+     "type": "text",
+     "x": 0.36,
+     "y": 0.187,
+     "text": "{{r0c2}}",
+     "size": 0.0112,
+     "weight": 700,
+     "color": "#8FA0B8"
+    },
+    {
+     "type": "text",
+     "x": 0.45,
+     "y": 0.187,
+     "text": "{{r0c3}}",
+     "size": 0.0112,
+     "weight": 700,
+     "color": "#8FA0B8"
+    },
+    {
+     "type": "text",
+     "x": 0.585,
+     "y": 0.187,
+     "text": "{{r0c4}}",
+     "size": 0.0112,
+     "weight": 700,
+     "color": "#8FA0B8"
+    },
+    {
+     "type": "text",
+     "x": 0.075,
+     "y": 0.2055,
+     "text": "{{r1c0}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.135,
+     "y": 0.2055,
+     "text": "{{r1c1}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.36,
+     "y": 0.2055,
+     "text": "{{r1c2}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.45,
+     "y": 0.2055,
+     "text": "{{r1c3}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.585,
+     "y": 0.2055,
+     "text": "{{r1c4}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#7FC3FF"
+    },
+    {
+     "type": "text",
+     "x": 0.075,
+     "y": 0.224,
+     "text": "{{r2c0}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.135,
+     "y": 0.224,
+     "text": "{{r2c1}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.36,
+     "y": 0.224,
+     "text": "{{r2c2}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.45,
+     "y": 0.224,
+     "text": "{{r2c3}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.585,
+     "y": 0.224,
+     "text": "{{r2c4}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#7FC3FF"
+    },
+    {
+     "type": "text",
+     "x": 0.075,
+     "y": 0.2425,
+     "text": "{{r3c0}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.135,
+     "y": 0.2425,
+     "text": "{{r3c1}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.36,
+     "y": 0.2425,
+     "text": "{{r3c2}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.45,
+     "y": 0.2425,
+     "text": "{{r3c3}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.585,
+     "y": 0.2425,
+     "text": "{{r3c4}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#7FC3FF"
+    },
+    {
+     "type": "text",
+     "x": 0.075,
+     "y": 0.261,
+     "text": "{{r4c0}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.135,
+     "y": 0.261,
+     "text": "{{r4c1}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.36,
+     "y": 0.261,
+     "text": "{{r4c2}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.45,
+     "y": 0.261,
+     "text": "{{r4c3}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.585,
+     "y": 0.261,
+     "text": "{{r4c4}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#7FC3FF"
+    },
+    {
+     "type": "text",
+     "x": 0.075,
+     "y": 0.2795,
+     "text": "{{r5c0}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.135,
+     "y": 0.2795,
+     "text": "{{r5c1}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.36,
+     "y": 0.2795,
+     "text": "{{r5c2}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.45,
+     "y": 0.2795,
+     "text": "{{r5c3}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.585,
+     "y": 0.2795,
+     "text": "{{r5c4}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#7FC3FF"
+    }
+   ]
+  }
+ },
+ "settings": {
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "defaultJoin": {
+   "type": "cut",
+   "dur": 0,
+   "handle": "both",
+   "ease": "smooth"
+  },
+  "mute": true
+ }
+}

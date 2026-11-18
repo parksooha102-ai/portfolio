@@ -1,0 +1,460 @@
+{
+    "templates":  {
+                      "vhead":  {
+                                    "name":  "세로 헤더",
+                                    "params":  {
+                                                   "l1":  "",
+                                                   "l2":  ""
+                                               },
+                                    "duration":  3,
+                                    "animation":  {
+                                                      "in":  "fade",
+                                                      "out":  "fade",
+                                                      "dur":  0.3
+                                                  },
+                                    "elements":  [
+                                                     {
+                                                         "type":  "rect",
+                                                         "x":  0.05,
+                                                         "y":  0.07,
+                                                         "w":  0.74,
+                                                         "h":  0.072,
+                                                         "fill":  "#000000",
+                                                         "opacity":  0.62,
+                                                         "radius":  0.006
+                                                     },
+                                                     {
+                                                         "type":  "rect",
+                                                         "x":  0.05,
+                                                         "y":  0.07,
+                                                         "w":  0.011,
+                                                         "h":  0.072,
+                                                         "fill":  "#FFD24D"
+                                                     },
+                                                     {
+                                                         "type":  "text",
+                                                         "x":  0.078,
+                                                         "y":  0.0885,
+                                                         "text":  "{{l1}}",
+                                                         "size":  0.0155,
+                                                         "weight":  600,
+                                                         "color":  "#B9C7DD"
+                                                     },
+                                                     {
+                                                         "type":  "text",
+                                                         "x":  0.078,
+                                                         "y":  0.1205,
+                                                         "text":  "{{l2}}",
+                                                         "size":  0.024,
+                                                         "weight":  800,
+                                                         "color":  "#FFFFFF"
+                                                     }
+                                                 ]
+                                },
+                      "vcap0":  {
+                                    "name":  "세로 자막 0줄",
+                                    "params":  {
+                                                   "t":  ""
+                                               },
+                                    "duration":  3,
+                                    "animation":  {
+                                                      "in":  "fade",
+                                                      "out":  "fade",
+                                                      "dur":  0.15
+                                                  },
+                                    "elements":  [
+                                                     {
+                                                         "type":  "rect",
+                                                         "x":  0.05,
+                                                         "y":  0.723,
+                                                         "w":  0.86,
+                                                         "h":  0.067,
+                                                         "fill":  "#0E1420",
+                                                         "opacity":  0.82,
+                                                         "radius":  0.008
+                                                     },
+                                                     {
+                                                         "type":  "text",
+                                                         "x":  0.48,
+                                                         "y":  0.7565,
+                                                         "text":  "{{t}}",
+                                                         "size":  0.028,
+                                                         "weight":  800,
+                                                         "color":  "#FFE14D",
+                                                         "align":  "center"
+                                                     }
+                                                 ]
+                                },
+                      "vcap1":  {
+                                    "name":  "세로 자막 1줄",
+                                    "params":  {
+                                                   "t":  ""
+                                               },
+                                    "duration":  3,
+                                    "animation":  {
+                                                      "in":  "fade",
+                                                      "out":  "fade",
+                                                      "dur":  0.15
+                                                  },
+                                    "elements":  [
+                                                     {
+                                                         "type":  "rect",
+                                                         "x":  0.05,
+                                                         "y":  0.692,
+                                                         "w":  0.86,
+                                                         "h":  0.098,
+                                                         "fill":  "#0E1420",
+                                                         "opacity":  0.82,
+                                                         "radius":  0.008
+                                                     },
+                                                     {
+                                                         "type":  "text",
+                                                         "x":  0.48,
+                                                         "y":  0.7255,
+                                                         "text":  "{{t}}",
+                                                         "size":  0.028,
+                                                         "weight":  800,
+                                                         "color":  "#FFE14D",
+                                                         "align":  "center"
+                                                     },
+                                                     {
+                                                         "type":  "text",
+                                                         "x":  0.48,
+                                                         "y":  0.7595,
+                                                         "text":  "{{b0}}",
+                                                         "size":  0.024,
+                                                         "weight":  600,
+                                                         "color":  "#FFFFFF",
+                                                         "align":  "center"
+                                                     }
+                                                 ]
+                                },
+                      "vcap2":  {
+                                    "name":  "세로 자막 2줄",
+                                    "params":  {
+                                                   "t":  ""
+                                               },
+                                    "duration":  3,
+                                    "animation":  {
+                                                      "in":  "fade",
+                                                      "out":  "fade",
+                                                      "dur":  0.15
+                                                  },
+                                    "elements":  [
+                                                     {
+                                                         "type":  "rect",
+                                                         "x":  0.05,
+                                                         "y":  0.661,
+                                                         "w":  0.86,
+                                                         "h":  0.129,
+                                                         "fill":  "#0E1420",
+                                                         "opacity":  0.82,
+                                                         "radius":  0.008
+                                                     },
+                                                     {
+                                                         "type":  "text",
+                                                         "x":  0.48,
+                                                         "y":  0.6945,
+                                                         "text":  "{{t}}",
+                                                         "size":  0.028,
+                                                         "weight":  800,
+                                                         "color":  "#FFE14D",
+                                                         "align":  "center"
+                                                     },
+                                                     {
+                                                         "type":  "text",
+                                                         "x":  0.48,
+                                                         "y":  0.7285,
+                                                         "text":  "{{b0}}",
+                                                         "size":  0.024,
+                                                         "weight":  600,
+                                                         "color":  "#FFFFFF",
+                                                         "align":  "center"
+                                                     },
+                                                     {
+                                                         "type":  "text",
+                                                         "x":  0.48,
+                                                         "y":  0.7595,
+                                                         "text":  "{{b1}}",
+                                                         "size":  0.024,
+                                                         "weight":  600,
+                                                         "color":  "#FFFFFF",
+                                                         "align":  "center"
+                                                     }
+                                                 ]
+                                },
+                      "vcap3":  {
+                                    "name":  "세로 자막 3줄",
+                                    "params":  {
+                                                   "t":  ""
+                                               },
+                                    "duration":  3,
+                                    "animation":  {
+                                                      "in":  "fade",
+                                                      "out":  "fade",
+                                                      "dur":  0.15
+                                                  },
+                                    "elements":  [
+                                                     {
+                                                         "type":  "rect",
+                                                         "x":  0.05,
+                                                         "y":  0.63,
+                                                         "w":  0.86,
+                                                         "h":  0.16,
+                                                         "fill":  "#0E1420",
+                                                         "opacity":  0.82,
+                                                         "radius":  0.008
+                                                     },
+                                                     {
+                                                         "type":  "text",
+                                                         "x":  0.48,
+                                                         "y":  0.6635,
+                                                         "text":  "{{t}}",
+                                                         "size":  0.028,
+                                                         "weight":  800,
+                                                         "color":  "#FFE14D",
+                                                         "align":  "center"
+                                                     },
+                                                     {
+                                                         "type":  "text",
+                                                         "x":  0.48,
+                                                         "y":  0.6975,
+                                                         "text":  "{{b0}}",
+                                                         "size":  0.024,
+                                                         "weight":  600,
+                                                         "color":  "#FFFFFF",
+                                                         "align":  "center"
+                                                     },
+                                                     {
+                                                         "type":  "text",
+                                                         "x":  0.48,
+                                                         "y":  0.7285,
+                                                         "text":  "{{b1}}",
+                                                         "size":  0.024,
+                                                         "weight":  600,
+                                                         "color":  "#FFFFFF",
+                                                         "align":  "center"
+                                                     },
+                                                     {
+                                                         "type":  "text",
+                                                         "x":  0.48,
+                                                         "y":  0.7595,
+                                                         "text":  "{{b2}}",
+                                                         "size":  0.024,
+                                                         "weight":  600,
+                                                         "color":  "#FFFFFF",
+                                                         "align":  "center"
+                                                     }
+                                                 ]
+                                },
+                      "vcap4":  {
+                                    "name":  "세로 자막 4줄",
+                                    "params":  {
+                                                   "t":  ""
+                                               },
+                                    "duration":  3,
+                                    "animation":  {
+                                                      "in":  "fade",
+                                                      "out":  "fade",
+                                                      "dur":  0.15
+                                                  },
+                                    "elements":  [
+                                                     {
+                                                         "type":  "rect",
+                                                         "x":  0.05,
+                                                         "y":  0.599,
+                                                         "w":  0.86,
+                                                         "h":  0.191,
+                                                         "fill":  "#0E1420",
+                                                         "opacity":  0.82,
+                                                         "radius":  0.008
+                                                     },
+                                                     {
+                                                         "type":  "text",
+                                                         "x":  0.48,
+                                                         "y":  0.6325,
+                                                         "text":  "{{t}}",
+                                                         "size":  0.028,
+                                                         "weight":  800,
+                                                         "color":  "#FFE14D",
+                                                         "align":  "center"
+                                                     },
+                                                     {
+                                                         "type":  "text",
+                                                         "x":  0.48,
+                                                         "y":  0.6665,
+                                                         "text":  "{{b0}}",
+                                                         "size":  0.024,
+                                                         "weight":  600,
+                                                         "color":  "#FFFFFF",
+                                                         "align":  "center"
+                                                     },
+                                                     {
+                                                         "type":  "text",
+                                                         "x":  0.48,
+                                                         "y":  0.6975,
+                                                         "text":  "{{b1}}",
+                                                         "size":  0.024,
+                                                         "weight":  600,
+                                                         "color":  "#FFFFFF",
+                                                         "align":  "center"
+                                                     },
+                                                     {
+                                                         "type":  "text",
+                                                         "x":  0.48,
+                                                         "y":  0.7285,
+                                                         "text":  "{{b2}}",
+                                                         "size":  0.024,
+                                                         "weight":  600,
+                                                         "color":  "#FFFFFF",
+                                                         "align":  "center"
+                                                     },
+                                                     {
+                                                         "type":  "text",
+                                                         "x":  0.48,
+                                                         "y":  0.7595,
+                                                         "text":  "{{b3}}",
+                                                         "size":  0.024,
+                                                         "weight":  600,
+                                                         "color":  "#FFFFFF",
+                                                         "align":  "center"
+                                                     }
+                                                 ]
+                                },
+                      "vcard":  {
+                                    "name":  "세로 엔딩 카드",
+                                    "params":  {
+
+                                               },
+                                    "duration":  4,
+                                    "animation":  {
+                                                      "in":  "fade",
+                                                      "out":  "fade",
+                                                      "dur":  0.4
+                                                  },
+                                    "elements":  [
+                                                     {
+                                                         "type":  "rect",
+                                                         "x":  0,
+                                                         "y":  0,
+                                                         "w":  1,
+                                                         "h":  1,
+                                                         "fill":  "#0E1420",
+                                                         "opacity":  0.97
+                                                     },
+                                                     {
+                                                         "type":  "text",
+                                                         "x":  0.5,
+                                                         "y":  0.43,
+                                                         "text":  "{{l1}}",
+                                                         "size":  0.04,
+                                                         "weight":  800,
+                                                         "color":  "#FFFFFF",
+                                                         "align":  "center"
+                                                     },
+                                                     {
+                                                         "type":  "text",
+                                                         "x":  0.5,
+                                                         "y":  0.485,
+                                                         "text":  "{{l2}}",
+                                                         "size":  0.021,
+                                                         "weight":  500,
+                                                         "color":  "#D5DEEA",
+                                                         "align":  "center"
+                                                     },
+                                                     {
+                                                         "type":  "text",
+                                                         "x":  0.5,
+                                                         "y":  0.515,
+                                                         "text":  "{{l3}}",
+                                                         "size":  0.021,
+                                                         "weight":  500,
+                                                         "color":  "#D5DEEA",
+                                                         "align":  "center"
+                                                     },
+                                                     {
+                                                         "type":  "text",
+                                                         "x":  0.5,
+                                                         "y":  0.565,
+                                                         "text":  "{{l4}}",
+                                                         "size":  0.016,
+                                                         "weight":  500,
+                                                         "color":  "#8FA0B8",
+                                                         "align":  "center"
+                                                     },
+                                                     {
+                                                         "type":  "text",
+                                                         "x":  0.5,
+                                                         "y":  0.587,
+                                                         "text":  "{{l5}}",
+                                                         "size":  0.016,
+                                                         "weight":  500,
+                                                         "color":  "#8FA0B8",
+                                                         "align":  "center"
+                                                     }
+                                                 ]
+                                }
+                  },
+    "styles":  {
+                   "기본":  {
+                              "font":  "Pretendard",
+                              "weight":  600,
+                              "size":  4.5,
+                              "color":  "#ffffff",
+                              "outline":  0.35,
+                              "outlineColor":  "#000000",
+                              "bg":  false,
+                              "bgColor":  "#000000",
+                              "bgOpacity":  0.6,
+                              "pos":  "bottom"
+                          },
+                   "강조":  {
+                              "font":  "Pretendard",
+                              "weight":  800,
+                              "size":  5,
+                              "color":  "#ffe14d",
+                              "outline":  0.4,
+                              "outlineColor":  "#1a1a1a",
+                              "bg":  false,
+                              "bgColor":  "#000000",
+                              "bgOpacity":  0.6,
+                              "pos":  "bottom"
+                          },
+                   "설명 박스":  {
+                                 "font":  "Pretendard",
+                                 "weight":  500,
+                                 "size":  3.6,
+                                 "color":  "#ffffff",
+                                 "outline":  0,
+                                 "outlineColor":  "#000000",
+                                 "bg":  true,
+                                 "bgColor":  "#101820",
+                                 "bgOpacity":  0.8,
+                                 "pos":  "top"
+                             },
+                   "제목":  {
+                              "font":  "Pretendard",
+                              "weight":  800,
+                              "size":  5,
+                              "color":  "#ffe14d",
+                              "outline":  0.4,
+                              "outlineColor":  "#1a1a1a",
+                              "bg":  false,
+                              "bgColor":  "#000000",
+                              "bgOpacity":  0.6,
+                              "pos":  "top"
+                          },
+                   "설명":  {
+                              "font":  "Pretendard",
+                              "weight":  600,
+                              "size":  4.2,
+                              "color":  "#ffffff",
+                              "outline":  0,
+                              "outlineColor":  "#000000",
+                              "bg":  true,
+                              "bgColor":  "#0E1420",
+                              "bgOpacity":  0.75,
+                              "pos":  "bottom"
+                          }
+               }
+}

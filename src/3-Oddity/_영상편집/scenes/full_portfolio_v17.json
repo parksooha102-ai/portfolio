@@ -1,0 +1,2421 @@
+{
+ "version": 2,
+ "media": {
+  "mOdd1": {
+   "name": "ODDITY 2026-11-17 16-44-56.mp4",
+   "duration": 524.732867,
+   "width": 1920,
+   "height": 1080
+  }
+ },
+ "mediaOrder": [
+  "mOdd1"
+ ],
+ "segments": [
+  {
+   "src": "mOdd1",
+   "in": 2,
+   "out": 3.95,
+   "join": null
+  },
+  {
+   "src": "mOdd1",
+   "in": 9,
+   "out": 11.4,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 24,
+   "out": 28,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 124.5,
+   "out": 128,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 229.5,
+   "out": 237,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 323,
+   "out": 329.5,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 331,
+   "out": 335,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 350,
+   "out": 353.5,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 375,
+   "out": 379,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 388,
+   "out": 392.5,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 396.5,
+   "out": 404,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 505,
+   "out": 516.5,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 74,
+   "out": 78.5,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 109,
+   "out": 117,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 117.05,
+   "out": 121.5,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 142.5,
+   "out": 148,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 175,
+   "out": 182,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 227.2,
+   "out": 229.3,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 392.7,
+   "out": 395.8,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 9.1,
+   "out": 11,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 518,
+   "out": 523,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  }
+ ],
+ "labels": [
+  {
+   "id": "l0",
+   "start": 0,
+   "end": 4.35,
+   "text": "0 타이틀",
+   "color": "amber",
+   "note": "개요 양식(FolkSack v13): Oddity / 장르 · 팀 규모 / 박수하 · 담당(노란색) / 기간 · 엔진"
+  },
+  {
+   "id": "l1",
+   "start": 4.35,
+   "end": 60.85,
+   "text": "A 핵심 루프",
+   "color": "blue",
+   "note": "단계당 대표 장면"
+  },
+  {
+   "id": "l2",
+   "start": 60.85,
+   "end": 97.4,
+   "text": "B 기술 설명",
+   "color": "purple",
+   "note": "3.1 칩 지급과 장착(+SkillChip·StatChip 표) → 흐름 카드(표 한 줄 = 스킬 칩 하나)"
+  },
+  {
+   "id": "l3",
+   "start": 97.4,
+   "end": 102.4,
+   "text": "C 엔딩",
+   "color": "amber",
+   "note": "B안 확정: 28종 · 기획 변경 2건 표 수정 · 팀원 스킬 2종"
+  }
+ ],
+ "subtitles": [
+  {
+   "id": "s0",
+   "start": 4.55,
+   "end": 8.25,
+   "text": "【마을】 임무 목록에서 상대할 보스를 고른다",
+   "style": "설명"
+  },
+  {
+   "id": "s1",
+   "start": 8.45,
+   "end": 11.75,
+   "text": "【장착】 증강칩을 그리드에 끼워 장착한다",
+   "style": "설명"
+  },
+  {
+   "id": "s2",
+   "start": 19.45,
+   "end": 25.75,
+   "text": "【처치】 보스를 쓰러뜨리면 임무 완료",
+   "style": "설명"
+  },
+  {
+   "id": "s3",
+   "start": 25.95,
+   "end": 29.75,
+   "text": "【보상】 임무 완료 — 증강칩 6개 획득",
+   "style": "설명"
+  },
+  {
+   "id": "s4",
+   "start": 29.95,
+   "end": 33.25,
+   "text": "【정비】 장착한 스킬 칩을 빠르게 해제하고",
+   "style": "설명"
+  },
+  {
+   "id": "s5",
+   "start": 33.45,
+   "end": 37.25,
+   "text": "【정비】 새로 얻은 칩으로 다시 장착한다",
+   "style": "설명"
+  },
+  {
+   "id": "s6",
+   "start": 37.65,
+   "end": 41.75,
+   "text": "【다음 임무】 더 강한 보스에 도전한다",
+   "style": "설명"
+  },
+  {
+   "id": "s7",
+   "start": 61.15,
+   "end": 65.25,
+   "text": "【칩 지급】 시연용 디스펜서 하나로 증강칩 28종 획득",
+   "style": "설명"
+  },
+  {
+   "id": "s8",
+   "start": 65.55,
+   "end": 73.25,
+   "text": "【장착】 염동 투사 → 1번, 염동 충격파 → 2번 — 가장 앞 빈 슬롯으로",
+   "style": "설명"
+  },
+  {
+   "id": "s9",
+   "start": 73.4,
+   "end": 77.7,
+   "text": "【슬롯 순서】 끌어서 1번 ↔ 2번을 바꾼다",
+   "style": "설명"
+  },
+  {
+   "id": "s10",
+   "start": 77.9,
+   "end": 80.3,
+   "text": "【장착 제한】 슬롯 5칸이 다 차면 6번째 스킬 칩은 경고",
+   "style": "설명"
+  },
+  {
+   "id": "s11",
+   "start": 80.4,
+   "end": 83.2,
+   "text": "【칸 수 = CellCount】 아드레날린 6칸 · 보호막 4칸 · 회복 3칸 — 표 그대로",
+   "style": "설명"
+  },
+  {
+   "id": "s12",
+   "start": 83.4,
+   "end": 90.2,
+   "text": "【능력치 칩 10종 = 표 10행】 모두 2~3칸 · 장착하면 기본값 + Value",
+   "style": "설명"
+  }
+ ],
+ "zooms": [],
+ "overlays": [
+  {
+   "id": "o22",
+   "template": "title",
+   "start": 0,
+   "end": 4.35,
+   "params": {
+    "l1": "Oddity",
+    "l2": "하이퍼 TPS · 보스 러시  ·  4인 팀 프로젝트",
+    "l3": "박수하  ·  증강칩 시스템 담당",
+    "l4": "2026.10.15 – 11.07   ·   Unity 6 · C#"
+   }
+  },
+  {
+   "id": "o23",
+   "template": "step-badge",
+   "start": 4.35,
+   "end": 11.85,
+   "params": {
+    "step": "1",
+    "label": "마을 · 증강칩 장착"
+   }
+  },
+  {
+   "id": "o24",
+   "template": "step-badge",
+   "start": 11.85,
+   "end": 25.85,
+   "params": {
+    "step": "2",
+    "label": "아레나 · 보스전"
+   }
+  },
+  {
+   "id": "o25",
+   "template": "step-badge",
+   "start": 25.85,
+   "end": 29.85,
+   "params": {
+    "step": "3",
+    "label": "보상 · 칩 획득"
+   }
+  },
+  {
+   "id": "o26",
+   "template": "step-badge",
+   "start": 29.85,
+   "end": 37.35,
+   "params": {
+    "step": "4",
+    "label": "정비"
+   }
+  },
+  {
+   "id": "o27",
+   "template": "step-badge",
+   "start": 37.35,
+   "end": 60.85,
+   "params": {
+    "step": "5",
+    "label": "더 어려운 보스"
+   }
+  },
+  {
+   "id": "o28",
+   "template": "section",
+   "start": 60.85,
+   "end": 90.3,
+   "params": {
+    "label": "3.1 사용법 — 칩 지급과 장착"
+   }
+  },
+  {
+   "id": "o29",
+   "template": "tsv_skill",
+   "start": 78.6,
+   "end": 83.3,
+   "params": {
+    "title": "SkillChip.tsv",
+    "sub": "슬롯 5칸에 든 칩 = 표 5행 (스킬 칩 18행 중)",
+    "r0c0": "Id",
+    "r0c1": "Name",
+    "r0c2": "CellCount",
+    "r0c3": "Cooldown",
+    "r0c4": "Params",
+    "r1c0": "2101",
+    "r1c1": "염동 충격파",
+    "r1c2": "4",
+    "r1c3": "12",
+    "r1c4": "Radius=8;Force=25;…",
+    "r2c0": "2106",
+    "r2c1": "염동 투사",
+    "r2c2": "5",
+    "r2c3": "12",
+    "r2c4": "Duration=4;Range=30;…",
+    "r3c0": "2405",
+    "r3c1": "아드레날린 과분비",
+    "r3c2": "6",
+    "r3c3": "1",
+    "r3c4": "Amount=1",
+    "r4c0": "2202",
+    "r4c1": "보호막",
+    "r4c2": "4",
+    "r4c3": "20",
+    "r4c4": "Shield=20;Duration=6",
+    "r5c0": "2201",
+    "r5c1": "회복",
+    "r5c2": "3",
+    "r5c3": "30",
+    "r5c4": "Amount=30"
+   }
+  },
+  {
+   "id": "o30",
+   "template": "tsv_stat",
+   "start": 83.6,
+   "end": 90.3,
+   "params": {
+    "title": "StatChip.tsv",
+    "sub": "능력치 칩 10종 = 10행 · 모두 2~3칸",
+    "r0c0": "Id",
+    "r0c1": "Name",
+    "r0c2": "CellCount",
+    "r0c3": "StatType",
+    "r0c4": "Value",
+    "r1c0": "1101",
+    "r1c1": "강화 근섬유(S)",
+    "r1c2": "2",
+    "r1c3": "Atk",
+    "r1c4": "5",
+    "r2c0": "1102",
+    "r2c1": "강화 근섬유(M)",
+    "r2c2": "3",
+    "r2c3": "Atk",
+    "r2c4": "10",
+    "r3c0": "1301",
+    "r3c1": "생체 증폭(S)",
+    "r3c2": "2",
+    "r3c3": "MaxHp",
+    "r3c4": "20",
+    "r4c0": "1302",
+    "r4c1": "생체 증폭(M)",
+    "r4c2": "3",
+    "r4c3": "MaxHp",
+    "r4c4": "40",
+    "r5c0": "1401",
+    "r5c1": "염동력 강화(S)",
+    "r5c2": "2",
+    "r5c3": "PsychoMaxMass",
+    "r5c4": "5",
+    "r6c0": "1402",
+    "r6c1": "염동력 강화(M)",
+    "r6c2": "3",
+    "r6c3": "PsychoMaxMass",
+    "r6c4": "10",
+    "r7c0": "1501",
+    "r7c1": "스태미나 강화(S)",
+    "r7c2": "2",
+    "r7c3": "MaxStamina",
+    "r7c4": "20",
+    "r8c0": "1502",
+    "r8c1": "스태미나 강화(M)",
+    "r8c2": "3",
+    "r8c3": "MaxStamina",
+    "r8c4": "40",
+    "r9c0": "1601",
+    "r9c1": "염동력 사거리 강화(S)",
+    "r9c2": "2",
+    "r9c3": "AttackRange",
+    "r9c4": "2",
+    "r10c0": "1602",
+    "r10c1": "염동력 사거리 강화(M)",
+    "r10c2": "3",
+    "r10c3": "AttackRange",
+    "r10c4": "4"
+   }
+  },
+  {
+   "id": "o31",
+   "template": "flow",
+   "start": 90.3,
+   "end": 97.4,
+   "params": {
+    "title": "표 한 줄 = 스킬 칩 하나",
+    "sub": "칩 28종(능력치 10 · 스킬 18)의 수치는 코드가 아니라 TSV 표에 있다",
+    "note": "새 스킬 = enum 1줄 + 클래스 1개 + switch 1줄 + 표 1줄",
+    "b0": "SkillChip.tsv",
+    "d0": "한 줄 = 스킬 칩 하나",
+    "e0": "쿨타임·스태미나·매개변수",
+    "b1": "AugmentationChipTable",
+    "d1": "ID로 칩 정의 보관",
+    "e1": "읽을 때 미리 검증",
+    "b2": "SkillFactory",
+    "d2": "SkillType에 맞는",
+    "e2": "스킬 클래스 생성",
+    "b3": "SuperpowerSkill",
+    "d3": "쿨타임 · TryUse 공통",
+    "e3": "Execute만 자식이",
+    "b4": "SkillCaster",
+    "d4": "숫자키 → 슬롯 TryUse",
+    "e4": "어떤 스킬인지 모른다"
+   }
+  },
+  {
+   "id": "o37",
+   "template": "card",
+   "start": 97.4,
+   "end": 102.4,
+   "params": {
+    "l1": "Oddity",
+    "l2": "증강칩 28종(능력치 10 · 스킬 18) · 기획 변경 2건을 표 수정만으로 · 팀원 스킬 2종도 같은 구조 위에",
+    "l3": "github.com/KooHoo-Dev/3rd_3D_1-3D-Project-team_odd"
+   }
+  }
+ ],
+ "styles": {
+  "기본": {
+   "font": "Pretendard",
+   "weight": 600,
+   "size": 4.5,
+   "color": "#ffffff",
+   "outline": 0.35,
+   "outlineColor": "#000000",
+   "bg": false,
+   "bgColor": "#000000",
+   "bgOpacity": 0.6,
+   "pos": "bottom"
+  },
+  "강조": {
+   "font": "Pretendard",
+   "weight": 800,
+   "size": 5,
+   "color": "#ffe14d",
+   "outline": 0.4,
+   "outlineColor": "#1a1a1a",
+   "bg": false,
+   "bgColor": "#000000",
+   "bgOpacity": 0.6,
+   "pos": "bottom"
+  },
+  "설명 박스": {
+   "font": "Pretendard",
+   "weight": 500,
+   "size": 3.6,
+   "color": "#ffffff",
+   "outline": 0,
+   "outlineColor": "#000000",
+   "bg": true,
+   "bgColor": "#101820",
+   "bgOpacity": 0.8,
+   "pos": "top"
+  },
+  "제목": {
+   "font": "Pretendard",
+   "weight": 800,
+   "size": 5,
+   "color": "#ffe14d",
+   "outline": 0.4,
+   "outlineColor": "#1a1a1a",
+   "bg": false,
+   "bgColor": "#000000",
+   "bgOpacity": 0.6,
+   "pos": "top"
+  },
+  "설명": {
+   "font": "Pretendard",
+   "weight": 600,
+   "size": 4.2,
+   "color": "#ffffff",
+   "outline": 0,
+   "outlineColor": "#000000",
+   "bg": true,
+   "bgColor": "#0E1420",
+   "bgOpacity": 0.75,
+   "pos": "bottom"
+  }
+ },
+ "templates": {
+  "lower-third": {
+   "name": "하단 제목 바",
+   "params": {
+    "title": "설정 열기",
+    "subtitle": "환경설정 > 일반"
+   },
+   "duration": 3,
+   "animation": {
+    "in": "slide",
+    "out": "fade",
+    "dur": 0.35
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.04,
+     "y": 0.74,
+     "w": 0.36,
+     "h": 0.14,
+     "fill": "#13233F",
+     "opacity": 0.92,
+     "radius": 0.012
+    },
+    {
+     "type": "rect",
+     "x": 0.04,
+     "y": 0.74,
+     "w": 0.007,
+     "h": 0.14,
+     "fill": "#5B9BFF"
+    },
+    {
+     "type": "text",
+     "x": 0.065,
+     "y": 0.785,
+     "text": "{{title}}",
+     "size": 0.042,
+     "weight": 700,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.065,
+     "y": 0.84,
+     "text": "{{subtitle}}",
+     "size": 0.028,
+     "weight": 400,
+     "color": "#B9C7DD"
+    }
+   ]
+  },
+  "step-badge": {
+   "name": "단계 배지",
+   "params": {
+    "step": "1",
+    "label": "프로젝트 만들기"
+   },
+   "duration": 2.5,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.3
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.075,
+     "y": 0.1,
+     "w": 0.05,
+     "h": 0.089,
+     "fill": "#5B9BFF",
+     "radius": 0.02
+    },
+    {
+     "type": "text",
+     "x": 0.1,
+     "y": 0.1445,
+     "text": "{{step}}",
+     "size": 0.05,
+     "weight": 800,
+     "color": "#0B1A33",
+     "align": "center"
+    },
+    {
+     "type": "rect",
+     "x": 0.13,
+     "y": 0.108,
+     "w": 0.27,
+     "h": 0.073,
+     "fill": "#000000",
+     "opacity": 0.68,
+     "radius": 0.012
+    },
+    {
+     "type": "text",
+     "x": 0.145,
+     "y": 0.1445,
+     "text": "{{label}}",
+     "size": 0.034,
+     "weight": 600,
+     "color": "#FFFFFF",
+     "align": "left"
+    }
+   ]
+  },
+  "callout": {
+   "name": "콜아웃 박스",
+   "params": {
+    "text": "여기를 클릭하세요"
+   },
+   "duration": 3,
+   "animation": {
+    "in": "rise",
+    "out": "fade",
+    "dur": 0.3
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.6,
+     "y": 0.12,
+     "w": 0.32,
+     "h": 0.09,
+     "fill": "#FFD24D",
+     "radius": 0.012
+    },
+    {
+     "type": "text",
+     "x": 0.76,
+     "y": 0.165,
+     "text": "{{text}}",
+     "size": 0.034,
+     "weight": 700,
+     "color": "#1A1A1A",
+     "align": "center"
+    }
+   ]
+  },
+  "card": {
+   "name": "풀스크린 카드",
+   "params": {
+    "l1": "",
+    "l2": "",
+    "l3": ""
+   },
+   "duration": 4,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.4
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0,
+     "y": 0,
+     "w": 1,
+     "h": 1,
+     "fill": "#0E1420",
+     "opacity": 0.97
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.42,
+     "text": "{{l1}}",
+     "size": 0.06,
+     "weight": 800,
+     "color": "#FFFFFF",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.52,
+     "text": "{{l2}}",
+     "size": 0.032,
+     "weight": 500,
+     "color": "#D5DEEA",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.59,
+     "text": "{{l3}}",
+     "size": 0.026,
+     "weight": 500,
+     "color": "#8FA0B8",
+     "align": "center"
+    }
+   ]
+  },
+  "section": {
+   "name": "섹션 배지",
+   "params": {
+    "label": ""
+   },
+   "duration": 3,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.3
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.075,
+     "y": 0.1,
+     "w": 0.33,
+     "h": 0.07,
+     "fill": "#000000",
+     "opacity": 0.62
+    },
+    {
+     "type": "rect",
+     "x": 0.075,
+     "y": 0.1,
+     "w": 0.006,
+     "h": 0.07,
+     "fill": "#FFD24D"
+    },
+    {
+     "type": "text",
+     "x": 0.093,
+     "y": 0.135,
+     "text": "{{label}}",
+     "size": 0.03,
+     "weight": 700,
+     "color": "#FFFFFF",
+     "align": "left"
+    }
+   ]
+  },
+  "title": {
+   "name": "타이틀 카드(프로젝트 개요)",
+   "params": {
+    "l1": "",
+    "l2": "",
+    "l3": "",
+    "l4": ""
+   },
+   "duration": 4,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.4
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0,
+     "y": 0,
+     "w": 1,
+     "h": 1,
+     "fill": "#0E1420",
+     "opacity": 0.97
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.36,
+     "text": "{{l1}}",
+     "size": 0.06,
+     "weight": 800,
+     "color": "#FFFFFF",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.45,
+     "text": "{{l2}}",
+     "size": 0.03,
+     "weight": 500,
+     "color": "#D5DEEA",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.535,
+     "text": "{{l3}}",
+     "size": 0.026,
+     "weight": 600,
+     "color": "#FFE14D",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.605,
+     "text": "{{l4}}",
+     "size": 0.024,
+     "weight": 500,
+     "color": "#8FA0B8",
+     "align": "center"
+    }
+   ]
+  },
+  "tsv_skill": {
+   "name": "TSV 패널 — SkillChip",
+   "params": {
+    "title": "",
+    "sub": "",
+    "r0c0": "",
+    "r0c1": "",
+    "r0c2": "",
+    "r0c3": "",
+    "r0c4": "",
+    "r1c0": "",
+    "r1c1": "",
+    "r1c2": "",
+    "r1c3": "",
+    "r1c4": "",
+    "r2c0": "",
+    "r2c1": "",
+    "r2c2": "",
+    "r2c3": "",
+    "r2c4": "",
+    "r3c0": "",
+    "r3c1": "",
+    "r3c2": "",
+    "r3c3": "",
+    "r3c4": "",
+    "r4c0": "",
+    "r4c1": "",
+    "r4c2": "",
+    "r4c3": "",
+    "r4c4": "",
+    "r5c0": "",
+    "r5c1": "",
+    "r5c2": "",
+    "r5c3": "",
+    "r5c4": ""
+   },
+   "duration": 6,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.3
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.5029,
+     "y": 0.11,
+     "w": 0.4721,
+     "h": 0.57,
+     "fill": "#0E1420",
+     "opacity": 0.92,
+     "radius": 0.012,
+     "stroke": "#ffe14d",
+     "strokeWidth": 0.002
+    },
+    {
+     "type": "text",
+     "x": 0.5279,
+     "y": 0.16,
+     "text": "{{title}}",
+     "size": 0.034,
+     "weight": 800,
+     "color": "#ffe14d",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.5279,
+     "y": 0.205,
+     "text": "{{sub}}",
+     "size": 0.022,
+     "weight": 500,
+     "color": "#9fb3c8",
+     "font": "Pretendard",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.5179,
+     "y": 0.27,
+     "text": "{{r0c0}}",
+     "size": 0.021,
+     "weight": 800,
+     "color": "#9fb3c8",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.5603,
+     "y": 0.27,
+     "text": "{{r0c1}}",
+     "size": 0.021,
+     "weight": 800,
+     "color": "#9fb3c8",
+     "font": "Pretendard",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.6723,
+     "y": 0.27,
+     "text": "{{r0c2}}",
+     "size": 0.021,
+     "weight": 800,
+     "color": "#9fb3c8",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.7422,
+     "y": 0.27,
+     "text": "{{r0c3}}",
+     "size": 0.021,
+     "weight": 800,
+     "color": "#9fb3c8",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.8057,
+     "y": 0.27,
+     "text": "{{r0c4}}",
+     "size": 0.021,
+     "weight": 800,
+     "color": "#9fb3c8",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.5179,
+     "y": 0.342,
+     "text": "{{r1c0}}",
+     "size": 0.025,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.5603,
+     "y": 0.342,
+     "text": "{{r1c1}}",
+     "size": 0.025,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Pretendard",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.6723,
+     "y": 0.342,
+     "text": "{{r1c2}}",
+     "size": 0.025,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.7422,
+     "y": 0.342,
+     "text": "{{r1c3}}",
+     "size": 0.025,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.8057,
+     "y": 0.342,
+     "text": "{{r1c4}}",
+     "size": 0.022,
+     "weight": 600,
+     "color": "#7fd1ff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.5179,
+     "y": 0.414,
+     "text": "{{r2c0}}",
+     "size": 0.025,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.5603,
+     "y": 0.414,
+     "text": "{{r2c1}}",
+     "size": 0.025,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Pretendard",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.6723,
+     "y": 0.414,
+     "text": "{{r2c2}}",
+     "size": 0.025,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.7422,
+     "y": 0.414,
+     "text": "{{r2c3}}",
+     "size": 0.025,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.8057,
+     "y": 0.414,
+     "text": "{{r2c4}}",
+     "size": 0.022,
+     "weight": 600,
+     "color": "#7fd1ff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.5179,
+     "y": 0.486,
+     "text": "{{r3c0}}",
+     "size": 0.025,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.5603,
+     "y": 0.486,
+     "text": "{{r3c1}}",
+     "size": 0.025,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Pretendard",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.6723,
+     "y": 0.486,
+     "text": "{{r3c2}}",
+     "size": 0.025,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.7422,
+     "y": 0.486,
+     "text": "{{r3c3}}",
+     "size": 0.025,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.8057,
+     "y": 0.486,
+     "text": "{{r3c4}}",
+     "size": 0.022,
+     "weight": 600,
+     "color": "#7fd1ff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.5179,
+     "y": 0.558,
+     "text": "{{r4c0}}",
+     "size": 0.025,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.5603,
+     "y": 0.558,
+     "text": "{{r4c1}}",
+     "size": 0.025,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Pretendard",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.6723,
+     "y": 0.558,
+     "text": "{{r4c2}}",
+     "size": 0.025,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.7422,
+     "y": 0.558,
+     "text": "{{r4c3}}",
+     "size": 0.025,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.8057,
+     "y": 0.558,
+     "text": "{{r4c4}}",
+     "size": 0.022,
+     "weight": 600,
+     "color": "#7fd1ff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.5179,
+     "y": 0.63,
+     "text": "{{r5c0}}",
+     "size": 0.025,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.5603,
+     "y": 0.63,
+     "text": "{{r5c1}}",
+     "size": 0.025,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Pretendard",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.6723,
+     "y": 0.63,
+     "text": "{{r5c2}}",
+     "size": 0.025,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.7422,
+     "y": 0.63,
+     "text": "{{r5c3}}",
+     "size": 0.025,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.8057,
+     "y": 0.63,
+     "text": "{{r5c4}}",
+     "size": 0.022,
+     "weight": 600,
+     "color": "#7fd1ff",
+     "font": "Consolas",
+     "align": "left"
+    }
+   ]
+  },
+  "tsv_stat": {
+   "name": "TSV 패널 — StatChip",
+   "params": {
+    "title": "",
+    "sub": "",
+    "r0c0": "",
+    "r0c1": "",
+    "r0c2": "",
+    "r0c3": "",
+    "r0c4": "",
+    "r1c0": "",
+    "r1c1": "",
+    "r1c2": "",
+    "r1c3": "",
+    "r1c4": "",
+    "r2c0": "",
+    "r2c1": "",
+    "r2c2": "",
+    "r2c3": "",
+    "r2c4": "",
+    "r3c0": "",
+    "r3c1": "",
+    "r3c2": "",
+    "r3c3": "",
+    "r3c4": "",
+    "r4c0": "",
+    "r4c1": "",
+    "r4c2": "",
+    "r4c3": "",
+    "r4c4": "",
+    "r5c0": "",
+    "r5c1": "",
+    "r5c2": "",
+    "r5c3": "",
+    "r5c4": "",
+    "r6c0": "",
+    "r6c1": "",
+    "r6c2": "",
+    "r6c3": "",
+    "r6c4": "",
+    "r7c0": "",
+    "r7c1": "",
+    "r7c2": "",
+    "r7c3": "",
+    "r7c4": "",
+    "r8c0": "",
+    "r8c1": "",
+    "r8c2": "",
+    "r8c3": "",
+    "r8c4": "",
+    "r9c0": "",
+    "r9c1": "",
+    "r9c2": "",
+    "r9c3": "",
+    "r9c4": "",
+    "r10c0": "",
+    "r10c1": "",
+    "r10c2": "",
+    "r10c3": "",
+    "r10c4": ""
+   },
+   "duration": 6,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.3
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.52,
+     "y": 0.11,
+     "w": 0.3864,
+     "h": 0.705,
+     "fill": "#0E1420",
+     "opacity": 0.92,
+     "radius": 0.012,
+     "stroke": "#ffe14d",
+     "strokeWidth": 0.002
+    },
+    {
+     "type": "text",
+     "x": 0.545,
+     "y": 0.16,
+     "text": "{{title}}",
+     "size": 0.034,
+     "weight": 800,
+     "color": "#ffe14d",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.545,
+     "y": 0.205,
+     "text": "{{sub}}",
+     "size": 0.022,
+     "weight": 500,
+     "color": "#9fb3c8",
+     "font": "Pretendard",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.535,
+     "y": 0.27,
+     "text": "{{r0c0}}",
+     "size": 0.019,
+     "weight": 800,
+     "color": "#9fb3c8",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.5724,
+     "y": 0.27,
+     "text": "{{r0c1}}",
+     "size": 0.019,
+     "weight": 800,
+     "color": "#9fb3c8",
+     "font": "Pretendard",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.6903,
+     "y": 0.27,
+     "text": "{{r0c2}}",
+     "size": 0.019,
+     "weight": 800,
+     "color": "#9fb3c8",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.7547,
+     "y": 0.27,
+     "text": "{{r0c3}}",
+     "size": 0.019,
+     "weight": 800,
+     "color": "#9fb3c8",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.8505,
+     "y": 0.27,
+     "text": "{{r0c4}}",
+     "size": 0.019,
+     "weight": 800,
+     "color": "#9fb3c8",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.535,
+     "y": 0.342,
+     "text": "{{r1c0}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.5724,
+     "y": 0.342,
+     "text": "{{r1c1}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Pretendard",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.6903,
+     "y": 0.342,
+     "text": "{{r1c2}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.7547,
+     "y": 0.342,
+     "text": "{{r1c3}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.8505,
+     "y": 0.342,
+     "text": "{{r1c4}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#7fd1ff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.535,
+     "y": 0.389,
+     "text": "{{r2c0}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.5724,
+     "y": 0.389,
+     "text": "{{r2c1}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Pretendard",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.6903,
+     "y": 0.389,
+     "text": "{{r2c2}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.7547,
+     "y": 0.389,
+     "text": "{{r2c3}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.8505,
+     "y": 0.389,
+     "text": "{{r2c4}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#7fd1ff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.535,
+     "y": 0.436,
+     "text": "{{r3c0}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.5724,
+     "y": 0.436,
+     "text": "{{r3c1}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Pretendard",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.6903,
+     "y": 0.436,
+     "text": "{{r3c2}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.7547,
+     "y": 0.436,
+     "text": "{{r3c3}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.8505,
+     "y": 0.436,
+     "text": "{{r3c4}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#7fd1ff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.535,
+     "y": 0.483,
+     "text": "{{r4c0}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.5724,
+     "y": 0.483,
+     "text": "{{r4c1}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Pretendard",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.6903,
+     "y": 0.483,
+     "text": "{{r4c2}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.7547,
+     "y": 0.483,
+     "text": "{{r4c3}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.8505,
+     "y": 0.483,
+     "text": "{{r4c4}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#7fd1ff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.535,
+     "y": 0.53,
+     "text": "{{r5c0}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.5724,
+     "y": 0.53,
+     "text": "{{r5c1}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Pretendard",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.6903,
+     "y": 0.53,
+     "text": "{{r5c2}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.7547,
+     "y": 0.53,
+     "text": "{{r5c3}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.8505,
+     "y": 0.53,
+     "text": "{{r5c4}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#7fd1ff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.535,
+     "y": 0.577,
+     "text": "{{r6c0}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.5724,
+     "y": 0.577,
+     "text": "{{r6c1}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Pretendard",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.6903,
+     "y": 0.577,
+     "text": "{{r6c2}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.7547,
+     "y": 0.577,
+     "text": "{{r6c3}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.8505,
+     "y": 0.577,
+     "text": "{{r6c4}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#7fd1ff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.535,
+     "y": 0.624,
+     "text": "{{r7c0}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.5724,
+     "y": 0.624,
+     "text": "{{r7c1}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Pretendard",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.6903,
+     "y": 0.624,
+     "text": "{{r7c2}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.7547,
+     "y": 0.624,
+     "text": "{{r7c3}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.8505,
+     "y": 0.624,
+     "text": "{{r7c4}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#7fd1ff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.535,
+     "y": 0.671,
+     "text": "{{r8c0}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.5724,
+     "y": 0.671,
+     "text": "{{r8c1}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Pretendard",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.6903,
+     "y": 0.671,
+     "text": "{{r8c2}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.7547,
+     "y": 0.671,
+     "text": "{{r8c3}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.8505,
+     "y": 0.671,
+     "text": "{{r8c4}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#7fd1ff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.535,
+     "y": 0.718,
+     "text": "{{r9c0}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.5724,
+     "y": 0.718,
+     "text": "{{r9c1}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Pretendard",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.6903,
+     "y": 0.718,
+     "text": "{{r9c2}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.7547,
+     "y": 0.718,
+     "text": "{{r9c3}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.8505,
+     "y": 0.718,
+     "text": "{{r9c4}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#7fd1ff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.535,
+     "y": 0.765,
+     "text": "{{r10c0}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.5724,
+     "y": 0.765,
+     "text": "{{r10c1}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Pretendard",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.6903,
+     "y": 0.765,
+     "text": "{{r10c2}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.7547,
+     "y": 0.765,
+     "text": "{{r10c3}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.8505,
+     "y": 0.765,
+     "text": "{{r10c4}}",
+     "size": 0.021,
+     "weight": 600,
+     "color": "#7fd1ff",
+     "font": "Consolas",
+     "align": "left"
+    }
+   ]
+  },
+  "flow": {
+   "name": "흐름 카드",
+   "params": {
+    "title": "",
+    "sub": "",
+    "note": "",
+    "b0": "",
+    "d0": "",
+    "e0": "",
+    "b1": "",
+    "d1": "",
+    "e1": "",
+    "b2": "",
+    "d2": "",
+    "e2": "",
+    "b3": "",
+    "d3": "",
+    "e3": "",
+    "b4": "",
+    "d4": "",
+    "e4": ""
+   },
+   "duration": 6,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.3
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0,
+     "y": 0,
+     "w": 1,
+     "h": 1,
+     "fill": "#0E1420",
+     "opacity": 1,
+     "radius": 0
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.2,
+     "text": "{{title}}",
+     "size": 0.05,
+     "weight": 800,
+     "color": "#ffffff",
+     "font": "Pretendard",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.27,
+     "text": "{{sub}}",
+     "size": 0.026,
+     "weight": 500,
+     "color": "#9fb3c8",
+     "font": "Pretendard",
+     "align": "center"
+    },
+    {
+     "type": "rect",
+     "x": 0.03,
+     "y": 0.38,
+     "w": 0.16,
+     "h": 0.24,
+     "fill": "#1b2636",
+     "opacity": 1,
+     "radius": 0.012,
+     "stroke": "#ffe14d",
+     "strokeWidth": 0.002
+    },
+    {
+     "type": "text",
+     "x": 0.11,
+     "y": 0.44,
+     "text": "{{b0}}",
+     "size": 0.022,
+     "weight": 800,
+     "color": "#ffe14d",
+     "font": "Consolas",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.11,
+     "y": 0.51,
+     "text": "{{d0}}",
+     "size": 0.021,
+     "weight": 500,
+     "color": "#c9d6e3",
+     "font": "Pretendard",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.11,
+     "y": 0.555,
+     "text": "{{e0}}",
+     "size": 0.021,
+     "weight": 500,
+     "color": "#c9d6e3",
+     "font": "Pretendard",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.2075,
+     "y": 0.5,
+     "text": "→",
+     "size": 0.045,
+     "weight": 800,
+     "color": "#ffe14d",
+     "font": "Pretendard",
+     "align": "center"
+    },
+    {
+     "type": "rect",
+     "x": 0.225,
+     "y": 0.38,
+     "w": 0.16,
+     "h": 0.24,
+     "fill": "#1b2636",
+     "opacity": 1,
+     "radius": 0.012,
+     "stroke": "#3d5068",
+     "strokeWidth": 0.002
+    },
+    {
+     "type": "text",
+     "x": 0.305,
+     "y": 0.44,
+     "text": "{{b1}}",
+     "size": 0.022,
+     "weight": 800,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.305,
+     "y": 0.51,
+     "text": "{{d1}}",
+     "size": 0.021,
+     "weight": 500,
+     "color": "#c9d6e3",
+     "font": "Pretendard",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.305,
+     "y": 0.555,
+     "text": "{{e1}}",
+     "size": 0.021,
+     "weight": 500,
+     "color": "#c9d6e3",
+     "font": "Pretendard",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.4025,
+     "y": 0.5,
+     "text": "→",
+     "size": 0.045,
+     "weight": 800,
+     "color": "#ffe14d",
+     "font": "Pretendard",
+     "align": "center"
+    },
+    {
+     "type": "rect",
+     "x": 0.42,
+     "y": 0.38,
+     "w": 0.16,
+     "h": 0.24,
+     "fill": "#1b2636",
+     "opacity": 1,
+     "radius": 0.012,
+     "stroke": "#3d5068",
+     "strokeWidth": 0.002
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.44,
+     "text": "{{b2}}",
+     "size": 0.022,
+     "weight": 800,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.51,
+     "text": "{{d2}}",
+     "size": 0.021,
+     "weight": 500,
+     "color": "#c9d6e3",
+     "font": "Pretendard",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.555,
+     "text": "{{e2}}",
+     "size": 0.021,
+     "weight": 500,
+     "color": "#c9d6e3",
+     "font": "Pretendard",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5975,
+     "y": 0.5,
+     "text": "→",
+     "size": 0.045,
+     "weight": 800,
+     "color": "#ffe14d",
+     "font": "Pretendard",
+     "align": "center"
+    },
+    {
+     "type": "rect",
+     "x": 0.615,
+     "y": 0.38,
+     "w": 0.16,
+     "h": 0.24,
+     "fill": "#1b2636",
+     "opacity": 1,
+     "radius": 0.012,
+     "stroke": "#3d5068",
+     "strokeWidth": 0.002
+    },
+    {
+     "type": "text",
+     "x": 0.695,
+     "y": 0.44,
+     "text": "{{b3}}",
+     "size": 0.022,
+     "weight": 800,
+     "color": "#ffffff",
+     "font": "Consolas",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.695,
+     "y": 0.51,
+     "text": "{{d3}}",
+     "size": 0.021,
+     "weight": 500,
+     "color": "#c9d6e3",
+     "font": "Pretendard",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.695,
+     "y": 0.555,
+     "text": "{{e3}}",
+     "size": 0.021,
+     "weight": 500,
+     "color": "#c9d6e3",
+     "font": "Pretendard",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.7925,
+     "y": 0.5,
+     "text": "→",
+     "size": 0.045,
+     "weight": 800,
+     "color": "#ffe14d",
+     "font": "Pretendard",
+     "align": "center"
+    },
+    {
+     "type": "rect",
+     "x": 0.81,
+     "y": 0.38,
+     "w": 0.16,
+     "h": 0.24,
+     "fill": "#1b2636",
+     "opacity": 1,
+     "radius": 0.012,
+     "stroke": "#ffe14d",
+     "strokeWidth": 0.002
+    },
+    {
+     "type": "text",
+     "x": 0.89,
+     "y": 0.44,
+     "text": "{{b4}}",
+     "size": 0.022,
+     "weight": 800,
+     "color": "#ffe14d",
+     "font": "Consolas",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.89,
+     "y": 0.51,
+     "text": "{{d4}}",
+     "size": 0.021,
+     "weight": 500,
+     "color": "#c9d6e3",
+     "font": "Pretendard",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.89,
+     "y": 0.555,
+     "text": "{{e4}}",
+     "size": 0.021,
+     "weight": 500,
+     "color": "#c9d6e3",
+     "font": "Pretendard",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.74,
+     "text": "{{note}}",
+     "size": 0.032,
+     "weight": 700,
+     "color": "#ffe14d",
+     "font": "Pretendard",
+     "align": "center"
+    }
+   ]
+  }
+ },
+ "settings": {
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "defaultJoin": {
+   "type": "cut",
+   "dur": 0,
+   "handle": "both",
+   "ease": "smooth"
+  }
+ }
+}

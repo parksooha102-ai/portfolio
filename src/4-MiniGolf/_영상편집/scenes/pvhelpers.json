@@ -1,0 +1,165 @@
+// Paste this whole file into the cutnote_v2 page (javascript_tool) once per page load.
+// It defines window.pv — helpers for reading the source video, checking crops, and building/saving projects.
+// Coordinates: x/cx are 0..1 across the SOURCE width (for a full-width fit, output cx == source x).
+(() => {
+  const pv = window.pv = {};
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+  pv.sleep = sleep;
+
+  /* ---------- project I/O (needs scripts/serve.ps1) ---------- */
+  pv.load = async name => (await fetch('/scenes/' + name + (name.endsWith('.json') ? '' : '.json'))).json();
+  pv.save = async (name, project) => (await fetch('/save?name=' + name + (name.endsWith('.json') ? '' : '.json'), { method:'POST', body:JSON.stringify(project, null, 1) })).status;
+  // Put a project into the editor and normalize it (round-trip makes the saved file exactly what v2 keeps).
+  pv.apply = project => { editor.setProject(project); return editor.getProject(); };
+
+  /* ---------- link the source video WITHOUT downloading it into a blob ----------
+     Big files (1 GB+) fail as blobs in the pane. cutnote only needs a URL, so map the File's
+     object URL to the streaming /video.mp4 route. `name` must equal media[].name in the project. */
+  pv.linkVideo = async (name, url = location.origin + '/video.mp4') => {
+    const orig = URL.createObjectURL;
+    URL.createObjectURL = o => (o instanceof File && o.name === name) ? url : orig.call(URL, o);
+    try {
+      const inp = document.getElementById('fVideo'), dt = new DataTransfer();
+      dt.items.add(new File([new Uint8Array(1)], name, { type:'video/mp4' }));
+      inp.files = dt.files; inp.dispatchEvent(new Event('change', { bubbles:true }));
+      await sleep(3500);
+    } finally { URL.createObjectURL = orig; }
+    return editor.media().map(m => m.name + ':' + m.loaded);
+  };
+
+  /* ---------- a separate <video> for reading source frames ----------
+     Release it (pv.release) before rendering in the editor: the local server is single-threaded
+     and an idle streaming <video> can starve the editor's players. */
+  pv.src = async () => {
+    if (pv.SV) return pv.SV;
+    const v = pv.SV = document.createElement('video'); v.muted = true; v.preload = 'auto'; v.src = '/video.mp4';
+    await new Promise(r => v.onloadedmetadata = r); return v;
+  };
+  pv.grab = async t => { const v = await pv.src(); v.currentTime = t; await new Promise(r => v.onseeked = r); return v; };
+  pv.release = () => { if (pv.SV){ pv.SV.pause(); pv.SV.removeAttribute('src'); pv.SV.load(); pv.SV = null; } };
+
+  /* ---------- show an image full-screen over the page so a screenshot can read it ---------- */
+  pv.show = url => {
+    let o = document.getElementById('__pv');
+    if (!o){ o = document.createElement('img'); o.id = '__pv'; document.body.appendChild(o); }
+    Object.assign(o.style, { position:'fixed', left:'0', top:'0', width:innerWidth + 'px', height:innerHeight + 'px', objectFit:'contain', background:'#000', zIndex:99999, display:'block' });
+    o.src = url;
+  };
+  pv.hide = () => { const o = document.getElementById('__pv'); if (o) o.style.display = 'none'; };
+
+  /* ---------- source sheets ----------
+     times: seconds in the SOURCE video.
+     opt.rect [x0,x1,y0,y1]: only this region (close-ups to read small bullets).
+     opt.grid: x ticks every 0.05, labels every 0.1 (source coordinates).
+     opt.crop(t) -> cx: draw the vertical-short crop window (width 1/opt.scale) to preview a camera path. */
+  pv.sheet = async (times, opt = {}) => {
+    const [x0, x1, y0, y1] = opt.rect || [0, 1, 0, 1], cols = opt.cols || 4, W = opt.W || 400;
+    const rw = (x1 - x0) * 1920, rh = (y1 - y0) * 1080, H = Math.round(W * rh / rw), rows = Math.ceil(times.length / cols);
+    const c = document.createElement('canvas'); c.width = W * cols; c.height = H * rows; const g = c.getContext('2d');
+    const half = 0.5 / (opt.scale || 3.18);
+    for (let i = 0; i < times.length; i++){
+      const t = times[i], v = await pv.grab(t), x = (i % cols) * W, y = Math.floor(i / cols) * H;
+      g.drawImage(v, x0 * v.videoWidth, y0 * v.videoHeight, (x1 - x0) * v.videoWidth, (y1 - y0) * v.videoHeight, x, y, W, H);
+      const X = s => x + (s - x0) / (x1 - x0) * W;
+      if (opt.grid !== false){
+        g.lineWidth = 1; g.strokeStyle = 'rgba(255,255,0,.35)'; g.fillStyle = '#ff0'; g.font = 'bold 12px sans-serif';
+        for (let s = Math.ceil(x0 * 20) / 20; s < x1; s += 0.05){ g.beginPath(); g.moveTo(X(s), y); g.lineTo(X(s), y + H); g.stroke(); if (Math.round(s * 100) % 10 === 0) g.fillText(s.toFixed(1), X(s) + 2, y + 12); }
+      }
+      if (opt.crop){
+        const cx = Math.min(1 - half, Math.max(half, opt.crop(t)));
+        g.fillStyle = 'rgba(0,0,0,.5)'; g.fillRect(x, y, Math.max(0, X(cx - half) - x), H); g.fillRect(X(cx + half), y, Math.max(0, x + W - X(cx + half)), H);
+        g.strokeStyle = '#ff0'; g.lineWidth = 2; g.strokeRect(X(cx - half), y + 1, X(cx + half) - X(cx - half), H - 2);
+        g.strokeStyle = 'rgba(255,0,255,.7)'; g.beginPath(); g.moveTo(X(cx), y); g.lineTo(X(cx), y + H); g.stroke();
+      }
+      g.fillStyle = 'rgba(200,0,0,.9)'; g.fillRect(x, y + H - 20, 70, 20); g.fillStyle = '#fff'; g.font = 'bold 14px sans-serif'; g.fillText(t.toFixed(2), x + 4, y + H - 5);
+      g.strokeStyle = '#f00'; g.lineWidth = 2; g.strokeRect(x, y, W, H);
+    }
+    return c.toDataURL('image/jpeg', 0.88);
+  };
+  pv.range = (a, b, step) => { const o = []; for (let t = a; t <= b + 1e-6; t += step) o.push(+t.toFixed(3)); return o; };
+
+  /* ---------- rendered output frames (editor.frameAt) ----------
+     Needs the Browser pane VISIBLE: frameAt waits on requestAnimationFrame, which stops in a hidden pane.
+     Run long ones in the background: pv.bg(() => pv.render([...])) then poll pv.result. */
+  pv.render = async (times, opt = {}) => {
+    const out = editor.getProject().settings, portrait = out.height > out.width;
+    const W = opt.W || (portrait ? 216 : 400), H = Math.round(W * out.height / out.width), cols = opt.cols || Math.min(7, times.length), rows = Math.ceil(times.length / cols);
+    const c = document.createElement('canvas'); c.width = W * cols; c.height = H * rows; const g = c.getContext('2d');
+    for (let i = 0; i < times.length; i++){
+      const im = new Image(); im.src = await editor.frameAt(times[i]); await im.decode();
+      const x = (i % cols) * W, y = Math.floor(i / cols) * H; g.drawImage(im, x, y, W, H);
+      g.strokeStyle = 'rgba(255,0,255,.6)'; g.beginPath(); g.moveTo(x + W / 2, y); g.lineTo(x + W / 2, y + H); g.stroke();
+      g.fillStyle = 'rgba(200,0,0,.85)'; g.fillRect(x, y + H - 22, 60, 22); g.fillStyle = '#fff'; g.font = 'bold 15px sans-serif'; g.fillText(times[i].toFixed(2), x + 4, y + H - 6);
+      g.strokeStyle = '#0f0'; g.lineWidth = 2; g.strokeRect(x, y, W, H);
+    }
+    return c.toDataURL('image/jpeg', 0.88);
+  };
+  pv.bg = fn => { pv.result = null; pv.error = null; fn().then(r => pv.result = r, e => pv.error = String(e)); return 'started'; };
+  pv.wait = async (ms = 40000) => { const t0 = Date.now(); while (pv.result == null && pv.error == null && Date.now() - t0 < ms) await sleep(300); return pv.error || (pv.result != null); };
+
+  /* ---------- pixel probe for scene classification (workshop vs field vs dialog) ---------- */
+  pv.pixels = async (t, pts) => {
+    const v = await pv.grab(t), c = pv._pc || (pv._pc = document.createElement('canvas')); c.width = 192; c.height = 108;
+    const g = c.getContext('2d', { willReadFrequently:true }); g.drawImage(v, 0, 0, 192, 108);
+    return pts.map(([x, y]) => [...g.getImageData(Math.floor(x * 191), Math.floor(y * 107), 1, 1).data.slice(0, 3)]);
+  };
+
+  /* ---------- segment map: timeline time <-> source time ---------- */
+  pv.segs = P => { let acc = 0; return P.segments.map((s, i) => { const o = { i, t0:acc, t1:acc + s.out - s.in, in:s.in, out:s.out }; acc = o.t1; return o; }); };
+
+  /* ---------- lerp camera keys on zoom items ----------
+     specs: [{ src:[in,out], curve:'linear'|'ease', keys:[[srcTime, cx, c?], ...] }]
+     Each spec is applied to the zoom item that covers the segment whose source range is inside spec.src.
+     Use ONLY start/end pairs: [[fire,start],[hit,end]]; for two shots add hold/return/shot:
+       [[fire1,player],[hit1,target,'linear'],[holdEnd,target,'linear'],[fire2,player,'ease'],[hit2,target,'linear']] */
+  pv.applyKeys = (P, specs) => {
+    const segs = pv.segs(P), rep = [];
+    for (const z of P.zooms){
+      const s = segs.find(x => z.start >= x.t0 - 0.01 && z.start < x.t1 - 0.01); if (!s) continue;
+      const sp = specs.find(q => q.src[0] <= s.in + 0.01 && q.src[1] >= s.out - 0.01); if (!sp) continue;
+      const toT = src => +(s.t0 + (src - s.in)).toFixed(4);
+      z.keys = sp.keys.map(([src, cx, c]) => { const k = { t:toT(src), cx, cy:0.5 }; if (c) k.c = c; return k; });
+      z.curve = sp.curve || 'linear'; z.cx = sp.keys[0][1]; z.cy = 0.5; z.ramp = 0; z.ease = 'linear';
+      rep.push(`${s.in}-${s.out}: ${z.keys.length} keys`);
+    }
+    return rep;
+  };
+
+  /* ---------- build a vertical short from the landscape main edit ----------
+     def = { head:'4.2 생존 판정 — OR vs AND', parts:[{ i:<main segment index>, cx:<static crop> }],
+             card:{ at:<seconds>, params:{l1..l5} } (optional) }
+     tplV = parsed assets/templates_vertical.json. Captions come from the main edit's subtitles:
+     "【제목】 설명" -> yellow title line + wrapped body lines inside one dark box (vcap<n>). */
+  pv.buildShort = (main, def, tplV, opt = {}) => {
+    const clone = o => JSON.parse(JSON.stringify(o)), segs = pv.segs(main), H = 1920, W = 1080;
+    const BS = 0.024, TS = 0.028, maxW = 0.86 * W - 0.07 * W, S = opt.scale || 3.18;
+    const mc = document.createElement('canvas').getContext('2d');
+    const wrap = (text, px) => { mc.font = `600 ${px}px "Pretendard","Noto Sans KR",sans-serif`; const out = [];
+      for (const para of text.split('\n')){ let line = ''; for (const w of para.split(' ')){ const t = line ? line + ' ' + w : w; if (mc.measureText(t).width <= maxW){ line = t; continue; } if (line) out.push(line); line = w; } out.push(line); } return out; };
+    const STEP = opt.steps || { '워크샵':'① 워크샵', '실험실':'② 실험실', '시연':'③ 시연' };
+    const capOf = text => { let t, b; const m = text.match(/^【(.+?)】\s*(.*)$/s);
+      if (m){ t = '【' + m[1] + '】'; b = m[2]; } else { const k = text.indexOf(': '); t = k > 0 ? (STEP[text.slice(0, k)] || text.slice(0, k)) : text; b = k > 0 ? text.slice(k + 2) : ''; }
+      return { t, lines: b ? wrap(b, BS * H) : [] }; };
+    const P = { version:2, media:clone(main.media), mediaOrder:clone(main.mediaOrder), segments:[], labels:[], subtitles:[], zooms:[], overlays:[],
+      styles:clone(tplV.styles || main.styles), templates:clone(tplV.templates), settings:{ fps:30, width:W, height:H, defaultJoin:clone(main.settings.defaultJoin) } };
+    let T = 0, n = 0; const id = p => p + (n++), warn = [];
+    for (const part of def.parts){
+      const s = segs[part.i], off = T - s.t0, len = s.out - s.in;
+      P.segments.push({ src:main.segments[part.i].src, in:s.in, out:s.out, join: P.segments.length ? { type:'cut', dur:0, handle:'both', ease:'smooth' } : null });
+      P.zooms.push({ id:id('z'), start:+T.toFixed(3), end:+(T + len).toFixed(3), cx:part.cx ?? 0.5, cy:0.5, scale:S, ramp:0, ease:'linear' });
+      for (const sub of main.subtitles.filter(x => x.start >= s.t0 - 0.05 && x.start < s.t1 - 0.05)){
+        const c = capOf(sub.text); if (c.lines.length > 4) warn.push(sub.text);
+        const p = { t:c.t }; c.lines.slice(0, 4).forEach((l, k) => p['b' + k] = l);
+        P.overlays.push({ id:id('o'), template:'vcap' + Math.min(4, c.lines.length), start:+(sub.start + off).toFixed(2), end:+(sub.end + off).toFixed(2), params:p });
+      }
+      T += len;
+    }
+    if (def.card){ P.overlays.forEach(o => { if (o.end > def.card.at) o.end = def.card.at - 0.1; }); P.overlays.push({ id:id('o'), template:'vcard', start:def.card.at, end:+T.toFixed(2), params:def.card.params }); }
+    P.overlays.unshift({ id:id('o'), template:'vhead', start:0, end:+(def.card ? def.card.at : T).toFixed(2), params:{ l1:def.headTop || '프로젝트 · 기술문서', l2:def.head } });
+    P.labels.push({ id:id('l'), start:0, end:+T.toFixed(2), text:def.head, color:'blue', note:'세로 쇼츠' });
+    return { P, T, warn };
+  };
+
+  pv.help = () => Object.keys(pv).join(', ');
+  return 'pv ready: ' + pv.help();
+})();

@@ -1,0 +1,1168 @@
+{
+ "version": 2,
+ "media": {
+  "mOdd1": {
+   "name": "ODDITY 2026-11-17 16-44-56.mp4",
+   "duration": 524.732867,
+   "width": 1920,
+   "height": 1080
+  }
+ },
+ "mediaOrder": [
+  "mOdd1"
+ ],
+ "segments": [
+  {
+   "src": "mOdd1",
+   "in": 74,
+   "out": 78.5,
+   "join": null
+  },
+  {
+   "src": "mOdd1",
+   "in": 109,
+   "out": 117,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 117.05,
+   "out": 121.5,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 142.5,
+   "out": 148,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 175,
+   "out": 182,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  }
+ ],
+ "labels": [
+  {
+   "id": "l0",
+   "start": 0,
+   "end": 29.45,
+   "text": "3.1 사용법 — 칩 지급과 장착",
+   "color": "blue",
+   "note": "세로 쇼츠 · 본편 v13에서"
+  }
+ ],
+ "subtitles": [],
+ "zooms": [
+  {
+   "id": "z0",
+   "start": 0,
+   "end": 4.5,
+   "cx": 0.5,
+   "cy": 0.5,
+   "scale": 3.2,
+   "ramp": 0,
+   "ease": "linear"
+  },
+  {
+   "id": "z2",
+   "start": 4.5,
+   "end": 12.5,
+   "cx": 0.27,
+   "cy": 0.5,
+   "scale": 3.2,
+   "ramp": 0,
+   "ease": "linear"
+  },
+  {
+   "id": "z4",
+   "start": 12.5,
+   "end": 16.95,
+   "cx": 0.27,
+   "cy": 0.5,
+   "scale": 3.2,
+   "ramp": 0,
+   "ease": "linear"
+  },
+  {
+   "id": "z6",
+   "start": 16.95,
+   "end": 22.45,
+   "cx": 0.3,
+   "cy": 0.5,
+   "scale": 3.2,
+   "ramp": 0,
+   "ease": "linear",
+   "curve": "linear",
+   "keys": [
+    {
+     "t": 16.95,
+     "cx": 0.3,
+     "cy": 0.5
+    },
+    {
+     "t": 18.05,
+     "cx": 0.3,
+     "cy": 0.5
+    },
+    {
+     "t": 18.85,
+     "cx": 0.55,
+     "cy": 0.5,
+     "c": "ease"
+    }
+   ]
+  },
+  {
+   "id": "z9",
+   "start": 22.45,
+   "end": 29.45,
+   "cx": 0.27,
+   "cy": 0.5,
+   "scale": 3.2,
+   "ramp": 0,
+   "ease": "linear"
+  }
+ ],
+ "overlays": [
+  {
+   "id": "o11",
+   "template": "vhead",
+   "start": 0,
+   "end": 29.45,
+   "params": {
+    "l1": "Oddity · 기술문서",
+    "l2": "3.1 사용법 — 칩 지급과 장착"
+   }
+  },
+  {
+   "id": "o1",
+   "template": "vcap1",
+   "start": 0.1,
+   "end": 4.4,
+   "params": {
+    "t": "【칩 지급】",
+    "b0": "시연용 디스펜서 하나로 증강칩 28종 획득"
+   }
+  },
+  {
+   "id": "o3",
+   "template": "vcap2",
+   "start": 4.6,
+   "end": 12.4,
+   "params": {
+    "t": "【장착】",
+    "b0": "염동 투사 → 1번, 염동 충격파 → 2번 — 가장",
+    "b1": "앞 빈 슬롯으로"
+   }
+  },
+  {
+   "id": "o5",
+   "template": "vcap1",
+   "start": 12.6,
+   "end": 16.85,
+   "params": {
+    "t": "【슬롯 순서】",
+    "b0": "끌어서 1번 ↔ 2번을 바꾼다"
+   }
+  },
+  {
+   "id": "o7",
+   "template": "vcap1",
+   "start": 17.05,
+   "end": 22.35,
+   "params": {
+    "t": "【장착 제한 · 칸 수 = CellCount】",
+    "b0": "5칸이 차면 6번째는 경고 · 칸 수는 표 그대로"
+   }
+  },
+  {
+   "id": "o8",
+   "template": "vtsv",
+   "start": 17.55,
+   "end": 22.45,
+   "params": {
+    "title": "SkillChip.tsv",
+    "sub": "슬롯 5칸에 든 칩 = 표 5행",
+    "r0c0": "Id",
+    "r0c1": "Name",
+    "r0c2": "CellCount",
+    "r0c3": "Cooldown",
+    "r0c4": "Params",
+    "r1c0": "2101",
+    "r1c1": "염동 충격파",
+    "r1c2": "4",
+    "r1c3": "12",
+    "r1c4": "Radius=8;Force=25;…",
+    "r2c0": "2106",
+    "r2c1": "염동 투사",
+    "r2c2": "5",
+    "r2c3": "12",
+    "r2c4": "Duration=4;Range=30;…",
+    "r3c0": "2405",
+    "r3c1": "아드레날린 과분비",
+    "r3c2": "6",
+    "r3c3": "1",
+    "r3c4": "Amount=1",
+    "r4c0": "2202",
+    "r4c1": "보호막",
+    "r4c2": "4",
+    "r4c3": "20",
+    "r4c4": "Shield=20;Duration=6",
+    "r5c0": "2201",
+    "r5c1": "회복",
+    "r5c2": "3",
+    "r5c3": "30",
+    "r5c4": "Amount=30"
+   }
+  },
+  {
+   "id": "o10",
+   "template": "vcap1",
+   "start": 22.55,
+   "end": 29.35,
+   "params": {
+    "t": "【능력치 칩 10종 = 표 10행】",
+    "b0": "모두 2~3칸 · 장착하면 기본값 + Value"
+   }
+  }
+ ],
+ "styles": {
+  "기본": {
+   "font": "Pretendard",
+   "weight": 600,
+   "size": 4.5,
+   "color": "#ffffff",
+   "outline": 0.35,
+   "outlineColor": "#000000",
+   "bg": false,
+   "bgColor": "#000000",
+   "bgOpacity": 0.6,
+   "pos": "bottom"
+  },
+  "강조": {
+   "font": "Pretendard",
+   "weight": 800,
+   "size": 5,
+   "color": "#ffe14d",
+   "outline": 0.4,
+   "outlineColor": "#1a1a1a",
+   "bg": false,
+   "bgColor": "#000000",
+   "bgOpacity": 0.6,
+   "pos": "bottom"
+  },
+  "설명 박스": {
+   "font": "Pretendard",
+   "weight": 500,
+   "size": 3.6,
+   "color": "#ffffff",
+   "outline": 0,
+   "outlineColor": "#000000",
+   "bg": true,
+   "bgColor": "#101820",
+   "bgOpacity": 0.8,
+   "pos": "top"
+  },
+  "제목": {
+   "font": "Pretendard",
+   "weight": 800,
+   "size": 5,
+   "color": "#ffe14d",
+   "outline": 0.4,
+   "outlineColor": "#1a1a1a",
+   "bg": false,
+   "bgColor": "#000000",
+   "bgOpacity": 0.6,
+   "pos": "top"
+  },
+  "설명": {
+   "font": "Pretendard",
+   "weight": 600,
+   "size": 4.2,
+   "color": "#ffffff",
+   "outline": 0,
+   "outlineColor": "#000000",
+   "bg": true,
+   "bgColor": "#0E1420",
+   "bgOpacity": 0.75,
+   "pos": "bottom"
+  }
+ },
+ "templates": {
+  "lower-third": {
+   "name": "하단 제목 바",
+   "params": {
+    "title": "설정 열기",
+    "subtitle": "환경설정 > 일반"
+   },
+   "duration": 3,
+   "animation": {
+    "in": "slide",
+    "out": "fade",
+    "dur": 0.35
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.04,
+     "y": 0.74,
+     "w": 0.36,
+     "h": 0.14,
+     "fill": "#13233F",
+     "opacity": 0.92,
+     "radius": 0.012
+    },
+    {
+     "type": "rect",
+     "x": 0.04,
+     "y": 0.74,
+     "w": 0.007,
+     "h": 0.14,
+     "fill": "#5B9BFF"
+    },
+    {
+     "type": "text",
+     "x": 0.065,
+     "y": 0.785,
+     "text": "{{title}}",
+     "size": 0.042,
+     "weight": 700,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.065,
+     "y": 0.84,
+     "text": "{{subtitle}}",
+     "size": 0.028,
+     "weight": 400,
+     "color": "#B9C7DD"
+    }
+   ]
+  },
+  "step-badge": {
+   "name": "단계 배지",
+   "params": {
+    "step": "1",
+    "label": "프로젝트 만들기"
+   },
+   "duration": 2.5,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.3
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.03,
+     "y": 0.05,
+     "w": 0.05,
+     "h": 0.089,
+     "fill": "#5B9BFF",
+     "radius": 0.02
+    },
+    {
+     "type": "text",
+     "x": 0.055,
+     "y": 0.0945,
+     "text": "{{step}}",
+     "size": 0.05,
+     "weight": 800,
+     "color": "#0B1A33",
+     "align": "center"
+    },
+    {
+     "type": "rect",
+     "x": 0.085,
+     "y": 0.058,
+     "w": 0.27,
+     "h": 0.073,
+     "fill": "#000000",
+     "opacity": 0.68,
+     "radius": 0.012
+    },
+    {
+     "type": "text",
+     "x": 0.1,
+     "y": 0.0945,
+     "text": "{{label}}",
+     "size": 0.034,
+     "weight": 600,
+     "color": "#FFFFFF"
+    }
+   ]
+  },
+  "callout": {
+   "name": "콜아웃 박스",
+   "params": {
+    "text": "여기를 클릭하세요"
+   },
+   "duration": 3,
+   "animation": {
+    "in": "rise",
+    "out": "fade",
+    "dur": 0.3
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.6,
+     "y": 0.12,
+     "w": 0.32,
+     "h": 0.09,
+     "fill": "#FFD24D",
+     "radius": 0.012
+    },
+    {
+     "type": "text",
+     "x": 0.76,
+     "y": 0.165,
+     "text": "{{text}}",
+     "size": 0.034,
+     "weight": 700,
+     "color": "#1A1A1A",
+     "align": "center"
+    }
+   ]
+  },
+  "vhead": {
+   "name": "세로 헤더",
+   "params": {
+    "l1": "",
+    "l2": ""
+   },
+   "duration": 3,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.3
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.05,
+     "y": 0.07,
+     "w": 0.74,
+     "h": 0.072,
+     "fill": "#000000",
+     "opacity": 0.62,
+     "radius": 0.006
+    },
+    {
+     "type": "rect",
+     "x": 0.05,
+     "y": 0.07,
+     "w": 0.011,
+     "h": 0.072,
+     "fill": "#FFD24D"
+    },
+    {
+     "type": "text",
+     "x": 0.078,
+     "y": 0.0885,
+     "text": "{{l1}}",
+     "size": 0.0155,
+     "weight": 600,
+     "color": "#B9C7DD"
+    },
+    {
+     "type": "text",
+     "x": 0.078,
+     "y": 0.1205,
+     "text": "{{l2}}",
+     "size": 0.024,
+     "weight": 800,
+     "color": "#FFFFFF"
+    }
+   ]
+  },
+  "vcap0": {
+   "name": "세로 자막 0줄",
+   "params": {
+    "t": ""
+   },
+   "duration": 3,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.15
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.05,
+     "y": 0.723,
+     "w": 0.86,
+     "h": 0.067,
+     "fill": "#0E1420",
+     "opacity": 0.82,
+     "radius": 0.008
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.7565,
+     "text": "{{t}}",
+     "size": 0.028,
+     "weight": 800,
+     "color": "#FFE14D",
+     "align": "center"
+    }
+   ]
+  },
+  "vcap1": {
+   "name": "세로 자막 1줄",
+   "params": {
+    "t": ""
+   },
+   "duration": 3,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.15
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.05,
+     "y": 0.692,
+     "w": 0.86,
+     "h": 0.098,
+     "fill": "#0E1420",
+     "opacity": 0.82,
+     "radius": 0.008
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.7255,
+     "text": "{{t}}",
+     "size": 0.028,
+     "weight": 800,
+     "color": "#FFE14D",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.7595,
+     "text": "{{b0}}",
+     "size": 0.024,
+     "weight": 600,
+     "color": "#FFFFFF",
+     "align": "center"
+    }
+   ]
+  },
+  "vcap2": {
+   "name": "세로 자막 2줄",
+   "params": {
+    "t": ""
+   },
+   "duration": 3,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.15
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.05,
+     "y": 0.661,
+     "w": 0.86,
+     "h": 0.129,
+     "fill": "#0E1420",
+     "opacity": 0.82,
+     "radius": 0.008
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.6945,
+     "text": "{{t}}",
+     "size": 0.028,
+     "weight": 800,
+     "color": "#FFE14D",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.7285,
+     "text": "{{b0}}",
+     "size": 0.024,
+     "weight": 600,
+     "color": "#FFFFFF",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.7595,
+     "text": "{{b1}}",
+     "size": 0.024,
+     "weight": 600,
+     "color": "#FFFFFF",
+     "align": "center"
+    }
+   ]
+  },
+  "vcap3": {
+   "name": "세로 자막 3줄",
+   "params": {
+    "t": ""
+   },
+   "duration": 3,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.15
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.05,
+     "y": 0.63,
+     "w": 0.86,
+     "h": 0.16,
+     "fill": "#0E1420",
+     "opacity": 0.82,
+     "radius": 0.008
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.6635,
+     "text": "{{t}}",
+     "size": 0.028,
+     "weight": 800,
+     "color": "#FFE14D",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.6975,
+     "text": "{{b0}}",
+     "size": 0.024,
+     "weight": 600,
+     "color": "#FFFFFF",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.7285,
+     "text": "{{b1}}",
+     "size": 0.024,
+     "weight": 600,
+     "color": "#FFFFFF",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.7595,
+     "text": "{{b2}}",
+     "size": 0.024,
+     "weight": 600,
+     "color": "#FFFFFF",
+     "align": "center"
+    }
+   ]
+  },
+  "vcap4": {
+   "name": "세로 자막 4줄",
+   "params": {
+    "t": ""
+   },
+   "duration": 3,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.15
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.05,
+     "y": 0.599,
+     "w": 0.86,
+     "h": 0.191,
+     "fill": "#0E1420",
+     "opacity": 0.82,
+     "radius": 0.008
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.6325,
+     "text": "{{t}}",
+     "size": 0.028,
+     "weight": 800,
+     "color": "#FFE14D",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.6665,
+     "text": "{{b0}}",
+     "size": 0.024,
+     "weight": 600,
+     "color": "#FFFFFF",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.6975,
+     "text": "{{b1}}",
+     "size": 0.024,
+     "weight": 600,
+     "color": "#FFFFFF",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.7285,
+     "text": "{{b2}}",
+     "size": 0.024,
+     "weight": 600,
+     "color": "#FFFFFF",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.48,
+     "y": 0.7595,
+     "text": "{{b3}}",
+     "size": 0.024,
+     "weight": 600,
+     "color": "#FFFFFF",
+     "align": "center"
+    }
+   ]
+  },
+  "vcard": {
+   "name": "세로 엔딩 카드",
+   "params": {},
+   "duration": 4,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.4
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0,
+     "y": 0,
+     "w": 1,
+     "h": 1,
+     "fill": "#0E1420",
+     "opacity": 0.97
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.43,
+     "text": "{{l1}}",
+     "size": 0.04,
+     "weight": 800,
+     "color": "#FFFFFF",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.485,
+     "text": "{{l2}}",
+     "size": 0.021,
+     "weight": 500,
+     "color": "#D5DEEA",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.515,
+     "text": "{{l3}}",
+     "size": 0.021,
+     "weight": 500,
+     "color": "#D5DEEA",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.565,
+     "text": "{{l4}}",
+     "size": 0.016,
+     "weight": 500,
+     "color": "#8FA0B8",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.587,
+     "text": "{{l5}}",
+     "size": 0.016,
+     "weight": 500,
+     "color": "#8FA0B8",
+     "align": "center"
+    }
+   ]
+  },
+  "vtsv": {
+   "name": "세로 TSV 패널",
+   "params": {},
+   "duration": 8,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.25
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.04,
+     "y": 0.148,
+     "w": 0.92,
+     "h": 0.14,
+     "fill": "#0E1420",
+     "opacity": 0.9,
+     "radius": 0.008,
+     "stroke": "#FFE14D",
+     "strokeWidth": 0.0015
+    },
+    {
+     "type": "text",
+     "x": 0.075,
+     "y": 0.165,
+     "text": "{{title}}",
+     "size": 0.018,
+     "weight": 800,
+     "color": "#FFE14D"
+    },
+    {
+     "type": "text",
+     "x": 0.42,
+     "y": 0.166,
+     "text": "{{sub}}",
+     "size": 0.0118,
+     "weight": 500,
+     "color": "#B9C7DD"
+    },
+    {
+     "type": "text",
+     "x": 0.075,
+     "y": 0.187,
+     "text": "{{r0c0}}",
+     "size": 0.0112,
+     "weight": 700,
+     "color": "#8FA0B8"
+    },
+    {
+     "type": "text",
+     "x": 0.135,
+     "y": 0.187,
+     "text": "{{r0c1}}",
+     "size": 0.0112,
+     "weight": 700,
+     "color": "#8FA0B8"
+    },
+    {
+     "type": "text",
+     "x": 0.355,
+     "y": 0.187,
+     "text": "{{r0c2}}",
+     "size": 0.0112,
+     "weight": 700,
+     "color": "#8FA0B8"
+    },
+    {
+     "type": "text",
+     "x": 0.49,
+     "y": 0.187,
+     "text": "{{r0c3}}",
+     "size": 0.0112,
+     "weight": 700,
+     "color": "#8FA0B8"
+    },
+    {
+     "type": "text",
+     "x": 0.6,
+     "y": 0.187,
+     "text": "{{r0c4}}",
+     "size": 0.0112,
+     "weight": 700,
+     "color": "#8FA0B8"
+    },
+    {
+     "type": "text",
+     "x": 0.075,
+     "y": 0.2055,
+     "text": "{{r1c0}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.135,
+     "y": 0.2055,
+     "text": "{{r1c1}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.355,
+     "y": 0.2055,
+     "text": "{{r1c2}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.49,
+     "y": 0.2055,
+     "text": "{{r1c3}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.6,
+     "y": 0.2055,
+     "text": "{{r1c4}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#7FC3FF"
+    },
+    {
+     "type": "text",
+     "x": 0.075,
+     "y": 0.224,
+     "text": "{{r2c0}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.135,
+     "y": 0.224,
+     "text": "{{r2c1}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.355,
+     "y": 0.224,
+     "text": "{{r2c2}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.49,
+     "y": 0.224,
+     "text": "{{r2c3}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.6,
+     "y": 0.224,
+     "text": "{{r2c4}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#7FC3FF"
+    },
+    {
+     "type": "text",
+     "x": 0.075,
+     "y": 0.2425,
+     "text": "{{r3c0}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.135,
+     "y": 0.2425,
+     "text": "{{r3c1}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.355,
+     "y": 0.2425,
+     "text": "{{r3c2}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.49,
+     "y": 0.2425,
+     "text": "{{r3c3}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.6,
+     "y": 0.2425,
+     "text": "{{r3c4}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#7FC3FF"
+    },
+    {
+     "type": "text",
+     "x": 0.075,
+     "y": 0.261,
+     "text": "{{r4c0}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.135,
+     "y": 0.261,
+     "text": "{{r4c1}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.355,
+     "y": 0.261,
+     "text": "{{r4c2}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.49,
+     "y": 0.261,
+     "text": "{{r4c3}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.6,
+     "y": 0.261,
+     "text": "{{r4c4}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#7FC3FF"
+    },
+    {
+     "type": "text",
+     "x": 0.075,
+     "y": 0.2795,
+     "text": "{{r5c0}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.135,
+     "y": 0.2795,
+     "text": "{{r5c1}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.355,
+     "y": 0.2795,
+     "text": "{{r5c2}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.49,
+     "y": 0.2795,
+     "text": "{{r5c3}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.6,
+     "y": 0.2795,
+     "text": "{{r5c4}}",
+     "size": 0.0128,
+     "weight": 600,
+     "color": "#7FC3FF"
+    }
+   ]
+  }
+ },
+ "settings": {
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "defaultJoin": {
+   "type": "cut",
+   "dur": 0,
+   "handle": "both",
+   "ease": "smooth"
+  },
+  "mute": true
+ }
+}

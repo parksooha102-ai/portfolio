@@ -1,0 +1,282 @@
+{
+    "templates":  {
+                      "card":  {
+                                   "name":  "풀스크린 카드",
+                                   "params":  {
+                                                  "l1":  "",
+                                                  "l2":  "",
+                                                  "l3":  ""
+                                              },
+                                   "duration":  4,
+                                   "animation":  {
+                                                     "in":  "fade",
+                                                     "out":  "fade",
+                                                     "dur":  0.4
+                                                 },
+                                   "elements":  [
+                                                    {
+                                                        "type":  "rect",
+                                                        "x":  0,
+                                                        "y":  0,
+                                                        "w":  1,
+                                                        "h":  1,
+                                                        "fill":  "#0E1420",
+                                                        "opacity":  0.97
+                                                    },
+                                                    {
+                                                        "type":  "text",
+                                                        "x":  0.5,
+                                                        "y":  0.42,
+                                                        "text":  "{{l1}}",
+                                                        "size":  0.06,
+                                                        "weight":  800,
+                                                        "color":  "#FFFFFF",
+                                                        "align":  "center"
+                                                    },
+                                                    {
+                                                        "type":  "text",
+                                                        "x":  0.5,
+                                                        "y":  0.52,
+                                                        "text":  "{{l2}}",
+                                                        "size":  0.032,
+                                                        "weight":  500,
+                                                        "color":  "#D5DEEA",
+                                                        "align":  "center"
+                                                    },
+                                                    {
+                                                        "type":  "text",
+                                                        "x":  0.5,
+                                                        "y":  0.59,
+                                                        "text":  "{{l3}}",
+                                                        "size":  0.026,
+                                                        "weight":  500,
+                                                        "color":  "#8FA0B8",
+                                                        "align":  "center"
+                                                    }
+                                                ]
+                               },
+                      "section":  {
+                                      "name":  "섹션 배지",
+                                      "params":  {
+                                                     "label":  ""
+                                                 },
+                                      "duration":  3,
+                                      "animation":  {
+                                                        "in":  "fade",
+                                                        "out":  "fade",
+                                                        "dur":  0.3
+                                                    },
+                                      "elements":  [
+                                                       {
+                                                           "type":  "rect",
+                                                           "x":  0.075,
+                                                           "y":  0.025,
+                                                           "w":  0.3,
+                                                           "h":  0.07,
+                                                           "fill":  "#000000",
+                                                           "opacity":  0.62
+                                                       },
+                                                       {
+                                                           "type":  "rect",
+                                                           "x":  0.075,
+                                                           "y":  0.025,
+                                                           "w":  0.006,
+                                                           "h":  0.07,
+                                                           "fill":  "#FFD24D"
+                                                       },
+                                                       {
+                                                           "type":  "text",
+                                                           "x":  0.093,
+                                                           "y":  0.06,
+                                                           "text":  "{{label}}",
+                                                           "size":  0.03,
+                                                           "weight":  700,
+                                                           "color":  "#FFFFFF",
+                                                           "align":  "left"
+                                                       }
+                                                   ]
+                                  },
+                      "step-badge":  {
+                                         "name":  "단계 배지",
+                                         "params":  {
+                                                        "step":  "1",
+                                                        "label":  "프로젝트 만들기"
+                                                    },
+                                         "duration":  2.5,
+                                         "animation":  {
+                                                           "in":  "fade",
+                                                           "out":  "fade",
+                                                           "dur":  0.3
+                                                       },
+                                         "elements":  [
+                                                          {
+                                                              "type":  "rect",
+                                                              "x":  0.075,
+                                                              "y":  0.025,
+                                                              "w":  0.05,
+                                                              "h":  0.089,
+                                                              "fill":  "#5B9BFF",
+                                                              "radius":  0.02
+                                                          },
+                                                          {
+                                                              "type":  "text",
+                                                              "x":  0.1,
+                                                              "y":  0.0695,
+                                                              "text":  "{{step}}",
+                                                              "size":  0.05,
+                                                              "weight":  800,
+                                                              "color":  "#0B1A33",
+                                                              "align":  "center"
+                                                          },
+                                                          {
+                                                              "type":  "rect",
+                                                              "x":  0.13,
+                                                              "y":  0.033,
+                                                              "w":  0.27,
+                                                              "h":  0.073,
+                                                              "fill":  "#000000",
+                                                              "opacity":  0.68,
+                                                              "radius":  0.012
+                                                          },
+                                                          {
+                                                              "type":  "text",
+                                                              "x":  0.145,
+                                                              "y":  0.0695,
+                                                              "text":  "{{label}}",
+                                                              "size":  0.034,
+                                                              "weight":  600,
+                                                              "color":  "#FFFFFF",
+                                                              "align":  "left"
+                                                          }
+                                                      ]
+                                     },
+                      "title":  {
+                                    "name":  "타이틀 카드",
+                                    "params":  {
+                                                   "l1":  "",
+                                                   "name":  "",
+                                                   "role":  "",
+                                                   "l3":  ""
+                                               },
+                                    "duration":  4,
+                                    "animation":  {
+                                                      "in":  "fade",
+                                                      "out":  "fade",
+                                                      "dur":  0.4
+                                                  },
+                                    "elements":  [
+                                                     {
+                                                         "type":  "rect",
+                                                         "x":  0,
+                                                         "y":  0,
+                                                         "w":  1,
+                                                         "h":  1,
+                                                         "fill":  "#0E1420",
+                                                         "opacity":  0.97
+                                                     },
+                                                     {
+                                                         "type":  "text",
+                                                         "x":  0.5,
+                                                         "y":  0.42,
+                                                         "text":  "{{l1}}",
+                                                         "size":  0.06,
+                                                         "weight":  800,
+                                                         "color":  "#FFFFFF",
+                                                         "align":  "center"
+                                                     },
+                                                     {
+                                                         "type":  "text",
+                                                         "x":  0.3582,
+                                                         "y":  0.52,
+                                                         "text":  "{{name}}",
+                                                         "size":  0.032,
+                                                         "weight":  700,
+                                                         "color":  "#FFD24D",
+                                                         "align":  "left"
+                                                     },
+                                                     {
+                                                         "type":  "text",
+                                                         "x":  0.4148,
+                                                         "y":  0.52,
+                                                         "text":  "{{role}}",
+                                                         "size":  0.032,
+                                                         "weight":  500,
+                                                         "color":  "#D5DEEA",
+                                                         "align":  "left"
+                                                     },
+                                                     {
+                                                         "type":  "text",
+                                                         "x":  0.5,
+                                                         "y":  0.59,
+                                                         "text":  "{{l3}}",
+                                                         "size":  0.026,
+                                                         "weight":  500,
+                                                         "color":  "#8FA0B8",
+                                                         "align":  "center"
+                                                     }
+                                                 ]
+                                }
+                  },
+    "styles":  {
+                   "기본":  {
+                              "font":  "Pretendard",
+                              "weight":  600,
+                              "size":  4.5,
+                              "color":  "#ffffff",
+                              "outline":  0.35,
+                              "outlineColor":  "#000000",
+                              "bg":  false,
+                              "bgColor":  "#000000",
+                              "bgOpacity":  0.6,
+                              "pos":  "bottom"
+                          },
+                   "강조":  {
+                              "font":  "Pretendard",
+                              "weight":  800,
+                              "size":  5,
+                              "color":  "#ffe14d",
+                              "outline":  0.4,
+                              "outlineColor":  "#1a1a1a",
+                              "bg":  false,
+                              "bgColor":  "#000000",
+                              "bgOpacity":  0.6,
+                              "pos":  "bottom"
+                          },
+                   "설명 박스":  {
+                                 "font":  "Pretendard",
+                                 "weight":  500,
+                                 "size":  3.6,
+                                 "color":  "#ffffff",
+                                 "outline":  0,
+                                 "outlineColor":  "#000000",
+                                 "bg":  true,
+                                 "bgColor":  "#101820",
+                                 "bgOpacity":  0.8,
+                                 "pos":  "top"
+                             },
+                   "제목":  {
+                              "font":  "Pretendard",
+                              "weight":  800,
+                              "size":  5,
+                              "color":  "#ffe14d",
+                              "outline":  0.4,
+                              "outlineColor":  "#1a1a1a",
+                              "bg":  false,
+                              "bgColor":  "#000000",
+                              "bgOpacity":  0.6,
+                              "pos":  "top"
+                          },
+                   "설명":  {
+                              "font":  "Pretendard",
+                              "weight":  600,
+                              "size":  4.2,
+                              "color":  "#ffffff",
+                              "outline":  0,
+                              "outlineColor":  "#000000",
+                              "bg":  true,
+                              "bgColor":  "#0E1420",
+                              "bgOpacity":  0.75,
+                              "pos":  "bottom"
+                          }
+               }
+}

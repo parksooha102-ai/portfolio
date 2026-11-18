@@ -1,0 +1,1099 @@
+{
+ "version": 2,
+ "media": {
+  "mOdd1": {
+   "name": "ODDITY 2026-11-17 16-44-56.mp4",
+   "duration": 524.732867,
+   "width": 1920,
+   "height": 1080
+  }
+ },
+ "mediaOrder": [
+  "mOdd1"
+ ],
+ "segments": [
+  {
+   "src": "mOdd1",
+   "in": 2,
+   "out": 3.95,
+   "join": null
+  },
+  {
+   "src": "mOdd1",
+   "in": 9,
+   "out": 11.4,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 24,
+   "out": 28,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 74,
+   "out": 78.5,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 124.5,
+   "out": 128,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 192,
+   "out": 199,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 219.5,
+   "out": 221,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 222,
+   "out": 224,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 229.5,
+   "out": 231.5,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 233,
+   "out": 237,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 257,
+   "out": 260,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 278,
+   "out": 283,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 309,
+   "out": 315,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 320,
+   "out": 329.5,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 331,
+   "out": 336,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 350,
+   "out": 356.5,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 375,
+   "out": 380,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 396.5,
+   "out": 399.5,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 400,
+   "out": 405,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 429,
+   "out": 434,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 472,
+   "out": 476,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 482,
+   "out": 487,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 505,
+   "out": 517.5,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 79,
+   "out": 83,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 91,
+   "out": 95,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 108,
+   "out": 121.5,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 142.5,
+   "out": 147,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 175,
+   "out": 182,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 358,
+   "out": 370,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 199,
+   "out": 204.5,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 243,
+   "out": 252,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mOdd1",
+   "in": 518,
+   "out": 523,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  }
+ ],
+ "labels": [
+  {
+   "id": "l0",
+   "start": 0,
+   "end": 4.35,
+   "text": "0 타이틀",
+   "color": "amber",
+   "note": "Oddity · 박수하(노란색) · 기간 — 배경 검은 화면"
+  },
+  {
+   "id": "l1",
+   "start": 4.35,
+   "end": 107.35,
+   "text": "A 핵심 루프 한 바퀴",
+   "color": "blue",
+   "note": "① 임무 목록·칩 획득·장착·스킬 시험 → ② 보스1 → ③ 보상 → ④ 빠른 해제·재장착 → ⑤ 보스2 → 사망 5초 전 컷 → 임무 실패. 문서 절 설명 없음"
+  },
+  {
+   "id": "l2",
+   "start": 107.35,
+   "end": 166.85,
+   "text": "B 기술 시연",
+   "color": "purple",
+   "note": "3.1 칩 장착 → 1.4 장마다 무작위 모양 → 4.1 쿨타임 → 5.2 회피 피드백"
+  },
+  {
+   "id": "l3",
+   "start": 166.85,
+   "end": 171.85,
+   "text": "C 엔딩 카드",
+   "color": "amber",
+   "note": "문구 미정 (자리만)"
+  }
+ ],
+ "subtitles": [
+  {
+   "id": "s0",
+   "start": 4.55,
+   "end": 8.25,
+   "text": "【마을】 임무 목록에서 상대할 보스를 고른다",
+   "style": "설명"
+  },
+  {
+   "id": "s1",
+   "start": 8.65,
+   "end": 12.75,
+   "text": "【칩 획득】 시연용 디스펜서로 증강칩 28종을 받는다",
+   "style": "설명"
+  },
+  {
+   "id": "s2",
+   "start": 12.95,
+   "end": 16.25,
+   "text": "【장착】 증강칩을 그리드에 끼워 장착한다",
+   "style": "설명"
+  },
+  {
+   "id": "s3",
+   "start": 16.55,
+   "end": 23.25,
+   "text": "【훈련 구역】 숫자키 1~5로 슬롯의 스킬을 발동한다",
+   "style": "설명"
+  },
+  {
+   "id": "s4",
+   "start": 23.45,
+   "end": 26.85,
+   "text": "【아레나】 임무를 수락하고 포털로 이동한다",
+   "style": "설명"
+  },
+  {
+   "id": "s5",
+   "start": 28.95,
+   "end": 32.75,
+   "text": "【염동 투사】",
+   "style": "설명"
+  },
+  {
+   "id": "s6",
+   "start": 32.95,
+   "end": 35.75,
+   "text": "【회복】",
+   "style": "설명"
+  },
+  {
+   "id": "s7",
+   "start": 35.95,
+   "end": 40.75,
+   "text": "【기본 염동력】 물체를 들어 던진다",
+   "style": "설명"
+  },
+  {
+   "id": "s8",
+   "start": 40.95,
+   "end": 46.75,
+   "text": "【염동 투사 · 염동 충격파】",
+   "style": "설명"
+  },
+  {
+   "id": "s9",
+   "start": 47.05,
+   "end": 56.25,
+   "text": "【처치】 카르카로사우루스",
+   "style": "설명"
+  },
+  {
+   "id": "s10",
+   "start": 56.45,
+   "end": 61.25,
+   "text": "【보상】 임무 완료 — 증강칩 6개 획득",
+   "style": "설명"
+  },
+  {
+   "id": "s11",
+   "start": 61.45,
+   "end": 67.75,
+   "text": "【정비】 장착한 스킬 칩을 빠르게 해제하고",
+   "style": "설명"
+  },
+  {
+   "id": "s12",
+   "start": 67.95,
+   "end": 72.75,
+   "text": "【정비】 새로 얻은 칩으로 다시 장착한다",
+   "style": "설명"
+  },
+  {
+   "id": "s13",
+   "start": 75.95,
+   "end": 80.75,
+   "text": "【염동 폭풍】",
+   "style": "설명"
+  },
+  {
+   "id": "s14",
+   "start": 80.95,
+   "end": 85.75,
+   "text": "【크기 조절】",
+   "style": "설명"
+  },
+  {
+   "id": "s15",
+   "start": 85.95,
+   "end": 89.85,
+   "text": "【염동 폭풍】",
+   "style": "설명"
+  },
+  {
+   "id": "s16",
+   "start": 89.85,
+   "end": 94.75,
+   "text": "【염동 폭풍】",
+   "style": "설명"
+  },
+  {
+   "id": "s17",
+   "start": 107.55,
+   "end": 111.25,
+   "text": "【증강칩 패널】 6×6 그리드 · 능력치 칩 10종 · 스킬 칩 18종",
+   "style": "설명"
+  },
+  {
+   "id": "s18",
+   "start": 111.55,
+   "end": 115.25,
+   "text": "【분류 필터】 공격 · 방어 · 유틸 · 패시브 · 스탯",
+   "style": "설명"
+  },
+  {
+   "id": "s19",
+   "start": 115.55,
+   "end": 124.15,
+   "text": "【장착】 스킬 칩은 가장 앞 빈 슬롯에 들어간다",
+   "style": "설명"
+  },
+  {
+   "id": "s20",
+   "start": 124.35,
+   "end": 128.75,
+   "text": "【슬롯 순서】 슬롯을 끌어 순서를 바꾼다",
+   "style": "설명"
+  },
+  {
+   "id": "s21",
+   "start": 129.05,
+   "end": 133.25,
+   "text": "【장착 제한】 스킬 슬롯은 5칸 — 6번째 스킬 칩은 끼울 수 없다",
+   "style": "설명"
+  },
+  {
+   "id": "s22",
+   "start": 133.55,
+   "end": 140.25,
+   "text": "【능력치 칩】 장착하는 동안 공격력 · 체력 등 스탯을 올린다",
+   "style": "설명"
+  },
+  {
+   "id": "s23",
+   "start": 140.45,
+   "end": 146.35,
+   "text": "【같은 칩, 다른 모양】 같은 칩도 장마다 모양이 무작위",
+   "style": "설명"
+  },
+  {
+   "id": "s24",
+   "start": 146.55,
+   "end": 152.25,
+   "text": "【같은 칩, 다른 모양】 더 잘 맞는 모양을 얻으려는 파밍이 반복 도전의 동기",
+   "style": "설명"
+  },
+  {
+   "id": "s25",
+   "start": 152.45,
+   "end": 157.75,
+   "text": "【쿨타임 당김】 아드레날린 과분비: 피해를 주면 쿨타임이 줄어든다\n쿨타임을 \"남은 시간\"으로 들고 있어 한 줄로 붙은 효과",
+   "style": "설명"
+  },
+  {
+   "id": "s26",
+   "start": 157.95,
+   "end": 160.75,
+   "text": "【염동 충격파】",
+   "style": "설명"
+  },
+  {
+   "id": "s27",
+   "start": 160.85,
+   "end": 164.45,
+   "text": "【수동 회피】 구르기 무적으로 피하면 하얀 허물",
+   "style": "설명"
+  },
+  {
+   "id": "s28",
+   "start": 164.55,
+   "end": 166.75,
+   "text": "【자동 회피】 조건 반사 칩이 대신 피하면 파란 잔상",
+   "style": "설명"
+  }
+ ],
+ "zooms": [],
+ "overlays": [
+  {
+   "id": "o29",
+   "template": "title",
+   "start": 0,
+   "end": 4.35,
+   "params": {
+    "l1": "Oddity",
+    "name": "박수하",
+    "role": "(4인 팀 · 증강칩 시스템 담당)",
+    "l3": "기간  2026.10.15 – 11.07   ·   Unity 6 · C#"
+   }
+  },
+  {
+   "id": "o30",
+   "template": "step-badge",
+   "start": 4.35,
+   "end": 16.35,
+   "params": {
+    "step": "1",
+    "label": "마을 · 증강칩 장착"
+   }
+  },
+  {
+   "id": "o31",
+   "template": "step-badge",
+   "start": 16.35,
+   "end": 23.35,
+   "params": {
+    "step": "1",
+    "label": "마을 · 스킬 시험"
+   }
+  },
+  {
+   "id": "o32",
+   "template": "step-badge",
+   "start": 23.35,
+   "end": 56.35,
+   "params": {
+    "step": "2",
+    "label": "아레나 · 보스전"
+   }
+  },
+  {
+   "id": "o33",
+   "template": "step-badge",
+   "start": 56.35,
+   "end": 61.35,
+   "params": {
+    "step": "3",
+    "label": "보상 · 칩 획득"
+   }
+  },
+  {
+   "id": "o34",
+   "template": "step-badge",
+   "start": 61.35,
+   "end": 72.85,
+   "params": {
+    "step": "4",
+    "label": "정비"
+   }
+  },
+  {
+   "id": "o35",
+   "template": "step-badge",
+   "start": 72.85,
+   "end": 107.35,
+   "params": {
+    "step": "5",
+    "label": "더 어려운 보스"
+   }
+  },
+  {
+   "id": "o36",
+   "template": "section",
+   "start": 107.35,
+   "end": 140.35,
+   "params": {
+    "label": "3.1 사용법 — 칩 장착"
+   }
+  },
+  {
+   "id": "o37",
+   "template": "section",
+   "start": 140.35,
+   "end": 152.35,
+   "params": {
+    "label": "1.4 장마다 무작위 모양"
+   }
+  },
+  {
+   "id": "o38",
+   "template": "section",
+   "start": 152.35,
+   "end": 157.85,
+   "params": {
+    "label": "4.1 쿨타임"
+   }
+  },
+  {
+   "id": "o39",
+   "template": "section",
+   "start": 157.85,
+   "end": 166.85,
+   "params": {
+    "label": "5.2 회피 피드백"
+   }
+  },
+  {
+   "id": "o40",
+   "template": "card",
+   "start": 166.85,
+   "end": 171.85,
+   "params": {
+    "l1": "Oddity",
+    "l2": "(엔딩 문구 자리 — 미정)",
+    "l3": "github.com/KooHoo-Dev/3rd_3D_1-3D-Project-team_odd"
+   }
+  }
+ ],
+ "styles": {
+  "기본": {
+   "font": "Pretendard",
+   "weight": 600,
+   "size": 4.5,
+   "color": "#ffffff",
+   "outline": 0.35,
+   "outlineColor": "#000000",
+   "bg": false,
+   "bgColor": "#000000",
+   "bgOpacity": 0.6,
+   "pos": "bottom"
+  },
+  "강조": {
+   "font": "Pretendard",
+   "weight": 800,
+   "size": 5,
+   "color": "#ffe14d",
+   "outline": 0.4,
+   "outlineColor": "#1a1a1a",
+   "bg": false,
+   "bgColor": "#000000",
+   "bgOpacity": 0.6,
+   "pos": "bottom"
+  },
+  "설명 박스": {
+   "font": "Pretendard",
+   "weight": 500,
+   "size": 3.6,
+   "color": "#ffffff",
+   "outline": 0,
+   "outlineColor": "#000000",
+   "bg": true,
+   "bgColor": "#101820",
+   "bgOpacity": 0.8,
+   "pos": "top"
+  },
+  "제목": {
+   "font": "Pretendard",
+   "weight": 800,
+   "size": 5,
+   "color": "#ffe14d",
+   "outline": 0.4,
+   "outlineColor": "#1a1a1a",
+   "bg": false,
+   "bgColor": "#000000",
+   "bgOpacity": 0.6,
+   "pos": "top"
+  },
+  "설명": {
+   "font": "Pretendard",
+   "weight": 600,
+   "size": 4.2,
+   "color": "#ffffff",
+   "outline": 0,
+   "outlineColor": "#000000",
+   "bg": true,
+   "bgColor": "#0E1420",
+   "bgOpacity": 0.75,
+   "pos": "bottom"
+  }
+ },
+ "templates": {
+  "lower-third": {
+   "name": "하단 제목 바",
+   "params": {
+    "title": "설정 열기",
+    "subtitle": "환경설정 > 일반"
+   },
+   "duration": 3,
+   "animation": {
+    "in": "slide",
+    "out": "fade",
+    "dur": 0.35
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.04,
+     "y": 0.74,
+     "w": 0.36,
+     "h": 0.14,
+     "fill": "#13233F",
+     "opacity": 0.92,
+     "radius": 0.012
+    },
+    {
+     "type": "rect",
+     "x": 0.04,
+     "y": 0.74,
+     "w": 0.007,
+     "h": 0.14,
+     "fill": "#5B9BFF"
+    },
+    {
+     "type": "text",
+     "x": 0.065,
+     "y": 0.785,
+     "text": "{{title}}",
+     "size": 0.042,
+     "weight": 700,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.065,
+     "y": 0.84,
+     "text": "{{subtitle}}",
+     "size": 0.028,
+     "weight": 400,
+     "color": "#B9C7DD"
+    }
+   ]
+  },
+  "step-badge": {
+   "name": "단계 배지",
+   "params": {
+    "step": "1",
+    "label": "프로젝트 만들기"
+   },
+   "duration": 2.5,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.3
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.075,
+     "y": 0.025,
+     "w": 0.05,
+     "h": 0.089,
+     "fill": "#5B9BFF",
+     "radius": 0.02
+    },
+    {
+     "type": "text",
+     "x": 0.1,
+     "y": 0.0695,
+     "text": "{{step}}",
+     "size": 0.05,
+     "weight": 800,
+     "color": "#0B1A33",
+     "align": "center"
+    },
+    {
+     "type": "rect",
+     "x": 0.13,
+     "y": 0.033,
+     "w": 0.27,
+     "h": 0.073,
+     "fill": "#000000",
+     "opacity": 0.68,
+     "radius": 0.012
+    },
+    {
+     "type": "text",
+     "x": 0.145,
+     "y": 0.0695,
+     "text": "{{label}}",
+     "size": 0.034,
+     "weight": 600,
+     "color": "#FFFFFF",
+     "align": "left"
+    }
+   ]
+  },
+  "callout": {
+   "name": "콜아웃 박스",
+   "params": {
+    "text": "여기를 클릭하세요"
+   },
+   "duration": 3,
+   "animation": {
+    "in": "rise",
+    "out": "fade",
+    "dur": 0.3
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.6,
+     "y": 0.12,
+     "w": 0.32,
+     "h": 0.09,
+     "fill": "#FFD24D",
+     "radius": 0.012
+    },
+    {
+     "type": "text",
+     "x": 0.76,
+     "y": 0.165,
+     "text": "{{text}}",
+     "size": 0.034,
+     "weight": 700,
+     "color": "#1A1A1A",
+     "align": "center"
+    }
+   ]
+  },
+  "card": {
+   "name": "풀스크린 카드",
+   "params": {
+    "l1": "",
+    "l2": "",
+    "l3": ""
+   },
+   "duration": 4,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.4
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0,
+     "y": 0,
+     "w": 1,
+     "h": 1,
+     "fill": "#0E1420",
+     "opacity": 0.97
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.42,
+     "text": "{{l1}}",
+     "size": 0.06,
+     "weight": 800,
+     "color": "#FFFFFF",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.52,
+     "text": "{{l2}}",
+     "size": 0.032,
+     "weight": 500,
+     "color": "#D5DEEA",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.59,
+     "text": "{{l3}}",
+     "size": 0.026,
+     "weight": 500,
+     "color": "#8FA0B8",
+     "align": "center"
+    }
+   ]
+  },
+  "section": {
+   "name": "섹션 배지",
+   "params": {
+    "label": ""
+   },
+   "duration": 3,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.3
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.075,
+     "y": 0.025,
+     "w": 0.3,
+     "h": 0.07,
+     "fill": "#000000",
+     "opacity": 0.62
+    },
+    {
+     "type": "rect",
+     "x": 0.075,
+     "y": 0.025,
+     "w": 0.006,
+     "h": 0.07,
+     "fill": "#FFD24D"
+    },
+    {
+     "type": "text",
+     "x": 0.093,
+     "y": 0.06,
+     "text": "{{label}}",
+     "size": 0.03,
+     "weight": 700,
+     "color": "#FFFFFF",
+     "align": "left"
+    }
+   ]
+  },
+  "title": {
+   "name": "타이틀 카드",
+   "params": {
+    "l1": "",
+    "name": "",
+    "role": "",
+    "l3": ""
+   },
+   "duration": 4,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.4
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0,
+     "y": 0,
+     "w": 1,
+     "h": 1,
+     "fill": "#0E1420",
+     "opacity": 0.97
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.42,
+     "text": "{{l1}}",
+     "size": 0.06,
+     "weight": 800,
+     "color": "#FFFFFF",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.3684,
+     "y": 0.52,
+     "text": "{{name}}",
+     "size": 0.032,
+     "weight": 700,
+     "color": "#FFD24D",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.425,
+     "y": 0.52,
+     "text": "{{role}}",
+     "size": 0.032,
+     "weight": 500,
+     "color": "#D5DEEA",
+     "align": "left"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.59,
+     "text": "{{l3}}",
+     "size": 0.026,
+     "weight": 500,
+     "color": "#8FA0B8",
+     "align": "center"
+    }
+   ]
+  }
+ },
+ "settings": {
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "defaultJoin": {
+   "type": "cut",
+   "dur": 0,
+   "handle": "both",
+   "ease": "smooth"
+  }
+ }
+}
