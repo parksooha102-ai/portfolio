@@ -1,0 +1,1195 @@
+{
+ "version": 2,
+ "media": {
+  "mGolf1": {
+   "name": "3d 2026-11-17 17-46-55.mp4",
+   "duration": 444.6635,
+   "width": 1920,
+   "height": 1080
+  }
+ },
+ "mediaOrder": [
+  "mGolf1"
+ ],
+ "segments": [
+  {
+   "src": "mGolf1",
+   "in": 0.3,
+   "out": 4.3,
+   "join": null
+  },
+  {
+   "src": "mGolf1",
+   "in": 6.5,
+   "out": 10.5,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mGolf1",
+   "in": 40,
+   "out": 43.3,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mGolf1",
+   "in": 58.8,
+   "out": 61.8,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mGolf1",
+   "in": 18.3,
+   "out": 21.3,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mGolf1",
+   "in": 222.3,
+   "out": 224.9,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mGolf1",
+   "in": 24,
+   "out": 27,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mGolf1",
+   "in": 43.5,
+   "out": 46.5,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mGolf1",
+   "in": 83.5,
+   "out": 86.5,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mGolf1",
+   "in": 108.5,
+   "out": 111.5,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mGolf1",
+   "in": 114.4,
+   "out": 117.4,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mGolf1",
+   "in": 139.9,
+   "out": 142.9,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mGolf1",
+   "in": 215.3,
+   "out": 219.5,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mGolf1",
+   "in": 225,
+   "out": 228.4,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mGolf1",
+   "in": 228.4,
+   "out": 233.6,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mGolf1",
+   "in": 69.3,
+   "out": 73.5,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mGolf1",
+   "in": 86.8,
+   "out": 91.5,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mGolf1",
+   "in": 102.8,
+   "out": 107.5,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mGolf1",
+   "in": 117.5,
+   "out": 122.5,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mGolf1",
+   "in": 269.3,
+   "out": 271.6,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mGolf1",
+   "in": 271.6,
+   "out": 273.8,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mGolf1",
+   "in": 145.5,
+   "out": 149.5,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mGolf1",
+   "in": 406,
+   "out": 410,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mGolf1",
+   "in": 416.5,
+   "out": 421,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mGolf1",
+   "in": 426.5,
+   "out": 430,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mGolf1",
+   "in": 430,
+   "out": 434,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  },
+  {
+   "src": "mGolf1",
+   "in": 434,
+   "out": 445.3,
+   "join": {
+    "type": "cut",
+    "dur": 0,
+    "handle": "both",
+    "ease": "smooth"
+   }
+  }
+ ],
+ "labels": [
+  {
+   "id": "l1",
+   "start": 0,
+   "end": 4,
+   "text": "title · 원본 0.3–4.3",
+   "color": "amber",
+   "note": ""
+  },
+  {
+   "id": "l2",
+   "start": 4,
+   "end": 8,
+   "text": "loop · 원본 6.5–10.5",
+   "color": "amber",
+   "note": ""
+  },
+  {
+   "id": "l3",
+   "start": 8,
+   "end": 11.3,
+   "text": "loop · 원본 40–43.3",
+   "color": "amber",
+   "note": ""
+  },
+  {
+   "id": "l4",
+   "start": 11.3,
+   "end": 14.3,
+   "text": "s12 · 원본 58.8–61.8",
+   "color": "blue",
+   "note": ""
+  },
+  {
+   "id": "l5",
+   "start": 14.3,
+   "end": 17.3,
+   "text": "s12 · 원본 18.3–21.3",
+   "color": "blue",
+   "note": ""
+  },
+  {
+   "id": "l6",
+   "start": 17.3,
+   "end": 19.9,
+   "text": "s12 · 원본 222.3–224.9",
+   "color": "blue",
+   "note": ""
+  },
+  {
+   "id": "l7",
+   "start": 19.9,
+   "end": 22.9,
+   "text": "s21 · 원본 24–27",
+   "color": "blue",
+   "note": ""
+  },
+  {
+   "id": "l8",
+   "start": 22.9,
+   "end": 25.9,
+   "text": "s21 · 원본 43.5–46.5",
+   "color": "blue",
+   "note": ""
+  },
+  {
+   "id": "l9",
+   "start": 25.9,
+   "end": 28.9,
+   "text": "s21 · 원본 83.5–86.5",
+   "color": "blue",
+   "note": ""
+  },
+  {
+   "id": "l10",
+   "start": 28.9,
+   "end": 31.9,
+   "text": "s21 · 원본 108.5–111.5",
+   "color": "blue",
+   "note": ""
+  },
+  {
+   "id": "l11",
+   "start": 31.9,
+   "end": 34.9,
+   "text": "s21 · 원본 114.4–117.4",
+   "color": "blue",
+   "note": ""
+  },
+  {
+   "id": "l12",
+   "start": 34.9,
+   "end": 37.9,
+   "text": "s21 · 원본 139.9–142.9",
+   "color": "blue",
+   "note": ""
+  },
+  {
+   "id": "l13",
+   "start": 37.9,
+   "end": 42.1,
+   "text": "s22 · 원본 215.3–219.5",
+   "color": "purple",
+   "note": ""
+  },
+  {
+   "id": "l14",
+   "start": 42.1,
+   "end": 45.5,
+   "text": "s22 · 원본 225–228.4",
+   "color": "purple",
+   "note": ""
+  },
+  {
+   "id": "l15",
+   "start": 45.5,
+   "end": 50.7,
+   "text": "s22 · 원본 228.4–233.6",
+   "color": "purple",
+   "note": ""
+  },
+  {
+   "id": "l16",
+   "start": 50.7,
+   "end": 54.9,
+   "text": "s3 · 원본 69.3–73.5",
+   "color": "green",
+   "note": ""
+  },
+  {
+   "id": "l17",
+   "start": 54.9,
+   "end": 59.6,
+   "text": "s3 · 원본 86.8–91.5",
+   "color": "green",
+   "note": ""
+  },
+  {
+   "id": "l18",
+   "start": 59.6,
+   "end": 64.3,
+   "text": "s3 · 원본 102.8–107.5",
+   "color": "green",
+   "note": ""
+  },
+  {
+   "id": "l19",
+   "start": 64.3,
+   "end": 69.3,
+   "text": "s3 · 원본 117.5–122.5",
+   "color": "green",
+   "note": ""
+  },
+  {
+   "id": "l20",
+   "start": 69.3,
+   "end": 71.6,
+   "text": "s42 · 원본 269.3–271.6",
+   "color": "red",
+   "note": ""
+  },
+  {
+   "id": "l21",
+   "start": 71.6,
+   "end": 73.8,
+   "text": "s42 · 원본 271.6–273.8",
+   "color": "red",
+   "note": ""
+  },
+  {
+   "id": "l22",
+   "start": 73.8,
+   "end": 77.8,
+   "text": "s44 · 원본 145.5–149.5",
+   "color": "red",
+   "note": ""
+  },
+  {
+   "id": "l23",
+   "start": 77.8,
+   "end": 81.8,
+   "text": "end · 원본 406–410",
+   "color": "purple",
+   "note": ""
+  },
+  {
+   "id": "l24",
+   "start": 81.8,
+   "end": 86.3,
+   "text": "end · 원본 416.5–421",
+   "color": "purple",
+   "note": ""
+  },
+  {
+   "id": "l25",
+   "start": 86.3,
+   "end": 89.8,
+   "text": "end · 원본 426.5–430",
+   "color": "purple",
+   "note": ""
+  },
+  {
+   "id": "l26",
+   "start": 89.8,
+   "end": 93.8,
+   "text": "end · 원본 430–434",
+   "color": "purple",
+   "note": ""
+  },
+  {
+   "id": "l27",
+   "start": 93.8,
+   "end": 100.6,
+   "text": "end · 원본 434–440.8",
+   "color": "purple",
+   "note": ""
+  }
+ ],
+ "subtitles": [
+  {
+   "id": "s1",
+   "start": 4.1,
+   "end": 7.9,
+   "text": "【조준 → 샷】 공을 당겨 방향과 세기를 정하고, 놓아서 친다",
+   "style": "설명"
+  },
+  {
+   "id": "s2",
+   "start": 8.1,
+   "end": 11.2,
+   "text": "【홀인 → 판정】 타수를 Par와 비교해 CLEAR · PAR / BOGEY",
+   "style": "설명"
+  },
+  {
+   "id": "s3",
+   "start": 11.4,
+   "end": 14.2,
+   "text": "【드래그】 당긴 반대 방향으로 발사 — 당긴 거리가 세기",
+   "style": "설명"
+  },
+  {
+   "id": "s4",
+   "start": 14.4,
+   "end": 17.2,
+   "text": "【우클릭 드래그】 카메라를 돌려 코스를 살핀다",
+   "style": "설명"
+  },
+  {
+   "id": "s5",
+   "start": 17.4,
+   "end": 19.8,
+   "text": "【드래그 중 휠】 타점(피치)을 5°씩 올려 띄워 친다",
+   "style": "설명"
+  },
+  {
+   "id": "s6",
+   "start": 20,
+   "end": 22.8,
+   "text": "【1-1】 조작 익히기 · 쿠션 벽  ·  Par 4",
+   "style": "설명"
+  },
+  {
+   "id": "s7",
+   "start": 23,
+   "end": 25.8,
+   "text": "【1-2】 물 (해저드)  ·  Par 4",
+   "style": "설명"
+  },
+  {
+   "id": "s8",
+   "start": 26,
+   "end": 28.8,
+   "text": "【1-3】 부스트 패드  ·  Par 3",
+   "style": "설명"
+  },
+  {
+   "id": "s9",
+   "start": 29,
+   "end": 31.8,
+   "text": "【1-4】 셔틀 벽  ·  Par 3",
+   "style": "설명"
+  },
+  {
+   "id": "s10",
+   "start": 32,
+   "end": 34.8,
+   "text": "【1-5】 풍차  ·  Par 5",
+   "style": "설명"
+  },
+  {
+   "id": "s11",
+   "start": 35,
+   "end": 37.8,
+   "text": "【1-6】 월드 1 종합 — 부스트 · 셔틀 · 풍차 · 물  ·  Par 6",
+   "style": "설명"
+  },
+  {
+   "id": "s12",
+   "start": 38,
+   "end": 42,
+   "text": "【타점 없이】 굴려 치면 흰 벽에 막혀 돌아온다",
+   "style": "설명"
+  },
+  {
+   "id": "s13",
+   "start": 42.2,
+   "end": 45.4,
+   "text": "【타점 올리기】 드래그하면서 휠로 띄워 치는 각도를 올린다",
+   "style": "설명"
+  },
+  {
+   "id": "s14",
+   "start": 45.6,
+   "end": 50.6,
+   "text": "【물 넘기】 띄운 공이 흰 벽과 물을 넘어 그린에 떨어진다",
+   "style": "설명"
+  },
+  {
+   "id": "s15",
+   "start": 50.8,
+   "end": 54.8,
+   "text": "【쿠션 벽】 벽을 맞혀 꺾어 보낼 수 있나? — 반사각",
+   "style": "설명"
+  },
+  {
+   "id": "s16",
+   "start": 55,
+   "end": 59.5,
+   "text": "【부스트 패드】 패드 방향을 이용할까, 피할까? — 경로 선택",
+   "style": "설명"
+  },
+  {
+   "id": "s17",
+   "start": 59.7,
+   "end": 64.2,
+   "text": "【셔틀 벽】 언제 칠까? — 타이밍",
+   "style": "설명"
+  },
+  {
+   "id": "s18",
+   "start": 64.4,
+   "end": 69.2,
+   "text": "【풍차】 날개 사이로 지나갈 수 있나? — 타이밍 + 정확도",
+   "style": "설명"
+  },
+  {
+   "id": "s19",
+   "start": 69.4,
+   "end": 71.5,
+   "text": "【물에 빠지면】 부스트 패드에 밀려 물로 떨어져도",
+   "style": "설명"
+  },
+  {
+   "id": "s20",
+   "start": 71.7,
+   "end": 73.7,
+   "text": "【직전 샷 위치로】 마지막으로 직접 친 자리로 돌아온다 — 벌타 없이 STROKE 1 그대로",
+   "style": "설명"
+  },
+  {
+   "id": "s21",
+   "start": 73.9,
+   "end": 77.7,
+   "text": "【움직이는 장애물】 셔틀 벽은 MovePosition으로 움직여, 부딪힌 결과를 예측할 수 있다",
+   "style": "설명"
+  },
+  {
+   "id": "s22",
+   "start": 77.9,
+   "end": 81.7,
+   "text": "【2-6 월드 2 종합】 부스트 · 셔틀 · 풍차 · 물을 한 홀에서  ·  Par 6",
+   "style": "설명"
+  },
+  {
+   "id": "s23",
+   "start": 81.9,
+   "end": 86.2,
+   "text": "【셔틀 벽】 풍차 앞을 오가는 벽 사이로 타이밍을 본다",
+   "style": "설명"
+  },
+  {
+   "id": "s24",
+   "start": 86.4,
+   "end": 89.7,
+   "text": "【트랩】 풍차가 시야를 가리고, 그 바로 앞 부스트 패드가 공을 물로 밀어낸다",
+   "style": "설명"
+  },
+  {
+   "id": "s25",
+   "start": 89.9,
+   "end": 93.7,
+   "text": "【공략】 패드 앞에서 정확히 멈추거나, 밀려날 힘을 계산해 이용한다",
+   "style": "설명"
+  },
+  {
+   "id": "s26",
+   "start": 93.9,
+   "end": 100.5,
+   "text": "【홀인】 7타 BOGEY — 월드 2 클리어",
+   "style": "설명"
+  }
+ ],
+ "zooms": [],
+ "overlays": [
+  {
+   "id": "o1",
+   "template": "title",
+   "start": 0,
+   "end": 4,
+   "params": {
+    "l1": "미니골프 레벨 디자인",
+    "l2": "설명 없이 코스만으로 장애물을 가르치는 12홀 미니골프  ·  개인 프로젝트",
+    "l3": "박수하  ·  12홀 레벨 디자인",
+    "l4": "2026.10.01 – 10.08   ·   Unity 6 · C#"
+   }
+  },
+  {
+   "id": "o2",
+   "template": "step-badge",
+   "start": 4,
+   "end": 8,
+   "params": {
+    "step": "1",
+    "label": "조준 → 샷"
+   }
+  },
+  {
+   "id": "o3",
+   "template": "step-badge",
+   "start": 8,
+   "end": 11.3,
+   "params": {
+    "step": "2",
+    "label": "홀인 → 판정"
+   }
+  },
+  {
+   "id": "o4",
+   "template": "section",
+   "start": 11.3,
+   "end": 19.9,
+   "params": {
+    "label": "1.2 조작법"
+   }
+  },
+  {
+   "id": "o5",
+   "template": "section",
+   "start": 19.9,
+   "end": 37.9,
+   "params": {
+    "label": "2.1 월드 1 — 한 홀에 새 요소 하나"
+   }
+  },
+  {
+   "id": "o6",
+   "template": "section",
+   "start": 37.9,
+   "end": 50.7,
+   "params": {
+    "label": "2.2 월드 2 — 타점 조절 필수"
+   }
+  },
+  {
+   "id": "o7",
+   "template": "section",
+   "start": 50.7,
+   "end": 69.3,
+   "params": {
+    "label": "3 장애물 설계와 배치"
+   }
+  },
+  {
+   "id": "o8",
+   "template": "section",
+   "start": 69.3,
+   "end": 73.8,
+   "params": {
+    "label": "4.2 해저드 복귀 — 직전 샷 위치로"
+   }
+  },
+  {
+   "id": "o9",
+   "template": "section",
+   "start": 73.8,
+   "end": 77.8,
+   "params": {
+    "label": "4.4 움직이는 장애물과 공의 충돌"
+   }
+  },
+  {
+   "id": "o10",
+   "template": "section",
+   "start": 77.8,
+   "end": 100.6,
+   "params": {
+    "label": "2-6 월드 2 종합 홀"
+   }
+  },
+  {
+   "id": "o11",
+   "template": "card",
+   "start": 100.6,
+   "end": 105.1,
+   "params": {
+    "l1": "미니골프 레벨 디자인",
+    "l2": "2개 월드 × 6홀  ·  장애물 4종 + 물 해저드  ·  한 홀에 새 요소 하나 → 월드 마지막 홀에서 조합",
+    "l3": "github.com/parksooha102-ai/3rd-minigolf_level_design-parksooha102-ai"
+   }
+  }
+ ],
+ "styles": {
+  "기본": {
+   "font": "Pretendard",
+   "weight": 600,
+   "size": 4.5,
+   "color": "#ffffff",
+   "outline": 0.35,
+   "outlineColor": "#000000",
+   "bg": false,
+   "bgColor": "#000000",
+   "bgOpacity": 0.6,
+   "pos": "bottom"
+  },
+  "강조": {
+   "font": "Pretendard",
+   "weight": 800,
+   "size": 5,
+   "color": "#ffe14d",
+   "outline": 0.4,
+   "outlineColor": "#1a1a1a",
+   "bg": false,
+   "bgColor": "#000000",
+   "bgOpacity": 0.6,
+   "pos": "bottom"
+  },
+  "설명 박스": {
+   "font": "Pretendard",
+   "weight": 500,
+   "size": 3.6,
+   "color": "#ffffff",
+   "outline": 0,
+   "outlineColor": "#000000",
+   "bg": true,
+   "bgColor": "#101820",
+   "bgOpacity": 0.8,
+   "pos": "top"
+  },
+  "제목": {
+   "font": "Pretendard",
+   "weight": 800,
+   "size": 5,
+   "color": "#ffe14d",
+   "outline": 0.4,
+   "outlineColor": "#1a1a1a",
+   "bg": false,
+   "bgColor": "#000000",
+   "bgOpacity": 0.6,
+   "pos": "top"
+  },
+  "설명": {
+   "font": "Pretendard",
+   "weight": 600,
+   "size": 4.2,
+   "color": "#ffffff",
+   "outline": 0,
+   "outlineColor": "#000000",
+   "bg": true,
+   "bgColor": "#0E1420",
+   "bgOpacity": 0.75,
+   "pos": "bottom"
+  }
+ },
+ "templates": {
+  "lower-third": {
+   "name": "하단 제목 바",
+   "params": {
+    "title": "설정 열기",
+    "subtitle": "환경설정 > 일반"
+   },
+   "duration": 3,
+   "animation": {
+    "in": "slide",
+    "out": "fade",
+    "dur": 0.35
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.04,
+     "y": 0.74,
+     "w": 0.36,
+     "h": 0.14,
+     "fill": "#13233F",
+     "opacity": 0.92,
+     "radius": 0.012
+    },
+    {
+     "type": "rect",
+     "x": 0.04,
+     "y": 0.74,
+     "w": 0.007,
+     "h": 0.14,
+     "fill": "#5B9BFF"
+    },
+    {
+     "type": "text",
+     "x": 0.065,
+     "y": 0.785,
+     "text": "{{title}}",
+     "size": 0.042,
+     "weight": 700,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.065,
+     "y": 0.84,
+     "text": "{{subtitle}}",
+     "size": 0.028,
+     "weight": 400,
+     "color": "#B9C7DD"
+    }
+   ]
+  },
+  "step-badge": {
+   "name": "단계 배지",
+   "params": {
+    "step": "1",
+    "label": "프로젝트 만들기"
+   },
+   "duration": 2.5,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.3
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.075,
+     "y": 0.2,
+     "w": 0.05,
+     "h": 0.089,
+     "fill": "#5B9BFF",
+     "radius": 0.02
+    },
+    {
+     "type": "text",
+     "x": 0.1,
+     "y": 0.2445,
+     "text": "{{step}}",
+     "size": 0.05,
+     "weight": 800,
+     "color": "#0B1A33",
+     "align": "center"
+    },
+    {
+     "type": "rect",
+     "x": 0.13,
+     "y": 0.208,
+     "w": 0.27,
+     "h": 0.073,
+     "fill": "#000000",
+     "opacity": 0.68,
+     "radius": 0.012
+    },
+    {
+     "type": "text",
+     "x": 0.145,
+     "y": 0.2445,
+     "text": "{{label}}",
+     "size": 0.034,
+     "weight": 600,
+     "color": "#FFFFFF",
+     "align": "left"
+    }
+   ]
+  },
+  "callout": {
+   "name": "콜아웃 박스",
+   "params": {
+    "text": "여기를 클릭하세요"
+   },
+   "duration": 3,
+   "animation": {
+    "in": "rise",
+    "out": "fade",
+    "dur": 0.3
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.6,
+     "y": 0.12,
+     "w": 0.32,
+     "h": 0.09,
+     "fill": "#FFD24D",
+     "radius": 0.012
+    },
+    {
+     "type": "text",
+     "x": 0.76,
+     "y": 0.165,
+     "text": "{{text}}",
+     "size": 0.034,
+     "weight": 700,
+     "color": "#1A1A1A",
+     "align": "center"
+    }
+   ]
+  },
+  "title": {
+   "name": "타이틀 카드(프로젝트 개요)",
+   "params": {
+    "l1": "",
+    "l2": "",
+    "l3": "",
+    "l4": ""
+   },
+   "duration": 4,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.4
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0,
+     "y": 0,
+     "w": 1,
+     "h": 1,
+     "fill": "#0E1420",
+     "opacity": 0.97
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.36,
+     "text": "{{l1}}",
+     "size": 0.06,
+     "weight": 800,
+     "color": "#FFFFFF",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.45,
+     "text": "{{l2}}",
+     "size": 0.03,
+     "weight": 500,
+     "color": "#D5DEEA",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.535,
+     "text": "{{l3}}",
+     "size": 0.026,
+     "weight": 600,
+     "color": "#FFE14D",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.605,
+     "text": "{{l4}}",
+     "size": 0.024,
+     "weight": 500,
+     "color": "#8FA0B8",
+     "align": "center"
+    }
+   ]
+  },
+  "section": {
+   "name": "섹션 배지 (미니골프: RESET 버튼 아래 y 20%)",
+   "params": {
+    "label": ""
+   },
+   "duration": 3,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.3
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.075,
+     "y": 0.2,
+     "w": 0.33,
+     "h": 0.07,
+     "fill": "#000000",
+     "opacity": 0.62
+    },
+    {
+     "type": "rect",
+     "x": 0.075,
+     "y": 0.2,
+     "w": 0.006,
+     "h": 0.07,
+     "fill": "#FFD24D"
+    },
+    {
+     "type": "text",
+     "x": 0.093,
+     "y": 0.235,
+     "text": "{{label}}",
+     "size": 0.03,
+     "weight": 700,
+     "color": "#FFFFFF",
+     "align": "left"
+    }
+   ]
+  },
+  "card": {
+   "name": "풀스크린 카드",
+   "params": {
+    "l1": "",
+    "l2": "",
+    "l3": ""
+   },
+   "duration": 4,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.4
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0,
+     "y": 0,
+     "w": 1,
+     "h": 1,
+     "fill": "#0E1420",
+     "opacity": 0.97
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.42,
+     "text": "{{l1}}",
+     "size": 0.06,
+     "weight": 800,
+     "color": "#FFFFFF",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.52,
+     "text": "{{l2}}",
+     "size": 0.032,
+     "weight": 500,
+     "color": "#D5DEEA",
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "x": 0.5,
+     "y": 0.59,
+     "text": "{{l3}}",
+     "size": 0.026,
+     "weight": 500,
+     "color": "#8FA0B8",
+     "align": "center"
+    }
+   ]
+  }
+ },
+ "settings": {
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "defaultJoin": {
+   "type": "cut",
+   "dur": 0,
+   "handle": "both",
+   "ease": "smooth"
+  },
+  "mute": true
+ }
+}
