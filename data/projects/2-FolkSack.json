@@ -291,6 +291,19 @@
         ]
       },
       {
+        "key": "item-fields",
+        "chapter": "core",
+        "layout": "full",
+        "tab": "구현",
+        "title": { "text": "3.4 데이터로 만드는 상점 카드", "verbatim": true },
+        "lead": { "text": "ItemTable.Load()는 Items.tsv를 두 단계로 바꾼다.", "verbatim": true },
+        "sectionPath": ["3. 핵심 기능과 구현", "3.4 데이터로 만드는 상점 카드"],
+        "points": [],
+        "visuals": [
+          { "kind": "table", "n": 1, "fp": "Items.tsv 열 (청동 채굴 키트, ID 1)|ItemDTO — 칸을 나눠 그대로 담기|ItemDef — 게임이 쓰는 값" }
+        ]
+      },
+      {
         "key": "shop-flow",
         "chapter": "core",
         "layout": "visual",
@@ -321,7 +334,7 @@
           { "label": "", "text": "새 등급은 TSV 한 줄 + 썸네일 스프라이트만 추가하면 상점 곡괭이 탭에 나타나고, 사면 그 굴착력으로 채굴한다.", "verbatim": true }
         ],
         "visuals": [
-          { "kind": "table", "n": 2, "fp": "아이템 탭 (ID 50~54)|곡괭이 탭 (ID 1~3)" }
+          { "kind": "table", "n": 3, "fp": "아이템 탭 (ID 50~54)|곡괭이 탭 (ID 1~3)" }
         ]
       },
       {
