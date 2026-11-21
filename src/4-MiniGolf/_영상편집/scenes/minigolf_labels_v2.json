@@ -1,0 +1,408 @@
+{
+ "version": 2,
+ "media": {
+  "mGolf1": {
+   "name": "3d 2026-11-17 17-46-55.mp4",
+   "duration": 444.6635,
+   "width": 1920,
+   "height": 1080
+  }
+ },
+ "mediaOrder": [
+  "mGolf1"
+ ],
+ "segments": [
+  {
+   "src": "mGolf1",
+   "in": 0,
+   "out": 444.66,
+   "join": null
+  }
+ ],
+ "labels": [
+  {
+   "id": "l0",
+   "start": 0,
+   "end": 43.4,
+   "text": "1-1 조작 익히기 · 쿠션 벽 (Par 4 → 7타, +3)",
+   "color": "blue",
+   "note": "지그재그 코스, 분홍 쿠션 벽 블록. 타수 변화 약 12·17·27·32초. 42.2초 CLEAR +3"
+  },
+  {
+   "id": "l1",
+   "start": 43.4,
+   "end": 69.5,
+   "text": "1-2 쿠션 벽 + 물 (Par 4 → 6타, +2)",
+   "color": "blue",
+   "note": "가운데 물웅덩이를 쿠션 벽이 둘러싼 ㄷ자 코스. 타수 약 53·61·71·77·82초. 81~83초 CLEAR +2. 문서 4.1(Par 6→4, 쿠션 벽으로 한 번에 돌기)과 달리 이 영상에선 6타"
+  },
+  {
+   "id": "l2",
+   "start": 69.5,
+   "end": 74,
+   "text": "1-2 · 쿠션 벽 옆 샷 (문서 §3 그림 70초)",
+   "color": "blue",
+   "note": "70초 프레임 = 이미지/1-2_cushion_water.jpg. 70.5초 샷 → 물웅덩이 옆 레인"
+  },
+  {
+   "id": "l3",
+   "start": 74,
+   "end": 83.4,
+   "text": "1-2 · 마무리 (CLEAR +2)",
+   "color": "blue",
+   "note": "81~83초 CLEAR +2"
+  },
+  {
+   "id": "l4",
+   "start": 83.4,
+   "end": 100.6,
+   "text": "1-3 부스트 패드 (Par 3 → 3타, PAR)",
+   "color": "blue",
+   "note": "직선 레인 위 부스트 패드(주황 화살표), 컵 옆 물. 타수 약 88·95·99초. 99~100초 CLEAR PAR. 89초 프레임 = 이미지/1-3_boost_pad.jpg (레포 세기 6·8 — 첫 등장이라 약하게)"
+  },
+  {
+   "id": "l5",
+   "start": 100.6,
+   "end": 114.3,
+   "text": "1-4 셔틀 벽 (Par 3 → 3타, PAR)",
+   "color": "blue",
+   "note": "ㄱ자 코스, 파란 셔틀 벽 2개, 모퉁이 작은 물. 타수 약 104·109·113초. 113.3초 CLEAR PAR. 104.5초 프레임 = 이미지/1-4_shuttle_wall.jpg (레포 goalTime 1.5·2초)"
+  },
+  {
+   "id": "l6",
+   "start": 114.3,
+   "end": 119,
+   "text": "1-5 풍차 (Par 5 → 5타, PAR)",
+   "color": "blue",
+   "note": "티 앞 풍차, 지나서 물웅덩이, 지그재그 그린"
+  },
+  {
+   "id": "l7",
+   "start": 119,
+   "end": 124,
+   "text": "1-5 · 풍차 통과 (문서 §3 그림 121초)",
+   "color": "blue",
+   "note": "121초 프레임 = 이미지/1-5_windmill.jpg. 레포 회전 속도 30"
+  },
+  {
+   "id": "l8",
+   "start": 124,
+   "end": 139.8,
+   "text": "1-5 · 마무리 (CLEAR PAR)",
+   "color": "blue",
+   "note": "139.2초 CLEAR PAR"
+  },
+  {
+   "id": "l9",
+   "start": 139.8,
+   "end": 206.8,
+   "text": "1-6 월드 1 종합 (Par 6 → 11타, +5)",
+   "color": "red",
+   "note": "쿠션 벽처럼 보이는 분홍 벽 레인 → 부스트+풍차 → 물웅덩이 → 셔틀 벽 → 부스트+풍차 → 물 낀 마지막 구간. 레포 Stage1_6에는 쿠션 프리팹·탄성 재질이 없고 셔틀 벽 3개(1.5초)·재질 덮어쓰기가 있어, 분홍 벽은 색만 같은 다른 벽으로 보임(확인 필요). 206초 CLEAR +5"
+  },
+  {
+   "id": "l10",
+   "start": 206.8,
+   "end": 222,
+   "text": "2-1 · 타점 없이 시도",
+   "color": "purple",
+   "note": "흰 턱(LowFence) → 물 → 높은 그린. 굴려 쳐서는 넘지 못함"
+  },
+  {
+   "id": "l11",
+   "start": 222,
+   "end": 228.5,
+   "text": "2-1 · 타점 조준 (문서 §2.2 그림 223초)",
+   "color": "purple",
+   "note": "223초 프레임 = 이미지/2-1_pitch_aim.jpg. 흰 선 = 높이가 포함된 발사 방향, 노란 선 = 바닥 정사영, 오른쪽 위 원 = 타점 UI(GolfHitPointUI)"
+  },
+  {
+   "id": "l12",
+   "start": 228.5,
+   "end": 235.6,
+   "text": "2-1 · 물 넘어 그린 (Par 4 → 4타, PAR)",
+   "color": "purple",
+   "note": "229.8초 프레임 = 이미지/2-1_over_water.jpg. 233.8초 CLEAR PAR"
+  },
+  {
+   "id": "l13",
+   "start": 235.6,
+   "end": 266.6,
+   "text": "2-2 높이 × 쿠션 벽 (Par 3 → 6타, +3)",
+   "color": "purple",
+   "note": "오르막 레인 끝 높은 쿠션 벽. 공이 여러 번 티 쪽으로 굴러 내려옴(247·255·258초). 266초 CLEAR +3"
+  },
+  {
+   "id": "l14",
+   "start": 266.6,
+   "end": 270.5,
+   "text": "2-3 높이 × 부스트 + 풍차 (Par 4 → 7타, +3)",
+   "color": "purple",
+   "note": "부스트로 공중 발사하는 홀"
+  },
+  {
+   "id": "l15",
+   "start": 270.5,
+   "end": 273,
+   "text": "2-3 · 부스트 → 물 → 직접 친 자리로 복귀 (문서 §4.2)",
+   "color": "purple",
+   "note": "270.5초 샷 → 271초 부스트 → 271.5~272초 물로 떨어짐 → 272.5초 티(마지막으로 직접 친 자리)로 복귀. isPassive 동작 그대로. 벌타는 원래 없는 규칙(GolfHazardTrigger)"
+  },
+  {
+   "id": "l16",
+   "start": 273,
+   "end": 305.7,
+   "text": "2-3 · 재시도와 풍차 구간 (CLEAR +3)",
+   "color": "purple",
+   "note": "같은 복귀가 약 276·281초에도. 287~298초 풍차 구간. 304.9초 CLEAR +3"
+  },
+  {
+   "id": "l17",
+   "start": 305.7,
+   "end": 326.4,
+   "text": "2-4 높이 × 셔틀 벽 (Par 3 → 4타, BOGEY)",
+   "color": "purple",
+   "note": "티 양옆 분홍 벽 = 셔틀 벽(레포: 2-4 셔틀 벽 2개에 탄성 재질 PM_Bouncy, 그래서 분홍) → 물 위 높은 발판들. 325.6초 CLEAR BOGEY"
+  },
+  {
+   "id": "l18",
+   "start": 326.4,
+   "end": 337,
+   "text": "2-5 높이 × 부스트 — 시도 1 (공이 코스 밖으로)",
+   "color": "purple",
+   "note": "티 옆 부스트, 높은 벽. 331.7초 샷 → 334초 공중 → 336.5초 바다 → 337초 티에서 타수 0 (RESET 버튼 — 물 복귀는 타수를 바꾸지 않으므로)"
+  },
+  {
+   "id": "l19",
+   "start": 337,
+   "end": 353.8,
+   "text": "2-5 높이 × 부스트 — 시도 2 (Par 3 → 3타, PAR)",
+   "color": "purple",
+   "note": "다시 1타부터. 타수 약 340·348초. 353.2초 CLEAR PAR"
+  },
+  {
+   "id": "l20",
+   "start": 353.8,
+   "end": 362,
+   "text": "2-6 월드 2 종합 — 시도 1",
+   "color": "red",
+   "note": "첫 샷 후 361~362초 티로 돌아가며 타수 1 → 0 (RESET으로 보임)"
+  },
+  {
+   "id": "l21",
+   "start": 362,
+   "end": 405.5,
+   "text": "2-6 월드 2 종합 — 시도 2",
+   "color": "red",
+   "note": "풍차·부스트·물웅덩이·셔틀 벽 구간 진행, 8타까지. 404.5초 풍차 근처 → 405.5초 티에서 타수 0 (RESET으로 보임)"
+  },
+  {
+   "id": "l22",
+   "start": 405.5,
+   "end": 441,
+   "text": "2-6 월드 2 종합 — 시도 3 (Par 6 → 7타, BOGEY)",
+   "color": "red",
+   "note": "타수 약 408·426·431·440초. 440초 CLEAR BOGEY. 화면의 7타는 리셋 뒤 타수"
+  },
+  {
+   "id": "l23",
+   "start": 441,
+   "end": 444.66,
+   "text": "끝 · 1-1로 돌아옴",
+   "color": "amber",
+   "note": "CLEAR 뒤 1-1 첫 화면(STROKE 0 / PAR 4)"
+  }
+ ],
+ "subtitles": [],
+ "zooms": [],
+ "overlays": [],
+ "styles": {
+  "기본": {
+   "font": "Pretendard",
+   "weight": 600,
+   "size": 4.5,
+   "color": "#ffffff",
+   "outline": 0.35,
+   "outlineColor": "#000000",
+   "bg": false,
+   "bgColor": "#000000",
+   "bgOpacity": 0.6,
+   "pos": "bottom"
+  },
+  "강조": {
+   "font": "Pretendard",
+   "weight": 800,
+   "size": 5,
+   "color": "#ffe14d",
+   "outline": 0.4,
+   "outlineColor": "#1a1a1a",
+   "bg": false,
+   "bgColor": "#000000",
+   "bgOpacity": 0.6,
+   "pos": "bottom"
+  },
+  "설명 박스": {
+   "font": "Pretendard",
+   "weight": 500,
+   "size": 3.6,
+   "color": "#ffffff",
+   "outline": 0,
+   "outlineColor": "#000000",
+   "bg": true,
+   "bgColor": "#101820",
+   "bgOpacity": 0.8,
+   "pos": "top"
+  }
+ },
+ "templates": {
+  "lower-third": {
+   "name": "하단 제목 바",
+   "params": {
+    "title": "설정 열기",
+    "subtitle": "환경설정 > 일반"
+   },
+   "duration": 3,
+   "animation": {
+    "in": "slide",
+    "out": "fade",
+    "dur": 0.35
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.04,
+     "y": 0.74,
+     "w": 0.36,
+     "h": 0.14,
+     "fill": "#13233F",
+     "opacity": 0.92,
+     "radius": 0.012
+    },
+    {
+     "type": "rect",
+     "x": 0.04,
+     "y": 0.74,
+     "w": 0.007,
+     "h": 0.14,
+     "fill": "#5B9BFF"
+    },
+    {
+     "type": "text",
+     "x": 0.065,
+     "y": 0.785,
+     "text": "{{title}}",
+     "size": 0.042,
+     "weight": 700,
+     "color": "#FFFFFF"
+    },
+    {
+     "type": "text",
+     "x": 0.065,
+     "y": 0.84,
+     "text": "{{subtitle}}",
+     "size": 0.028,
+     "weight": 400,
+     "color": "#B9C7DD"
+    }
+   ]
+  },
+  "step-badge": {
+   "name": "단계 배지",
+   "params": {
+    "step": "1",
+    "label": "프로젝트 만들기"
+   },
+   "duration": 2.5,
+   "animation": {
+    "in": "fade",
+    "out": "fade",
+    "dur": 0.3
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.03,
+     "y": 0.05,
+     "w": 0.05,
+     "h": 0.089,
+     "fill": "#5B9BFF",
+     "radius": 0.02
+    },
+    {
+     "type": "text",
+     "x": 0.055,
+     "y": 0.0945,
+     "text": "{{step}}",
+     "size": 0.05,
+     "weight": 800,
+     "color": "#0B1A33",
+     "align": "center"
+    },
+    {
+     "type": "rect",
+     "x": 0.085,
+     "y": 0.058,
+     "w": 0.27,
+     "h": 0.073,
+     "fill": "#000000",
+     "opacity": 0.68,
+     "radius": 0.012
+    },
+    {
+     "type": "text",
+     "x": 0.1,
+     "y": 0.0945,
+     "text": "{{label}}",
+     "size": 0.034,
+     "weight": 600,
+     "color": "#FFFFFF"
+    }
+   ]
+  },
+  "callout": {
+   "name": "콜아웃 박스",
+   "params": {
+    "text": "여기를 클릭하세요"
+   },
+   "duration": 3,
+   "animation": {
+    "in": "rise",
+    "out": "fade",
+    "dur": 0.3
+   },
+   "elements": [
+    {
+     "type": "rect",
+     "x": 0.6,
+     "y": 0.12,
+     "w": 0.32,
+     "h": 0.09,
+     "fill": "#FFD24D",
+     "radius": 0.012
+    },
+    {
+     "type": "text",
+     "x": 0.76,
+     "y": 0.165,
+     "text": "{{text}}",
+     "size": 0.034,
+     "weight": 700,
+     "color": "#1A1A1A",
+     "align": "center"
+    }
+   ]
+  }
+ },
+ "settings": {
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "defaultJoin": {
+   "type": "dissolve",
+   "dur": 0.3,
+   "handle": "both",
+   "ease": "smooth"
+  },
+  "mute": true
+ }
+}
