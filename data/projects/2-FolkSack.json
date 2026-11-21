@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-21",
+  "generatedAt": "2026-11-22",
   "id": "2-FolkSack",
   "doc": "기술문서_초안_아이템시스템.md",
   "title": "FOLK SACK",
@@ -13,7 +13,7 @@
   },
   "meta": [
     { "label": "장르", "value": "2D 멀티플레이 채굴·생존 게임" },
-    { "label": "기간", "value": "2026.08.23 ~ 2026.09.10 (3인 팀)" },
+    { "label": "기간", "value": "2026.08.23 ~ 2026.09.10 (약 3주, 3인 팀)" },
     { "label": "인원", "value": "3명 — 박수하(본인), 팀원 A, 팀원 B" },
     { "label": "환경", "value": "Unity 6 (6000.3.15f1), URP 2D, Input System, DOTween, C#" }
   ],
@@ -62,37 +62,37 @@
       "what": "다이너마이트의 폭발 반경·위력·퓨즈 시간처럼 특정 아이템에서만 쓰는 값을 어디에 둘지 정했다.",
       "how": "공통 값(이름, 가격, 쿨타임 등)은 TSV에 두고, 다이너마이트 전용 칼럼 3개는 `ExplosiveData` 에셋으로 옮기고, 이후 추가한 지뢰의 전용 값은 `MineData` 에셋에 두었다.",
       "why": "모든 값을 TSV 하나에 두면 전용 값을 쓰지 않는 아이템에도 빈 칼럼이 생긴다. 실제로 분리 직전 6개 행 중 5개 행은 다이너마이트 전용 칸이 모두 0이었다.",
-      "section": "4.1 아이템 전용 값을 어디에 둘까",
+      "section": "4.1 아이템 전용 값 — TSV 칼럼 vs ScriptableObject",
       "image": null
     }
   ],
   "troubleshooting": [
     {
-      "title": "실패했는데 쿨타임이 도는 현상",
+      "title": "실패해도 돌던 쿨타임",
       "problem": "아이템 사용이 실패해도 서버의 경고 메시지가 뜨지 않고, 쿨타임은 정상적으로 돌았다.",
       "cause": "같은 사용 조건을 클라이언트와 서버가 각각 검증해, 클라이언트 검증이 실패 시 바로 `return`하면서 서버가 보낸 실패 사유를 출력하는 함수가 호출되지 않았다. 또 사용 결과 `bool` 값을 나는 \"아이템 사용 성공\"으로, 서버 담당 팀원 A는 \"서버 요청 성공\"으로 이해해, 서버가 거절해도 쿨타임이 그대로 시작됐다.",
       "solution": "서버가 이미 최종 판정을 하고 있었기 때문에 클라이언트 검증 코드(41줄)를 제거하고 판정을 서버로 일원화했다. 서버가 거절하면 그 요청으로 시작한 쿨타임만 되돌리는 처리(`requestId`별 대기 쿨타임 기록 → 거절 시 삭제)는 팀원 A가 구현했다.",
       "result": "서버가 사용을 거절하면 실패 메시지가 뜨고, 쿨타임은 돌지 않는다.",
       "lesson": "`bool` 값 하나도 정확히 무엇을 의미하는지 협업자와 미리 맞추지 않으면 찾기 어려운 버그가 된다.",
-      "section": "실패했는데 쿨타임이 도는 현상"
+      "section": "실패해도 돌던 쿨타임"
     },
     {
-      "title": "탐지기 연타 시 연출이 끊기는 버그",
+      "title": "연타하면 끊기던 탐지기 연출",
       "problem": "탐지기를 빠르게 여러 번 쓰면 먼저 시작한 음파 연출이 중간에 끊겼다.",
       "cause": "서버가 확정한 결과 연출과 로컬 미리보기 연출이 코루틴 슬롯 하나를 공유해서, 나중 응답이 먼저 응답의 연출을 멈췄다.",
       "solution": "슬롯은 로컬 미리보기에만 쓰고, 서버가 확정한 결과는 매번 독립된 코루틴으로 실행했다.",
       "result": "탐지기를 연달아 써도 음파 연출이 끊기지 않고 안정적으로 재생된다.",
       "lesson": "",
-      "section": "탐지기 연타 시 연출이 끊기는 버그"
+      "section": "연타하면 끊기던 탐지기 연출"
     },
     {
-      "title": "다이너마이트가 벽 안에서 던져지는 버그",
+      "title": "벽 안에서 던져지던 다이너마이트",
       "problem": "벽에 붙어서 오른쪽으로 다이너마이트를 던지면 벽 안쪽에서 생성돼 벽을 통과했다.",
       "cause": "플레이어 스프라이트가 제대로 분할되지 않아 그림이 왼쪽으로 쏠려 있었고, 이를 보정하려고 넣은 투척 시작 위치 계산 때문에 오른쪽으로 던질 때 시작 위치가 벽 안으로 들어갔다.",
       "solution": "근본 원인인 스프라이트 분할(피벗)을 바로잡고, 투척 위치 보정 계산(`GetSeparatedLaunchPosition` 메서드와 설정값)을 제거했다. 지금은 플레이어 위치에서 던지고, 플레이어와의 충돌만 무시한다.",
       "result": "벽에 붙어 던져도 다이너마이트가 벽 안에서 생성되지 않는다.",
       "lesson": "그래픽 문제를 로직으로 덮으면 다른 곳에서 버그가 생긴다. 증상이 아니라 원인이 있는 곳을 고쳐야 한다.",
-      "section": "다이너마이트가 벽 안에서 던져지는 버그"
+      "section": "벽 안에서 던져지던 다이너마이트"
     }
   ],
   "screenshots": [
@@ -262,9 +262,9 @@
         "chapter": "core",
         "layout": "problem",
         "tab": "문제 해결",
-        "title": { "text": "실패했는데 쿨타임이 도는 현상", "verbatim": true },
+        "title": { "text": "실패해도 돌던 쿨타임", "verbatim": true },
         "lead": null,
-        "sectionPath": ["3. 핵심 기능과 구현", "3.2 아이템 사용과 쿨타임", "실패했는데 쿨타임이 도는 현상"],
+        "sectionPath": ["3. 핵심 기능과 구현", "3.2 아이템 사용과 쿨타임", "실패해도 돌던 쿨타임"],
         "points": [
           { "label": "문제", "text": "아이템 사용이 실패해도 서버의 경고 메시지가 뜨지 않고, 쿨타임은 정상적으로 돌았다.", "verbatim": true },
           { "label": "원인", "text": "같은 사용 조건을 클라이언트·서버가 각각 검증했고, bool 값을 나는 \"아이템 사용 성공\"으로, 서버 담당 팀원 A는 \"서버 요청 성공\"으로 이해했다.", "verbatim": false },
@@ -296,7 +296,7 @@
         "layout": "full",
         "tab": "구현",
         "title": { "text": "3.4 데이터로 만드는 상점 카드", "verbatim": true },
-        "lead": { "text": "ItemTable.Load()는 Items.tsv를 두 단계로 바꾼다.", "verbatim": true },
+        "lead": null,
         "sectionPath": ["3. 핵심 기능과 구현", "3.4 데이터로 만드는 상점 카드"],
         "points": [],
         "visuals": [
@@ -342,9 +342,9 @@
         "chapter": "choice",
         "layout": "full",
         "tab": "선택",
-        "title": { "text": "4.1 아이템 전용 값을 어디에 둘까", "verbatim": true },
+        "title": { "text": "4.1 아이템 전용 값 — TSV 칼럼 vs ScriptableObject", "verbatim": true },
         "lead": { "text": "결정 대상 — 다이너마이트의 폭발 반경·위력·퓨즈 시간처럼 특정 아이템에서만 쓰는 값을 어디에 둘까?", "verbatim": true },
-        "sectionPath": ["4. 설계 결정과 트러블슈팅", "4.1 아이템 전용 값을 어디에 둘까"],
+        "sectionPath": ["4. 설계 결정과 트러블슈팅", "4.1 아이템 전용 값 — TSV 칼럼 vs ScriptableObject"],
         "points": [
           { "label": "이유", "text": "6개 행 중 5개 행은 이 칸이 모두 0이었다.", "verbatim": true },
           { "label": "결정", "text": "다이너마이트 전용 칼럼 3개를 TSV에서 빼고 ExplosiveData 에셋으로 옮겼다.", "verbatim": true }
@@ -358,9 +358,9 @@
         "chapter": "choice",
         "layout": "full",
         "tab": "선택",
-        "title": { "text": "4.2 사용한 아이템을 언제 누가 뺄까", "verbatim": true },
+        "title": { "text": "4.2 아이템 소모 — 무조건 소모 vs 성공했을 때만", "verbatim": true },
         "lead": { "text": "결정 대상 — 아이템을 사용한 뒤 인벤토리에서 1개를 빼는 일을 언제, 누가 할까?", "verbatim": true },
-        "sectionPath": ["4. 설계 결정과 트러블슈팅", "4.2 사용한 아이템을 언제 누가 뺄까"],
+        "sectionPath": ["4. 설계 결정과 트러블슈팅", "4.2 아이템 소모 — 무조건 소모 vs 성공했을 때만"],
         "points": [],
         "visuals": [
           { "kind": "table", "n": 1, "fp": "|[A] Use()는 void, 호출 뒤 무조건 소모 (처음 방식)|[B] Use()가 성공 여부를 bool로 반환, ItemController가 성공했을 때만 소모 (채택)" }
@@ -371,13 +371,13 @@
         "chapter": "choice",
         "layout": "code",
         "tab": "선택",
-        "title": { "text": "4.2 사용한 아이템을 언제 누가 뺄까", "verbatim": true },
+        "title": { "text": "4.2 아이템 소모 — 무조건 소모 vs 성공했을 때만", "verbatim": true },
         "lead": { "text": "지뢰 중복 설치 버그를 고칠 때 [A]의 한계가 드러났다.", "verbatim": true },
-        "sectionPath": ["4. 설계 결정과 트러블슈팅", "4.2 사용한 아이템을 언제 누가 뺄까"],
+        "sectionPath": ["4. 설계 결정과 트러블슈팅", "4.2 아이템 소모 — 무조건 소모 vs 성공했을 때만"],
         "points": [
           { "label": "계기", "text": "이미 지뢰가 있는 칸에는 설치를 막아야 했는데, Use()가 void라 설치를 막아도 호출 측은 그 사실을 몰랐다.", "verbatim": true },
           { "label": "결정", "text": "팀원과 함께 대안 B를 선택했다(\"지뢰가 중복설치되던 버그 해결\" 커밋).", "verbatim": true },
-          { "label": "감수한 대가", "text": "요청 전송에 성공해 쿨타임이 시작된 뒤 서버가 거절하면 쿨타임을 되돌려야 했고, 이 처리는 팀원 A가 requestId 기반으로 구현했다(3.2 「실패했는데 쿨타임이 도는 현상」).", "verbatim": true }
+          { "label": "감수한 대가", "text": "요청 전송에 성공해 쿨타임이 시작된 뒤 서버가 거절하면 쿨타임을 되돌려야 했고, 이 처리는 팀원 A가 requestId 기반으로 구현했다(3.2 「실패해도 돌던 쿨타임」).", "verbatim": true }
         ],
         "visuals": [
           { "kind": "code", "n": 1, "fp": "// 수정 전: 결과와 관계없이 소모" }
@@ -388,9 +388,9 @@
         "chapter": "choice",
         "layout": "full",
         "tab": "선택",
-        "title": { "text": "4.3 쿨타임을 어디에 기록할까", "verbatim": true },
+        "title": { "text": "4.3 쿨타임 저장 위치 — 아이템 인스턴스 vs itemID", "verbatim": true },
         "lead": { "text": "결정 대상 — 아이템별 쿨타임(재사용 대기 시간)을 어디에 저장할까?", "verbatim": true },
-        "sectionPath": ["4. 설계 결정과 트러블슈팅", "4.3 쿨타임을 어디에 기록할까"],
+        "sectionPath": ["4. 설계 결정과 트러블슈팅", "4.3 쿨타임 저장 위치 — 아이템 인스턴스 vs itemID"],
         "points": [
           { "label": "결정", "text": "대안 B를 선택했다(\"아이템별 재사용 대기시간 추가\" 커밋).", "verbatim": true },
           { "label": "이유", "text": "인스턴스에 두면 휠로 아이템을 바꿨다 돌아오는 것만으로 쿨타임을 우회할 수 있다.", "verbatim": true }
@@ -404,9 +404,9 @@
         "chapter": "choice",
         "layout": "problem",
         "tab": "문제 해결",
-        "title": { "text": "탐지기 연타 시 연출이 끊기는 버그", "verbatim": true },
+        "title": { "text": "연타하면 끊기던 탐지기 연출", "verbatim": true },
         "lead": null,
-        "sectionPath": ["4. 설계 결정과 트러블슈팅", "4.4 그 밖의 문제 해결", "탐지기 연타 시 연출이 끊기는 버그"],
+        "sectionPath": ["4. 설계 결정과 트러블슈팅", "4.4 그 밖의 문제 해결", "연타하면 끊기던 탐지기 연출"],
         "points": [
           { "label": "문제", "text": "탐지기를 빠르게 여러 번 쓰면 먼저 시작한 음파 연출이 중간에 끊겼다.", "verbatim": true },
           { "label": "원인", "text": "서버가 확정한 결과 연출과 로컬 미리보기 연출이 코루틴 슬롯 하나를 공유해서, 나중 응답이 먼저 응답의 연출을 멈췄다.", "verbatim": true },
@@ -420,9 +420,9 @@
         "chapter": "choice",
         "layout": "problem",
         "tab": "문제 해결",
-        "title": { "text": "다이너마이트가 벽 안에서 던져지는 버그", "verbatim": true },
+        "title": { "text": "벽 안에서 던져지던 다이너마이트", "verbatim": true },
         "lead": null,
-        "sectionPath": ["4. 설계 결정과 트러블슈팅", "4.4 그 밖의 문제 해결", "다이너마이트가 벽 안에서 던져지는 버그"],
+        "sectionPath": ["4. 설계 결정과 트러블슈팅", "4.4 그 밖의 문제 해결", "벽 안에서 던져지던 다이너마이트"],
         "points": [
           { "label": "문제", "text": "벽에 붙어서 오른쪽으로 다이너마이트를 던지면 벽 안쪽에서 생성돼 벽을 통과했다.", "verbatim": true },
           { "label": "원인", "text": "왼쪽으로 쏠린 스프라이트를 보정하려고 투척 시작 위치를 앞쪽으로 미는 계산을 넣었는데, 오른쪽으로 던질 때 시작 위치가 벽 안으로 들어갔다.", "verbatim": false },
