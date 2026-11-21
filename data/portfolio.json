@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-21",
+  "generatedAt": "2026-11-22",
   "profile": {
     "name": "박수하",
     "nameEn": "Park Sooha",
@@ -40,7 +40,7 @@
       "name": "데이터 기반 설계 (TSV)",
       "evidence": [
         { "text": "`Items.tsv` 한 줄이 상점 카드가 되는 데이터 주도 상점", "project": "2-FolkSack" },
-        { "text": "`StatChip.tsv`·`SkillChip.tsv`로 칩 28종 운영, 로드 시 Fail-fast 검증", "project": "3-Oddity" }
+        { "text": "`StatChip.tsv`·`SkillChip.tsv`로 칩 28종 운영, 로드 시 검증", "project": "3-Oddity" }
       ]
     },
     {
