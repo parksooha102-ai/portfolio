@@ -13,7 +13,7 @@
     { "label": "환경", "value": "Unity 6 (6000.3.15f1), URP, C#" }
   ],
   "tags": ["Unity 6", "URP", "C#", "레벨 디자인", "프리팹 조립", "키네마틱 Rigidbody"],
-  "links": { "github": "https://github.com/parksooha102-ai/3rd-minigolf_level_design-parksooha102-ai", "video": "", "extra": [] },
+  "links": { "github": "https://github.com/parksooha102-ai/3rd-minigolf_level_design-parksooha102-ai", "video": "https://youtu.be/zcE0SYz_UfA", "extra": [] },
   "intent": { "text": "레벨 디자인에 관심이 있어, 공을 치는 조작과 물리는 수업에서 함께 만든 기반을 쓰고 어떤 장애물을, 어떤 순서로, 어떤 난이도로 배치하는가에 집중했다.", "verbatim": true },
   "highlights": [
     {
