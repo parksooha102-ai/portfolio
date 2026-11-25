@@ -37,7 +37,7 @@
       "how": "효과 실행(`OnHit...`)과 생존 판정(`CanSurvive...`)을 나누고, 모듈 중 하나라도 `CanSurviveEnemy()`/`CanSurviveWall()`이 true를 반환하면 탄환은 소멸하지 않고 비행을 계속한다.",
       "why": "AND 방식은 모듈을 더 달수록 약해지는 디너지가 생겨 \"조합할수록 총기가 강해져야 한다\"는 목표와 충돌한다. OR 방식은 관통 + 폭발처럼 조합만으로 '관통 유탄'을 만든다.",
       "section": "생존 판정 — AND vs OR",
-      "image": { "src": "이미지/4-2_penetrate_explosion.png", "w": 1920, "h": 1080, "caption": "관통 + 폭발 = 관통 유탄: 탄이 허수아비 셋을 꿰뚫으며 맞을 때마다 폭발한다" }
+      "image": { "src": "이미지/4-2_penetrate_explosion.gif", "w": 960, "h": 540, "caption": "폭발 단독은 맞으면 소멸, 관통 + 폭발은 꿰뚫으며 연속 폭발(관통 유탄)" }
     },
     {
       "title": "추적 모듈 — `HomingModule`",
@@ -86,8 +86,8 @@
     }
   ],
   "screenshots": [
-    { "src": "이미지/3-3_penetrate.png", "w": 1440, "h": 648, "caption": "관통 단독: 탄 하나가 오른쪽부터 허수아비를 차례로 뚫고 지나가며 각각 데미지 1을 준다" },
-    { "src": "이미지/4-2_penetrate_explosion.png", "w": 1920, "h": 1080, "caption": "관통 + 폭발 = 관통 유탄: 탄이 허수아비 셋을 꿰뚫으며 맞을 때마다 폭발한다" },
+    { "src": "이미지/3-3_penetrate.gif", "w": 960, "h": 432, "caption": "관통 단독: 탄 하나가 오른쪽부터 허수아비를 차례로 뚫고 지나가며 각각 데미지 1을 준다" },
+    { "src": "이미지/4-2_penetrate_explosion.gif", "w": 960, "h": 540, "caption": "폭발 단독은 맞으면 소멸, 관통 + 폭발은 꿰뚫으며 연속 폭발(관통 유탄)" },
     { "src": "이미지/4-5_penetrate_split.png", "w": 1920, "h": 1080, "caption": "관통 + 분열: 허수아비를 뚫고 나간 탄이 분열해 자식 탄환(흰 삼각형)이 퍼진다. 자식 탄환의 모듈은 부모 모듈의 Clone()으로 만들어진다" },
     { "src": "이미지/5-1_all_six.png", "w": 1920, "h": 1080, "caption": "63번째 조합 — 6종 전부 장착: 전용 클래스 없이 여섯 모듈이 한 탄환에서 함께 동작한다" },
     { "src": "이미지/1-5_loop_lab.png", "w": 1920, "h": 1080, "caption": "실험실: 왼쪽 메뉴에서 허수아비·벽을 골라 배치한다" }
@@ -276,7 +276,7 @@
         ],
         "visuals": [
           { "kind": "table", "n": 1, "fp": "|[A] AND (모든 모듈이 true여야 생존)|[B] OR (하나라도 true면 생존, 채택)" },
-          { "kind": "image", "src": "이미지/4-2_penetrate_explosion.png", "w": 1920, "h": 1080, "caption": { "text": "관통 + 폭발 = 관통 유탄: 탄이 허수아비 셋을 꿰뚫으며 맞을 때마다 폭발한다", "verbatim": true } }
+          { "kind": "image", "src": "이미지/4-2_penetrate_explosion.gif", "w": 960, "h": 540, "caption": { "text": "폭발 단독은 맞으면 소멸, 관통 + 폭발은 꿰뚫으며 연속 폭발(관통 유탄)", "verbatim": true } }
         ]
       },
       {
@@ -294,7 +294,7 @@
           { "label": "결과", "text": "관통 3회 탄환이 적 3명을 꿰뚫고 4번째 적까지, 모두 4명을 맞힌다.", "verbatim": true }
         ],
         "visuals": [
-          { "kind": "image", "src": "이미지/3-3_penetrate.png", "w": 1440, "h": 648, "caption": { "text": "관통 단독: 탄 하나가 오른쪽부터 허수아비를 차례로 뚫고 지나가며 각각 데미지 1을 준다", "verbatim": true } }
+          { "kind": "image", "src": "이미지/3-3_penetrate.gif", "w": 960, "h": 432, "caption": { "text": "관통 단독: 탄 하나가 오른쪽부터 허수아비를 차례로 뚫고 지나가며 각각 데미지 1을 준다", "verbatim": true } }
         ]
       },
       {
