@@ -394,3 +394,6 @@ table.md-table img { max-height: 120px; max-width: 100%; height: auto; border-ra
 /* 원칙 5 ② 축소용 감싸개 */
 .pf-zoomwrap { display: inherit; flex-direction: inherit; justify-content: inherit; align-items: inherit; align-content: inherit;
                grid-template-columns: inherit; grid-template-rows: inherit; gap: inherit; }
+
+/* 코드 글꼴의 합자(!= → ≠, == → ═, -> → → 등)를 끕니다. 코드는 적힌 글자 그대로 보여야 합니다 */
+code, pre, kbd, samp { font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0, "dlig" 0; }

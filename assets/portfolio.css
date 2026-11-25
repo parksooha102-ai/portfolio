@@ -298,3 +298,6 @@ code { font-family: var(--mono); font-size: .88em; background: var(--accent-soft
   .ct-lk b { font-size: 11pt; }
   a { text-decoration: none; }
 }
+
+/* 코드 글꼴의 합자(!= → ≠, == → ═, -> → → 등)를 끕니다. 코드는 적힌 글자 그대로 보여야 합니다 */
+code, pre, kbd, samp { font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0, "dlig" 0; }
