@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-24",
+  "generatedAt": "2026-11-25",
   "id": "2-FolkSack",
   "doc": "기술문서_초안_아이템시스템.md",
   "title": "FOLK SACK",
@@ -9,7 +9,7 @@
   "team": {
     "type": "team",
     "size": "3인",
-    "role": "아이템 사용 시스템 (곡괭이·다이너마이트·지뢰·횃불·포션·탐지기), 아이템 데이터 테이블, 쿨타임, 상점, 리스폰, 초기 캐릭터 조작"
+    "role": "아이템 사용 시스템과 상점 — 플레이어가 쓰는 아이템 6종과, 그 아이템을 파는 상점"
   },
   "meta": [
     { "label": "장르", "value": "2D 멀티플레이 채굴·생존 게임" },
@@ -20,7 +20,7 @@
   "tags": ["Unity 6", "C#", "제네릭 베이스 클래스", "TSV 데이터 테이블", "ScriptableObject", "서버 권위 멀티플레이"],
   "links": {
     "github": "https://github.com/parksooha102-ai/3rd-TeamProject-KH",
-    "video": "https://youtu.be/rNZDtatcqBI",
+    "video": "https://youtu.be/ip59QB7ZMEA",
     "extra": []
   },
   "intent": {
@@ -34,12 +34,7 @@
       "how": "\"사용에 성공했는가\"를 판단하는 `TryUseActiveItem`과 그 결과로 쿨타임을 거는 곳을 나눠, 쿨타임은 호출한 쪽 한 곳에서만 건다. 오프라인에서는 `Use()`가 `true`일 때만 인벤토리에서 1개를 뺀다.",
       "why": "예전에는 멀티플레이 사용 처리가 아이템 종류별 `switch` 분기로 나뉘어, 쿨타임 시작 코드가 다이너마이트 분기에만 들어 있었고 지뢰·포션·탐지기에는 쿨타임이 걸리지 않았다. 분기는 성공 여부만 돌려주고 쿨타임은 한 곳에서 걸기 때문에 아이템 종류와 관계없이 같은 규칙이 적용된다.",
       "section": "2.4 아이템 사용과 소모 처리",
-      "image": {
-        "src": "이미지/3-3_cooldown_itembar.png",
-        "w": 1080,
-        "h": 226,
-        "caption": "포션 사용 직후의 아이템 바: 수량이 2→1로 줄고, 포션 칸에 쿨타임(어두운 부채꼴)이 돈다"
-      }
+      "image": null
     },
     {
       "title": "설치형 아이템 제네릭 베이스",
@@ -138,16 +133,33 @@
         "chapter": "overview",
         "layout": "visual",
         "tab": "개요",
-        "title": { "text": "1.1 게임 소개와 핵심 플레이 루프", "verbatim": true },
+        "title": { "text": "1.1 프로젝트 개요", "verbatim": true },
         "lead": { "text": "FOLK SACK은 여러 명이 한 맵에서 땅을 파 내려가며 광물을 캐고, 판 돈으로 장비를 사서 더 깊이 들어가는 2D 게임이다.", "verbatim": true },
-        "sectionPath": ["1. 프로젝트 소개", "1.1 게임 소개와 핵심 플레이 루프"],
+        "sectionPath": ["1. 프로젝트 소개", "1.1 프로젝트 개요"],
         "points": [
           { "label": "", "text": "깊이 내려갈수록 위험과 보상이 함께 커지기 때문에 플레이어는 이 루프를 되풀이한다.", "verbatim": true },
           { "label": "", "text": "아이템은 이 루프 안에서 자원을 찾고, 다른 플레이어를 견제하고, 위기를 빠져나가는 도구다.", "verbatim": true }
         ],
         "visuals": [
           { "kind": "mermaid", "n": 1, "fp": "flowchart LR" },
-          { "kind": "table", "n": 2, "fp": "① 채굴|② 상점|③ 더 깊이" }
+          { "kind": "table", "n": 3, "fp": "① 채굴|② 상점|③ 더 깊이" }
+        ]
+      },
+      {
+        "key": "before-switch",
+        "chapter": "use",
+        "layout": "code",
+        "tab": "문제 해결",
+        "title": { "text": "2.1 해결하려는 문제", "verbatim": true },
+        "lead": { "text": "아이템이 늘면서 드러난 문제는 다섯 가지였다.", "verbatim": true },
+        "sectionPath": ["2. 아이템 사용 시스템", "2.1 해결하려는 문제"],
+        "points": [
+          { "label": "기존 구조", "text": "멀티플레이 사용 처리가 아이템 종류별 `switch` 분기로 나뉘어 있었다.", "verbatim": true },
+          { "label": "구조적 원인", "text": "①의 분기 구조에서 쿨타임 시작 코드가 다이너마이트 분기에만 들어 있었다.", "verbatim": true },
+          { "label": "개선 목표", "text": "사용 뒤의 공통 처리를 한 곳에만 둔다.", "verbatim": true }
+        ],
+        "visuals": [
+          { "kind": "code", "n": 1, "lines": [6, 25], "fp": "// ItemController.UpdateActiveItemPreview — 리팩터링 전 (발췌, 로그 문" }
         ]
       },
       {
@@ -160,7 +172,7 @@
         "sectionPath": ["2. 아이템 사용 시스템", "2.2 아이템 사용 구조 설계"],
         "points": [],
         "visuals": [
-          { "kind": "mermaid", "n": 1, "fp": "flowchart TD" }
+          { "kind": "mermaid", "n": 1, "fp": "sequenceDiagram" }
         ]
       },
       {
@@ -179,6 +191,23 @@
         ]
       },
       {
+        "key": "cooldown",
+        "chapter": "use",
+        "layout": "code",
+        "tab": "구현",
+        "title": { "text": "2.3 아이템 선택·장착과 쿨타임 관리", "verbatim": true },
+        "lead": { "text": "쿨타임은 같은 아이템을 연달아 쓰지 못하게 해, 상황마다 어떤 아이템을 꺼낼지 고르게 한다.", "verbatim": true },
+        "sectionPath": ["2. 아이템 사용 시스템", "2.3 아이템 선택·장착과 쿨타임 관리"],
+        "points": [
+          { "label": "", "text": "쿨타임은 `itemID`로 조회한다.", "verbatim": true },
+          { "label": "", "text": "그래서 휠 UI는 지금 장착하지 않은 아이템 칸에도 쿨타임을 그릴 수 있다.", "verbatim": true }
+        ],
+        "visuals": [
+          { "kind": "code", "n": 1, "fp": "// 휠 UI에서 ItemController를 부르는 쪽 (예시)" },
+          { "kind": "image", "src": "이미지/3-3_cooldown_itembar.png", "w": 1080, "h": 226, "caption": { "text": "포션 사용 직후의 아이템 바: 수량이 2→1로 줄고, 포션 칸에 쿨타임(어두운 부채꼴)이 돈다", "verbatim": true } }
+        ]
+      },
+      {
         "key": "use-flow",
         "chapter": "use",
         "layout": "code",
@@ -192,9 +221,39 @@
           { "label": "", "text": "`false`: 설치할 칸이 이미 차 있는 등 실제로 사용하지 않았다 → 소모하지 않는다", "verbatim": true }
         ],
         "visuals": [
-          { "kind": "code", "n": 1, "fp": "// ItemController.cs (발췌)" },
-          { "kind": "image", "src": "이미지/3-3_cooldown_itembar.png", "w": 1080, "h": 226, "caption": { "text": "포션 사용 직후의 아이템 바: 수량이 2→1로 줄고, 포션 칸에 쿨타임(어두운 부채꼴)이 돈다", "verbatim": true } }
+          { "kind": "code", "n": 1, "fp": "// ItemController.cs (발췌)" }
         ]
+      },
+      {
+        "key": "online-true",
+        "chapter": "use",
+        "layout": "full",
+        "tab": "구조",
+        "title": { "text": "2.5 멀티플레이 아이템 사용과 서버 판정", "verbatim": true },
+        "lead": { "text": "`TryUseActiveItem()`이 돌려주는 `true`의 뜻은 연결 상태에 따라 다르다.", "verbatim": true },
+        "sectionPath": ["2. 아이템 사용 시스템", "2.5 멀티플레이 아이템 사용과 서버 판정"],
+        "points": [
+          { "label": "", "text": "요청 전송 성공과 아이템 사용 성공은 같은 뜻이 아니다.", "verbatim": true }
+        ],
+        "visuals": [
+          { "kind": "table", "n": 1, "fp": "구분|오프라인|온라인" }
+        ]
+      },
+      {
+        "key": "bug-launch",
+        "chapter": "use",
+        "layout": "problem",
+        "tab": "문제 해결",
+        "title": { "text": "온라인 투척의 생성 위치 문제", "verbatim": true },
+        "lead": null,
+        "sectionPath": ["2. 아이템 사용 시스템", "2.5 멀티플레이 아이템 사용과 서버 판정", "온라인 투척의 생성 위치 문제"],
+        "points": [
+          { "label": "문제", "text": "다이너마이트가 벽 안쪽에서 생성돼 벽을 통과했다.", "verbatim": true },
+          { "label": "원인", "text": "투척 시작 위치를 발사 방향 앞으로 미는 위치 계산과, 그림이 왼쪽으로 쏠린 플레이어 스프라이트가 겹쳐 시작 위치가 벽 안으로 들어갔다.", "verbatim": false },
+          { "label": "해결", "text": "근본 원인인 플레이어 스프라이트의 분할(피벗)을 바로잡고, 위치 계산(`GetSeparatedLaunchPosition` 메서드와 설정값)을 제거했다.", "verbatim": false },
+          { "label": "결과", "text": "벽에 붙어 던져도 다이너마이트가 벽 안에서 생성되지 않는다.", "verbatim": true }
+        ],
+        "visuals": []
       },
       {
         "key": "bug-cooldown",
@@ -211,6 +270,24 @@
           { "label": "결과", "text": "서버가 사용을 거절하면 실패 메시지가 뜨고, 쿨타임은 돌지 않는다.", "verbatim": true }
         ],
         "visuals": []
+      },
+      {
+        "key": "bug-detector",
+        "chapter": "use",
+        "layout": "problem",
+        "tab": "문제 해결",
+        "title": { "text": "2.7 탐지기 연출 문제와 해결", "verbatim": true },
+        "lead": null,
+        "sectionPath": ["2. 아이템 사용 시스템", "2.7 탐지기 연출 문제와 해결"],
+        "points": [
+          { "label": "문제", "text": "탐지기를 빠르게 여러 번 쓰면 아이템은 소모되는데, 먼저 시작한 음파 연출이 중간에 끊기고 그 음파를 따라 찍히던 자원 마커(초록 칸)가 나타나지 않았다.", "verbatim": true },
+          { "label": "원인", "text": "로컬 미리보기 연출과 서버가 확정한 결과 연출이 코루틴 슬롯(`waveCoroutine`) 하나를 공유했다.", "verbatim": false },
+          { "label": "해결", "text": "서버가 확정한 결과는 각각 독립된 유효한 탐지이므로, 슬롯을 쓰지 않고 매번 독립된 코루틴으로 실행했다.", "verbatim": false },
+          { "label": "결과", "text": "탐지기를 연달아 써도 각 탐지의 음파와 마커가 끝까지 재생된다.", "verbatim": true }
+        ],
+        "visuals": [
+          { "kind": "code", "n": 1, "fp": "// Detector.ShowConfirmedResults (발췌)" }
+        ]
       },
       {
         "key": "place-steps",
@@ -236,12 +313,28 @@
         "lead": { "text": "횃불을 추가할 때 이 흐름을 횃불에 복사하는 대신, 지뢰에 있던 설치 로직을 공통 베이스 클래스 `PlaceableItemBase<T>`로 옮겼다.", "verbatim": true },
         "sectionPath": ["3. 설치형 아이템 시스템", "3.2 설치형 아이템 공통 구조"],
         "points": [
+          { "label": "", "text": "`PlaceableItemBase`는 플레이어 위치에서 설치할 셀을 구하고(`TryResolvePlacement`), `PlaceableItemBase<T>`는 그 셀에 `T` 프리팹을 놓는 `Use()`를 가진다.", "verbatim": true },
           { "label": "", "text": "`T`는 설치될 개체의 타입(`MineExplosive`, `TorchLight`)이다.", "verbatim": true },
-          { "label": "", "text": "`GridOccupancy<T>`는 타입별로 \"이 셀에 이미 설치돼 있는가\"를 기록하는 정적 레지스트리다.", "verbatim": true },
           { "label": "", "text": "베이스 클래스는 \"어디에 놓을지\"만 책임진다.", "verbatim": true }
         ],
         "visuals": [
           { "kind": "mermaid", "n": 1, "fp": "classDiagram" }
+        ]
+      },
+      {
+        "key": "grid-occupancy",
+        "chapter": "place",
+        "layout": "code",
+        "tab": "구현",
+        "title": { "text": "셀 점유 기록 — `GridOccupancy<T>`", "verbatim": true },
+        "lead": { "text": "`GridOccupancy<T>`는 설치 개체 타입마다 \"어느 셀에 무엇이 놓여 있는가\"를 기록하는 정적 제네릭 클래스다.", "verbatim": true },
+        "sectionPath": ["3. 설치형 아이템 시스템", "3.2 설치형 아이템 공통 구조", "셀 점유 기록 — `GridOccupancy<T>`"],
+        "points": [
+          { "label": "타입별 기록", "text": "C#에서 제네릭 정적 클래스의 정적 필드는 `T`마다 따로 생긴다.", "verbatim": true },
+          { "label": "", "text": "확인은 베이스 클래스가, 기록과 해제는 설치된 개체가 스스로 한다.", "verbatim": true }
+        ],
+        "visuals": [
+          { "kind": "code", "n": 1, "fp": "// GridOccupancy.cs (발췌)" }
         ]
       },
       {
@@ -251,7 +344,7 @@
         "tab": "선택",
         "title": { "text": "설치형 베이스 — 일반 클래스 vs 제네릭 클래스", "verbatim": true },
         "lead": { "text": "제네릭으로 만든 이유는 두 가지다.", "verbatim": true },
-        "sectionPath": ["3. 설치형 아이템 시스템", "3.3 제네릭 베이스 클래스를 선택한 이유", "설치형 베이스 — 일반 클래스 vs 제네릭 클래스"],
+        "sectionPath": ["3. 설치형 아이템 시스템", "3.3 설치 흐름과 실패 처리", "설치형 베이스 — 일반 클래스 vs 제네릭 클래스"],
         "points": [
           { "label": "이유", "text": "중복 확인을 설치 개체의 타입별로 해야 했고(`GridOccupancy<T>`), 프리팹을 `T` 타입으로 받아 생성 직후 형 변환 없이 `Place()`를 부를 수 있다.", "verbatim": true },
           { "label": "결과", "text": "설치할 수 없으면 `Use()`가 `false`를 돌려준다.", "verbatim": true },
@@ -274,20 +367,20 @@
           { "label": "", "text": "설치된 뒤의 동작(폭발, 빛)은 설치될 개체 쪽에 `IPlaceable.Place()`로 따로 구현해야 하고, 멀티플레이에서는 서버 요청 분기도 추가해야 한다(2.5).", "verbatim": true }
         ],
         "visuals": [
-          { "kind": "code", "n": 1, "fp": "public class TorchItem : PlaceableItemBase<TorchLight>" }
+          { "kind": "code", "n": 1, "fp": "// TorchItem.cs (전체)" }
         ]
       },
       {
         "key": "item-fields",
         "chapter": "shop",
         "layout": "full",
-        "tab": "구현",
+        "tab": "구조",
         "title": { "text": "4.2 아이템 데이터 로드와 정의 변환", "verbatim": true },
         "lead": { "text": "먼저 줄마다 탭으로 칸을 나눠 글자 그대로 `ItemDTO`에 담고, 그다음 문자열 키를 실제 값으로 풀어 `ItemDef`를 만든다.", "verbatim": true },
         "sectionPath": ["4. 데이터 기반 상점 시스템", "4.2 아이템 데이터 로드와 정의 변환"],
         "points": [],
         "visuals": [
-          { "kind": "table", "n": 1, "fp": "Items.tsv 열 (청동 채굴 키트, ID 1)|ItemDTO — 칸을 나눠 그대로 담기|ItemDef — 게임이 쓰는 값" }
+          { "kind": "mermaid", "n": 1, "fp": "erDiagram" }
         ]
       },
       {
@@ -333,7 +426,7 @@
         "sectionPath": ["4. 데이터 기반 상점 시스템", "4.4 판매 목록 생성과 상점 카드 출력"],
         "points": [],
         "visuals": [
-          { "kind": "table", "n": 2, "fp": "아이템 탭 (ID 50~54)|곡괭이 탭 (ID 1~3)" }
+          { "kind": "table", "n": 1, "fp": "아이템 탭 (ID 50~54)|곡괭이 탭 (ID 1~3)" }
         ]
       },
       {
@@ -341,9 +434,9 @@
         "chapter": "appendix",
         "layout": "full",
         "tab": "",
-        "title": { "text": "B. AI 협업", "verbatim": true },
+        "title": { "text": "A. AI 협업", "verbatim": true },
         "lead": { "text": "Claude Code를 구현 보조로 썼다.", "verbatim": true },
-        "sectionPath": ["부록", "B. AI 협업"],
+        "sectionPath": ["부록", "A. AI 협업"],
         "points": [],
         "visuals": [
           { "kind": "table", "n": 1, "fp": "|내용" }

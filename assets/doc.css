@@ -124,8 +124,8 @@ code, pre, kbd, samp { font-variant-ligatures: none; font-feature-settings: "lig
 .doc-intro .tagline { font-size: 18px; font-weight: 600; color: var(--body); }
 .meta-line { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 12px; font-size: 14px; }
 .meta-line div { display: flex; gap: 6px; }
-.meta-line dt { color: var(--muted); font-weight: 700; }
-.meta-line dd { color: var(--ink); }
+.meta-line dt { flex: none; white-space: nowrap; color: var(--muted); font-weight: 700; }   /* 라벨('내 역할')은 줄바꿈하지 않음 */
+.meta-line dd { min-width: 0; color: var(--ink); }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin-top: 12px; }
 .tags li { font-size: 12.5px; font-weight: 600; padding: 2px 10px; border-radius: var(--pill); border: 1px solid var(--line-2); color: var(--ink); }
 .glance { display: none; margin-top: 16px; border: 1px solid var(--line); border-radius: calc(var(--r) * .8); background: var(--surface); padding: 0 16px; }
@@ -163,6 +163,10 @@ code, pre, kbd, samp { font-variant-ligatures: none; font-feature-settings: "lig
 .md th { text-align: left; background: var(--th); color: var(--ink); font-weight: 700; padding: 10px 14px; border: 1px solid var(--line); white-space: nowrap; }
 .md td { padding: 10px 14px; border: 1px solid var(--line); vertical-align: top; color: var(--body); }
 .md td img { display: block; margin: 0; border-radius: 8px; border: 1px solid var(--line); cursor: zoom-in; height: auto; }
+/* 그림이 든 표: 칸 너비를 그림 원본 크기·제목 길이와 관계없이 똑같이 나눔 */
+.md .table-wrap:has(td img) { width: 100%; }
+.md table:has(td img) { table-layout: fixed; width: 100%; }
+.md table:has(td img) td img { width: 100%; }
 
 .md .pf-figure { margin: 20px 0; }
 .md .pf-figure img { display: block; max-width: 100%; height: auto; border-radius: calc(var(--r) * .5); border: 1px solid var(--line); cursor: zoom-in; }
