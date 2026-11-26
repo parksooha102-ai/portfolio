@@ -150,9 +150,9 @@
         "chapter": "use",
         "layout": "code",
         "tab": "문제 해결",
-        "title": { "text": "2.1 해결하려는 문제", "verbatim": true },
+        "title": { "text": "2.1 흩어진 사용 처리와 서버 판정", "verbatim": true },
         "lead": { "text": "아이템이 늘면서 드러난 문제는 다섯 가지였다.", "verbatim": true },
-        "sectionPath": ["2. 아이템 사용 시스템", "2.1 해결하려는 문제"],
+        "sectionPath": ["2. 아이템 사용 시스템", "2.1 흩어진 사용 처리와 서버 판정"],
         "points": [
           { "label": "기존 구조", "text": "멀티플레이 사용 처리가 아이템 종류별 `switch` 분기로 나뉘어 있었다.", "verbatim": true },
           { "label": "구조적 원인", "text": "①의 분기 구조에서 쿨타임 시작 코드가 다이너마이트 분기에만 들어 있었다.", "verbatim": true },
@@ -294,9 +294,9 @@
         "chapter": "place",
         "layout": "full",
         "tab": "구조",
-        "title": { "text": "3.1 해결하려는 문제", "verbatim": true },
+        "title": { "text": "3.1 설치는 같고 설치 뒤만 다른 아이템", "verbatim": true },
         "lead": { "text": "지뢰와 횃불은 \"플레이어가 선 타일에 프리팹을 하나 놓는다\"는 흐름이 같고, 설치된 뒤에 하는 일만 다르다.", "verbatim": true },
-        "sectionPath": ["3. 설치형 아이템 시스템", "3.1 해결하려는 문제"],
+        "sectionPath": ["3. 설치형 아이템 시스템", "3.1 설치는 같고 설치 뒤만 다른 아이템"],
         "points": [
           { "label": "", "text": "그래서 같은 부분(설치 과정)과 다른 부분(설치 뒤 동작)을 나눠, 설치 과정은 한 번만 쓰기로 했다.", "verbatim": true }
         ],
