@@ -148,7 +148,7 @@
         "sectionPath": ["1. 프로젝트 소개", "1.1 프로젝트 개요"],
         "points": [],
         "visuals": [
-          { "kind": "table", "n": 4, "fp": "이 프로젝트 — 같은 칩, 다른 모양|레퍼런스 — 백팩 히어로" },
+          { "kind": "table", "n": 4, "fp": "레퍼런스 — 백팩 히어로|이 프로젝트 — 같은 칩, 다른 모양" },
           { "kind": "table", "n": 5, "fp": "|백팩 히어로|이 프로젝트" }
         ]
       },
@@ -351,7 +351,7 @@
       {
         "key": "passive",
         "chapter": "combat",
-        "layout": "full",
+        "layout": "visual",
         "tab": "구조",
         "title": { "text": "4.2 전투 이벤트를 통한 패시브 발동", "verbatim": true },
         "lead": { "text": "패시브 스킬(두 번째 심장, 생명 착취, 조건 반사, 정당한 보복 등 5종)은 키가 아니라 전투 이벤트로 발동한다.", "verbatim": true },
@@ -361,6 +361,7 @@
           { "label": "이유", "text": "같은 칩 두 장이 한 번의 피해를 함께 막느라 내부 쿨타임을 둘 다 소모하지 않게 하기 위해서다.", "verbatim": true }
         ],
         "visuals": [
+          { "kind": "image", "src": "이미지/4-2_passive_equip_trigger.gif", "w": 600, "h": 338, "caption": { "text": "패시브 장착과 발동: 조건 반사 칩을 5번 슬롯에 장착하고, 보스전에서 피해를 받기 직전 자동 회피가 발동해 5번 슬롯에 쿨타임 20이 돈다", "verbatim": true } },
           { "kind": "table", "n": 1, "fp": "발동 시점|연결 방식" }
         ]
       },
@@ -378,7 +379,9 @@
           { "label": "", "text": "하나씩 보면 각각 합리적인 수정이었지만, 쌓인 결과 문제가 세 가지 생겼다.", "verbatim": true },
           { "label": "채택하지 않은 해결", "text": "회피 이펙트를 보스 코드에 넣으면 당장은 되지만, 보스가 플레이어 연출까지 알게 된다.", "verbatim": true }
         ],
-        "visuals": []
+        "visuals": [
+          { "kind": "image", "src": "이미지/4-3_dodge_manual_auto.gif", "w": 600, "h": 338, "caption": { "text": "수동 회피와 자동 회피: 구르기 무적으로 피하면 하얀 허물이, 조건 반사 칩이 대신 피하면 파란 잔상이 남는다", "verbatim": true } }
+        ]
       },
       {
         "key": "dodge-refactor",
