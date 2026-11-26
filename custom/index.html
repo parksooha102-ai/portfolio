@@ -175,7 +175,6 @@
       isUrl(p.links && p.links.video) ? { href: p.links.video, label: s('name.video'), ext: true } : null
     ].concat(((p.links && p.links.extra) || []).filter(function (l) { return isUrl(l.url); }).map(function (l) { return { href: l.url, label: l.label, ext: true }; }))
       .filter(Boolean);
-    const cap = function (c) { return typeof c === 'string' ? c : (c && c.text) || ''; };
     return h('div', { id: 'detail-' + p.id, className: 'detail surface border rule r-big ' + (props.cls || ''), role: 'region', 'aria-label': p.title },
       h('div', { className: 'flex items-start justify-between gap-4 px-6 md:px-8 pt-6 md:pt-8' },
         h('div', { className: 'min-w-0' },
@@ -200,17 +199,13 @@
         hl.length ? h('div', { className: 'md:col-span-7 min-w-0' },
           h('p', { className: 'eyebrow mb-4' }, 'Features'),
           h('ol', { className: 'space-y-6' }, hl.map(function (f, k) {
-            const im = f.image && f.image.src ? f.image : null;
             return h('li', { key: k, className: 'pt-6 border-t rule first:pt-0 first:border-t-0' },
               h('div', { className: 'flex gap-3' },
                 h('span', { className: 'chip shrink-0 mt-[3px]' }, pad(k + 1)),
                 h('div', { className: 'min-w-0' },
                   h('h4', { className: 'ink font-semibold text-[17px] leading-snug', style: { wordBreak: 'keep-all' } }, rich(f.title)),
-                  f.what ? h('p', { className: 'mt-1.5 text-[15px] leading-relaxed', style: { wordBreak: 'keep-all' } }, rich(f.what)) : null,
-                  im ? h('figure', { className: 'mt-3' },
-                    h('img', { className: 'w-full border rule', style: { borderRadius: 'calc(var(--radius) * .6)', maxHeight: '260px', objectFit: 'contain', background: 'var(--bg)' },
-                      src: img(p.id, im.src), alt: cap(im.caption) || f.title, loading: 'lazy', width: im.w || undefined, height: im.h || undefined }),
-                    cap(im.caption) ? h('figcaption', { className: 'mt-1.5 text-[13px] muted leading-relaxed' }, rich(cap(im.caption))) : null) : null)));
+                  // 펼친 화면은 글만 — 그림은 슬라이드·상세 문서에서 봄
+                  f.what ? h('p', { className: 'mt-1.5 text-[15px] leading-relaxed', style: { wordBreak: 'keep-all' } }, rich(f.what)) : null)));
           }))) : null),
       h('div', { className: 'flex flex-wrap gap-3 px-6 md:px-8 pb-6 md:pb-8' },
         links.map(function (l) {

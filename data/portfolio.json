@@ -15,40 +15,40 @@
   },
   "skills": [
     {
-      "name": "Unity",
+      "name": "Unity (Raycast 이동 · 오브젝트 풀링)",
       "evidence": [
         { "text": "`Physics2D.Raycast` 기반으로 탄환 이동·충돌을 직접 처리", "project": "1-Bullet-Module" },
-        { "text": "ScriptableObject(`ExplosiveData`·`MineData`)로 아이템 전용 데이터 분리", "project": "2-FolkSack" },
-        { "text": "키네마틱 `Rigidbody.MovePosition`으로 셔틀 벽과 공의 충돌을 예측 가능하게", "project": "4-MiniGolf" }
+        { "text": "제네릭 풀 `ComponentPool<T>`로 탄환·폭발 이펙트를 재사용해, 연사·분열 때 생기던 GC 스파이크를 없앰", "project": "1-Bullet-Module" }
       ]
     },
     {
-      "name": "C#",
+      "name": "C# (인터페이스 · 추상 클래스 · 제네릭)",
       "evidence": [
         { "text": "인터페이스 `IBulletModule`로 6종 모듈을 자유롭게 조합하는 탄환 구조", "project": "1-Bullet-Module" },
-        { "text": "추상 클래스 `Item` 계약 + 제네릭 `PlaceableItemBase<T>`로 아이템 6종 통합", "project": "2-FolkSack" },
-        { "text": "추상 클래스 `SuperpowerSkill`의 `TryUse`로 스킬 18종 공통 발동 흐름", "project": "3-Oddity" }
+        { "text": "추상 클래스 `Item` 계약 + 제네릭 `PlaceableItemBase<T>`·`GridOccupancy<T>`로 아이템 6종 통합", "project": "2-FolkSack" }
       ]
     },
     {
-      "name": "디자인 패턴 (전략 패턴)",
+      "name": "디자인 패턴 (전략 · 팩토리 · 과설계 판단)",
       "evidence": [
-        { "text": "전략 패턴 + 단순 팩토리로 스킬 18종 분리, 팀원도 같은 구조 위에 스킬을 추가", "project": "3-Oddity" }
+        { "text": "전략 패턴 + 단순 팩토리로 스킬 18종 분리, 팀원도 같은 구조 위에 스킬을 추가", "project": "3-Oddity" },
+        { "text": "능력치 칩 10종이 모두 고정값 합연산이라, 데코레이터 패턴을 과설계로 보고 합계 더하기·빼기로 단순화", "project": "3-Oddity" }
       ]
     },
     {
       "name": "데이터 기반 설계 (TSV)",
       "evidence": [
         { "text": "`Items.tsv` 한 줄이 상점 카드가 되는 데이터 주도 상점", "project": "2-FolkSack" },
-        { "text": "`StatChip.tsv`·`SkillChip.tsv`로 칩 28종 운영, 로드 시 검증", "project": "3-Oddity" }
+        { "text": "`StatChip.tsv`·`SkillChip.tsv`로 칩 28종 운영, L 칩 5종 삭제와 스킬 7종 밸런스 패치를 표 수정만으로 반영", "project": "3-Oddity" }
       ]
     },
     {
-      "name": "AI 활용 (Claude Code)",
+      "name": "AI 활용 (산출물 검토 · 원본 대조)",
       "evidence": [
+        { "text": "문서 초안에 들어간, 코드에 없는 규칙을 레포와 대조해 실제 규칙으로 바로잡음", "project": "4-MiniGolf" },
         { "text": "코드 작성은 AI에 맡기되, 산출물을 그대로 쓰지 않고 검토해 오류와 책임이 꼬이는 설계를 지적하고 바로잡음", "project": "3-Oddity" }
       ]
     }
   ],
-  "projects": ["1-Bullet-Module", "2-FolkSack", "3-Oddity", "4-MiniGolf"]
+  "projects": ["1-Bullet-Module", "2-FolkSack", "4-MiniGolf", "3-Oddity"]
 }
