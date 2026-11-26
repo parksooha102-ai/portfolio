@@ -137,7 +137,6 @@
           { "label": "", "text": "이 루프의 목적은 총기를 구상해 실제로 만들기 전에, 모듈 조합의 시너지와 디너지(역시너지, 3.3)가 어떤 결과를 내는지 미리 시뮬레이션하는 것이다.", "verbatim": true }
         ],
         "visuals": [
-          { "kind": "mermaid", "n": 1, "fp": "flowchart LR" },
           { "kind": "table", "n": 1, "fp": "워크숍 — 모듈 장착·수치 확인|실험실 — 허수아비·벽 배치" }
         ]
       },
@@ -280,7 +279,7 @@
         ],
         "visuals": [
           { "kind": "table", "n": 1, "fp": "|[A] AND (모든 모듈이 true여야 생존)|[B] OR (하나라도 true면 생존, 채택)" },
-          { "kind": "image", "src": "이미지/4-2_penetrate_explosion.gif", "w": 960, "h": 540, "caption": { "text": "폭발 단독은 맞으면 소멸하지만, 관통 + 폭발은 꿰뚫으며 연속 폭발한다(관통 유탄)", "verbatim": true } }
+          { "kind": "image", "src": "이미지/4-2_penetrate_explosion.gif", "w": 960, "h": 540, "sectionPath": ["총기 모듈 프레임워크 (Bullet Module Framework)"], "caption": { "text": "폭발 단독은 맞으면 소멸하지만, 관통 + 폭발은 꿰뚫으며 연속 폭발한다(관통 유탄)", "verbatim": true } }
         ]
       },
       {
@@ -364,7 +363,7 @@
           { "label": "Clone()", "text": "부모 모듈의 진행 상태까지 복사한 새 인스턴스를 만든다(프로토타입 방식).", "verbatim": true }
         ],
         "visuals": [
-          { "kind": "mermaid", "n": 1, "fp": "flowchart LR" }
+          { "kind": "table", "n": 1, "fp": "종류|예시|설정 시점" }
         ]
       },
       {
