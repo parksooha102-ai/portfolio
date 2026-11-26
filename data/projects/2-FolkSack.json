@@ -9,11 +9,11 @@
   "team": {
     "type": "team",
     "size": "3인",
-    "role": "아이템 사용 시스템과 상점 — 플레이어가 쓰는 아이템 6종과, 그 아이템을 파는 상점"
+    "role": "아이템 사용 시스템과 상점"
   },
   "meta": [
     { "label": "장르", "value": "2D 멀티플레이 채굴·생존 게임" },
-    { "label": "기간", "value": "2026.08.23 ~ 2026.09.10 (약 3주, 3인 팀)" },
+    { "label": "기간", "value": "2026.08.23 ~ 2026.09.10 (약 3주)" },
     { "label": "인원", "value": "3명 — 박수하(본인), 팀원 A, 팀원 B" },
     { "label": "환경", "value": "Unity 6 (6000.3.15f1), URP 2D, Input System, DOTween, C#" }
   ],
@@ -233,7 +233,7 @@
         "lead": { "text": "`TryUseActiveItem()`이 돌려주는 `true`의 뜻은 연결 상태에 따라 다르다.", "verbatim": true },
         "sectionPath": ["2. 아이템 사용 시스템", "2.5 멀티플레이 아이템 사용과 서버 판정"],
         "points": [
-          { "label": "", "text": "요청 전송 성공과 아이템 사용 성공은 같은 뜻이 아니다.", "verbatim": true }
+          { "label": "", "text": "이 차이를 팀이 같은 뜻으로 맞추지 않아서 생긴 문제가 2.6이다.", "verbatim": true }
         ],
         "visuals": [
           { "kind": "table", "n": 1, "fp": "구분|오프라인|온라인" }
@@ -343,10 +343,10 @@
         "layout": "code",
         "tab": "선택",
         "title": { "text": "설치형 베이스 — 일반 클래스 vs 제네릭 클래스", "verbatim": true },
-        "lead": { "text": "제네릭으로 만든 이유는 두 가지다.", "verbatim": true },
+        "lead": { "text": "제네릭으로 만든 이유는 두 가지다.", "verbatim": false },
         "sectionPath": ["3. 설치형 아이템 시스템", "3.3 설치 흐름과 실패 처리", "설치형 베이스 — 일반 클래스 vs 제네릭 클래스"],
         "points": [
-          { "label": "이유", "text": "중복 확인을 설치 개체의 타입별로 해야 했고(`GridOccupancy<T>`), 프리팹을 `T` 타입으로 받아 생성 직후 형 변환 없이 `Place()`를 부를 수 있다.", "verbatim": true },
+          { "label": "이유", "text": "중복 확인을 설치 개체의 타입별로 해야 했고(`GridOccupancy<T>`), 프리팹을 `T` 타입으로 받아 생성 직후 형 변환 없이 `Place()`를 부를 수 있다.", "verbatim": false },
           { "label": "결과", "text": "설치할 수 없으면 `Use()`가 `false`를 돌려준다.", "verbatim": true },
           { "label": "", "text": "그래서 이미 지뢰가 있는 칸에 설치를 시도해도 지뢰가 줄지 않는다.", "verbatim": true }
         ],
