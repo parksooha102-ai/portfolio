@@ -192,9 +192,9 @@
         "chapter": "assembly",
         "layout": "visual",
         "tab": "구조",
-        "title": { "text": "장착 경로 — 프레임워크의 경계", "verbatim": true },
+        "title": { "text": "장착 방식 — 프레임워크의 경계", "verbatim": true },
         "lead": { "text": "외부에서 `Bullet.AddModule()`만 호출하면 어떤 방식으로든 붙일 수 있다.", "verbatim": true },
-        "sectionPath": ["2. 모듈 조립 시스템", "2.3 모듈 장착과 총기 조립", "장착 경로 — 프레임워크의 경계"],
+        "sectionPath": ["2. 모듈 조립 시스템", "2.3 모듈 장착과 총기 조립", "장착 방식 — 프레임워크의 경계"],
         "points": [
           { "label": "", "text": "이 프로젝트는 모듈 조합을 빠르게 바꿔 가며 검증하려고 워크숍 UI를 진입로로 썼다.", "verbatim": true },
           { "label": "", "text": "탄환과 모듈의 코드는 그대로다.", "verbatim": true }
