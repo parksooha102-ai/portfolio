@@ -92,15 +92,24 @@
     const out = [];
 
     // ① 머리: 이름 · 영문 이름 · 한 줄 정체성 · 연락처
-    out.push(`<section id="cover" class="hero"><p class="hero-mark no-print" aria-hidden="true">${esc(prof.nameEn || nameT)}</p><div class="wrap">
+    // 오른쪽: 프로젝트 데이터로 그린 화면 모형 카드 더미(장식 — 화면만. 같은 내용은 아래 절에 그대로 있음)
+    const coverP = projects.find((p) => p.cover);
+    const stack = projects.length ? `<div class="hero-stack no-print" aria-hidden="true">
+      ${coverP ? `<div class="ui-card ui-back"><img src="${esc(PF.srcPath(coverP.id, coverP.cover))}" alt=""></div>` : ''}
+      <div class="ui-card ui-front"><div class="ui-head"><span>${esc(t('page.nav-projects'))}</span><span class="num">${total}</span></div>
+        <ul class="ui-rows">${projects.map((p, j) => `<li><span class="ui-ic num">${pad2(j + 1)}</span><span class="ui-t"><b>${esc(p.title)}</b><small>${esc(PF.teamLabel(p.team))}</small></span>${(p.tags || [])[0] ? `<span class="ui-v">${esc(p.tags[0])}</span>` : ''}</li>`).join('')}</ul></div>
+      ${(pf.skills || []).length ? `<div class="ui-card ui-mini"><span class="ui-k">${esc(t('page.nav-stack'))}</span><span class="ui-big num">${pad2(pf.skills.length)}</span></div>` : ''}
+    </div>` : '';
+    out.push(`<section id="cover" class="hero"><p class="hero-mark no-print" aria-hidden="true">${esc(prof.nameEn || nameT)}</p><div class="wrap hero-grid"><div class="hero-txt">
       <div class="hero-top"><p class="eyebrow">${T('en.portfolio')}</p>${pf.generatedAt ? `<p class="upd">${T('page.updated', { date: pf.generatedAt })}</p>` : ''}</div>
       <h1>${esc(nameT)}${prof.nameEn ? `<span class="en" lang="en">${esc(prof.nameEn)}</span>` : ''}</h1>
       ${prof.headline ? `<p class="headline">${inline(prof.headline)}</p>` : ''}
-      <div class="btns no-print">${[prof.email && link({ href: `mailto:${prof.email}`, label: esc(prof.email), kind: 'mail', cls: 'btn' }),
+      <div class="btns no-print">${[projects[0] && link({ href: `#p-${projects[0].id}`, label: esc(t('page.nav-projects')), kind: 'anchor', cls: 'btn primary cta' }),
+        prof.email && link({ href: `mailto:${prof.email}`, label: esc(prof.email), kind: 'mail', cls: 'btn' }),
         isUrl(prof.github) && btn(prof.github, 'GitHub', 'external'), ...profLinks.map((l) => btn(l.url, esc(l.label), 'external'))].filter(Boolean).join('')}</div>
       ${printUrls([prof.email && [t('page.print-email'), prof.email, `mailto:${prof.email}`, 'mail'], isUrl(prof.github) && ['GitHub', shortUrl(prof.github), prof.github, 'external'],
         ...profLinks.map((l) => [l.label, shortUrl(l.url), l.url, 'external']), [t('page.print-web'), PF.visibleUrl('')]].filter(Boolean))}
-    </div></section>`);
+    </div>${stack}</div></section>`);
 
     // ② 자기소개: profile.intro를 줄바꿈까지 그대로(고쳐 쓰지 않음)
     if (prof.intro) out.push(sec('intro', t('en.about'), t('page.intro'), '',`<div class="about">${prof.intro.split(/\n+/).filter((l) => l.trim()).map((l) => `<p>${inline(l)}</p>`).join('')}</div>`));
@@ -118,15 +127,20 @@
     });
 
     // ⑤ 한눈에 보기(format/01 §1 프로젝트 요약 표) — 좁은 화면에서도 가로 스크롤이 없도록 표 대신 행 목록
-    if (projects.length) out.push(sec('glance', t('en.glance'), t('page.glance'), '',`<ul class="glance">${projects.map((p) => `<li>
-      <div class="g-t">${link({ href: `#p-${p.id}`, label: esc(p.title), kind: 'anchor' })}<p>${esc(PF.teamLabel(p.team))}</p></div>
+    if (projects.length) out.push(sec('glance', t('en.glance'), t('page.glance'), '',`<ul class="glance">${projects.map((p, j) => `<li>
+      <div class="g-t"><span class="g-ic num no-print" aria-hidden="true">${pad2(j + 1)}</span><div>${link({ href: `#p-${p.id}`, label: esc(p.title), kind: 'anchor' })}<p>${esc(PF.teamLabel(p.team))}</p></div></div>
       <div class="g-b">${p.tagline ? `<p>${inline(p.tagline)}</p>` : ''}${(p.tags || []).length ? `<p class="g-tags">${esc(p.tags.slice(0, 4).join(' · '))}</p>` : ''}
         ${p.team?.role ? `<p class="g-role"><b>${T('name.role-short')}</b> ${inline(p.team.role)}</p>` : ''}</div>
       <div class="g-l">${projLinks(p)}</div></li>`).join('')}</ul>`, 'tint'));
 
     // ⑥ 연락처 + 프로젝트별 링크(그 밖의 링크는 주소까지)
-    out.push(`<footer id="contact" class="sec contact"><div class="wrap">
-      <p class="eyebrow">${T('en.contact')}</p>
+    // 연락처: 화면에서는 어두운 띠(가운데 이름 · 한 줄 정체성 · 연락 버튼) 아래 흰 바탕에 프로젝트별 링크
+    out.push(`<footer id="contact" class="sec contact"><div class="cta-dark no-print"><div class="wrap">
+      <p class="eyebrow">${T('en.contact')}</p><p class="cta-name">${esc(nameT)}</p>${prof.headline ? `<p class="cta-head">${inline(prof.headline)}</p>` : ''}
+      <div class="btns">${[prof.email && link({ href: `mailto:${prof.email}`, label: esc(prof.email), kind: 'mail', cls: 'btn primary cta' }),
+        isUrl(prof.github) && btn(prof.github, 'GitHub', 'external', 'btn cta'), ...profLinks.map((l) => btn(l.url, esc(l.label), 'external', 'btn cta'))].filter(Boolean).join('')}</div>
+    </div></div><div class="wrap">
+      <p class="eyebrow ct-eyebrow">${T('en.contact')}</p>
       <div class="ct">
         <div class="ct-me"><p class="ct-name">${esc(nameT)}</p>
           ${prof.email ? `<p class="em">${link({ href: `mailto:${prof.email}`, label: esc(prof.email), kind: 'mail' })}</p>` : ''}
