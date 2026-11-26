@@ -431,7 +431,7 @@
     const V = sl.layout === 'full' || sl.layout === 'screens' ? [{}, { tight: true }]
       : [{ vw: 1.4 }, { vw: 1.7 }, { vw: 1.15 }, { vw: 1.4, tight: true }, { stack: true }, { stack: true, tight: true }];
     const build = (v, html = null, layout = null) => {
-      const s = PF.scene({ id: sid, tpl: 'D', eyebrow: meta.chapter, rlabel: meta.rlabel, title: txt(sl.title) || meta.chapter, sub: part, lead: part && part !== `1/${part.split('/')[1]}` ? '' : txt(sl.lead), foot: meta.foot, sec: meta.chapter, group: meta.chapter, stitle: txt(sl.title) });
+      const s = PF.scene({ id: sid, tpl: 'D', eyebrow: meta.chapter, eyebrowNo: meta.chNo || "", rlabel: meta.rlabel, title: txt(sl.title) || meta.chapter, sub: part, lead: part && part !== `1/${part.split('/')[1]}` ? '' : txt(sl.lead), foot: meta.foot, sec: meta.chapter, group: meta.chapter, stitle: txt(sl.title) });
       s.classList.add(`l-${layout || sl.layout || 'visual'}`);
       if (meta.err) s.dataset.pfErr = meta.err;
       if (sl.edited) s.dataset.pfEdited = '1';                       // 장면 고치기로 고친 장면(미리보기 개요에 ✎)
@@ -547,7 +547,7 @@
         used.add(sid);
         const k = secKey(sl), kn = secN.get(k), ki = (secI.get(k) || 0) + 1; secI.set(k, ki);
         const rl = [PF.tab(sl.tab), kn > 1 ? `${ki}/${kn}` : ''].filter(Boolean).join(' · ');
-        const scenes = slideScenes(sl, sid, { chapter: c.title || '', rlabel: rl, foot, auto, err });
+        const scenes = slideScenes(sl, sid, { chapter: c.title || "", chNo: String(ci + 1).padStart(2, "0"), rlabel: rl, foot, auto, err });
         scenes.forEach((s) => used.add(s.id));
         slides.push({ sl, scenes });
       });
@@ -555,7 +555,7 @@
       chapterScenes.push(chs, ...slides.flatMap((x) => x.scenes));
       tocItems.push({ c, chId, n: slides.reduce((a, x) => a + x.scenes.length, 0) });
     });
-    const retro = buildRetro(p.retro || {}, p, foot, auto);
+    const retro = buildRetro(p.retro || {}, p, foot, auto, String(model.length + 1).padStart(2, "0"));   // 목차의 회고 번호와 같은 장 번호
     const end = endScene(p, foot, ext, auto, lesson);
     const toc = tocScene(p, foot, tocItems, retro, auto);
     const all = [cover, toc, ...chapterScenes, ...retro, end];
@@ -607,7 +607,7 @@
       const roomy = mode === 'roomy';
       const list = slides.map((x, i) => item(String(i + 1), txt(x.sl.title) || c.title, PF.tab(x.sl.tab), x.scenes[0].id, roomy ? txt(x.sl.lead) : '')).join('');
       PF.body(s).innerHTML = `<div class="toprow"><span class="pf-eyebrow long">${esc(ptitle)}</span><span class="rl">${esc(PF.t('deck.ch-count', { n: slides.length }))}</span></div>
-        <div class="ch-mid"><div><p class="ch-no">${esc(PF.t('en.chapter'))} ${String(ci + 1).padStart(2, '0')}</p><h2 class="ch-t">${esc(c.title)}</h2>${DOT}</div>
+        <div class="ch-mid"><div><p class="ch-no"><span class="ch-k">${esc(PF.t('en.chapter'))}</span> <span class="ch-n">${String(ci + 1).padStart(2, '0')}</span></p><h2 class="ch-t">${esc(c.title)}</h2>${DOT}</div>
         <div class="ch-list t-P2${mode === 'normal' ? '' : ' ' + mode}"><ol class="toc-list${roomy ? '' : ' sub'}">${list}</ol></div></div>`;
       return band(s, auto);
     };
@@ -632,14 +632,14 @@
   }
 
   // 결과와 회고: ✓ 달성 카드 │ 아쉬운 점 → 개선 계획 표. 안 들어가면 두 장으로
-  function buildRetro(r, p, foot, auto) {
+  function buildRetro(r, p, foot, auto, no = "") {
     const ach = r.achieved || [], reg = r.regrets || [], plan = r.plans || [];
     if (!ach.length && !reg.length && !plan.length) return [];
     const n = Math.max(reg.length, plan.length);
     const achHtml = ach.length ? `<div class="rt-ach card"><p class="rt-h ok">✓ ${esc(PF.t('deck.achieved'))}</p><ul>${ach.map((x) => `<li>${inline(x)}</li>`).join('')}</ul></div>` : '';
     const pairHtml = n ? `<table class="mini"><thead><tr><th scope="col">△ ${esc(PF.t('deck.regrets'))}</th><th scope="col">→ ${esc(PF.t('deck.plans'))}</th></tr></thead><tbody>${Array.from({ length: n }, (_, i) => `<tr><td>${inline(reg[i] || '')}</td><td class="p">${inline(plan[i] || '')}</td></tr>`).join('')}</tbody></table>` : '';
     const make = (html, one, i, cnt) => {
-      const s = PF.scene({ id: i === 0 ? 'retro' : `retro-${i + 1}`, tpl: 'P6', eyebrow: PF.t('deck.retro-eyebrow'), rlabel: p.title, title: PF.t('deck.retro'), sub: cnt > 1 ? `${i + 1}/${cnt}` : '', foot,
+      const s = PF.scene({ id: i === 0 ? 'retro' : `retro-${i + 1}`, tpl: 'P6', eyebrow: PF.t('deck.retro-eyebrow'), eyebrowNo: no, rlabel: p.title, title: PF.t('deck.retro'), sub: cnt > 1 ? `${i + 1}/${cnt}` : '', foot,
         sec: PF.t('deck.retro'), group: PF.t('deck.retro') });
       PF.body(s).innerHTML = `<div class="pf-fill"><div class="rt${one ? ' one' : ''}">${html}</div></div>`;
       return band(s, auto);

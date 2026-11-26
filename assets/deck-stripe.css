@@ -1,0 +1,302 @@
+/* ════════════════════════════════════════════════════════════════════════════
+   슬라이드 디자인 (assets/deck-stripe.css) — project.html만 싣습니다(포트폴리오 페이지·상세 문서는 그대로).
+   기준: 수강생이 건넨 슬라이드 디자인 명세(DESIGN-stripe.md, 1920×1080 기준) → 이 장면은 1280×720이라 모든 px × 0.667.
+   - 색: 짙은 남색 글자(#0d253d) · 인디고 한 색(#533afd, 한 장면에 칠한 것 하나) · 흰 바탕 · 옅은 카드(#f6f9fc) · 실선(#e3e8ee)
+   - 글자: Pretendard 300(얇게)·음의 자간, 숫자는 모두 tabular figures
+   - 틀: 내용 장면은 위 4px 그러데이션 띠 + 고정 머리(장 번호·장 이름 / 제목 / 도입 / 실선 y=165) + 바닥글
+         표지·장 표지·맺음만 위쪽 그러데이션 메시
+   - 본문은 위에서 시작(세로 가운데 없음), 카드·열은 바닥까지 같은 높이로
+   theme/theme.css(세 페이지 공용 테마) 뒤에 실어서 슬라이드에서만 이깁니다. /portfolio-update는 assets/를 덮어쓰므로 이 파일과 project.html의 <link>를 다시 넣어야 합니다.
+   ════════════════════════════════════════════════════════════════════════════ */
+:root {
+  --t-scheme: light;
+  --t-bg: #FFFFFF;
+  --t-surface: #F6F9FC;          /* canvas-soft: 카드·타일·표 머리 */
+  --t-ink: #0D253D;              /* ink */
+  --t-muted: #64748D;            /* ink-mute */
+  --t-line: #E3E8EE;             /* hairline */
+  --t-line-2: #C9D3DF;
+  --t-accent: #533AFD;           /* primary(인디고) — PF.applyTheme이 여기서 --accent-* 토큰을 만듦 */
+  --t-accent-2: #665EFD;
+  --t-accent-3: #F96BEE;
+  --t-radius: 16px;              /* 카드 = calc(16 × .7) ≈ 11px(명세 16px × .667) */
+  --t-pill: 999px;
+  --t-shadow: rgb(0 55 112 / .08);
+  --t-display: 'Pretendard';     /* 영문 라벨도 Pretendard(라틴 글자가 Inter에서 옴) */
+  --t-grad: linear-gradient(var(--sx-primary), var(--sx-primary));
+  --t-badge: var(--sx-primary);
+  --t-glow: 0;
+  --t-diagram: #F6F9FC;
+  --t-code-bg: #1C1E54;          /* brand-dark-900: 코드 판(제품 화면 모형의 어두운 틀) */
+
+  --sx-primary: #533AFD; --sx-deep: #4434D4; --sx-soft: #665EFD; --sx-lav: #B9B9F9;
+  --sx-navy: #1C1E54; --sx-ink2: #273951; --sx-cream: #F5E9D4; --sx-ruby: #EA2261; --sx-magenta: #F96BEE;
+  --sx-r: 11px; --sx-r-xl: 16px;
+  --sx-strip: linear-gradient(90deg, #533AFD 0%, #665EFD 40%, #F96BEE 75%, #EA2261 100%);
+  --sx-lift: 0 1px 3px rgb(0 55 112 / .08);
+  --sx-lift-2: 0 8px 21px rgb(0 55 112 / .08), 0 2px 5px rgb(0 55 112 / .04);
+  --ok: var(--sx-navy); --ok-ink: var(--sx-primary);
+}
+.pf-scene { font-feature-settings: "ss01"; font-weight: 300; }
+.pf-scene :is(b, strong) { font-weight: 600; }
+.pf-scene :is(table, .pf-num, .pg, .n, .num, .rs-big, .tm-n, .ch-n, .pf-chno, .pf-part) { font-variant-numeric: tabular-nums lining-nums; }
+
+/* ── 장면 배경: 내용 장면 = 위 4px 띠, 표지·장 표지·맺음 = 메시 ── */
+.pf-scene.t-D, .pf-scene.t-P6, .pf-scene.t-P2, .pf-scene.t-msg { background: var(--sx-strip) 0 0 / 100% 4px no-repeat, #FFFFFF; }
+.pf-scene.t-P1, .pf-scene.t-EN, .pf-scene.t-CH {
+  --mh: 360px;
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0) 0%, rgb(255 255 255 / 0) 38%, #FFFFFF 100%) 0 0 / 100% var(--mh) no-repeat,
+    radial-gradient(30% 62% at 90% 14%, rgb(234 34 97 / var(--m1, .55)), transparent 72%) 0 0 / 100% var(--mh) no-repeat,
+    radial-gradient(28% 66% at 70% 0%, rgb(83 58 253 / var(--m1, .55)), transparent 72%) 0 0 / 100% var(--mh) no-repeat,
+    radial-gradient(26% 56% at 100% 60%, rgb(249 107 238 / var(--m2, .45)), transparent 72%) 0 0 / 100% var(--mh) no-repeat,
+    radial-gradient(34% 70% at 50% 10%, rgb(185 185 249 / var(--m2, .5)), transparent 72%) 0 0 / 100% var(--mh) no-repeat,
+    radial-gradient(26% 58% at 80% 72%, rgb(247 196 128 / var(--m2, .4)), transparent 72%) 0 0 / 100% var(--mh) no-repeat,
+    radial-gradient(34% 70% at 22% 0%, rgb(245 233 212 / .8), transparent 72%) 0 0 / 100% var(--mh) no-repeat,
+    #FFFFFF;
+}
+.pf-scene.t-CH { --mh: 240px; }
+.pf-scene.t-P1 { --mh: 300px; --m1: .32; --m2: .3; }   /* 표지는 위에 글·카드가 올라가므로 옅게 */
+.pf-scene.t-EN { --m1: .45; --m2: .38; }
+
+/* ── 고정 머리(내용 장면): 장 라벨 y43 · 제목 y69 · 도입 y120 · 실선 y165 · 본문 y187~656 · 바닥글 y667 ── */
+.pf-sum > .pf-head { display: flex; flex-direction: column; min-height: 122px; margin: 43px 64px 0; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.pf-sum > .pf-body { margin: 22px 64px 64px; }
+.pf-head { left: 64px; right: 64px; top: 43px; }
+.pf-headrow { padding-bottom: 0; border-bottom: 0; align-items: baseline; }
+.pf-eyebrow, .fe-k, .ch-no { background: none; -webkit-background-clip: border-box; background-clip: border-box; -webkit-text-fill-color: currentColor; }
+.pf-eyebrow { font-family: var(--sans); font-size: 13px; font-weight: 400; line-height: 19px; letter-spacing: .02em; text-transform: none; color: var(--muted); }
+.pf-chno { font-weight: 500; color: var(--sx-primary); margin-right: 12px; }
+.pf-rlabel { font-size: 13px; font-weight: 400; line-height: 19px; color: var(--muted); }
+.pf-titlerow { margin-top: 7px; gap: 14px; }
+.pf-title { font-size: 37px; font-weight: 300; line-height: 1.1; letter-spacing: -.02em; color: var(--ink); }
+.pf-title .pf-part { font-size: 15px; font-weight: 400; letter-spacing: 0; margin-left: 14px; color: var(--muted); }
+.pf-lead { margin-top: 9px !important; max-width: none; font-size: 19px; font-weight: 300; line-height: 1.4; letter-spacing: -.01em; color: var(--sx-ink2); }
+.pf-foot { left: 64px; right: 64px; bottom: 22px; height: 26px; font-size: 12px; font-weight: 400; letter-spacing: -.01em; color: var(--muted); }
+.pf-bare > .pf-body { left: 64px; width: 1152px; top: 43px; height: 613px; }
+.pf-body { left: 64px; width: 1152px; }
+
+/* 머리 없는 장면의 윗줄(표지·목차·장 표지·맺음): 장 라벨 자리와 같은 글자 */
+.toprow { border-bottom: 0; padding-bottom: 0; }
+.toprow .pf-eyebrow { color: var(--ink); }
+.toprow .rl { font-size: 13px; font-weight: 400; color: var(--muted); }
+
+/* ── 본문은 위에서 시작. 카드·열이 있는 틀은 바닥까지 늘림 ── */
+.pf-fill { margin-block: 0 auto; }
+.pf-body > .pf-fill { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }
+.pf-body > .pf-fill > * { flex: 1 1 auto; min-height: 0; }
+.dk-text { grid-template-rows: minmax(0, 1fr); align-content: stretch; }
+.dk-text > .cards, .dk-text > .flow { align-content: stretch; grid-auto-rows: 1fr; }
+.dk-side { align-items: stretch; grid-template-rows: minmax(0, 1fr); }
+.pf-scene:not(.pf-sizing) .dk-side > .vis { align-self: center; }   /* 재는 동안(.pf-sizing)에는 칸을 꽉 채워야 크기를 잴 수 있음 */
+.dk-side > :is(.cards, .flow) { align-content: stretch; grid-auto-rows: 1fr; }
+.dk-stack { grid-template-rows: minmax(0, 1fr) auto; }
+.pf-scene:not(.pf-sizing) :is(.dk-stack, .dk-two) > .vis { align-self: center; }
+.dk-two { grid-template-rows: minmax(0, 1fr) minmax(0, 1.15fr) auto; }
+.rs { grid-template-rows: auto minmax(0, 1fr); }
+.rs.nopic { grid-template-rows: minmax(0, 1fr); }
+.rs.nopic .rs-stats { align-items: stretch; }
+.scr-row { align-items: stretch; }
+/* 바닥까지 늘어난 카드 안의 글은 세로 가운데 */
+.ncard { align-content: center; }
+.flow.col .fstep { align-content: center; }
+.flow.row .fstep { justify-content: center; }
+.rt { align-items: stretch; height: auto; }
+.rt table.mini { height: 100%; }
+.tm { align-items: stretch; height: auto; }
+.tm-l { justify-content: flex-start; }
+.tm-list { flex: 1 1 auto; }
+.tm-row { flex: 1 1 0; align-content: center; }
+.dc { height: auto; }
+.dc:not(.side) > .dc-opts { flex: 1 1 auto; }
+.dc.side .dc-main { justify-content: flex-start; }
+.dc.side .dc-main > .dc-opts { flex: 1 1 auto; }
+
+/* ── 카드(card-feature-soft): 옅은 판 · 테두리 없음 · 모서리 11 ── */
+:is(.card, .ncard, .fstep, .rs-card, .dc-opt, .dc-res, .tm-r, .tm-row, .rt-ach, .note, .callout) { background: var(--card); border-color: var(--card); border-radius: var(--sx-r); }
+.note { border-left: 3px solid var(--sx-primary); border-radius: 0 var(--sx-r) var(--sx-r) 0; }
+.note .nlabel { font-size: 11px; font-weight: 500; letter-spacing: .04em; color: var(--sx-deep); }
+.note .nbody { font-size: 16px; font-weight: 300; }
+.callout { color: var(--ink); }
+
+/* 알약(pill-tag-soft): 연보라 판 · 짙은 인디고 글자. 칠한 인디고(pill-primary)는 .accent 하나뿐 */
+:is(.pill, .labelchip, .chip, .tags li, .tm-me) { border: 0; border-radius: var(--pill); background: var(--sx-lav); color: var(--sx-deep); box-shadow: none; font-weight: 500; }
+.pill { padding: 4px 12px; font-size: 12px; line-height: 1.3; }
+.labelchip { padding: 4px 11px; font-size: 12px; line-height: 1.3; }
+.labelchip.accent, .fstep .labelchip.accent, .tm-me, .badge.team { background: var(--sx-primary); border-color: var(--sx-primary); color: #FFFFFF; }
+.labelchip.ok, .fstep .labelchip.ok { background: var(--sx-navy); color: #FFFFFF; }
+.tags { gap: 6px; }
+.tags li { padding: 3px 10px; font-size: 12px; }
+.chip { padding: 1px 9px; }
+a.chip:hover { background: color-mix(in srgb, var(--sx-lav) 80%, #FFFFFF); }
+.badge { border: 1px solid var(--line-2); font-weight: 500; }
+.dotrule .ln { height: 1px; background: var(--line); }
+.dotrule .dot { display: none; }
+.arrow { color: var(--sx-primary); font-weight: 300; }
+
+/* 글 안 코드: 인디고 글자 대신 짙은 남색 */
+.pf-scene code { background: #EDF1F6; color: var(--sx-ink2); border-radius: 4px; }
+
+/* ── 번호 카드·흐름 단계 ── */
+.ncard { padding: 16px 20px; gap: 12px; }
+.ncard .num { width: auto; height: auto; border-radius: 0; background: none; color: var(--sx-primary); font-size: 15px; font-weight: 500; justify-content: flex-start; margin-top: 2px; }
+.ncard .lb { font-size: 11px; font-weight: 500; letter-spacing: .04em; color: var(--sx-deep); margin-bottom: 4px; }
+.ncard p { font-size: 16px; font-weight: 300; line-height: 1.55; }
+.dk-text .ncard p { font-size: 17px; }
+.dk.tight .ncard { padding: 12px 16px; }
+.dk.tight .ncard p { font-size: 15px; }
+.fstep { padding: 16px 18px; }
+.fstep p { font-size: 15px; font-weight: 300; }
+.fstep.res { background: var(--sx-cream); border-color: var(--sx-cream); }   /* 결과 단계 = 따뜻한 띠(한 장면에 하나) */
+
+/* ── 화면 카드 ── */
+.fe-k { font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: .06em; color: var(--sx-deep); }
+.fe-card h3 { font-size: 19px; font-weight: 400; letter-spacing: -.01em; }
+.fe-card p { font-size: 15px; font-weight: 300; }
+
+/* ── 시각 자료 판 ── */
+.vmedia, .media { border-radius: var(--sx-r); border-color: var(--line); background: var(--card); }
+.vbox[data-kind="code"] .vmedia { background: var(--sx-navy); border-radius: var(--sx-r-xl); box-shadow: var(--sx-lift-2); }
+.vbox[data-kind="mermaid"] .vmedia { background: var(--card); border-color: var(--card); }
+.vbox .cap { font-size: 12px; font-weight: 400; letter-spacing: -.01em; }
+.vbox .cap .ix { color: var(--sx-primary); }
+
+/* ── 표(table-tabular): 머리 = 옅은 판 · 가로 실선만 · 줄무늬 없음 ── */
+:is(table.mini, table.md-table) { background: transparent; }
+:is(table.mini, table.md-table) th { background: var(--card); color: var(--sx-ink2); box-shadow: none; border-bottom: 1px solid var(--line); font-size: 12px; font-weight: 500; letter-spacing: -.01em; }
+:is(table.mini, table.md-table) td { font-weight: 300; border-bottom: 1px solid var(--line); }
+:is(table.mini, table.md-table) tbody tr:nth-child(even) td { background: transparent; }
+table.mini td { font-size: 15px; }
+table.kv th { font-weight: 500; }
+table.kv td { font-weight: 400; border-left-width: 2px; }
+
+/* ── 결정 틀: 선택지 = 옅은 카드, 결정 띠 = 짙은 남색(card-option-featured), 확정 표시만 칠한 인디고 ── */
+.dc-opt { padding: 18px 22px; }
+.dc-tag { font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: .06em; color: var(--sx-deep); }
+.dc-name { font-size: 20px; font-weight: 400; letter-spacing: -.01em; }
+.dc-rows dt { font-weight: 400; }
+.dc-rows dd { font-weight: 300; }
+.dc-dec { background: var(--sx-navy); border: 1px solid var(--sx-navy); border-radius: var(--sx-r); color: #FFFFFF; padding: 18px 24px; }
+.dc-dec :is(.dc-pick, .dc-say, .dc-why, .dc-r) { color: #FFFFFF; }
+.dc-dec :is(.dc-why, .dc-r) { color: rgb(255 255 255 / .82); }
+.dc-pick { font-size: 22px; font-weight: 300; letter-spacing: -.01em; }
+.dc-pick-tag, .dc-dec .dc-k { color: var(--sx-lav); font-family: var(--sans); font-weight: 500; }
+.dc-say { font-weight: 400; }
+.dc-dec code { background: rgb(255 255 255 / .12); color: #FFFFFF; }
+.dc-k { font-weight: 500; color: var(--sx-deep); }
+.dc-why, .dc-r { font-weight: 300; }
+
+/* ── 결과 숫자 틀(stat-tile) ── */
+.rs-card { padding: 18px 22px; }
+.rs-lb { font-size: 12px; font-weight: 400; color: var(--muted); }
+.rs-big { font-size: 36px; font-weight: 300; letter-spacing: -.025em; line-height: 1.05; color: var(--ink); }
+.rs-t { font-weight: 300; }
+.rs.tight .rs-big { font-size: 30px; }
+
+/* ── 팀 역할 틀: 본인 줄 = 짙은 남색 ── */
+.tm-h { font-size: 12px; font-weight: 500; color: var(--muted); }
+.tm-row { padding: 14px 18px; }
+.tm-row.me { background: var(--sx-navy); border-color: var(--sx-navy); }
+.tm-row.me :is(.tm-name, .tm-part) { color: #FFFFFF; }
+.tm-row.me :is(.tm-n, .tm-see) { color: var(--sx-lav); }
+.tm-row.me code { background: rgb(255 255 255 / .12); color: #FFFFFF; }
+.tm-n { font-family: var(--sans); font-weight: 500; color: var(--sx-primary); }
+.tm-name { font-weight: 400; }
+.tm-part { font-weight: 300; }
+.tm-see { color: var(--sx-primary); font-weight: 500; }
+.tm-mine li { font-weight: 300; }
+.tm-mine li::before { background: var(--sx-primary); }
+
+/* ── 결과와 회고 ── */
+.rt-ach { padding: 18px 22px; }
+.rt-ach ul { gap: 8px; margin-top: 10px !important; }
+.rt-ach li { font-size: 15px; line-height: 1.55; }
+.rt table.mini :is(th, td) { padding: 8px 12px; }
+.rt table.mini td { font-size: 14.5px; line-height: 1.5; }
+.rt-h { font-size: 20px; font-weight: 400; }
+.rt-h.ok { color: var(--ink); }
+.rt-ach li { font-weight: 300; }
+.rt-ach li::before { background: var(--sx-lav); color: var(--sx-deep); border-radius: var(--pill); font-weight: 600; }
+.rt table.mini td.p { color: var(--ink); font-weight: 400; }
+/* 배운 점 한 줄 = takeaway-bar(옅은 판 + 연보라 알약) */
+.rt-lesson { background: var(--card); border: 0; border-radius: var(--sx-r); padding: 16px 22px; }
+.rt-lesson p { font-size: 18px; font-weight: 300; letter-spacing: -.01em; }
+.rt-lesson .labelchip { background: var(--sx-lav); color: var(--sx-deep); padding: 5px 12px; font-size: 12px; }
+
+/* ── 목차 ── */
+.toc-h { font-family: var(--sans); font-size: 48px; font-weight: 300; letter-spacing: -.025em; color: var(--ink); }
+.toc-sub { font-size: 15px; font-weight: 400; color: var(--muted); }
+.t-P2 .dotrule { margin: 22px 0 6px; }
+.toc-cols { align-content: stretch; }
+.toc-cols.one { grid-template-columns: minmax(0, 1fr); }
+.toc-cols > section { display: flex; flex-direction: column; min-height: 0; }
+.t-P2 > .pf-body .toc-list { flex: 1 1 auto; grid-auto-rows: 1fr; }
+.toc-list a { border-bottom: 1px solid var(--line); height: 100%; }
+.toc-list .n { width: 44px; height: auto; border-radius: 0; background: none; color: var(--sx-primary); justify-content: flex-start;
+               font-family: var(--sans); font-size: 15px; font-weight: 500; }
+.toc-list .t { font-size: 20px; font-weight: 300; letter-spacing: -.01em; }
+.toc-list .d { font-size: 13px; font-weight: 400; }
+.toc-list .pg { font-family: var(--sans); font-size: 13px; color: var(--muted); }
+.toc-list.sub .n { width: 32px; height: auto; font-size: 13px; }
+.toc-list.sub .t { font-weight: 400; }
+
+/* ── 프로젝트 소개(표지) ── */
+.pi-t { font-size: 52px; font-weight: 300; letter-spacing: -.025em; line-height: 1.05; }
+.pi-head .tagline { font-size: 18px; font-weight: 300; color: var(--sx-ink2); }
+.pi-tight .pi-t { font-size: 44px; }
+.pi-tight .pi-head .tagline { font-size: 16px; }
+.pi-cover { border-radius: var(--sx-r-xl); border: 0; box-shadow: var(--sx-lift-2); background: #FFFFFF; }
+.pi-meta { border-top: 1px solid var(--line); border-image: none; }
+.meta-k, .lc-k { font-size: 11px; font-weight: 400; letter-spacing: .04em; color: var(--muted); }
+.pi-meta dd { font-weight: 400; }
+.pi-meta .role dd { color: var(--ink); font-weight: 500; }
+.intent { border-left: 2px solid var(--sx-primary); }
+.intent .it { font-weight: 300; }
+.lcard a { background: #FFFFFF; border: 1px solid var(--line); border-radius: var(--sx-r); box-shadow: var(--sx-lift); }
+.lcard a:hover { border-color: var(--sx-primary); }
+.lcard .lc-t { font-weight: 500; }
+
+/* ── 장 표지(section divider): 메시(위 1/3) · 장 번호 큰 숫자 · 제목 · 아래 장면 카드 줄이 바닥까지 ── */
+.t-CH .ch-mid { display: flex; flex-direction: column; gap: 26px; margin-top: 118px; align-items: stretch; }
+.t-CH .ch-mid > div:first-child { flex: none; }
+.ch-no { display: flex; align-items: baseline; gap: 14px; font-family: var(--sans); letter-spacing: 0; }
+.ch-k { font-size: 12px; font-weight: 500; letter-spacing: .08em; color: var(--muted); order: 2; }
+.ch-n { font-size: 48px; font-weight: 300; letter-spacing: -.025em; line-height: 1; color: var(--sx-primary); }
+.ch-t { margin-top: 10px !important; font-size: 50px; font-weight: 300; letter-spacing: -.02em; line-height: 1.08; }
+.t-CH .dotrule { display: none; }
+.t-CH .ch-list { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }
+.t-CH .ch-list .toc-list { flex: 1 1 auto; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: 12px; }
+.t-CH .ch-list.roomy .toc-list:has(> li:nth-child(4)) { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.t-CH .ch-list .toc-list a, .t-CH .ch-list.compact .toc-list a, .t-CH .ch-list.roomy .toc-list a {
+  position: relative; height: 100%; display: flex; flex-direction: column; align-items: flex-start; gap: 6px;
+  padding: 14px 18px; border: 0; border-radius: var(--sx-r); background: var(--card); }
+.t-CH .ch-list .toc-list .n, .t-CH .ch-list.compact .toc-list .n { width: auto; height: auto; font-size: 13px; }
+.t-CH .ch-list .toc-list .tx { flex: none; }
+.t-CH .ch-list .toc-list .t, .t-CH .ch-list.compact .toc-list.sub .t { font-size: 16px; font-weight: 400; line-height: 1.35; }
+.t-CH .ch-list.roomy .toc-list .t { font-size: 19px; font-weight: 400; }
+.t-CH .ch-list .toc-list .d { font-size: 12px; }
+.t-CH .ch-list .toc-list .ld { font-size: 15px; font-weight: 300; opacity: 1; color: var(--sx-ink2); }
+.t-CH .ch-list .toc-list .pg, .t-CH .ch-list.roomy .toc-list .pg { position: absolute; right: 16px; top: 14px; padding: 0; font-size: 12px; }
+.t-CH .ch-list.compact .toc-list a { padding: 10px 14px; gap: 3px; }
+.t-CH .ch-list.compact .toc-list .t { font-size: 14px; }
+
+/* ── 맺음(closing): 표지와 같은 메시 · 큰 얇은 제목 · 추천 링크 하나만 짙은 남색 ── */
+.en-mid { align-items: start; margin-top: 120px; }
+.en-t { font-size: 56px; font-weight: 300; letter-spacing: -.025em; line-height: 1.05; }
+.en-mid .tagline { font-size: 19px; font-weight: 300; color: var(--sx-ink2); }
+.t-EN .dotrule { display: none; }
+.en-links .lcard.primary a { background: var(--sx-navy); border-color: var(--sx-navy); color: #FFFFFF; }
+.en-links .lcard.primary :is(.lc-k, .url) { color: var(--sx-lav); }
+
+/* ── 안내 장면 ── */
+.msg h1 { font-weight: 300; }
+.msg-b { font-weight: 300; }
+
+/* ── 화면 보기 바탕(장면 밖): 차가운 회색 레터박스 ── */
+@media screen {
+  html, body { background: #E9EEF4; }
+  html[data-view="deck"] .pf-deck > .pf-scene { box-shadow: 0 0 0 1px var(--line), 0 24px 60px -28px rgb(0 55 112 / .35); }
+  html[data-view="scroll"] .pf-deck > .pf-scene { box-shadow: 0 0 0 1px var(--line), 0 10px 30px -18px rgb(0 55 112 / .3); }
+  .pf-hud { background: color-mix(in srgb, #FFFFFF 88%, transparent); }
+  .pf-hud .pf-hud-prog > span { background: var(--sx-strip); }
+}

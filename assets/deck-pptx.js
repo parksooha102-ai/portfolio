@@ -59,11 +59,12 @@
   const clipText = (cs) => /text/.test(`${cs.backgroundClip} ${cs.webkitBackgroundClip || ''}`);
 
   // 글꼴 이름: CSS 목록에서 첫 실제 글꼴. 일반 이름뿐이면 Windows 기본 글꼴
-  function face(ff) {
+  function face(ff, w = 400) {
     const list = String(ff || '').split(',').map((s) => s.trim().replace(/^['"]|['"]$/g, ''));
     const f = list.find((x) => x && !GENERIC.test(x));
     if (!f) return list.some((x) => /mono/i.test(x)) ? 'Consolas' : 'Malgun Gothic';
-    return /^Pretendard( Variable| Std| JP)?$/i.test(f) ? 'Pretendard' : f;
+    if (/^Pretendard( Variable| Std| JP)?$/i.test(f)) return num(w) <= 350 ? "Pretendard Light" : "Pretendard";   // 얇은 글자(300)는 PowerPoint에서 Light 글꼴로
+    return f;
   }
 
   // ── 장면 하나를 재는 동안의 상태 ──
@@ -172,7 +173,7 @@
     }
     const ls = cs.letterSpacing === 'normal' ? 0 : num(cs.letterSpacing) * k;
     const deco = cs.textDecorationLine || '';
-    const o = { fontFace: face(cs.fontFamily), fontSize: Math.max(1, P2(num(cs.fontSize) * k)), bold: num(cs.fontWeight) >= 600, italic: cs.fontStyle === 'italic' };   // sz 1pt 미만은 PowerPoint가 파일을 고치려 듦
+    const o = { fontFace: face(cs.fontFamily, cs.fontWeight), fontSize: Math.max(1, P2(num(cs.fontSize) * k)), bold: num(cs.fontWeight) >= 600, italic: cs.fontStyle === 'italic' };   // sz 1pt 미만은 PowerPoint가 파일을 고치려 듦
     if (c) { o.color = c.hex; const t = TR(c.a * (ctx.op ?? 1)); if (t) o.transparency = t; }
     if (ls) o.charSpacing = P2(ls);
     if (/underline/.test(deco)) o.underline = { style: 'sng' };
@@ -541,7 +542,7 @@
         return !w || !c2 || st === 'none' || st === 'hidden' ? { type: 'none' } : { type: st === 'dashed' ? 'dash' : 'solid', pt: P2(w), color: c2.hex };
       });
       const runs = cellRuns(c, k, { link: ctx.link, op: ctx.op }, media);
-      const o = { fontFace: face(cs.fontFamily), fontSize: Math.max(1, P2(num(cs.fontSize) * k)), color: (color(cs.color) || { hex: '000000' }).hex, bold: num(cs.fontWeight) >= 600,
+      const o = { fontFace: face(cs.fontFamily, cs.fontWeight), fontSize: Math.max(1, P2(num(cs.fontSize) * k)), color: (color(cs.color) || { hex: '000000' }).hex, bold: num(cs.fontWeight) >= 600,
         align: ALIGN[cs.textAlign] || 'left', valign: cs.verticalAlign === 'middle' ? 'middle' : cs.verticalAlign === 'bottom' ? 'bottom' : 'top',
         margin: ['Top', 'Right', 'Bottom', 'Left'].map((s) => IN(num(cs[`padding${s}`]) * k)), border };
       if (fill) o.fill = { color: fill.hex, transparency: TR(fill.a * ctx.op) };

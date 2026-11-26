@@ -14,7 +14,7 @@
   // 글꼴: 굵기마다 load + 각각 catch → fonts.ready, 상한 8초. 실패하면 data-pf-font="fallback"(늦게 들어오면 페이지가 다시 그림)
   async function loadFonts(sample = '가나다ABC123', ms = 8000) {
     const disp = displayFont();
-    const want = ['400', '600', '700', '800'].map((w) => `${w} 16px Pretendard`).concat(disp ? [`700 16px ${disp}`, `800 16px ${disp}`] : [], ['400 14px D2Coding']);   // disp = 영문 라벨(눈썹 글자·목차 머리)
+    const want = ["300", "400", "600", "700", "800"].map((w) => `${w} 16px Pretendard`).concat(disp ? [`700 16px ${disp}`, `800 16px ${disp}`] : [], ['400 14px D2Coding']);   // disp = 영문 라벨(눈썹 글자·목차 머리)
     const errs = [];
     const CODE_SAMPLE = 'public void {}();=<>[]0Oil|';                    // 코드 블록 글자(영문·기호)로도 받음 — 한글 표본만으로는 코드 글꼴 조각이 늦게 올 수 있음
     const all = Promise.all(want.map((f) => document.fonts.load(f, /D2Coding/.test(f) ? sample + CODE_SAMPLE : sample).then((r) => { if (!r.length) errs.push(f + ' (일치 없음)'); }).catch((e) => errs.push(f + ' ' + e))))
@@ -54,7 +54,7 @@
   // 장면 틀. kind: 'sum'(eyebrow │ 오른쪽 라벨 줄 + 제목 줄) | 'bare'(머리 없음: 표지·목차·맺음)
   //   id = 안정 장면 id(#s=<id> 공유 주소·장면 안 링크 목적지), sec = HUD·개요의 섹션명, stitle = 낭독·개요용 제목, group = 개요 묶음 이름
   //   lead = 제목 아래 도입 1~2줄(머리 높이가 그만큼 늘고 본문 상자가 줄어듦, 결정 G7). 머리는 축소하지 않음
-  function scene({ id = '', tpl, part = 'summary', kind = 'sum', eyebrow = '', rlabel = '', title = '', sub = '', pill = '', lead = '', cls = '', foot = '', titleTag = 'h2', sec = '', stitle = '', group = '' }) {
+  function scene({ id = '', tpl, part = 'summary', kind = 'sum', eyebrow = '', eyebrowNo = "", rlabel = '', title = '', sub = '', pill = '', lead = '', cls = '', foot = '', titleTag = 'h2', sec = '', stitle = '', group = '' }) {
     const s = document.createElement('section');
     s.className = `pf-scene pf-${kind} t-${tpl}${cls ? ' ' + cls : ''}`;
     if (id) s.id = id;
@@ -62,7 +62,7 @@
     if (sec) s.dataset.sec = sec;
     if (stitle) s.dataset.title = stitle;
     if (group) s.dataset.group = group;
-    const row = (right) => `<div class="pf-headrow"><p class="pf-eyebrow">${esc(eyebrow)}</p>${right}</div>`;
+    const row = (right) => `<div class="pf-headrow"><p class="pf-eyebrow">${eyebrowNo ? `<b class="pf-chno">${esc(eyebrowNo)}</b>` : ""}${esc(eyebrow)}</p>${right}</div>`;   // eyebrowNo = 장 번호(02) — 장 이름 앞에 강조색 숫자
     const head = kind === 'bare' ? ''
       : `<header class="pf-head" data-pf-ui="chrome">${row(rlabel ? `<p class="pf-rlabel">${esc(rlabel)}</p>` : '')}${title ? `<div class="pf-titlerow"><${titleTag} class="pf-title">${inline(title)}${sub ? `<span class="pf-part" data-pf-ui="cont" aria-hidden="true">${esc(sub)}</span>` : ''}</${titleTag}>${pill ? `<span class="pill">${inline(pill)}</span>` : ''}</div>` : ''}${lead ? `<p class="pf-lead">${inline(lead)}</p>` : ''}</header>`;
     s.innerHTML = `${head}<div class="pf-body"></div>` +
