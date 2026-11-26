@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1360" height="640" viewBox="0 0 680 320" role="img">
+<title>근본안: As-Is vs To-Be</title>
+<desc>충돌 처리: 호출 도중 즉시 실행(분열이 루프 안에서 Kill) → 2단계 처리(먼저 묻고, Bullet이 모아서 한 번에 실행). 피격 기록: 탄환마다 hitSet + 분열의 excludedTarget → 계보 단위 기록 HitContext 하나(참조 공유). 분열 특수 처리: is SplitModule 분기 1곳 → 필요 없음. To-Be는 미구현. 출처: 기술문서 §4.7.</desc>
+<style>
+.h{font:500 14px Pretendard,'Noto Sans KR',sans-serif;fill:#2C2C2A}
+.s{font:400 12px Pretendard,'Noto Sans KR',sans-serif;fill:#5F5E5A}
+.t{font:400 14px Pretendard,'Noto Sans KR',sans-serif;fill:#2C2C2A}
+.m{font:400 13px D2Coding,Consolas,monospace}
+.cls{fill:#F1EFE8;stroke:#5F5E5A;stroke-width:1}
+.tobe{fill:#FFFFFF;stroke:#185FA5;stroke-width:1.25;stroke-dasharray:6 4}
+</style>
+<rect width="680" height="320" fill="#FFFFFF"/>
+<text class="h" x="150" y="34">As-Is</text>
+<text class="s" x="196" y="34">지금 코드</text>
+<text class="h" x="410" y="34">To-Be</text>
+<text class="s" x="456" y="34">개선안 · 미구현</text>
+<line x1="150" y1="46" x2="400" y2="46" stroke="#D85A30" stroke-width="2"/>
+<line x1="410" y1="46" x2="650" y2="46" stroke="#185FA5" stroke-width="2"/>
+<text class="h" x="30" y="92">충돌 처리</text>
+<rect class="cls" x="150" y="62" width="250" height="62" rx="4"/>
+<text class="t" x="166" y="88">호출 도중 즉시 실행</text>
+<text class="s" x="166" y="110">분열이 루프 안에서 Kill() → 뒤 모듈 못 돎</text>
+<rect class="tobe" x="410" y="62" width="240" height="62" rx="4"/>
+<text class="t" x="426" y="88" style="fill:#0C447C">① 먼저 묻고 ② 모아서 실행</text>
+<text class="s" x="426" y="110" style="fill:#185FA5">모든 모듈이 항상 실행 → 순서 무관</text>
+<text class="h" x="30" y="166">피격 기록</text>
+<rect class="cls" x="150" y="136" width="250" height="62" rx="4"/>
+<text class="m" x="166" y="162" style="fill:#2C2C2A">hitSet + excludedTarget</text>
+<text class="s" x="166" y="184">탄환마다 하나 + 분열만 따로</text>
+<rect class="tobe" x="410" y="136" width="240" height="62" rx="4"/>
+<text class="m" x="426" y="162" style="fill:#0C447C">HitContext</text>
+<text class="s" x="426" y="184" style="fill:#185FA5">부모·자식이 참조로 공유하는 기록 하나</text>
+<text class="h" x="30" y="240">분열 특수 처리</text>
+<rect class="cls" x="150" y="210" width="250" height="62" rx="4"/>
+<text class="m" x="166" y="236" style="fill:#712B13">is SplitModule</text>
+<text class="s" x="166" y="258">AddModule()의 분기 1곳</text>
+<rect class="tobe" x="410" y="210" width="240" height="62" rx="4"/>
+<text class="t" x="426" y="236" style="fill:#0C447C">필요 없음</text>
+<text class="s" x="426" y="258" style="fill:#185FA5">구체 모듈을 아는 코드 0곳</text>
+<text class="s" x="150" y="302">데미지 먼저, 소멸은 결과를 모은 뒤 → 되돌린 시도의 문제도 함께 풀림</text>
+</svg>

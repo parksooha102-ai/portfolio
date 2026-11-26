@@ -1,0 +1,228 @@
+{
+  "project": "1-Bullet-Module",
+  "title": "총기 모듈 프레임워크",
+  "titleEn": "Bullet Module Framework",
+  "source": "notes/deck-analysis/1-Bullet-Module.md 설계표 (원문: src/1-Bullet-Module/기술문서.md)",
+  "chapters": [
+    { "key": "why", "label": "왜 필요" },
+    { "key": "struct", "label": "원칙·구조" },
+    { "key": "flow", "label": "동작" },
+    { "key": "hard", "label": "가장 어려운 문제" },
+    { "key": "proof", "label": "증명" },
+    { "key": "limit", "label": "한계" },
+    { "key": "end", "label": "결론" }
+  ],
+  "slides": [
+    {
+      "layout": "cover",
+      "title": "모듈을 골라 끼우면 새 총기",
+      "meta": ["Unity 6 · URP 2D", "1인 · 2주", "탄환 모듈 6종", "설계·구현 직접 (실험실 코드는 AI 도움)"],
+      "visual": {
+        "src": "src/1-Bullet-Module/이미지/1-5_loop_workshop.png", "w": 1920, "h": 1080,
+        "alt": "워크숍 화면: Module List에서 고른 모듈이 Build List에 쌓인다",
+        "callouts": [
+          { "x": 3, "y": 5.4, "text": "①", "dot": true },
+          { "x": 28.8, "y": 5.4, "text": "②", "dot": true },
+          { "x": 54.8, "y": 5.4, "text": "③", "dot": true }
+        ]
+      },
+      "steps": ["모듈 고르기", "Build List에 쌓기", "수치 확인"],
+      "src": "머리말, 1.1, 1.3, 1.4"
+    },
+    {
+      "chapter": "why", "layout": "full",
+      "title": "전용 탄환이면 63클래스, 모듈이면 6종",
+      "visual": { "svg": "fig/02-classes-vs-modules.svg", "alt": "조합마다 전용 클래스 63개 vs Bullet 하나에 모듈 6종. 효과 1종 추가 → 조합 약 2배 vs 모듈 1개" },
+      "src": "2.1"
+    },
+    {
+      "chapter": "struct", "layout": "cards",
+      "title": "조합이 자유로우려면: 서로 모름 · 순서 무관",
+      "cards": [
+        { "head": "① 서로 모른다", "rows": [["추적", "관통", "분열"]], "note": "모듈끼리 선 없음", "body": ["Bullet은 모듈 목록만 가짐", "모듈끼리 참조 없음"] },
+        { "head": "② 순서와 무관하다", "rows": [["관통", "→", "분열"], ["분열", "→", "관통"]], "note": "어느 순서든 같은 결과", "body": ["장착 순서가 결과를 바꾸지 않음"] }
+      ],
+      "foot": "②는 분열 모듈에서 깨짐 — 뒤에서",
+      "src": "2.2 두 가지 원칙"
+    },
+    {
+      "chapter": "struct", "layout": "full",
+      "title": "Bullet은 모듈 목록을 차례로 부를 뿐",
+      "visual": { "svg": "fig/04-module-structure.svg", "alt": "Bullet → IBulletModule ← 모듈 6종, 수치는 ModuleInfo(ScriptableObject)에서 에디터로 밸런싱" },
+      "src": "2.2 모듈 구성·데이터 분리"
+    },
+    {
+      "chapter": "struct", "layout": "table",
+      "title": "규격은 \"무엇을 할 수 있나\" → 인터페이스",
+      "table": {
+        "head": ["", "[A] 추상 클래스", "[B] 인터페이스 · 채택"],
+        "pick": 2,
+        "rows": [
+          ["장점", "공통 필드·기본 동작 일괄 관리", "모듈마다 필요한 상태·동작만"],
+          ["단점", "불필요한 공통 상태까지 상속", "빈 구현(no-op) 반복"]
+        ]
+      },
+      "points": ["is-a 대신 can-do", "관통(카운터 1개) ≠ 분열(상태 여러 개)", "대가: 빈 구현 반복"],
+      "src": "2.2 모듈 규격"
+    },
+    {
+      "chapter": "flow", "layout": "band",
+      "title": "모듈은 비행·충돌·생존 세 지점에 끼어든다",
+      "visual": { "svg": "fig/06-execution-flow.svg", "alt": "OnUpdate → 이동·충돌 감지 → OnHit → CanSurvive → 생존/소멸" },
+      "points": ["Bullet: 이동·충돌 감지 + 모듈 호출, 모듈 동작은 모름", "모듈마다 필요한 훅만 구현"],
+      "src": "3.2"
+    },
+    {
+      "chapter": "flow", "layout": "side",
+      "title": "생존은 OR: 하나라도 살면 계속",
+      "visuals": [
+        { "src": "src/1-Bullet-Module/이미지/3-3_and_before_wall.png", "w": 1080, "h": 1600, "label": "AND였다면", "tone": "warn", "alt": "관통 + 반사 탄환이 벽으로 올라가는 순간. AND였다면 여기서 소멸" },
+        { "src": "src/1-Bullet-Module/이미지/3-3_or_bounce_back.png", "w": 1080, "h": 1600, "label": "OR", "tone": "ok", "alt": "OR이라 반사가 생존을 주장해 벽에서 튕겨 다시 명중" }
+      ],
+      "points": ["AND: 모듈을 더할수록 약해짐 (디너지)", "OR: 하나라도 생존을 주장하면 계속", "목표: 조합할수록 강해짐"],
+      "src": "3.3 생존 판정 — AND vs OR"
+    },
+    {
+      "chapter": "flow", "layout": "side",
+      "title": "조합만으로 새 총기: 관통 유탄",
+      "visual": { "src": "src/1-Bullet-Module/이미지/4-2_penetrate_explosion.gif", "w": 960, "h": 540, "alt": "앞: 폭발 단독, 뒤: 관통 + 폭발이 허수아비를 꿰뚫으며 연속 폭발" },
+      "points": ["앞: 폭발 단독 — 맞으면 터지고 소멸", "뒤: 관통 + 폭발 — 꿰뚫으며 연속 폭발", "\"관통 유탄\" 전용 코드 없음", "OR 판정이 만든 결과"],
+      "src": "3.3, 머리말 그림"
+    },
+    {
+      "chapter": "flow", "layout": "band",
+      "title": "같은 적은 한 번만: 통과 중인 적을 기억",
+      "visual": {
+        "src": "src/1-Bullet-Module/이미지/3-3_penetrate.gif", "w": 960, "h": 432,
+        "alt": "관통 3회 탄이 허수아비 4명을 오른쪽부터 차례로 맞힘",
+        "callouts": [
+          { "x": 72, "y": 86, "text": "①", "dot": true },
+          { "x": 48.5, "y": 86, "text": "②", "dot": true },
+          { "x": 26, "y": 86, "text": "③", "dot": true },
+          { "x": 6, "y": 86, "text": "④", "dot": true }
+        ]
+      },
+      "points": ["버그: 관통 3회 탄이 적 하나에 3연타", "hitSet = 지금 통과 중인 적, 빠져나오면 비움", "Bullet에 둠: 모든 탄환 공통 규칙"],
+      "src": "3.4"
+    },
+    {
+      "chapter": "hard", "layout": "side",
+      "title": "분열한 자식은 부모 상태까지 복제 (Clone)",
+      "visual": { "src": "src/1-Bullet-Module/이미지/4-0_explosion_penetrate_split.gif", "w": 880, "h": 495, "alt": "분열한 자식 탄환도 폭발을 이어받아 연달아 터짐" },
+      "points": ["자식은 부모 모듈 전부 계승", "세대 수를 이어받아야 분열이 멈춤", "새로 만들면 세대 0 → 무한 분열 (그랬다면)"],
+      "src": "4.1, 4.3 자식 모듈 생성"
+    },
+    {
+      "chapter": "hard", "layout": "full",
+      "title": "장착 순서에 따라 관통력 2회 vs 1회 차감",
+      "lead": "순서 무관 원칙 위반",
+      "visual": { "svg": "fig/11-order-dependency.svg", "alt": "관통 → 분열이면 2회, 분열 → 관통이면 1회 차감" },
+      "src": "4.5"
+    },
+    {
+      "chapter": "hard", "layout": "code",
+      "title": "원인: \"처리한 적\" 기록이 두 곳",
+      "lead": "자식에게 같은 적 A = 관통에는 새 적, 분열에는 이미 처리한 적",
+      "code": [
+        {
+          "label": "관통", "name": "PenetrateModule.CanSurviveEnemy",
+          "lines": [
+            "public bool CanSurviveEnemy(RaycastHit2D hit)",
+            "{",
+            "    if (currentPenetrateCount <= 0)",
+            "        return false;",
+            "",
+            "    currentPenetrateCount--;",
+            "    return true;",
+            "}"
+          ],
+          "mark": { "6": "①" }
+        },
+        {
+          "label": "분열", "name": "SplitModule.ProcessSplit (발췌·요약)",
+          "lines": [
+            "private void ProcessSplit(RaycastHit2D hit)",
+            "{",
+            "    if (hit.collider == excludedTarget) return;",
+            "    if (currentGeneration >= maxGeneration) return;",
+            "",
+            "    excludedTarget = hit.collider;",
+            "    currentGeneration++;",
+            "",
+            "    // 각도 계산 후 splitAmount 개수만큼 자식 Bullet 생성",
+            "    bullet.Kill();",
+            "}"
+          ],
+          "mark": { "3": "②", "6": "③", "10": "④" }
+        }
+      ],
+      "points": ["① 횟수만 셈 · 같은 적 구분은 Bullet의 hitSet (자식은 빈 채로 시작)", "②③ 처리한 적을 excludedTarget에 따로 기록 · Clone으로 자식에 계승", "④ 호출 도중 소멸 → 남은 모듈은 실행 안 됨"],
+      "src": "3.3 관통 모듈, 4.2, 4.4, 4.5 원인"
+    },
+    {
+      "chapter": "hard", "layout": "full",
+      "title": "임시 대응: 분열을 맨 앞에 고정",
+      "visual": { "svg": "fig/13-temporary-fix.svg", "alt": "시도 → 부작용 → 되돌림 → 맨 앞 고정, 대가" },
+      "src": "4.6"
+    },
+    {
+      "chapter": "hard", "layout": "full",
+      "title": "근본안: 먼저 묻고, 모아서 한 번에 실행",
+      "visual": { "svg": "fig/14-root-fix.svg", "alt": "As-Is vs To-Be 3행 비교, To-Be는 미구현" },
+      "src": "4.7"
+    },
+    {
+      "chapter": "proof", "layout": "side",
+      "title": "63가지 조합을 전부 쏘아 확인",
+      "visual": {
+        "src": "src/1-Bullet-Module/이미지/5-1_verify_grid.jpg", "w": 1600, "h": 900,
+        "alt": "63번째 조합(6종 전부 장착)을 네 상황에서 동시에 쏜 장면",
+        "callouts": [
+          { "x": 2, "y": 38, "text": "표적 없음 → 부메랑" },
+          { "x": 98, "y": 38, "text": "궤적 밖 허수아비 → 추적", "align": "right" },
+          { "x": 2, "y": 93, "text": "벽 → 반사" },
+          { "x": 98, "y": 93, "text": "궤적 안 허수아비 → 명중", "align": "right" }
+        ]
+      },
+      "big": { "value": "63", "label": "가지 조합 전부", "sub": "순서까지 따지면 1,956 (30배 넘게)" },
+      "points": ["검증 코드가 자동 장착·발사 · 영상 3:49", "판정은 사람이 영상으로 (자동 테스트 아님)"],
+      "src": "5.1"
+    },
+    {
+      "chapter": "limit", "layout": "table",
+      "title": "조합은 달성, 순서 독립·재사용은 일부",
+      "table": {
+        "head": ["목표", "", "결과"],
+        "grade": 1,
+        "rows": [
+          ["조합으로 총기를 만든다", "◎", "63가지 모두 쏘아 봄"],
+          ["조합별 전용 탄환 클래스 없음", "◎", "Bullet 하나"],
+          ["새 모듈을 넣어도 기존 코드 그대로", "○", "파일 2개로 추가 · 예외 1곳"],
+          ["모듈 간 순서 독립", "△", "분열 모듈만 제외"],
+          ["재사용 가능한 프레임워크", "△", "결합 3곳 남음"],
+          ["기획자가 만들고 시험한다", "△", "만든 사람만 써 봄"]
+        ]
+      },
+      "foot": "◎ 달성 · ○ 예외 하나 남음 · △ 일부 · × 못 함",
+      "src": "1.2, 2.4, 5.1"
+    },
+    {
+      "chapter": "limit", "layout": "full",
+      "title": "의존 방향이 거꾸로: 프레임워크가 프로젝트를 아는 곳 3곳",
+      "visual": { "svg": "fig/17-dependency-direction.svg", "alt": "현재는 프레임워크가 프로젝트를 앎, 개선안은 프로젝트가 프레임워크를 앎" },
+      "src": "2.5, 3.7, 5.2, 5.3"
+    },
+    {
+      "chapter": "end", "layout": "cards",
+      "title": "부품 6종 → 63가지 총기, 배운 점은 원칙 충돌과 의존 방향",
+      "lead": "서로 모르는 모듈 6종으로 63가지 총기 · 원칙이 부딪친 곳은 임시 대응 + 근본안",
+      "cards": [
+        { "head": "원칙끼리도 부딪친다", "body": ["서로 모름 · 순서 무관", "분열 앞에서 함께 안 지켜짐"] },
+        { "head": "의존은 프로젝트 → 프레임워크", "body": ["재사용 코드는 특정 게임 코드를 몰라야", "로직은 못 정해도 연결 규격은 정할 수 있음"] },
+        { "head": "기록은 코드와 함께", "body": ["개선 전후 수치·테스트 기록 남기기", "이번엔 없어서 수치로 증명 못 함"] }
+      ],
+      "links": true,
+      "src": "머리말 배운 점, 5.3"
+    }
+  ]
+}

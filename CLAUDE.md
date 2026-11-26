@@ -9,6 +9,13 @@
 이름이 바뀐 것: **프로젝트 문서**(예전 '기술 문서') · **포트폴리오 페이지**(예전 '포트폴리오 문서') · **슬라이드**(예전 '발표 덱').
 수강생이 예전 이름으로 말해도 같은 것으로 알아듣고, 답할 때는 지금 이름을 씁니다. 파일·코드의 이름(`deck`, `deck-edits.json`, `project.html`)은 그대로입니다.
 
+
+> **슬라이드(발표 덱)는 지금 없습니다.** 예전 슬라이드 렌더러·디자인·장면 생성(`deck`)·`/portfolio-edit`·[PPTX로 저장]은 2026-11-27에 모두 지웠습니다(글이 너무 많고 빈 곳이 많아서).
+> 새 슬라이드(2026-11-27~): `project.html` + `assets/deck.js`·`deck.css`가 `decks/<폴더>/deck.json`(장면 목록)과 `decks/<폴더>/fig/*.svg`(다시 그린 그림)를 그립니다. deck.json이 없는 프로젝트는 상세 문서로 안내만 합니다.
+> 장면은 `notes/deck-analysis/`의 지침서(00-지침서.md)와 프로젝트별 설계표에서 옮깁니다 — 핵심만, 시각 자료가 주인공, 빈 곳 없이, 글은 짧은 구절. 지금 만든 것은 1-Bullet-Module(18장)뿐입니다.
+> 점검: `await PFDeck.whenReady()` 뒤 `PFDeck.report()`(overflow·images.broken·errors). 이 파일·`docs/`·`format/`에 남은 예전 슬라이드 설명(`deck` 데이터·`PFScene`·`/portfolio-edit`)은 따르지 않습니다.
+> `/portfolio-update`를 실행하면 템플릿의 예전 슬라이드 파일이 다시 들어오므로 주의합니다.
+
 ---
 
 ## 폴더 규약
@@ -69,7 +76,6 @@ flowchart LR
 |---|---|
 | `/portfolio-build [폴더]` | 소스를 읽어 `data/` 생성 + 점검 리포트 + 미리보기. 폴더를 주면 그 프로젝트만 |
 | `/portfolio-check [폴더]` | 프로젝트 문서를 가이드 기준으로 점검만 (데이터는 안 건드림) |
-| `/portfolio-edit [폴더] [장면] [요청]` | 슬라이드 장면 하나의 배치(틀·원문 블록 고르기·줄 범위·나누기·합치기·숨기기·순서)를 고침. `src/<NN>/deck-edits.json`에 써서 다시 빌드해도 남음. 말로 요청해도 되지만 **장면 카드로 확인받은 뒤에만** 씀. 내용(사실·설명) 문제는 프로젝트 문서로 안내 |
 | `/portfolio-theme [되돌리기\|요청]` | 첨부한 웹페이지 스크린샷에서 색·모양·영문 글꼴·효과를 정해진 규칙으로 뽑아 `theme/theme.css`에 씀(세 페이지가 함께 바뀜). 렌더러는 안 건드림. 말로 "이 사이트 느낌으로", "버튼 덜 둥글게"라고 해도 됨 |
 | `/portfolio-layout [주소\|스크린샷\|되돌리기]` | 레퍼런스 페이지의 배치 골격(띠·단 나눔·카드 격자·그림 쪽·콘텐츠 폭)을 `measure-layout.js`로 재거나(브라우저 도구) 스크린샷으로 어림해, 내 절에 맞춘 뒤 **확인받고** `theme/layout.json`에 씀. 글·그림·로고·이름은 안 가져옴. 페이지에는 `/portfolio-custom`이 반영(`index.html`·제출 PDF는 그대로) |
 | `/portfolio-custom [디자인 요청]` | 직접 생성 모드. `theme/layout.json`이 있으면 그 배치를 따름. **사용자가 직접 입력했을 때만** 실행 |
@@ -128,18 +134,6 @@ flowchart LR
 - `python -m http.server 4600` (Windows에서 `python`이 없으면 `py -m http.server 4600`) → http://localhost:4600
 - JetBrains IDE(Rider·WebStorm): `index.html` 우클릭 → **Open in → Browser** (내장 서버)
 - Claude 데스크톱 앱: `.claude/launch.json`의 `portfolio` 구성으로 미리보기
-- 슬라이드 아래 띠의 빨간 숫자(미리보기 배치 점검)를 물으면 데이터를 다시 만들지 않고, 그 슬라이드(`project.html?p=<id>`)에서
-  `await PFScene.whenReady()` 뒤 `PFScene.report().audit`을 읽어 `.claude/skills/portfolio-build/SKILL.md` §7-1처럼 장면마다 1건으로
-  묶어 알려 줍니다. 브라우저 도구가 없으면 headless Chrome으로
-  `chrome --headless=new --virtual-time-budget=30000 --dump-dom "http://localhost:4600/project.html?p=<id>&pf-audit=1"`
-  을 실행해 `#pf-audit`의 base64 JSON(= `report()`)을 읽고, `ready`가 `yes`인지 확인합니다.
-  포트폴리오 페이지(`index.html`)는 장면이 없는 흐르는 페이지라 빨간 띠가 없고, `await PFPage.whenReady()` 뒤 `PFPage.report()`
-  (깨진 이미지 `images.broken`·가로 넘침 `overflowX`·`errors`)를 봅니다. headless는 `index.html?pf-audit=1`로 같은 방법입니다.
-  상세 문서(`doc.html?p=<id>`)는 `await PFDoc.whenReady()` 뒤 `PFDoc.report()`(`errors`·깨진 이미지 `images.broken`·그리지 못한 다이어그램 `diagrams.failed`)를 봅니다. headless는 `doc.html?p=<id>&pf-audit=1`로 같은 방법이고(그림까지 받은 뒤 씀), 상세 문서의 `ready`는 `true`입니다.
-  슬라이드의 빨간 띠(원문 블록을 찾지 못함·여러 곳·바뀜)도 `audit`에 함께 나오고, `info.mode`가 `auto`면 예전 데이터로 자동 구성된 슬라이드이므로 `/portfolio-build`를 다시 실행하도록 안내합니다.
-- 슬라이드의 **[PPTX로 저장]**(`assets/deck-pptx.js`)은 렌더러 기능이라 데이터를 다시 만들지 않습니다. 결과가 이상하다고 하면 그 슬라이드에서 `await PFScene.whenReady()` 뒤
-  `(await PFPptx.build()).report`(내려받지 않음)의 `warnings`(넣지 못한 그림 등)·`slides`(슬라이드별 글상자·도형·그림·표·코드 개수)·`fonts`(들어간 글꼴 이름)를 봅니다.
-  PowerPoint에서 글꼴·줄바꿈이 다르면 대개 그 PC에 Pretendard·D2Coding이 없는 것입니다(설치 또는 [홈 → 바꾸기 → 글꼴 바꾸기]). PPTX에서 고친 것은 소스로 돌아오지 않으므로 내용 문제는 프로젝트 문서로 안내합니다.
 - 문구 표(`theme/strings.tsv`)가 제대로 읽혔는지는 세 페이지 report의 `strings`로 봅니다 — 포트폴리오 페이지 `PFPage.report().strings`, 슬라이드 `PFScene.report().info.strings`,
   상세 문서 `PFDoc.report().strings`. `issues`의 `type`: `spaces`(탭 대신 공백 — 그 줄은 기본 문구) · `unknown-key` · `duplicate` · `default-edited`(기본 문구 칸을 고침) ·
   `extra-cols` · `too-long`(권장 글자 수 초과) · `hangul-in-en`(영문 라벨 칸에 한글) · `missing-var`/`unknown-var`/`unknown-ref`/`ref-loop`(자리표시) · `encoding`(CP949·UTF-16) · `no-file`.

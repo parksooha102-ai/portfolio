@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1360" height="840" viewBox="0 0 680 420" role="img">
+<title>의존 방향 전후 비교</title>
+<desc>현재는 프레임워크(Bullet, ModuleInfo, BaseModule)가 이 프로젝트(CombatSystem, 워크숍 UI)를 아는 화살표 3개. 개선안(미구현)은 이 프로젝트(전투 매니저, UI 어댑터, 워크숍)가 프레임워크(IHitReceiver, ModuleInfo, Bullet)를 아는 점선 화살표 3개. 출처: 기술문서 §2.5, §3.7, §5.2, §5.3.</desc>
+<defs>
+<marker id="ac" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#D85A30" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="an" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#185FA5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<style>
+.h{font:500 14px Pretendard,'Noto Sans KR',sans-serif;fill:#2C2C2A}
+.s{font:400 12px Pretendard,'Noto Sans KR',sans-serif;fill:#5F5E5A}
+.t{font:400 14px Pretendard,'Noto Sans KR',sans-serif;fill:#2C2C2A}
+.m{font:400 12px D2Coding,Consolas,monospace;fill:#2C2C2A}
+.area{fill:none;stroke:#5F5E5A;stroke-width:1;stroke-dasharray:6 4}
+.cls{fill:#F1EFE8;stroke:#5F5E5A;stroke-width:1}
+</style>
+</defs>
+<rect width="680" height="420" fill="#FFFFFF"/>
+<text class="h" x="30" y="34">현재</text>
+<text class="s" x="72" y="34">프레임워크가 프로젝트를 앎 · 3곳</text>
+<text class="h" x="350" y="34">개선안</text>
+<text class="s" x="400" y="34">프로젝트가 프레임워크를 앎 · 미구현</text>
+<line x1="30" y1="46" x2="330" y2="46" stroke="#D85A30" stroke-width="2"/>
+<line x1="350" y1="46" x2="650" y2="46" stroke="#185FA5" stroke-width="2"/>
+<rect class="area" x="30" y="62" width="300" height="104" rx="10"/>
+<rect class="area" x="350" y="62" width="300" height="104" rx="10"/>
+<text class="h" x="46" y="89">프레임워크</text>
+<text class="h" x="366" y="89">프레임워크</text>
+<rect class="cls" x="46" y="104" width="84" height="44" rx="4"/><text class="m" x="88" y="130" text-anchor="middle">Bullet</text>
+<rect class="cls" x="138" y="104" width="84" height="44" rx="4"/><text class="m" x="180" y="130" text-anchor="middle">ModuleInfo</text>
+<rect class="cls" x="230" y="104" width="84" height="44" rx="4"/><text class="m" x="272" y="130" text-anchor="middle">BaseModule</text>
+<rect class="cls" x="366" y="104" width="84" height="44" rx="4"/><text class="m" x="408" y="130" text-anchor="middle">IHitReceiver</text>
+<rect class="cls" x="458" y="104" width="84" height="44" rx="4"/><text class="m" x="500" y="130" text-anchor="middle">ModuleInfo</text>
+<rect class="cls" x="550" y="104" width="84" height="44" rx="4"/><text class="m" x="592" y="130" text-anchor="middle">Bullet</text>
+<rect class="area" x="30" y="250" width="300" height="104" rx="10"/>
+<rect class="area" x="350" y="250" width="300" height="104" rx="10"/>
+<rect class="cls" x="46" y="266" width="84" height="44" rx="4"/><text class="m" x="88" y="292" text-anchor="middle" style="font-size:11px">CombatSystem</text>
+<rect class="cls" x="138" y="266" width="176" height="44" rx="4"/><text class="t" x="226" y="293" text-anchor="middle">워크숍 UI</text>
+<rect class="cls" x="366" y="266" width="84" height="44" rx="4"/><text class="t" x="408" y="293" text-anchor="middle">전투 매니저</text>
+<rect class="cls" x="458" y="266" width="84" height="44" rx="4"/><text class="t" x="500" y="293" text-anchor="middle">UI 어댑터</text>
+<rect class="cls" x="550" y="266" width="84" height="44" rx="4"/><text class="t" x="592" y="293" text-anchor="middle">워크숍</text>
+<text class="h" x="46" y="339">이 프로젝트</text>
+<text class="h" x="366" y="339">이 프로젝트</text>
+<line x1="88" y1="150" x2="88" y2="262" stroke="#D85A30" stroke-width="2" marker-end="url(#ac)"/>
+<line x1="180" y1="150" x2="180" y2="262" stroke="#D85A30" stroke-width="2" marker-end="url(#ac)"/>
+<line x1="272" y1="150" x2="272" y2="262" stroke="#D85A30" stroke-width="2" marker-end="url(#ac)"/>
+<line x1="408" y1="264" x2="408" y2="152" stroke="#185FA5" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#an)"/>
+<line x1="500" y1="264" x2="500" y2="152" stroke="#185FA5" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#an)"/>
+<line x1="592" y1="264" x2="592" y2="152" stroke="#185FA5" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#an)"/>
+<text class="s" x="30" y="390">탄환을 옮기면 전투 시스템까지 따라옴</text>
+<text class="s" x="350" y="390">프레임워크는 연결 규격만 정함</text>
+</svg>
