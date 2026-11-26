@@ -54,7 +54,7 @@
   // 장면 틀. kind: 'sum'(eyebrow │ 오른쪽 라벨 줄 + 제목 줄) | 'bare'(머리 없음: 표지·목차·맺음)
   //   id = 안정 장면 id(#s=<id> 공유 주소·장면 안 링크 목적지), sec = HUD·개요의 섹션명, stitle = 낭독·개요용 제목, group = 개요 묶음 이름
   //   lead = 제목 아래 도입 1~2줄(머리 높이가 그만큼 늘고 본문 상자가 줄어듦, 결정 G7). 머리는 축소하지 않음
-  function scene({ id = '', tpl, part = 'summary', kind = 'sum', eyebrow = '', eyebrowNo = "", rlabel = '', title = '', sub = '', pill = '', lead = '', cls = '', foot = '', titleTag = 'h2', sec = '', stitle = '', group = '' }) {
+  function scene({ nav = '', id = '', tpl, part = 'summary', kind = 'sum', eyebrow = '', eyebrowNo = "", rlabel = '', title = '', sub = '', pill = '', lead = '', cls = '', foot = '', titleTag = 'h2', sec = '', stitle = '', group = '' }) {
     const s = document.createElement('section');
     s.className = `pf-scene pf-${kind} t-${tpl}${cls ? ' ' + cls : ''}`;
     if (id) s.id = id;
@@ -65,7 +65,7 @@
     const row = (right) => `<div class="pf-headrow"><p class="pf-eyebrow">${eyebrowNo ? `<b class="pf-chno">${esc(eyebrowNo)}</b>` : ""}${esc(eyebrow)}</p>${right}</div>`;   // eyebrowNo = 장 번호(02) — 장 이름 앞에 강조색 숫자
     const head = kind === 'bare' ? ''
       : `<header class="pf-head" data-pf-ui="chrome">${row(rlabel ? `<p class="pf-rlabel">${esc(rlabel)}</p>` : '')}${title ? `<div class="pf-titlerow"><${titleTag} class="pf-title">${inline(title)}${sub ? `<span class="pf-part" data-pf-ui="cont" aria-hidden="true">${esc(sub)}</span>` : ''}</${titleTag}>${pill ? `<span class="pill">${inline(pill)}</span>` : ''}</div>` : ''}${lead ? `<p class="pf-lead">${inline(lead)}</p>` : ''}</header>`;
-    s.innerHTML = `${head}<div class="pf-body"></div>` +
+    s.innerHTML = `${nav}${head}<div class="pf-body"></div>` +
       `<footer class="pf-foot" data-pf-ui="chrome"><span>${esc(foot)}</span><span class="pf-num"><span class="pf-n-screen"></span><span class="pf-n-print"></span></span></footer>`;
     return s;
   }

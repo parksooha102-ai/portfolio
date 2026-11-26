@@ -220,16 +220,18 @@
   const ncards = (points, { row = false, num = true, two = false } = {}) => (points.length
     ? `<div class="cards${row ? ' row' : ''}${two ? ' two' : ''}" style="--n:${Math.min(points.length, 4)}">${points.map((pt, i) =>
       `<div class="ncard${num ? '' : ' nonum'}">${num ? `<span class="num" aria-hidden="true">${i + 1}</span>` : ''}<div>${pt.label ? `<span class="lb">${esc(PF.label(pt.label))}</span>` : ''}<p>${inline(txt(pt))}</p></div></div>`).join('')}</div>` : '');
-  const FLOW = { '문제': '', '원인': '', '해결': 'accent', '결과': 'ok', '배운 점': '' };   // data 값 → 칩 색(보이는 글자만 PF.label로 바뀜)
+  // data 값 → 의미색(디자인 마스터플랜 「색 역할」: 문제 = 빨강 · 원인 = 주황(주의) · 해결 = 강조색 · 결과 = 초록). 보이는 글자만 PF.label로 바뀜
+  const FLOW = { '문제': 'bad', '원인': 'warn', '해결': 'accent', '결과': 'ok', '배운 점': '' };
   const flowHtml = (points, dir) => `<div class="flow ${dir}" style="--n:${Math.min(points.length, 4)}">${points.map((pt) =>
-    `<div class="fstep${pt.label === '결과' ? ' res' : ''}">${pt.label ? `<span class="labelchip${FLOW[pt.label] ? ' ' + FLOW[pt.label] : ''}">${esc(PF.label(pt.label))}</span>` : ''}<p>${inline(txt(pt))}</p></div>`).join('')}</div>`;
+    `<div class="fstep${pt.label === '결과' ? ' res' : ''}${FLOW[pt.label] ? ' k-' + FLOW[pt.label] : ''}">${pt.label ? `<span class="labelchip${FLOW[pt.label] ? ' ' + FLOW[pt.label] : ''}">${esc(PF.label(pt.label))}</span>` : ''}<p>${inline(txt(pt))}</p></div>`).join('')}</div>`;
   function bodyHtml(sl, vs, variant) {
     const points = sl.points || [];
     const vis = (list) => `<div class="vis">${list.join('')}</div>`;
-    const tight = variant.tight ? ' tight' : '';
+    const tight = variant.tight ? ' tight' : variant.roomy ? ' roomy' : '';
     if (!vs.length) {
       if (sl.layout === 'problem') return `<div class="dk dk-text${tight}">${flowHtml(points, variant.stack || variant.tight ? 'row' : 'col')}</div>`;
-      return `<div class="dk dk-text${tight}">${ncards(points, { two: points.length >= 3 && !variant.stack, num: sl.layout !== 'overview' })}</div>`;
+      // 카드 3장 = 가로 3열(2+1로 한 장이 남지 않게), 4장 이상 = 2열, 1~2장 = 한 줄씩
+      return `<div class="dk dk-text${tight}">${ncards(points, { row: points.length === 3 && !variant.stack, two: points.length >= 4 && !variant.stack, num: sl.layout !== 'overview' })}</div>`;
     }
     if (sl.layout === 'screens') {
       return `<div class="dk scr-row${tight}" style="--n:${vs.length}">${vs.map((v, i) => `<div class="fe-card">${vis([v])}${points[i] ? `<p class="fe-k">${esc(PF.t('en.feature'))} ${String(i + 1).padStart(2, '0')}</p>${points[i].label ? `<h3>${esc(PF.label(points[i].label))}</h3>` : ''}${txt(points[i]) ? `<p>${inline(txt(points[i]))}</p>` : ''}` : ''}</div>`).join('')}</div>`;
@@ -279,7 +281,7 @@
   function decisionHtml(d, variant) {
     const tight = variant.tight ? ' tight' : '';
     const short = d.opts.every((o) => o.rows.every((r) => r.label.replace(/<[^>]+>/g, '').length <= 6));
-    const opt = (o) => `<div class="dc-opt"><p class="dc-tag">${esc(PF.t('deck.option', { x: o.tag }))}</p><h3 class="dc-name">${o.name}</h3>
+    const opt = (o) => `<div class="dc-opt${o.chosen ? ' on' : ''}"><p class="dc-tag">${esc(PF.t('deck.option', { x: o.tag }))}</p><h3 class="dc-name">${o.name}</h3>
       ${o.rows.length ? `<dl class="dc-rows${short ? '' : ' stack'}">${o.rows.map((r) => `<div><dt>${r.label}</dt><dd>${r.html}</dd></div>`).join('')}</dl>` : ''}</div>`;
     const decLine = d.dec.map((p) => `<p class="dc-say">${inline(txt(p))}</p>`).join('');
     const whyLine = d.why.map((p) => `<p class="dc-why"><span class="dc-k">${esc(PF.label('이유'))}</span>${inline(txt(p))}</p>`).join('');
@@ -431,7 +433,7 @@
     const V = sl.layout === 'full' || sl.layout === 'screens' ? [{}, { tight: true }]
       : [{ vw: 1.4 }, { vw: 1.7 }, { vw: 1.15 }, { vw: 1.4, tight: true }, { stack: true }, { stack: true, tight: true }];
     const build = (v, html = null, layout = null) => {
-      const s = PF.scene({ id: sid, tpl: 'D', eyebrow: meta.chapter, eyebrowNo: meta.chNo || "", rlabel: meta.rlabel, title: txt(sl.title) || meta.chapter, sub: part, lead: part && part !== `1/${part.split('/')[1]}` ? '' : txt(sl.lead), foot: meta.foot, sec: meta.chapter, group: meta.chapter, stitle: txt(sl.title) });
+      const s = PF.scene({ nav: meta.nav || '', id: sid, tpl: 'D', eyebrow: meta.chapter, eyebrowNo: meta.chNo || "", rlabel: meta.rlabel, title: txt(sl.title) || meta.chapter, sub: part, lead: part && part !== `1/${part.split('/')[1]}` ? '' : txt(sl.lead), foot: meta.src || meta.foot, sec: meta.chapter, group: meta.chapter, stitle: txt(sl.title) });
       s.classList.add(`l-${layout || sl.layout || 'visual'}`);
       if (meta.err) s.dataset.pfErr = meta.err;
       if (sl.edited) s.dataset.pfEdited = '1';                       // 장면 고치기로 고친 장면(미리보기 개요에 ✎)
@@ -468,7 +470,9 @@
     }
     // 들어가는 변형 중 시각 자료가 가장 크게 보이는 것(같으면 앞의 것). 가로로 긴 다이어그램은 위아래 배치가, 세로로 긴 것은 옆 배치가 이김
     let best = null;
-    for (const v of V) { const s = build(v); if (!PF.fitsM(s)) continue; const sc = PF.visScore(s); if (!best || sc > best.sc + 0.05) best = { s, sc }; }
+    for (const v of V) { const s = build(v); if (!PF.fitsM(s)) continue; const sc = PF.visScore(s); if (!best || sc > best.sc + 0.05) best = { s, sc, v }; }
+    // 넉넉한 변형(디자인 마스터플랜 「페이지 절반이 비지 않게」): 본문을 62% 미만 채우면 같은 배치에 글자·코드를 한 단 키워 다시 그려 봄(들어가고 더 채우면 그것)
+    if (best && !best.v.tight && PF.fillOf(best.s) < 0.62) { const r = build({ ...best.v, roomy: true }); if (PF.fitsM(r) && PF.fillOf(r) > PF.fillOf(best.s)) return [r]; }
     if (best) return [best.s];
     // 표가 하한에서도 안 들어가면 행을 반으로 나눠 "계속" 장면으로
     //   표가 여럿이면 행이 가장 많은 표 하나만 나눕니다(같으면 앞의 것). 나머지 표는 앞 장면에 온전히 남음
@@ -532,9 +536,21 @@
     // 장 → 장 표지 + 장면들
     const chapterScenes = [];
     const tocItems = [];
-    model.forEach((c, ci) => {
+    // 내비 바(디자인 마스터플랜 「페이지 해부도」 ①): 본문 장면 맨 위에 장 탭 전체 + 지금 장 표시. 탭 = 그 장 표지로 가는 링크
+    const chIds = model.map((c, ci) => {
       const ckey = PF.keyOk(c.key) ? c.key : `c${ci + 1}`;
       let chId = `ch-${ckey}`; if (used.has(chId)) chId = `ch-c${ci + 1}`; used.add(chId);
+      return chId;
+    });
+    const hasRetroScene = ['achieved', 'regrets', 'plans'].some((k) => (p.retro?.[k] || []).length);
+    const pad = (n) => String(n).padStart(2, '0');
+    const navList = [...model.map((c, i) => ({ no: pad(i + 1), t: c.title || '', ref: chIds[i] })), ...(hasRetroScene ? [{ no: pad(model.length + 1), t: PF.t('deck.retro'), ref: 'retro' }] : [])];
+    const navHtml = (cur) => `<nav class="dn" data-pf-ui="chrome" data-pf-allow-clip aria-label="장 이동">${navList.map((x, i) =>
+      `<a class="dn-i${i === cur ? ' on' : ''}" href="#${esc(x.ref)}" data-pf-ref="${esc(x.ref)}"${i === cur ? ' aria-current="true"' : ''}><b>${x.no}</b><span>${esc(x.t)}</span></a>`).join('')}</nav>`;
+    // 출처 자리(⑤): 장면이 가리키는 원문 절(데이터의 sectionPath 그대로)
+    const srcOf = (sl) => { const sp = sl.sectionPath || []; return sp.length ? `출처 · 프로젝트 문서 › ${sp[sp.length - 1]}` : ''; };
+    model.forEach((c, ci) => {
+      const chId = chIds[ci];
       const slides = [];
       // 쪽 표시(인수인계서 규칙 5): 같은 절(같은 제목)이 여러 장이면 그 절 안 순번 "2/3", 한 장뿐이면 번호 없이 탭만
       const secKey = (sl) => PF.normTitle(txt(sl.title)) || sl.key;
@@ -547,7 +563,7 @@
         used.add(sid);
         const k = secKey(sl), kn = secN.get(k), ki = (secI.get(k) || 0) + 1; secI.set(k, ki);
         const rl = [PF.tab(sl.tab), kn > 1 ? `${ki}/${kn}` : ''].filter(Boolean).join(' · ');
-        const scenes = slideScenes(sl, sid, { chapter: c.title || "", chNo: String(ci + 1).padStart(2, "0"), rlabel: rl, foot, auto, err });
+        const scenes = slideScenes(sl, sid, { chapter: c.title || "", chNo: String(ci + 1).padStart(2, "0"), rlabel: rl, foot, auto, err, nav: navHtml(ci), src: srcOf(sl) });
         scenes.forEach((s) => used.add(s.id));
         slides.push({ sl, scenes });
       });
@@ -555,7 +571,7 @@
       chapterScenes.push(chs, ...slides.flatMap((x) => x.scenes));
       tocItems.push({ c, chId, n: slides.reduce((a, x) => a + x.scenes.length, 0) });
     });
-    const retro = buildRetro(p.retro || {}, p, foot, auto, String(model.length + 1).padStart(2, "0"));   // 목차의 회고 번호와 같은 장 번호
+    const retro = buildRetro(p.retro || {}, p, foot, auto, String(model.length + 1).padStart(2, "0"), navHtml(model.length));   // 목차의 회고 번호와 같은 장 번호
     const end = endScene(p, foot, ext, auto, lesson);
     const toc = tocScene(p, foot, tocItems, retro, auto);
     const all = [cover, toc, ...chapterScenes, ...retro, end];
@@ -620,11 +636,10 @@
     const rows = [...items.map((x, i) => [String(i + 1).padStart(2, '0'), x.c.title, PF.t('deck.toc-count', { n: x.n }), x.chId]),
       retro.length && [String(items.length + 1).padStart(2, '0'), PF.t('deck.retro'), PF.t('deck.retro-desc'), retro[0].id],
       [String(items.length + (retro.length ? 2 : 1)).padStart(2, '0'), PF.t('deck.more'), PF.t('deck.more-desc'), 'end']].filter(Boolean);
+    // 목차 = 장 카드(디자인 마스터플랜 레이아웃 2): 카드마다 번호 · 장 제목 · 한 줄 설명 · 쪽수 · 링크. 6장 이하 3×2, 넘으면 3열로 이어짐
     const make = (compact) => {
       const s = PF.scene({ id: 'toc', tpl: 'P2', kind: 'bare', cls: compact ? 'compact' : '', foot, sec: PF.t('name.toc'), stitle: PF.t('name.toc') });
-      const half = rows.length > 7 ? Math.ceil(rows.length / 2) : rows.length;
-      const col = (list) => `<section><ol class="toc-list">${list.map((r) => item(...r)).join('')}</ol></section>`;
-      PF.body(s).innerHTML = `<div class="toc-top"><p class="toc-h">${esc(PF.t('en.contents'))}</p><p class="toc-sub">${esc(p.title)}</p></div>${DOT}<div class="toc-cols${rows.length > 7 ? '' : ' one'}">${col(rows.slice(0, half))}${rows.length > half ? col(rows.slice(half)) : ''}</div>`;
+      PF.body(s).innerHTML = `<div class="toc-top"><p class="toc-h">${esc(PF.t('name.toc'))}</p><p class="toc-sub">${esc(p.title)}</p></div><ol class="toc-list toc-grid" style="--n:${rows.length}">${rows.map((r) => item(...r)).join('')}</ol>`;
       return band(s, auto);
     };
     for (const compact of [false, true]) { const s = make(compact); if (PF.fitsM(s)) return s; }
@@ -632,21 +647,24 @@
   }
 
   // 결과와 회고: ✓ 달성 카드 │ 아쉬운 점 → 개선 계획 표. 안 들어가면 두 장으로
-  function buildRetro(r, p, foot, auto, no = "") {
+  // 결과와 회고 = 결론·평가(디자인 마스터플랜 레이아웃 10): 달성 │ 아쉬운 점 │ 개선 계획 3열, 개선 계획만 강조.
+  //   아쉬운 점과 개선 계획은 같은 번호로 짝을 맞춤(data의 regrets[i] ↔ plans[i]). 안 들어가면 달성 / 아쉬운 점·개선 계획 두 장으로
+  function buildRetro(r, p, foot, auto, no = "", nav = '') {
     const ach = r.achieved || [], reg = r.regrets || [], plan = r.plans || [];
     if (!ach.length && !reg.length && !plan.length) return [];
-    const n = Math.max(reg.length, plan.length);
-    const achHtml = ach.length ? `<div class="rt-ach card"><p class="rt-h ok">✓ ${esc(PF.t('deck.achieved'))}</p><ul>${ach.map((x) => `<li>${inline(x)}</li>`).join('')}</ul></div>` : '';
-    const pairHtml = n ? `<table class="mini"><thead><tr><th scope="col">△ ${esc(PF.t('deck.regrets'))}</th><th scope="col">→ ${esc(PF.t('deck.plans'))}</th></tr></thead><tbody>${Array.from({ length: n }, (_, i) => `<tr><td>${inline(reg[i] || '')}</td><td class="p">${inline(plan[i] || '')}</td></tr>`).join('')}</tbody></table>` : '';
-    const make = (html, one, i, cnt) => {
-      const s = PF.scene({ id: i === 0 ? 'retro' : `retro-${i + 1}`, tpl: 'P6', eyebrow: PF.t('deck.retro-eyebrow'), eyebrowNo: no, rlabel: p.title, title: PF.t('deck.retro'), sub: cnt > 1 ? `${i + 1}/${cnt}` : '', foot,
+    const col = (cls, mark, head, list, num) => (list.length ? `<section class="rt-c ${cls}"><p class="rt-h"><span class="rt-m" aria-hidden="true">${mark}</span>${esc(head)}</p><ol class="rt-l${num ? ' num' : ''}">${list.map((x, i) => `<li>${num ? `<span class="rt-n">${i + 1}</span>` : ''}<span>${inline(x)}</span></li>`).join('')}</ol></section>` : '');
+    const achHtml = col('ok', '✓', PF.t('deck.achieved'), ach, false);
+    const pairHtml = col('bad', '△', PF.t('deck.regrets'), reg, true) + col('acc', '→', PF.t('deck.plans'), plan, true);
+    const make = (html, i, cnt) => {
+      const s = PF.scene({ nav, id: i === 0 ? 'retro' : `retro-${i + 1}`, tpl: 'P6', eyebrow: PF.t('deck.retro-eyebrow'), eyebrowNo: no, rlabel: p.title, title: PF.t('deck.retro'), sub: cnt > 1 ? `${i + 1}/${cnt}` : '', foot,
         sec: PF.t('deck.retro'), group: PF.t('deck.retro') });
-      PF.body(s).innerHTML = `<div class="pf-fill"><div class="rt${one ? ' one' : ''}">${html}</div></div>`;
+      const n = (html.match(/class="rt-c /g) || []).length;
+      PF.body(s).innerHTML = `<div class="pf-fill"><div class="rt3" style="--n:${n}">${html}</div></div>`;
       return band(s, auto);
     };
-    const s = make(achHtml + pairHtml, !achHtml || !pairHtml, 0, 1);
+    const s = make(achHtml + pairHtml, 0, 1);
     if (PF.fitsM(s)) return [s];
-    const two = [achHtml, pairHtml].filter(Boolean).map((h, i, a) => make(h, true, i, a.length));
+    const two = [achHtml, pairHtml].filter(Boolean).map((h, i, a) => make(h, i, a.length));
     return two.map((x) => (PF.fitsM(x) ? x : PF.shrinkOrClip(x, PFScene.refUrl(x.id), info.overflow)));
   }
 
