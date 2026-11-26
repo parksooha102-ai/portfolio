@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-25",
+  "generatedAt": "2026-11-26",
   "id": "2-FolkSack",
   "doc": "기술문서_초안_아이템시스템.md",
   "title": "FOLK SACK",
@@ -408,7 +408,7 @@
         "lead": { "text": "게임이 시작되면 `ShopAccessController`가 `ShopService`를 만들어 `ShopView`에 넘긴다.", "verbatim": true },
         "sectionPath": ["4. 데이터 기반 상점 시스템", "4.4 판매 목록 생성과 상점 카드 출력"],
         "points": [
-          { "label": "", "text": "`ShopService`는 `ItemTable`의 모든 정의를 돌면서 팔 수 있는 것만 고른다.", "verbatim": true },
+          { "label": "", "text": "`ShopService`는 `ItemTable`의 모든 정의를 돌면서 팔 수 있는 것만 고른다(`IsShopPurchasable`).", "verbatim": true },
           { "label": "", "text": "`ShopView`는 씬에 비활성으로 둔 카드 템플릿(`rowTemplate`) 하나를 목록 수만큼 복제하고, 각 카드에 `ShopListing`을 넘긴다.", "verbatim": true },
           { "label": "", "text": "카드 디자인을 바꿔도 템플릿 하나만 고치면 되고, 카드 수는 데이터가 정한다.", "verbatim": true }
         ],
