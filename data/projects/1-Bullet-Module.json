@@ -10,7 +10,7 @@
   "meta": [
     { "label": "장르", "value": "Unity 2D 탄환 프레임워크 + 시연용 워크숍·실험실" },
     { "label": "기간", "value": "2주 (2026.06.24 ~ 2026.07.08)" },
-    { "label": "인원", "value": "1명 (개인 프로젝트)" },
+    { "label": "인원", "value": "1명" },
     { "label": "환경", "value": "Unity 6 (6000.3.15f1), URP 2D, C#" }
   ],
   "tags": ["Unity 6", "C#", "URP 2D", "인터페이스 기반 모듈", "ScriptableObject", "오브젝트 풀링", "Physics2D.Raycast"],
